@@ -9,120 +9,6 @@ import {
 } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-// Componente de marquee infinito - Usando requestAnimationFrame para control total
-function InfiniteMarquee() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const positionRef = useRef(0);
-  const halfWidthRef = useRef(0);
-
-  const skills = [
-    "TDD",
-    "ARCHITECTURE",
-    "REACT",
-    "XP",
-    "TESTING",
-    "LEADERSHIP",
-    "NEXT.JS",
-    "CI/CD",
-    "TYPESCRIPT",
-    "NODE.JS",
-  ];
-
-  // Velocidad en píxeles por segundo - AJUSTA AQUÍ
-  const SPEED = 300;
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    let animationId: number;
-    let lastTime: number | null = null;
-
-    const updateWidth = () => {
-      // Ancho de una copia (la mitad del track total)
-      halfWidthRef.current = track.scrollWidth / 2;
-    };
-
-    const animate = (currentTime: number) => {
-      if (lastTime === null) {
-        lastTime = currentTime;
-      }
-
-      const deltaTime = (currentTime - lastTime) / 1000; // en segundos
-      lastTime = currentTime;
-
-      // Mover la posición
-      positionRef.current -= SPEED * deltaTime;
-
-      // Reset cuando hemos movido el ancho de una copia
-      if (Math.abs(positionRef.current) >= halfWidthRef.current) {
-        positionRef.current = 0;
-      }
-
-      // Aplicar transform directamente al DOM (sin React state)
-      track.style.transform = `translateX(${positionRef.current}px)`;
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    // Esperar a que las fuentes carguen para medir correctamente
-    const start = () => {
-      updateWidth();
-      animationId = requestAnimationFrame(animate);
-    };
-
-    if (document.fonts) {
-      document.fonts.ready.then(start);
-    } else {
-      setTimeout(start, 100);
-    }
-
-    // Recalcular ancho en resize
-    const handleResize = () => {
-      updateWidth();
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  return (
-    <div className="relative w-full overflow-hidden">
-      <div ref={trackRef} className="flex will-change-transform">
-        {/* Primera copia */}
-        {skills.map((skill, i) => (
-          <div
-            key={`a-${i}`}
-            className="text-[12vw] font-black leading-none whitespace-nowrap shrink-0 px-6"
-            style={{
-              color: "transparent",
-              WebkitTextStroke: "2px rgba(255,255,255,0.2)",
-            }}
-          >
-            {skill}
-          </div>
-        ))}
-        {/* Segunda copia (duplicado para loop infinito) */}
-        {skills.map((skill, i) => (
-          <div
-            key={`b-${i}`}
-            className="text-[12vw] font-black leading-none whitespace-nowrap shrink-0 px-6"
-            style={{
-              color: "transparent",
-              WebkitTextStroke: "2px rgba(255,255,255,0.2)",
-            }}
-          >
-            {skill}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 // Componente minimalista de partículas decorativas
 function ExperienceParticles() {
   const particles = [
@@ -897,11 +783,6 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
-
-      {/* Skills Section - Infinite Scroll Horizontal */}
-      <section className="relative py-32 overflow-hidden">
-        <InfiniteMarquee />
       </section>
 
       {/* Expertise Section */}
