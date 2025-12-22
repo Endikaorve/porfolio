@@ -338,13 +338,13 @@ export default function Home() {
     default: {
       width: 40,
       height: 40,
-      backgroundColor: "rgba(222, 94, 145, 0.1)",
+      backgroundColor: "white",
       border: "1px solid rgba(222, 94, 145, 0.5)",
     },
     hover: {
       width: 80,
       height: 80,
-      backgroundColor: "rgba(222, 94, 145, 0.15)",
+      backgroundColor: "white",
       border: "1px solid rgba(222, 94, 145, 0.8)",
     },
   };
@@ -491,7 +491,7 @@ export default function Home() {
 
         {/* Círculo principal - centrado con transform */}
         <motion.div
-          className="fixed pointer-events-none z-[9998] rounded-full backdrop-blur-sm"
+          className="fixed pointer-events-none z-[9998] rounded-full mix-blend-difference"
           style={{
             left: mousePosition.x,
             top: mousePosition.y,
