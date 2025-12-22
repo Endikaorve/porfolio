@@ -832,6 +832,96 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Community Section */}
+      <section className="relative py-32">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
+            <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
+              {t("community.title.line1")}
+              <br />
+              <span className="text-[#de5e91]">
+                {t("community.title.line2")}
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 overflow-hidden">
+            {/* Profesor */}
+            <motion.div
+              className="relative group overflow-visible"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="absolute -inset-4 bg-[#de5e91] opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
+              <div className="relative border-l-4 border-[#de5e91] pl-8 py-4">
+                <span className="text-white/40 font-mono text-sm">
+                  {t("community.teaching.period")}
+                </span>
+                <h3 className="text-3xl font-black text-white mt-2 mb-3">
+                  {t("community.teaching.title")}
+                </h3>
+                <p className="text-white/70 mb-4">
+                  {t("community.teaching.subtitle")}
+                </p>
+                <p className="text-white/60 leading-relaxed">
+                  {t("community.teaching.description")}
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Charlas */}
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
+                <div className="relative border-l-4 border-white pl-8 py-4">
+                  <span className="text-white/40 font-mono text-sm">
+                    {t("community.talks.vibe.year")}
+                  </span>
+                  <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                    {t("community.talks.vibe.title")}
+                  </h3>
+                  <p className="text-white/60 text-sm mb-2">
+                    {t("community.talks.vibe.event")}
+                  </p>
+                  <p className="text-white/50 leading-relaxed text-sm">
+                    {t("community.talks.vibe.description")}
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
+                <div className="relative border-l-4 border-white pl-8 py-4">
+                  <span className="text-white/40 font-mono text-sm">
+                    {t("community.talks.rendering.year")}
+                  </span>
+                  <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                    {t("community.talks.rendering.title")}
+                  </h3>
+                  <p className="text-white/60 text-sm mb-2">
+                    {t("community.talks.rendering.event")}
+                  </p>
+                  <p className="text-white/50 leading-relaxed text-sm">
+                    {t("community.talks.rendering.description")}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section className="relative py-32">
         <div className="container mx-auto px-4">
@@ -925,30 +1015,36 @@ export default function Home() {
               transition={{ delay: 0.2 }}
               whileHover={{ scale: 1.02 }}
             >
-              <div className="absolute inset-0 bg-[#de5e91]" />
+              <div className="absolute inset-0 bg-[#1a1a1a]" />
               <div 
-                className="absolute inset-0"
+                className="absolute inset-0 opacity-50"
                 style={{
                   backgroundImage: `
-                    linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, transparent 50%, rgba(0, 0, 0, 0.2) 100%)
+                    repeating-linear-gradient(
+                      -45deg,
+                      transparent,
+                      transparent 20px,
+                      rgba(255, 255, 255, 0.02) 20px,
+                      rgba(255, 255, 255, 0.02) 40px
+                    )
                   `,
                 }}
               />
-              <div className="absolute inset-0 border border-white/20 group-hover:border-white/40 transition-colors duration-300" />
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+              <div className="absolute inset-0 border border-white/15 group-hover:border-white/30 transition-colors duration-300" />
+              <div className="absolute left-0 bottom-0 w-1 h-full bg-gradient-to-t from-white/30 via-white/10 to-transparent" />
               <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                <span className="text-white/70 text-xs md:text-sm font-mono mb-2 tracking-wider">
+                <span className="text-white/50 text-xs md:text-sm font-mono mb-2 tracking-wider">
                   {t("projects.items.saas.category")}
                 </span>
-                <h3 className="text-2xl md:text-4xl font-black text-[#212121] mb-2">
+                <h3 className="text-2xl md:text-4xl font-black text-white mb-2">
                   {t("projects.items.saas.title")}
                 </h3>
-                <p className="text-[#212121]/70 text-sm md:text-base leading-relaxed">
+                <p className="text-white/50 text-sm md:text-base leading-relaxed">
                   {t("projects.items.saas.description")}
                 </p>
               </div>
-              <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-[#212121]/30 group-hover:border-[#212121]/60 transition-colors duration-300" />
-              <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-[#212121]/30 group-hover:border-[#212121]/60 transition-colors duration-300" />
+              <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-white/20 group-hover:border-white/40 transition-colors duration-300" />
+              <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-white/20 group-hover:border-white/40 transition-colors duration-300" />
             </motion.div>
 
             {/* Proyecto 4 - Micro-frontends & Design Systems */}
@@ -990,96 +1086,6 @@ export default function Home() {
               </div>
               <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
               <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Community Section */}
-      <section className="relative py-32">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
-              {t("community.title.line1")}
-              <br />
-              <span className="text-[#de5e91]">
-                {t("community.title.line2")}
-              </span>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 overflow-hidden">
-            {/* Profesor */}
-            <motion.div
-              className="relative group overflow-visible"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="absolute -inset-4 bg-[#de5e91] opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
-              <div className="relative border-l-4 border-[#de5e91] pl-8 py-4">
-                <span className="text-white/40 font-mono text-sm">
-                  {t("community.teaching.period")}
-                </span>
-                <h3 className="text-3xl font-black text-white mt-2 mb-3">
-                  {t("community.teaching.title")}
-                </h3>
-                <p className="text-white/70 mb-4">
-                  {t("community.teaching.subtitle")}
-                </p>
-                <p className="text-white/60 leading-relaxed">
-                  {t("community.teaching.description")}
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Charlas */}
-            <motion.div
-              className="space-y-8"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
-                <div className="relative border-l-4 border-white pl-8 py-4">
-                  <span className="text-white/40 font-mono text-sm">
-                    {t("community.talks.vibe.year")}
-                  </span>
-                  <h3 className="text-2xl font-black text-white mt-2 mb-2">
-                    {t("community.talks.vibe.title")}
-                  </h3>
-                  <p className="text-white/60 text-sm mb-2">
-                    {t("community.talks.vibe.event")}
-                  </p>
-                  <p className="text-white/50 leading-relaxed text-sm">
-                    {t("community.talks.vibe.description")}
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
-                <div className="relative border-l-4 border-white pl-8 py-4">
-                  <span className="text-white/40 font-mono text-sm">
-                    {t("community.talks.rendering.year")}
-                  </span>
-                  <h3 className="text-2xl font-black text-white mt-2 mb-2">
-                    {t("community.talks.rendering.title")}
-                  </h3>
-                  <p className="text-white/60 text-sm mb-2">
-                    {t("community.talks.rendering.event")}
-                  </p>
-                  <p className="text-white/50 leading-relaxed text-sm">
-                    {t("community.talks.rendering.description")}
-                  </p>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
