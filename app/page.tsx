@@ -61,7 +61,7 @@ function ExperienceParticles({ index }: { index: number }) {
   }));
 
   return (
-    <div className="absolute inset-0 pointer-events-none w-[90%] max-w-5xl mx-auto">
+    <div className="absolute inset-0 pointer-events-none w-[90%] max-w-5xl 2xl:max-w-6xl mx-auto">
       {/* Cuadrados/rectángulos decorativos */}
       {particles.map((particle, i) => (
         <div
@@ -170,7 +170,7 @@ function ExperienceCard({
     >
       {/* Card content */}
       <motion.div
-        className="relative p-5 md:p-12 w-full bg-[#212121] border-2 border-[#de5e91]/30"
+        className="relative p-5 md:p-12 2xl:p-16 w-full bg-[#212121] border-2 border-[#de5e91]/30"
         style={{
           rotate: rotation,
         }}
@@ -187,41 +187,41 @@ function ExperienceCard({
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#de5e91] to-transparent opacity-50" />
 
         {/* Header */}
-        <div className="relative z-10 mb-4 md:mb-6 border-l-4 border-[#de5e91] pl-6">
-          <span className="text-[#de5e91] font-mono text-xs md:text-sm tracking-wider font-bold">
+        <div className="relative z-10 mb-4 md:mb-6 2xl:mb-8 border-l-4 2xl:border-l-[6px] border-[#de5e91] pl-6 2xl:pl-8">
+          <span className="text-[#de5e91] font-mono text-xs md:text-sm 2xl:text-base tracking-wider font-bold">
             {job.period}
           </span>
-          <h3 className="text-2xl md:text-4xl font-black text-white mt-1 md:mt-2 leading-tight">
+          <h3 className="text-2xl md:text-4xl 2xl:text-5xl font-black text-white mt-1 md:mt-2 leading-tight">
             {job.role}
           </h3>
-          <div className="flex flex-wrap items-center gap-1 md:gap-2 mt-1 md:mt-2">
-            <p className="text-white/70 text-sm md:text-lg font-medium">
+          <div className="flex flex-wrap items-center gap-1 md:gap-2 2xl:gap-3 mt-1 md:mt-2">
+            <p className="text-white/70 text-sm md:text-lg 2xl:text-xl font-medium">
               {job.company}
             </p>
             <span className="text-white/30 hidden md:inline">·</span>
-            <p className="text-white/50 font-mono text-xs md:text-sm hidden md:block">
+            <p className="text-white/50 font-mono text-xs md:text-sm 2xl:text-base hidden md:block">
               {job.project}
             </p>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-white/60 text-sm md:text-lg leading-relaxed mb-4 md:mb-8 relative z-10 pl-6">
+        <p className="text-white/60 text-sm md:text-lg 2xl:text-xl leading-relaxed mb-4 md:mb-8 2xl:mb-10 relative z-10 pl-6 2xl:pl-8">
           {job.description}
         </p>
 
         {/* Highlights Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-4 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-4 2xl:gap-6 relative z-10">
           {job.highlights.map((highlight, idx) => (
             <div
               key={idx}
-              className="border-l-2 border-[#de5e91]/50 pl-3 md:pl-4 py-1 md:py-2 hover:border-[#de5e91] transition-colors duration-300"
+              className="border-l-2 2xl:border-l-[3px] border-[#de5e91]/50 pl-3 md:pl-4 2xl:pl-6 py-1 md:py-2 2xl:py-3 hover:border-[#de5e91] transition-colors duration-300"
             >
-              <h4 className="text-white font-bold text-xs md:text-sm">
+              <h4 className="text-white font-bold text-xs md:text-sm 2xl:text-base">
                 {highlight.title}
               </h4>
               {/* Text hidden on mobile */}
-              <p className="hidden md:block text-white/50 text-sm leading-relaxed mt-1">
+              <p className="hidden md:block text-white/50 text-sm 2xl:text-base leading-relaxed mt-1">
                 {highlight.text}
               </p>
             </div>
@@ -644,7 +644,7 @@ export default function Home() {
           </div>
 
           {/* Capa de cards sticky */}
-          <div className="w-[90%] max-w-5xl mx-auto relative">
+          <div className="w-[90%] max-w-5xl 2xl:max-w-6xl mx-auto relative">
             {[
               {
                 period: "04/2023 — PRESENTE",
