@@ -404,17 +404,17 @@ export default function Home() {
       />
 
       {/* Hero Section - Tipografía Gigante Experimental */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="relative z-10"
+          className="relative z-10 w-full max-w-7xl"
         >
           {/* Nombre gigante con efecto 3D */}
           <div className="relative">
             <motion.h1
-              className="text-[18vw] font-black leading-[0.85] tracking-tighter"
+              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter"
               style={{
                 color: "transparent",
                 WebkitTextStroke: "2px white",
@@ -431,9 +431,9 @@ export default function Home() {
               ENDIKA
             </motion.h1>
             <motion.h1
-              className="text-[18vw] font-black leading-[0.85] tracking-tighter text-white"
+              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white"
               style={{
-                textShadow: "0 0 80px rgba(222, 94, 145, 0.5)",
+                textShadow: "0 0 40px rgba(222, 94, 145, 0.3)",
               }}
               animate={{
                 y: [0, 20, 0],
@@ -448,10 +448,24 @@ export default function Home() {
             </motion.h1>
           </div>
 
-          {/* Subtítulo dinámico */}
-          <motion.p className="absolute -right-4 top-1/2 -translate-y-1/2 text-[#de5e91] text-xl md:text-2xl font-mono rotate-90 origin-center whitespace-nowrap font-bold">
+          {/* Subtítulo dinámico - Desktop: rotado a la derecha */}
+          <motion.p className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 text-[#de5e91] text-xl md:text-2xl font-mono rotate-90 origin-center whitespace-nowrap font-bold">
             TECH LEAD · PRODUCT ENGINEER
           </motion.p>
+
+          {/* Subtítulo - Mobile: debajo del nombre, horizontal */}
+          <motion.div
+            className="md:hidden mt-8 border-l-4 border-[#de5e91] pl-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <p className="text-[#de5e91] text-sm font-mono font-bold leading-relaxed">
+              TECH LEAD
+              <br />
+              PRODUCT ENGINEER
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* Scroll indicator experimental */}
