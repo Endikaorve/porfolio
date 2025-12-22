@@ -201,12 +201,6 @@ export default function Home() {
             repeat: Number.POSITIVE_INFINITY,
           }}
         >
-          <span
-            className="text-white text-sm font-mono rotate-180"
-            style={{ writingMode: "vertical-rl" }}
-          >
-            SCROLL
-          </span>
           <div className="w-px h-20 bg-gradient-to-b from-[#de5e91] to-transparent" />
         </motion.div>
       </section>
