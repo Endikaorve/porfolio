@@ -1279,17 +1279,6 @@ export default function Home() {
       {/* Contact Section */}
       <section className="relative min-h-screen flex items-center justify-center py-32 overflow-hidden">
         {/* Background Elements */}
-        {/* Gradiente radial central */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `
-              radial-gradient(ellipse 80% 50% at 50% 50%, rgba(222, 94, 145, 0.08) 0%, transparent 60%),
-              radial-gradient(ellipse 60% 40% at 50% 45%, rgba(222, 94, 145, 0.05) 0%, transparent 50%)
-            `,
-          }}
-        />
-
         {/* Líneas diagonales decorativas */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
           <div
