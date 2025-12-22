@@ -415,21 +415,25 @@ export default function Home() {
     <main ref={containerRef} className="relative bg-[#212121]">
       {/* Custom Cursor System - Awwwards Style */}
       <div className="hidden md:block">
+        {/* Punto central - siempre centrado */}
         <motion.div
           className="fixed pointer-events-none z-[9999] mix-blend-difference"
           style={{
-            left: mousePosition.x - 2,
-            top: mousePosition.y - 2,
+            left: mousePosition.x,
+            top: mousePosition.y,
+            transform: "translate(-50%, -50%)",
           }}
         >
           <div className="w-1 h-1 bg-white rounded-full" />
         </motion.div>
 
+        {/* Círculo principal - centrado con transform */}
         <motion.div
           className="fixed pointer-events-none z-[9998] rounded-full backdrop-blur-sm"
           style={{
-            left: mousePosition.x - 20,
-            top: mousePosition.y - 20,
+            left: mousePosition.x,
+            top: mousePosition.y,
+            transform: "translate(-50%, -50%)",
           }}
           variants={variants}
           animate={cursorVariant}
@@ -441,11 +445,13 @@ export default function Home() {
           }}
         />
 
+        {/* Halo - centrado con transform */}
         <motion.div
           className="fixed pointer-events-none z-[9997] rounded-full"
           style={{
-            left: mousePosition.x - 30,
-            top: mousePosition.y - 30,
+            left: mousePosition.x,
+            top: mousePosition.y,
+            transform: "translate(-50%, -50%)",
             background:
               "radial-gradient(circle, rgba(222, 94, 145, 0.15) 0%, transparent 70%)",
           }}
