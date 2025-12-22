@@ -195,10 +195,27 @@ function ExperienceCard({
 export default function Home() {
   const t = useTranslations();
   const containerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState("default");
   const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
+
+  // Hero parallax - scroll horizontal
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const endikaX = useTransform(
+    heroScrollProgress,
+    [0, 0.1, 1],
+    ["0%", "0%", "-120%"]
+  );
+  const orubeX = useTransform(
+    heroScrollProgress,
+    [0, 0.1, 1],
+    ["0%", "0%", "120%"]
+  );
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -313,7 +330,9 @@ export default function Home() {
           text: t("experience.jobs.biko2Senior.highlights.product.text"),
         },
         {
-          title: t("experience.jobs.biko2Senior.highlights.observability.title"),
+          title: t(
+            "experience.jobs.biko2Senior.highlights.observability.title"
+          ),
           text: t("experience.jobs.biko2Senior.highlights.observability.text"),
         },
         {
@@ -351,7 +370,9 @@ export default function Home() {
       description: t("experience.jobs.nubbaFullStack.description"),
       highlights: [
         {
-          title: t("experience.jobs.nubbaFullStack.highlights.development.title"),
+          title: t(
+            "experience.jobs.nubbaFullStack.highlights.development.title"
+          ),
           text: t("experience.jobs.nubbaFullStack.highlights.development.text"),
         },
         {
@@ -455,23 +476,26 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        {/* Capa animada - texto que se mueve con scroll */}
         <motion.div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="relative z-10 w-full max-w-7xl"
         >
-          <div className="relative">
+          <div className="w-full max-w-7xl px-4">
             <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter"
+              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter will-change-transform"
               style={{
                 color: "transparent",
                 WebkitTextStroke: "2px white",
+                x: endikaX,
               }}
-              animate={{
-                y: [0, -20, 0],
-              }}
+              animate={{ y: [0, -20, 0] }}
               transition={{
                 duration: 4,
                 repeat: Number.POSITIVE_INFINITY,
@@ -481,13 +505,12 @@ export default function Home() {
               ENDIKA
             </motion.h1>
             <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white"
+              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform"
               style={{
                 textShadow: "0 0 40px rgba(222, 94, 145, 0.3)",
+                x: orubeX,
               }}
-              animate={{
-                y: [0, 20, 0],
-              }}
+              animate={{ y: [0, 20, 0] }}
               transition={{
                 duration: 4,
                 repeat: Number.POSITIVE_INFINITY,
@@ -497,13 +520,26 @@ export default function Home() {
               ORUBE
             </motion.h1>
           </div>
+        </motion.div>
+
+        {/* Capa estática - elementos de UI */}
+        <div className="relative z-10 w-full max-w-7xl px-4">
+          {/* Placeholder para mantener espacio - misma estructura que el original */}
+          <div className="relative" aria-hidden="true">
+            <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none">
+              ENDIKA
+            </div>
+            <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none">
+              ORUBE
+            </div>
+          </div>
 
           <motion.p className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 text-[#de5e91] text-xl md:text-2xl font-mono rotate-90 origin-center whitespace-nowrap font-bold">
             {t("hero.role")}
           </motion.p>
 
           <motion.div
-            className="md:hidden mt-8 border-l-4 border-[#de5e91] pl-4"
+            className="md:hidden mt-24 border-l-4 border-[#de5e91] pl-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -514,7 +550,7 @@ export default function Home() {
               PRODUCT ENGINEER
             </p>
           </motion.div>
-        </motion.div>
+        </div>
 
         <motion.div
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
@@ -948,7 +984,7 @@ export default function Home() {
               transition={{ duration: 0.3 }}
             >
               <div className="absolute inset-0 bg-[#1a1a1a]" />
-              <div 
+              <div
                 className="absolute inset-0 opacity-20"
                 style={{
                   backgroundImage: `
@@ -984,7 +1020,7 @@ export default function Home() {
               whileHover={{ scale: 1.02 }}
             >
               <div className="absolute inset-0 bg-[#1a1a1a]" />
-              <div 
+              <div
                 className="absolute inset-0 opacity-30"
                 style={{
                   backgroundImage: `radial-gradient(circle at 80% 20%, rgba(222, 94, 145, 0.15) 0%, transparent 50%)`,
@@ -1016,7 +1052,7 @@ export default function Home() {
               whileHover={{ scale: 1.02 }}
             >
               <div className="absolute inset-0 bg-[#1a1a1a]" />
-              <div 
+              <div
                 className="absolute inset-0 opacity-50"
                 style={{
                   backgroundImage: `
@@ -1057,7 +1093,7 @@ export default function Home() {
               whileHover={{ scale: 1.02 }}
             >
               <div className="absolute inset-0 bg-[#1a1a1a]" />
-              <div 
+              <div
                 className="absolute inset-0 opacity-40"
                 style={{
                   backgroundImage: `
@@ -1158,4 +1194,3 @@ export default function Home() {
     </main>
   );
 }
-
