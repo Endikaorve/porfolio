@@ -303,7 +303,16 @@ export default function Home() {
       setCursorVariant("default");
     };
 
+    // Actualizar posición cuando el mouse entra en la página
+    const handleDocumentEnter = (e: MouseEvent) => {
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY,
+      });
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseenter", handleDocumentEnter, true);
 
     const interactiveElements = document.querySelectorAll("a, button");
     interactiveElements.forEach((el) => {
@@ -313,6 +322,7 @@ export default function Home() {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseenter", handleDocumentEnter, true);
       interactiveElements.forEach((el) => {
         el.removeEventListener("mouseenter", handleMouseEnter);
         el.removeEventListener("mouseleave", handleMouseLeave);
