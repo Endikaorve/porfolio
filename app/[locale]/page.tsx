@@ -1268,11 +1268,13 @@ export default function Home() {
                   LINKEDIN
                 </motion.a>
                 <motion.a
-                  href="tel:+34685253787"
+                  href="https://github.com/Endikaorve"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-white text-lg font-mono hover:text-[#de5e91] transition-colors"
                   whileHover={{ y: -5 }}
                 >
-                  {t("contact.phone")}
+                  {t("contact.github")}
                 </motion.a>
               </div>
             </div>
