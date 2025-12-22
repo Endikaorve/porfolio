@@ -3,6 +3,111 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+// Componente de partículas decorativas que scrollean normalmente
+function ExperienceParticles({ index }: { index: number }) {
+  // Partículas decorativas únicas para cada card
+  const particles = [
+    // Top-left cluster
+    { x: "-20%", y: "5%", size: 3, opacity: 0.3 },
+    { x: "-15%", y: "15%", size: 2, opacity: 0.2 },
+    { x: "-25%", y: "12%", size: 1.5, opacity: 0.4 },
+    // Top-right cluster
+    { x: "105%", y: "8%", size: 4, opacity: 0.25 },
+    { x: "110%", y: "18%", size: 2.5, opacity: 0.3 },
+    { x: "115%", y: "10%", size: 1, opacity: 0.2 },
+    // Bottom-left cluster
+    { x: "-18%", y: "85%", size: 2, opacity: 0.35 },
+    { x: "-12%", y: "92%", size: 3.5, opacity: 0.25 },
+    // Bottom-right cluster
+    { x: "108%", y: "88%", size: 2.5, opacity: 0.3 },
+    { x: "112%", y: "78%", size: 1.5, opacity: 0.4 },
+    // Middle floating elements
+    { x: "-8%", y: "45%", size: 1, opacity: 0.15 },
+    { x: "103%", y: "50%", size: 1, opacity: 0.15 },
+  ];
+
+  // Líneas decorativas
+  const lines = [
+    { x1: "-10%", y1: "20%", x2: "-5%", y2: "25%", opacity: 0.2 },
+    { x1: "105%", y1: "30%", x2: "110%", y2: "35%", opacity: 0.25 },
+    { x1: "-15%", y1: "70%", x2: "-8%", y2: "75%", opacity: 0.15 },
+    { x1: "108%", y1: "65%", x2: "115%", y2: "70%", opacity: 0.2 },
+  ];
+
+  return (
+    <div className="absolute inset-0 pointer-events-none w-[90%] max-w-5xl mx-auto">
+      {/* Cuadrados/rectángulos decorativos */}
+      {particles.map((particle, i) => (
+        <div
+          key={`particle-${index}-${i}`}
+          className="absolute border border-[#de5e91]"
+          style={{
+            left: particle.x,
+            top: particle.y,
+            width: `${particle.size * 8}px`,
+            height: `${particle.size * 8}px`,
+            opacity: particle.opacity,
+          }}
+        />
+      ))}
+
+      {/* Líneas diagonales decorativas */}
+      {lines.map((line, i) => (
+        <svg
+          key={`line-${index}-${i}`}
+          className="absolute"
+          style={{
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100%",
+            opacity: line.opacity,
+          }}
+        >
+          <line
+            x1={line.x1}
+            y1={line.y1}
+            x2={line.x2}
+            y2={line.y2}
+            stroke="#de5e91"
+            strokeWidth="1"
+          />
+        </svg>
+      ))}
+
+      {/* Mini grid decorativo */}
+      <div
+        className="absolute opacity-10 pointer-events-none hidden md:block"
+        style={{
+          left: "-15%",
+          top: "50%",
+          width: "40px",
+          height: "40px",
+          backgroundImage: `
+            linear-gradient(to right, #de5e91 1px, transparent 1px),
+            linear-gradient(to bottom, #de5e91 1px, transparent 1px)
+          `,
+          backgroundSize: "10px 10px",
+        }}
+      />
+      <div
+        className="absolute opacity-10 pointer-events-none hidden md:block"
+        style={{
+          right: "-12%",
+          top: "25%",
+          width: "30px",
+          height: "30px",
+          backgroundImage: `
+            linear-gradient(to right, #de5e91 1px, transparent 1px),
+            linear-gradient(to bottom, #de5e91 1px, transparent 1px)
+          `,
+          backgroundSize: "10px 10px",
+        }}
+      />
+    </div>
+  );
+}
+
 // Componente individual para cada card de experiencia
 function ExperienceCard({
   job,
@@ -499,107 +604,122 @@ export default function Home() {
         </div>
 
         {/* Stacked Cards Container */}
-        <div className="experience-cards w-[90%] max-w-5xl mx-auto">
-          {[
-            {
-              period: "04/2023 — PRESENTE",
-              company: "BIKO2 / JAKALA",
-              role: "TECH LEAD & MANAGER",
-              project: "Banca Online Laboral Kutxa",
-              description:
-                "Lidero el equipo frontend (+20 devs) de la banca digital (+1M usuarios), combinando la dirección técnica y la gestión de personas con una visión estratégica del producto.",
-              highlights: [
-                {
-                  title: "Ingeniería & Estrategia de Producto",
-                  text: "Colaboro con POs, Negocio y Diseño para definir soluciones técnicas. Dirijo la migración Angular → React enfocada en seguridad, Time-to-Market y UX.",
-                },
-                {
-                  title: "Excelencia Técnica & XP",
-                  text: "TDD, Integración Continua, Pair Programming. Arquitectura robusta capaz de evolucionar con el negocio.",
-                },
-                {
-                  title: "Innovación & IA aplicada",
-                  text: "Context Engineering del equipo (Rules, Comandos, MCPs para Azure DevOps). Mejoras significativas en velocidad y calidad.",
-                },
-                {
-                  title: "Gestión de Personas",
-                  text: "Manager directo de 8 engineers. 1-on-1s, planes de carrera y formación continua.",
-                },
-              ],
-            },
-            {
-              period: "03/2022 — 04/2023",
-              company: "BIKO2 / JAKALA",
-              role: "SENIOR WEB DEVELOPER",
-              project: "Motor de Reservas Barceló Hotel Group",
-              description:
-                "Desarrollador core en la construcción del nuevo motor de reservas (alto tráfico), operando bajo metodología Extreme Programming estricta.",
-              highlights: [
-                {
-                  title: "Arquitectura & Stack Moderno",
-                  text: "Next.js + Arquitectura Hexagonal desplegada en Vercel. SEO y Core Web Vitals optimizados.",
-                },
-                {
-                  title: "Visión de Producto & Diseño",
-                  text: "Enlace clave entre diseño y desarrollo. Traduje maquetas complejas a componentes eficientes.",
-                },
-                {
-                  title: "Observabilidad & Producción",
-                  text: "Estrategias de monitorización y alerting (Sentry/Datadog) para estabilidad del servicio.",
-                },
-                {
-                  title: "Calidad & Cultura",
-                  text: "TDD y CI/CD. Mentorización de nuevos integrantes para acelerar onboarding.",
-                },
-              ],
-            },
-            {
-              period: "08/2020 — 02/2022",
-              company: "NUBBA GROUP",
-              role: "LEAD DEVELOPER & PM",
-              project: "RescueOnTime, Inallow + Consultoría",
-              description:
-                "Rol híbrido de liderazgo técnico y producto. Responsable final de la entrega en consultoría y productos propios SaaS.",
-              highlights: [
-                {
-                  title: "Gestión Integral de Producto",
-                  text: "Ciclo completo: preventa técnica, requisitos, diseño UX/UI, implementación y mantenimiento.",
-                },
-                {
-                  title: "Estrategia de Negocio",
-                  text: "Demos técnicas y feedback de mercado convertido en roadmap. Universidad de Navarra, Médicos del Mundo.",
-                },
-                {
-                  title: "Liderazgo Técnico & Mentoring",
-                  text: "Definí arquitectura y estándares. Transformé equipo de 1 a 5 developers.",
-                },
-              ],
-            },
-            {
-              period: "03/2018 — 08/2020",
-              company: "NUBBA GROUP",
-              role: "FULL STACK DEVELOPER",
-              project: "Startup Phase",
-              description:
-                "Segundo desarrollador en startup de 4 personas. Responsabilidad crítica desde el día uno en desarrollo Web y Mobile.",
-              highlights: [
-                {
-                  title: "Desarrollo End-to-End",
-                  text: "Soluciones a medida para clientes corporativos y productos SaaS internos.",
-                },
-                {
-                  title: "Stack Tecnológico",
-                  text: "Backend (PHP/Symfony, MySQL), Frontend (Angular 2+) y Mobile Híbrido (Ionic).",
-                },
-                {
-                  title: "Cultura Startup",
-                  text: "Mentalidad de resolución de problemas. Gestión de incidencias críticas en entorno de recursos limitados.",
-                },
-              ],
-            },
-          ].map((job, i) => (
-            <ExperienceCard key={i} job={job} index={i} />
-          ))}
+        <div className="experience-cards relative">
+          {/* Capa de partículas que scrollean - NO sticky */}
+          <div className="absolute inset-0 pointer-events-none">
+            {[0, 1, 2, 3].map((i) => (
+              <div
+                key={`particles-container-${i}`}
+                className="relative h-screen"
+              >
+                <ExperienceParticles index={i} />
+              </div>
+            ))}
+          </div>
+
+          {/* Capa de cards sticky */}
+          <div className="w-[90%] max-w-5xl mx-auto relative">
+            {[
+              {
+                period: "04/2023 — PRESENTE",
+                company: "BIKO2 / JAKALA",
+                role: "TECH LEAD & MANAGER",
+                project: "Banca Online Laboral Kutxa",
+                description:
+                  "Lidero el equipo frontend (+20 devs) de la banca digital (+1M usuarios), combinando la dirección técnica y la gestión de personas con una visión estratégica del producto.",
+                highlights: [
+                  {
+                    title: "Ingeniería & Estrategia de Producto",
+                    text: "Colaboro con POs, Negocio y Diseño para definir soluciones técnicas. Dirijo la migración Angular → React enfocada en seguridad, Time-to-Market y UX.",
+                  },
+                  {
+                    title: "Excelencia Técnica & XP",
+                    text: "TDD, Integración Continua, Pair Programming. Arquitectura robusta capaz de evolucionar con el negocio.",
+                  },
+                  {
+                    title: "Innovación & IA aplicada",
+                    text: "Context Engineering del equipo (Rules, Comandos, MCPs para Azure DevOps). Mejoras significativas en velocidad y calidad.",
+                  },
+                  {
+                    title: "Gestión de Personas",
+                    text: "Manager directo de 8 engineers. 1-on-1s, planes de carrera y formación continua.",
+                  },
+                ],
+              },
+              {
+                period: "03/2022 — 04/2023",
+                company: "BIKO2 / JAKALA",
+                role: "SENIOR WEB DEVELOPER",
+                project: "Motor de Reservas Barceló Hotel Group",
+                description:
+                  "Desarrollador core en la construcción del nuevo motor de reservas (alto tráfico), operando bajo metodología Extreme Programming estricta.",
+                highlights: [
+                  {
+                    title: "Arquitectura & Stack Moderno",
+                    text: "Next.js + Arquitectura Hexagonal desplegada en Vercel. SEO y Core Web Vitals optimizados.",
+                  },
+                  {
+                    title: "Visión de Producto & Diseño",
+                    text: "Enlace clave entre diseño y desarrollo. Traduje maquetas complejas a componentes eficientes.",
+                  },
+                  {
+                    title: "Observabilidad & Producción",
+                    text: "Estrategias de monitorización y alerting (Sentry/Datadog) para estabilidad del servicio.",
+                  },
+                  {
+                    title: "Calidad & Cultura",
+                    text: "TDD y CI/CD. Mentorización de nuevos integrantes para acelerar onboarding.",
+                  },
+                ],
+              },
+              {
+                period: "08/2020 — 02/2022",
+                company: "NUBBA GROUP",
+                role: "LEAD DEVELOPER & PM",
+                project: "RescueOnTime, Inallow + Consultoría",
+                description:
+                  "Rol híbrido de liderazgo técnico y producto. Responsable final de la entrega en consultoría y productos propios SaaS.",
+                highlights: [
+                  {
+                    title: "Gestión Integral de Producto",
+                    text: "Ciclo completo: preventa técnica, requisitos, diseño UX/UI, implementación y mantenimiento.",
+                  },
+                  {
+                    title: "Estrategia de Negocio",
+                    text: "Demos técnicas y feedback de mercado convertido en roadmap. Universidad de Navarra, Médicos del Mundo.",
+                  },
+                  {
+                    title: "Liderazgo Técnico & Mentoring",
+                    text: "Definí arquitectura y estándares. Transformé equipo de 1 a 5 developers.",
+                  },
+                ],
+              },
+              {
+                period: "03/2018 — 08/2020",
+                company: "NUBBA GROUP",
+                role: "FULL STACK DEVELOPER",
+                project: "Startup Phase",
+                description:
+                  "Segundo desarrollador en startup de 4 personas. Responsabilidad crítica desde el día uno en desarrollo Web y Mobile.",
+                highlights: [
+                  {
+                    title: "Desarrollo End-to-End",
+                    text: "Soluciones a medida para clientes corporativos y productos SaaS internos.",
+                  },
+                  {
+                    title: "Stack Tecnológico",
+                    text: "Backend (PHP/Symfony, MySQL), Frontend (Angular 2+) y Mobile Híbrido (Ionic).",
+                  },
+                  {
+                    title: "Cultura Startup",
+                    text: "Mentalidad de resolución de problemas. Gestión de incidencias críticas en entorno de recursos limitados.",
+                  },
+                ],
+              },
+            ].map((job, i) => (
+              <ExperienceCard key={i} job={job} index={i} />
+            ))}
+          </div>
         </div>
       </section>
 
