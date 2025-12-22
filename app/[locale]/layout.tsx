@@ -37,23 +37,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t.metadata.title,
     description: t.metadata.description,
     generator: "v0.app",
-    icons: {
-      icon: [
-        {
-          url: "/icon-light-32x32.png",
-          media: "(prefers-color-scheme: light)",
-        },
-        {
-          url: "/icon-dark-32x32.png",
-          media: "(prefers-color-scheme: dark)",
-        },
-        {
-          url: "/icon.svg",
-          type: "image/svg+xml",
-        },
-      ],
-      apple: "/apple-icon.png",
-    },
     alternates: {
       languages: {
         es: "/es",
@@ -91,4 +74,3 @@ export default async function LocaleLayout({ children, params }: Props) {
     </html>
   );
 }
-
