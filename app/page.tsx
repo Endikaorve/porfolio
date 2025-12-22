@@ -8,139 +8,45 @@ import {
   AnimatePresence,
 } from "framer-motion";
 
-// Componente de partículas decorativas que scrollean normalmente
-// COMENTADO TEMPORALMENTE - Causa problemas de overflow
-/*
-function ExperienceParticles({ index }: { index: number }) {
-  // Offset basado en el índice para variar las posiciones (alterna entre +/-)
-  const offsetX = index % 2 === 0 ? index * 3 : -index * 3;
-  const offsetY = index % 2 === 0 ? index * 5 : -index * 4;
-
-  // Helper para parsear y modificar porcentajes
-  const adjustPosition = (pos: string, offset: number) => {
-    const value = parseFloat(pos);
-    return `${value + offset}%`;
-  };
-
-  // Partículas decorativas base que se modifican por índice
-  const baseParticles = [
-    // Top-left cluster
-    { x: "-20%", y: "5%", size: 3, opacity: 0.3 },
-    { x: "-15%", y: "15%", size: 2, opacity: 0.2 },
-    { x: "-25%", y: "12%", size: 1.5, opacity: 0.4 },
-    // Top-right cluster
-    { x: "105%", y: "8%", size: 4, opacity: 0.25 },
-    { x: "110%", y: "18%", size: 2.5, opacity: 0.3 },
-    { x: "115%", y: "10%", size: 1, opacity: 0.2 },
-    // Bottom-left cluster
-    { x: "-18%", y: "85%", size: 2, opacity: 0.35 },
-    { x: "-12%", y: "92%", size: 3.5, opacity: 0.25 },
-    // Bottom-right cluster
-    { x: "108%", y: "88%", size: 2.5, opacity: 0.3 },
-    { x: "112%", y: "78%", size: 1.5, opacity: 0.4 },
-    // Middle floating elements
-    { x: "-8%", y: "45%", size: 1, opacity: 0.15 },
-    { x: "103%", y: "50%", size: 1, opacity: 0.15 },
+// Componente minimalista de partículas decorativas
+function ExperienceParticles() {
+  // Cuadrados decorativos simples y sutiles
+  const particles = [
+    // Esquina superior izquierda
+    { x: "5%", y: "15%", size: 16, opacity: 0.3 },
+    { x: "12%", y: "8%", size: 12, opacity: 0.25 },
+    // Esquina superior derecha
+    { x: "88%", y: "10%", size: 20, opacity: 0.25 },
+    { x: "92%", y: "20%", size: 14, opacity: 0.28 },
+    // Lateral izquierdo medio
+    { x: "10%", y: "50%", size: 12, opacity: 0.25 },
+    { x: "6%", y: "60%", size: 16, opacity: 0.3 },
+    // Lateral derecho medio
+    { x: "85%", y: "50%", size: 18, opacity: 0.28 },
+    { x: "90%", y: "42%", size: 14, opacity: 0.25 },
+    // Esquina inferior derecha
+    { x: "90%", y: "75%", size: 14, opacity: 0.3 },
+    { x: "86%", y: "82%", size: 18, opacity: 0.28 },
   ];
-
-  // Aplicar offset único a cada partícula según el índice
-  const particles = baseParticles.map((p, i) => ({
-    ...p,
-    x: adjustPosition(p.x, (i % 2 === 0 ? offsetX : -offsetX) * 0.3),
-    y: adjustPosition(p.y, (i % 3 === 0 ? offsetY : -offsetY) * 0.2),
-  }));
-
-  // Líneas decorativas base
-  const baseLines = [
-    { x1: "-10%", y1: "20%", x2: "-5%", y2: "25%", opacity: 0.2 },
-    { x1: "105%", y1: "30%", x2: "110%", y2: "35%", opacity: 0.25 },
-    { x1: "-15%", y1: "70%", x2: "-8%", y2: "75%", opacity: 0.15 },
-    { x1: "108%", y1: "65%", x2: "115%", y2: "70%", opacity: 0.2 },
-  ];
-
-  // Aplicar offset a las líneas
-  const lines = baseLines.map((l, i) => ({
-    ...l,
-    x1: adjustPosition(l.x1, (i % 2 === 0 ? offsetX : -offsetX) * 0.4),
-    y1: adjustPosition(l.y1, offsetY * 0.3),
-    x2: adjustPosition(l.x2, (i % 2 === 0 ? offsetX : -offsetX) * 0.4),
-    y2: adjustPosition(l.y2, offsetY * 0.3),
-  }));
 
   return (
-    <div className="absolute inset-0 pointer-events-none w-[90%] max-w-5xl 2xl:max-w-6xl mx-auto">
-      {/* Cuadrados/rectángulos decorativos *}
+    <div className="absolute inset-0 pointer-events-none w-full overflow-hidden">
       {particles.map((particle, i) => (
         <div
-          key={`particle-${index}-${i}`}
+          key={`particle-${i}`}
           className="absolute border border-[#de5e91]"
           style={{
             left: particle.x,
             top: particle.y,
-            width: `${particle.size * 8}px`,
-            height: `${particle.size * 8}px`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
             opacity: particle.opacity,
           }}
         />
       ))}
-
-      {/* Líneas diagonales decorativas *}
-      {lines.map((line, i) => (
-        <svg
-          key={`line-${index}-${i}`}
-          className="absolute"
-          style={{
-            left: 0,
-            top: 0,
-            width: "100%",
-            height: "100%",
-            opacity: line.opacity,
-          }}
-        >
-          <line
-            x1={line.x1}
-            y1={line.y1}
-            x2={line.x2}
-            y2={line.y2}
-            stroke="#de5e91"
-            strokeWidth="1"
-          />
-        </svg>
-      ))}
-
-      {/* Mini grid decorativo *}
-      <div
-        className="absolute opacity-10 pointer-events-none hidden md:block"
-        style={{
-          left: "-15%",
-          top: "50%",
-          width: "40px",
-          height: "40px",
-          backgroundImage: `
-            linear-gradient(to right, #de5e91 1px, transparent 1px),
-            linear-gradient(to bottom, #de5e91 1px, transparent 1px)
-          `,
-          backgroundSize: "10px 10px",
-        }}
-      />
-      <div
-        className="absolute opacity-10 pointer-events-none hidden md:block"
-        style={{
-          right: "-12%",
-          top: "25%",
-          width: "30px",
-          height: "30px",
-          backgroundImage: `
-            linear-gradient(to right, #de5e91 1px, transparent 1px),
-            linear-gradient(to bottom, #de5e91 1px, transparent 1px)
-          `,
-          backgroundSize: "10px 10px",
-        }}
-      />
     </div>
   );
 }
-*/
 
 // Componente individual para cada card de experiencia
 function ExperienceCard({
@@ -666,22 +572,19 @@ export default function Home() {
 
         {/* Stacked Cards Container */}
         <div className="experience-cards relative">
-          {/* Capa de partículas que scrollean - COMENTADO TEMPORALMENTE */}
-          {/* 
-          <div className="absolute inset-0 pointer-events-none hidden md:block">
-            {[0, 1, 2, 3].map((i) => (
-              <div
-                key={`particles-container-${i}`}
-                className="relative h-screen"
-              >
-                <ExperienceParticles index={i} />
-              </div>
-            ))}
+          {/* Capa de partículas minimalistas - Detrás de las cards */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ zIndex: 0 }}
+          >
+            <ExperienceParticles />
           </div>
-          */}
 
           {/* Capa de cards sticky */}
-          <div className="w-[90%] max-w-5xl 2xl:max-w-6xl mx-auto relative">
+          <div
+            className="w-[90%] max-w-5xl 2xl:max-w-6xl mx-auto relative"
+            style={{ zIndex: 1 }}
+          >
             {(() => {
               const jobs = [
                 {
