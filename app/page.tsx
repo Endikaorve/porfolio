@@ -165,12 +165,12 @@ function ExperienceCard({
 
   return (
     <div
-      className="card-outer h-screen w-full flex items-center justify-center sticky top-0"
+      className="card-outer h-screen w-full flex items-center justify-center sticky top-0 pointer-events-none"
       style={{ zIndex: index + 1 }}
     >
       {/* Card content */}
       <motion.div
-        className="relative p-5 md:p-12 2xl:p-16 w-full bg-[#212121] border-2 border-[#de5e91]/30"
+        className="relative p-5 md:p-12 2xl:p-16 w-full bg-[#212121] border-2 border-[#de5e91]/30 pointer-events-auto"
         style={{
           rotate: fixedRotation,
         }}
