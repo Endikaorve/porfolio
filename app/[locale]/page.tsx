@@ -1224,8 +1224,68 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="relative min-h-screen flex items-center justify-center py-32">
-        <div className="container mx-auto px-4">
+      <section className="relative min-h-screen flex items-center justify-center py-32 overflow-hidden">
+        {/* Background Elements */}
+        {/* Gradiente radial central */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `
+              radial-gradient(ellipse 80% 50% at 50% 50%, rgba(222, 94, 145, 0.08) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 40% at 50% 45%, rgba(222, 94, 145, 0.05) 0%, transparent 50%)
+            `,
+          }}
+        />
+
+        {/* Líneas diagonales decorativas */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
+          <div
+            className="absolute w-[200%] h-px bg-white -rotate-45"
+            style={{ top: "20%", left: "-50%" }}
+          />
+          <div
+            className="absolute w-[200%] h-px bg-white -rotate-45"
+            style={{ top: "40%", left: "-50%" }}
+          />
+          <div
+            className="absolute w-[200%] h-px bg-white -rotate-45"
+            style={{ top: "60%", left: "-50%" }}
+          />
+          <div
+            className="absolute w-[200%] h-px bg-white -rotate-45"
+            style={{ top: "80%", left: "-50%" }}
+          />
+        </div>
+
+        {/* Elementos técnicos en esquinas */}
+        <div className="absolute top-8 left-8 text-white/10 font-mono text-xs hidden md:block">
+          <div>47.8°N</div>
+          <div>1.8°W</div>
+        </div>
+        <div className="absolute top-8 right-8 text-white/10 font-mono text-xs hidden md:block text-right">
+          <div>SECTION_06</div>
+          <div>CONTACT</div>
+        </div>
+        <div className="absolute bottom-24 left-8 hidden md:block">
+          <div className="w-16 h-px bg-gradient-to-r from-[#de5e91]/30 to-transparent" />
+          <div className="w-px h-16 bg-gradient-to-b from-[#de5e91]/30 to-transparent" />
+        </div>
+        <div className="absolute bottom-24 right-8 hidden md:flex flex-col items-end">
+          <div className="w-16 h-px bg-gradient-to-l from-[#de5e91]/30 to-transparent" />
+          <div className="w-px h-16 bg-gradient-to-b from-[#de5e91]/30 to-transparent ml-auto" />
+        </div>
+
+        {/* Círculo decorativo exterior */}
+        <motion.div
+          className="absolute w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] border border-white/[0.02] pointer-events-none"
+          style={{ borderRadius: "50%" }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        />
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="text-center"
             initial={{ opacity: 0 }}
