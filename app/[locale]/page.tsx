@@ -1311,14 +1311,6 @@ export default function Home() {
         </div>
 
         {/* Elementos técnicos en esquinas */}
-        <div className="absolute top-8 left-8 text-white/10 font-mono text-xs hidden md:block">
-          <div>47.8°N</div>
-          <div>1.8°W</div>
-        </div>
-        <div className="absolute top-8 right-8 text-white/10 font-mono text-xs hidden md:block text-right">
-          <div>SECTION_06</div>
-          <div>CONTACT</div>
-        </div>
         <div className="absolute bottom-24 left-8 hidden md:block">
           <div className="w-16 h-px bg-gradient-to-r from-[#de5e91]/30 to-transparent" />
           <div className="w-px h-16 bg-gradient-to-b from-[#de5e91]/30 to-transparent" />
