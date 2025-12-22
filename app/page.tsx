@@ -533,15 +533,15 @@ export default function Home() {
               )`,
             },
           ].map((job, i) => (
-            // Card outer - sticky container with full viewport height
+            // Card outer - fullscreen sticky container with centered content
             <div
               key={i}
-              className="card-outer h-screen flex items-center justify-center sticky top-0"
+              className="card-outer h-screen w-full flex items-center justify-center sticky top-0"
               style={{ zIndex: i + 1 }}
             >
               {/* Card content */}
               <div
-                className="relative p-8 md:p-12 shadow-2xl w-full"
+                className="relative p-5 md:p-12 shadow-2xl w-full"
                 style={{
                   backgroundColor: job.bg,
                   clipPath: job.clipPath,
@@ -567,40 +567,41 @@ export default function Home() {
                 </div>
 
                 {/* Header */}
-                <div className="relative z-10 mb-6">
-                  <span className="text-[#de5e91] font-mono text-sm tracking-wider">
+                <div className="relative z-10 mb-4 md:mb-6">
+                  <span className="text-[#de5e91] font-mono text-xs md:text-sm tracking-wider">
                     {job.period}
                   </span>
-                  <h3 className="text-3xl md:text-4xl font-black text-white mt-2 leading-tight">
+                  <h3 className="text-2xl md:text-4xl font-black text-white mt-1 md:mt-2 leading-tight">
                     {job.role}
                   </h3>
-                  <div className="flex flex-wrap items-center gap-2 mt-2">
-                    <p className="text-white/70 text-lg font-medium">
+                  <div className="flex flex-wrap items-center gap-1 md:gap-2 mt-1 md:mt-2">
+                    <p className="text-white/70 text-sm md:text-lg font-medium">
                       {job.company}
                     </p>
-                    <span className="text-white/30">·</span>
-                    <p className="text-white/50 font-mono text-sm">
+                    <span className="text-white/30 hidden md:inline">·</span>
+                    <p className="text-white/50 font-mono text-xs md:text-sm hidden md:block">
                       {job.project}
                     </p>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 relative z-10">
+                <p className="text-white/60 text-sm md:text-lg leading-relaxed mb-4 md:mb-8 relative z-10">
                   {job.description}
                 </p>
 
                 {/* Highlights Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
+                <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-4 relative z-10">
                   {job.highlights.map((highlight, idx) => (
                     <div
                       key={idx}
-                      className="border-l-2 border-[#de5e91]/50 pl-4 py-2"
+                      className="border-l-2 border-[#de5e91]/50 pl-3 md:pl-4 py-1 md:py-2"
                     >
-                      <h4 className="text-white font-bold text-sm mb-1">
+                      <h4 className="text-white font-bold text-xs md:text-sm">
                         {highlight.title}
                       </h4>
-                      <p className="text-white/50 text-sm leading-relaxed">
+                      {/* Text hidden on mobile */}
+                      <p className="hidden md:block text-white/50 text-sm leading-relaxed mt-1">
                         {highlight.text}
                       </p>
                     </div>
