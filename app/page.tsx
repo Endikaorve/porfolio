@@ -595,21 +595,21 @@ export default function Home() {
             {[
               {
                 number: "01",
+                title: "VISIÓN DE PRODUCTO",
+                description:
+                  "Colaboro con POs y Negocio para definir soluciones que maximicen el valor al usuario. Del problema a la implementación.",
+              },
+              {
+                number: "02",
                 title: "EXTREME PROGRAMMING",
                 description:
                   "TDD, Pair Programming, CI/CD, Integración Continua. Metodologías XP aplicadas a escala en equipos grandes.",
               },
               {
-                number: "02",
+                number: "03",
                 title: "ARQUITECTURA DE SOFTWARE",
                 description:
                   "Arquitectura Hexagonal, Micro-frontends, Design Systems. Decisiones técnicas para sistemas que escalan.",
-              },
-              {
-                number: "03",
-                title: "VISIÓN DE PRODUCTO",
-                description:
-                  "Colaboro con POs y Negocio para definir soluciones que maximicen el valor al usuario. Del problema a la implementación.",
               },
               {
                 number: "04",
