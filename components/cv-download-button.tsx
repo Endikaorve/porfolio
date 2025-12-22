@@ -9,7 +9,7 @@ export function CVDownloadButton() {
       href="/Endika Orube Vega - CV.pdf"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed top-6 right-[140px] z-[100] flex items-center gap-1.5 px-3 py-2 font-mono text-sm font-bold tracking-wider text-[#de5e91] hover:text-white/80 transition-colors duration-200 border border-[#de5e91]/30"
+      className="fixed top-6 right-[140px] z-[100] flex items-center gap-1.5 px-3 py-2 font-mono text-sm font-bold tracking-wider text-[#de5e91] hover:text-white/80 transition-colors duration-200 border border-[#de5e91]/30 backdrop-blur-xs"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
