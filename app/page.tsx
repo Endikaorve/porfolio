@@ -631,8 +631,8 @@ export default function Home() {
 
         {/* Stacked Cards Container */}
         <div className="experience-cards relative">
-          {/* Capa de partículas que scrollean - NO sticky */}
-          <div className="absolute inset-0 pointer-events-none">
+          {/* Capa de partículas que scrollean - NO sticky - Solo desktop */}
+          <div className="absolute inset-0 pointer-events-none hidden md:block">
             {[0, 1, 2, 3].map((i) => (
               <div
                 key={`particles-container-${i}`}
