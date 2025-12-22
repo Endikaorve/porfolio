@@ -383,7 +383,7 @@ export default function Home() {
         {/* Section Header - Fixed, not sticky */}
         <div className="container mx-auto px-4 pb-20">
           <motion.h2
-            className="text-8xl md:text-[12vw] font-black leading-none"
+            className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black leading-none"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -620,7 +620,7 @@ export default function Home() {
       <section className="relative py-32">
         <div className="container mx-auto px-4">
           <motion.h2
-            className="text-8xl md:text-[12vw] font-black text-white mb-20 leading-none"
+            className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black text-white mb-20 leading-none"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -759,7 +759,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="mb-20"
           >
-            <h2 className="text-6xl md:text-8xl font-black text-white leading-none">
+            <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
               COMMUNITY
               <br />
               <span className="text-[#de5e91]">& TEACHING</span>
