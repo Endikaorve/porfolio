@@ -1127,10 +1127,9 @@ export default function Home() {
             <motion.div
               className="col-span-1 md:col-span-8 aspect-[4/3] md:aspect-[16/9] relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <div className="absolute inset-0 bg-[#1a1a1a]" />
               <div
@@ -1163,10 +1162,13 @@ export default function Home() {
             <motion.div
               className="col-span-1 md:col-span-4 aspect-[4/3] md:aspect-square relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, delay: 0.1 },
+              }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <div className="absolute inset-0 bg-[#1a1a1a]" />
               <div
@@ -1195,10 +1197,13 @@ export default function Home() {
             <motion.div
               className="col-span-1 md:col-span-5 aspect-[4/3] relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, delay: 0.2 },
+              }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <div className="absolute inset-0 bg-[#1a1a1a]" />
               <div
@@ -1236,10 +1241,13 @@ export default function Home() {
             <motion.div
               className="col-span-1 md:col-span-7 aspect-[4/3] relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, delay: 0.3 },
+              }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <div className="absolute inset-0 bg-[#1a1a1a]" />
               <div
