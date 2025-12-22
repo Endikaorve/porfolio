@@ -12,21 +12,42 @@ import { useTranslations } from "next-intl";
 // Componente minimalista de partículas decorativas
 function ExperienceParticles() {
   const particles = [
-    { type: "square", x: "5%", y: "15%", size: 16, opacity: 0.3 },
+    // Lateral izquierdo - mezcla de bordes y rellenos
+    { type: "square-filled", x: "5%", y: "3%", size: 6, opacity: 0.12 },
     { type: "square", x: "12%", y: "8%", size: 12, opacity: 0.25 },
-    { type: "circle", x: "8%", y: "25%", size: 10, opacity: 0.28 },
-    { type: "square", x: "88%", y: "10%", size: 20, opacity: 0.25 },
-    { type: "square", x: "92%", y: "20%", size: 14, opacity: 0.28 },
-    { type: "rect-h", x: "85%", y: "5%", width: 24, height: 8, opacity: 0.25 },
-    { type: "square", x: "10%", y: "50%", size: 12, opacity: 0.25 },
-    { type: "square", x: "6%", y: "60%", size: 16, opacity: 0.3 },
+    { type: "circle-filled", x: "3%", y: "12%", size: 8, opacity: 0.15 },
+    { type: "square-filled", x: "8%", y: "18%", size: 8, opacity: 0.15 },
+    { type: "circle", x: "11%", y: "22%", size: 10, opacity: 0.22 },
+    { type: "circle-filled", x: "5%", y: "28%", size: 6, opacity: 0.12 },
+    { type: "square", x: "3%", y: "35%", size: 10, opacity: 0.2 },
+    { type: "square-filled", x: "9%", y: "40%", size: 10, opacity: 0.15 },
     { type: "circle", x: "4%", y: "45%", size: 8, opacity: 0.3 },
+    { type: "square-filled", x: "10%", y: "52%", size: 6, opacity: 0.15 },
+    { type: "square", x: "6%", y: "58%", size: 16, opacity: 0.3 },
+    { type: "circle-filled", x: "12%", y: "64%", size: 8, opacity: 0.12 },
+    { type: "square-filled", x: "4%", y: "70%", size: 10, opacity: 0.15 },
+    { type: "square", x: "8%", y: "76%", size: 12, opacity: 0.22 },
+    { type: "circle-filled", x: "11%", y: "82%", size: 6, opacity: 0.12 },
+    { type: "square", x: "5%", y: "88%", size: 14, opacity: 0.25 },
+    { type: "circle-filled", x: "9%", y: "94%", size: 8, opacity: 0.15 },
+    // Lateral derecho - mezcla de bordes y rellenos
+    { type: "rect-h", x: "85%", y: "4%", width: 24, height: 8, opacity: 0.25 },
+    { type: "square-filled", x: "92%", y: "9%", size: 10, opacity: 0.12 },
+    { type: "circle", x: "88%", y: "15%", size: 12, opacity: 0.22 },
+    { type: "square", x: "94%", y: "20%", size: 14, opacity: 0.28 },
+    { type: "circle-filled", x: "86%", y: "26%", size: 6, opacity: 0.15 },
+    { type: "square-filled", x: "91%", y: "32%", size: 8, opacity: 0.12 },
+    { type: "square", x: "87%", y: "38%", size: 10, opacity: 0.2 },
+    { type: "square-filled", x: "94%", y: "44%", size: 8, opacity: 0.12 },
     { type: "square", x: "85%", y: "50%", size: 18, opacity: 0.28 },
-    { type: "square", x: "90%", y: "42%", size: 14, opacity: 0.25 },
     { type: "rect-v", x: "93%", y: "55%", width: 8, height: 20, opacity: 0.28 },
-    { type: "square", x: "90%", y: "75%", size: 14, opacity: 0.3 },
-    { type: "square", x: "86%", y: "82%", size: 18, opacity: 0.28 },
-    { type: "circle", x: "92%", y: "88%", size: 12, opacity: 0.25 },
+    { type: "circle-filled", x: "88%", y: "62%", size: 10, opacity: 0.15 },
+    { type: "square-filled", x: "92%", y: "68%", size: 6, opacity: 0.15 },
+    { type: "square", x: "86%", y: "74%", size: 14, opacity: 0.3 },
+    { type: "circle-filled", x: "93%", y: "80%", size: 10, opacity: 0.12 },
+    { type: "square-filled", x: "88%", y: "86%", size: 8, opacity: 0.15 },
+    { type: "square", x: "91%", y: "92%", size: 12, opacity: 0.25 },
+    { type: "circle-filled", x: "86%", y: "97%", size: 6, opacity: 0.12 },
   ];
 
   return (
@@ -37,6 +58,38 @@ function ExperienceParticles() {
             <div
               key={`particle-${i}`}
               className="absolute border border-[#de5e91] rounded-full"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        if (particle.type === "circle-filled") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute bg-[#de5e91] rounded-full"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        if (particle.type === "square-filled") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute bg-[#de5e91]"
               style={{
                 left: particle.x,
                 top: particle.y,
