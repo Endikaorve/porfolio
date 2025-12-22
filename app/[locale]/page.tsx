@@ -846,117 +846,150 @@ export default function Home() {
             <span className="text-[#de5e91]">{t("projects.title.line2")}</span>
           </motion.h2>
 
-          <div className="grid grid-cols-12 gap-6">
+          {/* Mobile: Stack uniforme | Desktop: Grid asimétrico */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
             {/* Proyecto 1 - Banking Platform */}
             <motion.div
-              className="col-span-12 md:col-span-8 aspect-[16/9] relative group cursor-pointer overflow-hidden"
+              className="col-span-1 md:col-span-8 aspect-[4/3] md:aspect-[16/9] relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#de5e91] to-purple-600" />
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
-              <div className="absolute inset-0 p-12 flex flex-col justify-end">
-                <span className="text-white/60 text-sm font-mono mb-2">
+              <div className="absolute inset-0 bg-[#1a1a1a]" />
+              <div 
+                className="absolute inset-0 opacity-20"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(45deg, transparent 40%, rgba(222, 94, 145, 0.1) 50%, transparent 60%),
+                    linear-gradient(-45deg, transparent 40%, rgba(222, 94, 145, 0.05) 50%, transparent 60%)
+                  `,
+                }}
+              />
+              <div className="absolute inset-0 border border-[#de5e91]/20 group-hover:border-[#de5e91]/50 transition-colors duration-300" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#de5e91] via-[#de5e91]/50 to-transparent opacity-60" />
+              <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end">
+                <span className="text-[#de5e91] text-xs md:text-sm font-mono mb-2 tracking-wider">
                   {t("projects.items.banking.category")}
                 </span>
-                <h3 className="text-5xl font-black text-white mb-4">
+                <h3 className="text-2xl md:text-5xl font-black text-white mb-2 md:mb-4">
                   {t("projects.items.banking.title")}
                 </h3>
-                <p className="text-white/80 text-lg max-w-md">
+                <p className="text-white/60 text-sm md:text-lg max-w-md leading-relaxed">
                   {t("projects.items.banking.description")}
                 </p>
               </div>
-              <motion.div
-                className="absolute inset-0 border-4 border-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={false}
-              />
+              <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
+              <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
             </motion.div>
 
             {/* Proyecto 2 - Hotel Booking Engine */}
             <motion.div
-              className="col-span-12 md:col-span-4 aspect-square relative group cursor-pointer overflow-hidden"
+              className="col-span-1 md:col-span-4 aspect-[4/3] md:aspect-square relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
               whileHover={{ scale: 1.02 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-400" />
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <span className="text-white/60 text-sm font-mono mb-2">
+              <div className="absolute inset-0 bg-[#1a1a1a]" />
+              <div 
+                className="absolute inset-0 opacity-30"
+                style={{
+                  backgroundImage: `radial-gradient(circle at 80% 20%, rgba(222, 94, 145, 0.15) 0%, transparent 50%)`,
+                }}
+              />
+              <div className="absolute inset-0 border border-white/10 group-hover:border-white/30 transition-colors duration-300" />
+              <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-white/40 via-white/10 to-transparent" />
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                <span className="text-white/50 text-xs md:text-sm font-mono mb-2 tracking-wider">
                   {t("projects.items.booking.category")}
                 </span>
-                <h3 className="text-3xl font-black text-white mb-2">
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-2">
                   {t("projects.items.booking.title")}
                 </h3>
-                <p className="text-white/70 text-sm">
+                <p className="text-white/50 text-sm leading-relaxed">
                   {t("projects.items.booking.description")}
                 </p>
               </div>
-              <motion.div
-                className="absolute inset-0 border-4 border-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={false}
-              />
+              <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-white/20 group-hover:border-white/50 transition-colors duration-300" />
             </motion.div>
 
             {/* Proyecto 3 - SaaS Products */}
             <motion.div
-              className="col-span-12 md:col-span-5 aspect-[4/3] relative group cursor-pointer overflow-hidden"
+              className="col-span-1 md:col-span-5 aspect-[4/3] relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               whileHover={{ scale: 1.02 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-500" />
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <span className="text-white/60 text-sm font-mono mb-2">
+              <div className="absolute inset-0 bg-[#de5e91]" />
+              <div 
+                className="absolute inset-0"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, transparent 50%, rgba(0, 0, 0, 0.2) 100%)
+                  `,
+                }}
+              />
+              <div className="absolute inset-0 border border-white/20 group-hover:border-white/40 transition-colors duration-300" />
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                <span className="text-white/70 text-xs md:text-sm font-mono mb-2 tracking-wider">
                   {t("projects.items.saas.category")}
                 </span>
-                <h3 className="text-4xl font-black text-white mb-2">
+                <h3 className="text-2xl md:text-4xl font-black text-[#212121] mb-2">
                   {t("projects.items.saas.title")}
                 </h3>
-                <p className="text-white/70">
+                <p className="text-[#212121]/70 text-sm md:text-base leading-relaxed">
                   {t("projects.items.saas.description")}
                 </p>
               </div>
-              <motion.div
-                className="absolute inset-0 border-4 border-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={false}
-              />
+              <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-[#212121]/30 group-hover:border-[#212121]/60 transition-colors duration-300" />
+              <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-[#212121]/30 group-hover:border-[#212121]/60 transition-colors duration-300" />
             </motion.div>
 
             {/* Proyecto 4 - Micro-frontends & Design Systems */}
             <motion.div
-              className="col-span-12 md:col-span-7 aspect-[4/3] relative group cursor-pointer overflow-hidden"
+              className="col-span-1 md:col-span-7 aspect-[4/3] relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
               whileHover={{ scale: 1.02 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-400" />
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <span className="text-white/60 text-sm font-mono mb-2">
+              <div className="absolute inset-0 bg-[#1a1a1a]" />
+              <div 
+                className="absolute inset-0 opacity-40"
+                style={{
+                  backgroundImage: `
+                    repeating-linear-gradient(
+                      90deg,
+                      transparent,
+                      transparent 40px,
+                      rgba(222, 94, 145, 0.03) 40px,
+                      rgba(222, 94, 145, 0.03) 80px
+                    )
+                  `,
+                }}
+              />
+              <div className="absolute inset-0 border border-[#de5e91]/20 group-hover:border-[#de5e91]/40 transition-colors duration-300" />
+              <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-[#de5e91]/50 via-[#de5e91]/20 to-transparent" />
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                <span className="text-[#de5e91]/70 text-xs md:text-sm font-mono mb-2 tracking-wider">
                   {t("projects.items.designSystems.category")}
                 </span>
-                <h3 className="text-4xl font-black text-white mb-2">
+                <h3 className="text-2xl md:text-4xl font-black text-white mb-2">
                   {t("projects.items.designSystems.title")}
                 </h3>
-                <p className="text-white/70">
+                <p className="text-white/50 text-sm md:text-base leading-relaxed">
                   {t("projects.items.designSystems.description")}
                 </p>
               </div>
-              <motion.div
-                className="absolute inset-0 border-4 border-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={false}
-              />
+              <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
+              <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
             </motion.div>
           </div>
         </div>

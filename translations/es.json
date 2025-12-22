@@ -8,9 +8,9 @@
   },
   "about": {
     "title": {
-      "line1": "RESOLVIENDO",
-      "line2": "PROBLEMAS",
-      "line3": "COMPLEJOS"
+      "line1": "CÓDIGO",
+      "line2": "CON",
+      "line3": "PROPÓSITO"
     },
     "description1": "+7 años desarrollando software que importa. Tech Lead & Engineering Manager de un equipo de +20 desarrolladores en un proyecto bancario crítico (+1M usuarios).",
     "description2": "Combino expertise técnica profunda -arquitectura, testing, XP- con visión estratégica de producto. Lidero desde la definición de la solución hasta la entrega, asegurando que cada línea de código aporte valor real al negocio.",
@@ -51,8 +51,8 @@
   },
   "experience": {
     "title": {
-      "line1": "TRAYECTORIA",
-      "line2": "PROFESIONAL"
+      "line1": "MI",
+      "line2": "CAMINO"
     },
     "viewMore": "VER MÁS DETALLES",
     "keyDetails": "DETALLES CLAVE",
@@ -154,8 +154,8 @@
   },
   "projects": {
     "title": {
-      "line1": "MIS",
-      "line2": "TRABAJOS"
+      "line1": "CASOS",
+      "line2": "REALES"
     },
     "items": {
       "banking": {
@@ -220,4 +220,3 @@
     "en": "EN"
   }
 }
-
