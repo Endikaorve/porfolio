@@ -7,36 +7,114 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll()
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [cursorVariant, setCursorVariant] = useState("default")
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 2,
-        y: (e.clientY / window.innerHeight - 0.5) * 2,
+        x: e.clientX,
+        y: e.clientY,
       })
     }
+
+    const handleMouseEnter = (e: Event) => {
+      const target = e.target as HTMLElement
+      if (target.tagName === "A" || target.tagName === "BUTTON" || target.closest("a") || target.closest("button")) {
+        setCursorVariant("hover")
+      }
+    }
+
+    const handleMouseLeave = () => {
+      setCursorVariant("default")
+    }
+
     window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+    
+    // Add hover effects for interactive elements
+    const interactiveElements = document.querySelectorAll("a, button")
+    interactiveElements.forEach((el) => {
+      el.addEventListener("mouseenter", handleMouseEnter)
+      el.addEventListener("mouseleave", handleMouseLeave)
+    })
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+      interactiveElements.forEach((el) => {
+        el.removeEventListener("mouseenter", handleMouseEnter)
+        el.removeEventListener("mouseleave", handleMouseLeave)
+      })
+    }
   }, [])
 
   const backgroundX = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
 
+  const variants = {
+    default: {
+      width: 40,
+      height: 40,
+      backgroundColor: "rgba(222, 94, 145, 0.1)",
+      border: "1px solid rgba(222, 94, 145, 0.5)",
+    },
+    hover: {
+      width: 80,
+      height: 80,
+      backgroundColor: "rgba(222, 94, 145, 0.15)",
+      border: "1px solid rgba(222, 94, 145, 0.8)",
+    },
+  }
+
   return (
     <main ref={containerRef} className="relative bg-[#212121] overflow-x-hidden">
-      {/* Cursor personalizado grande */}
-      <motion.div
-        className="fixed w-8 h-8 border-2 border-[#de5e91] rounded-full pointer-events-none z-50 mix-blend-difference"
-        animate={{
-          x: mousePosition.x * 20,
-          y: mousePosition.y * 20,
-        }}
-        transition={{ type: "spring", stiffness: 500, damping: 28 }}
-        style={{
-          left: "50%",
-          top: "50%",
-        }}
-      />
+      {/* Custom Cursor System - Awwwards Style */}
+      <div className="hidden md:block">
+        {/* Cursor principal - punto pequeño */}
+        <motion.div
+          className="fixed pointer-events-none z-[9999] mix-blend-difference"
+          style={{
+            left: mousePosition.x - 2,
+            top: mousePosition.y - 2,
+          }}
+        >
+          <div className="w-1 h-1 bg-white rounded-full" />
+        </motion.div>
+
+        {/* Cursor secundario - círculo grande */}
+        <motion.div
+          className="fixed pointer-events-none z-[9998] rounded-full backdrop-blur-sm"
+          style={{
+            left: mousePosition.x - 20,
+            top: mousePosition.y - 20,
+          }}
+          variants={variants}
+          animate={cursorVariant}
+          transition={{
+            type: "spring",
+            stiffness: 150,
+            damping: 15,
+            mass: 0.1,
+          }}
+        />
+
+        {/* Cursor glow effect - halo de luz */}
+        <motion.div
+          className="fixed pointer-events-none z-[9997] rounded-full"
+          style={{
+            left: mousePosition.x - 30,
+            top: mousePosition.y - 30,
+            background: "radial-gradient(circle, rgba(222, 94, 145, 0.15) 0%, transparent 70%)",
+          }}
+          animate={{
+            width: cursorVariant === "hover" ? 120 : 60,
+            height: cursorVariant === "hover" ? 120 : 60,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+          }}
+        />
+      </div>
 
       {/* Fondo animado con grid distorsionado */}
       <motion.div

@@ -130,8 +130,20 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
   body {
     @apply bg-background text-foreground overflow-x-hidden;
+  }
+
+  /* Custom cursor - hide default cursor on desktop */
+  @media (min-width: 768px) {
+    * {
+      cursor: none !important;
+    }
+    
+    a, button {
+      cursor: none !important;
+    }
   }
 
   /* Animaciones personalizadas para efectos de scroll */
