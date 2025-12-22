@@ -1,9 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 
 // Componente de partículas decorativas que scrollean normalmente
+// COMENTADO TEMPORALMENTE - Causa problemas de overflow
+/*
 function ExperienceParticles({ index }: { index: number }) {
   // Offset basado en el índice para variar las posiciones (alterna entre +/-)
   const offsetX = index % 2 === 0 ? index * 3 : -index * 3;
@@ -62,7 +69,7 @@ function ExperienceParticles({ index }: { index: number }) {
 
   return (
     <div className="absolute inset-0 pointer-events-none w-[90%] max-w-5xl 2xl:max-w-6xl mx-auto">
-      {/* Cuadrados/rectángulos decorativos */}
+      {/* Cuadrados/rectángulos decorativos *}
       {particles.map((particle, i) => (
         <div
           key={`particle-${index}-${i}`}
@@ -77,7 +84,7 @@ function ExperienceParticles({ index }: { index: number }) {
         />
       ))}
 
-      {/* Líneas diagonales decorativas */}
+      {/* Líneas diagonales decorativas *}
       {lines.map((line, i) => (
         <svg
           key={`line-${index}-${i}`}
@@ -101,7 +108,7 @@ function ExperienceParticles({ index }: { index: number }) {
         </svg>
       ))}
 
-      {/* Mini grid decorativo */}
+      {/* Mini grid decorativo *}
       <div
         className="absolute opacity-10 pointer-events-none hidden md:block"
         style={{
@@ -133,11 +140,13 @@ function ExperienceParticles({ index }: { index: number }) {
     </div>
   );
 }
+*/
 
 // Componente individual para cada card de experiencia
 function ExperienceCard({
   job,
   index,
+  onOpenModal,
 }: {
   job: {
     period: string;
@@ -148,6 +157,7 @@ function ExperienceCard({
     highlights: Array<{ title: string; text: string }>;
   };
   index: number;
+  onOpenModal: () => void;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -228,6 +238,14 @@ function ExperienceCard({
           ))}
         </div>
 
+        {/* Ver más button - Solo mobile */}
+        <button
+          onClick={onOpenModal}
+          className="md:hidden mt-6 relative z-10 w-full py-3 border-2 border-[#de5e91] text-[#de5e91] font-mono text-sm font-bold hover:bg-[#de5e91] hover:text-[#212121] transition-all duration-300 active:scale-95"
+        >
+          VER MÁS DETALLES
+        </button>
+
         {/* Bottom accent line with gradient */}
         <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#de5e91]/40 to-transparent" />
 
@@ -244,6 +262,7 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState("default");
+  const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -286,6 +305,18 @@ export default function Home() {
       });
     };
   }, []);
+
+  // Bloquear scroll cuando modal está abierto
+  useEffect(() => {
+    if (openModalIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [openModalIndex]);
 
   const backgroundX = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
@@ -445,8 +476,8 @@ export default function Home() {
             {/* Título principal */}
             <motion.div
               className="col-span-12 md:col-span-6 relative"
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
@@ -464,8 +495,8 @@ export default function Home() {
             {/* Texto flotante */}
             <motion.div
               className="col-span-12 md:col-span-6 md:col-start-7 flex items-center"
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
@@ -586,8 +617,8 @@ export default function Home() {
               <motion.div
                 key={i}
                 className="border-l-4 border-[#de5e91] pl-8 py-6"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 viewport={{ once: true }}
               >
@@ -631,7 +662,8 @@ export default function Home() {
 
         {/* Stacked Cards Container */}
         <div className="experience-cards relative">
-          {/* Capa de partículas que scrollean - NO sticky - Solo desktop */}
+          {/* Capa de partículas que scrollean - COMENTADO TEMPORALMENTE */}
+          {/* 
           <div className="absolute inset-0 pointer-events-none hidden md:block">
             {[0, 1, 2, 3].map((i) => (
               <div
@@ -642,109 +674,248 @@ export default function Home() {
               </div>
             ))}
           </div>
+          */}
 
           {/* Capa de cards sticky */}
           <div className="w-[90%] max-w-5xl 2xl:max-w-6xl mx-auto relative">
-            {[
-              {
-                period: "04/2023 — PRESENTE",
-                company: "BIKO2 / JAKALA",
-                role: "TECH LEAD & MANAGER",
-                project: "Banca Online Laboral Kutxa",
-                description:
-                  "Lidero el equipo frontend (+20 devs) de la banca digital (+1M usuarios), combinando la dirección técnica y la gestión de personas con una visión estratégica del producto.",
-                highlights: [
-                  {
-                    title: "Ingeniería & Estrategia de Producto",
-                    text: "Colaboro con POs, Negocio y Diseño para definir soluciones técnicas. Dirijo la migración Angular → React enfocada en seguridad, Time-to-Market y UX.",
-                  },
-                  {
-                    title: "Excelencia Técnica & XP",
-                    text: "TDD, Integración Continua, Pair Programming. Arquitectura robusta capaz de evolucionar con el negocio.",
-                  },
-                  {
-                    title: "Innovación & IA aplicada",
-                    text: "Context Engineering del equipo (Rules, Comandos, MCPs para Azure DevOps). Mejoras significativas en velocidad y calidad.",
-                  },
-                  {
-                    title: "Gestión de Personas",
-                    text: "Manager directo de 8 engineers. 1-on-1s, planes de carrera y formación continua.",
-                  },
-                ],
-              },
-              {
-                period: "03/2022 — 04/2023",
-                company: "BIKO2 / JAKALA",
-                role: "SENIOR WEB DEVELOPER",
-                project: "Motor de Reservas Barceló Hotel Group",
-                description:
-                  "Desarrollador core en la construcción del nuevo motor de reservas (alto tráfico), operando bajo metodología Extreme Programming estricta.",
-                highlights: [
-                  {
-                    title: "Arquitectura & Stack Moderno",
-                    text: "Next.js + Arquitectura Hexagonal desplegada en Vercel. SEO y Core Web Vitals optimizados.",
-                  },
-                  {
-                    title: "Visión de Producto & Diseño",
-                    text: "Enlace clave entre diseño y desarrollo. Traduje maquetas complejas a componentes eficientes.",
-                  },
-                  {
-                    title: "Observabilidad & Producción",
-                    text: "Estrategias de monitorización y alerting (Sentry/Datadog) para estabilidad del servicio.",
-                  },
-                  {
-                    title: "Calidad & Cultura",
-                    text: "TDD y CI/CD. Mentorización de nuevos integrantes para acelerar onboarding.",
-                  },
-                ],
-              },
-              {
-                period: "08/2020 — 02/2022",
-                company: "NUBBA GROUP",
-                role: "LEAD DEVELOPER & PM",
-                project: "RescueOnTime, Inallow + Consultoría",
-                description:
-                  "Rol híbrido de liderazgo técnico y producto. Responsable final de la entrega en consultoría y productos propios SaaS.",
-                highlights: [
-                  {
-                    title: "Gestión Integral de Producto",
-                    text: "Ciclo completo: preventa técnica, requisitos, diseño UX/UI, implementación y mantenimiento.",
-                  },
-                  {
-                    title: "Estrategia de Negocio",
-                    text: "Demos técnicas y feedback de mercado convertido en roadmap. Universidad de Navarra, Médicos del Mundo.",
-                  },
-                  {
-                    title: "Liderazgo Técnico & Mentoring",
-                    text: "Definí arquitectura y estándares. Transformé equipo de 1 a 5 developers.",
-                  },
-                ],
-              },
-              {
-                period: "03/2018 — 08/2020",
-                company: "NUBBA GROUP",
-                role: "FULL STACK DEVELOPER",
-                project: "Startup Phase",
-                description:
-                  "Segundo desarrollador en startup de 4 personas. Responsabilidad crítica desde el día uno en desarrollo Web y Mobile.",
-                highlights: [
-                  {
-                    title: "Desarrollo End-to-End",
-                    text: "Soluciones a medida para clientes corporativos y productos SaaS internos.",
-                  },
-                  {
-                    title: "Stack Tecnológico",
-                    text: "Backend (PHP/Symfony, MySQL), Frontend (Angular 2+) y Mobile Híbrido (Ionic).",
-                  },
-                  {
-                    title: "Cultura Startup",
-                    text: "Mentalidad de resolución de problemas. Gestión de incidencias críticas en entorno de recursos limitados.",
-                  },
-                ],
-              },
-            ].map((job, i) => (
-              <ExperienceCard key={i} job={job} index={i} />
-            ))}
+            {(() => {
+              const jobs = [
+                {
+                  period: "04/2023 — PRESENTE",
+                  company: "BIKO2 / JAKALA",
+                  role: "TECH LEAD & MANAGER",
+                  project: "Banca Online Laboral Kutxa",
+                  description:
+                    "Lidero el equipo frontend (+20 devs) de la banca digital (+1M usuarios), combinando la dirección técnica y la gestión de personas con una visión estratégica del producto.",
+                  highlights: [
+                    {
+                      title: "Ingeniería & Estrategia de Producto",
+                      text: "Colaboro con POs, Negocio y Diseño para definir soluciones técnicas. Dirijo la migración Angular → React enfocada en seguridad, Time-to-Market y UX.",
+                    },
+                    {
+                      title: "Excelencia Técnica & XP",
+                      text: "TDD, Integración Continua, Pair Programming. Arquitectura robusta capaz de evolucionar con el negocio.",
+                    },
+                    {
+                      title: "Innovación & IA aplicada",
+                      text: "Context Engineering del equipo (Rules, Comandos, MCPs para Azure DevOps). Mejoras significativas en velocidad y calidad.",
+                    },
+                    {
+                      title: "Gestión de Personas",
+                      text: "Manager directo de 8 engineers. 1-on-1s, planes de carrera y formación continua.",
+                    },
+                  ],
+                },
+                {
+                  period: "03/2022 — 04/2023",
+                  company: "BIKO2 / JAKALA",
+                  role: "SENIOR WEB DEVELOPER",
+                  project: "Motor de Reservas Barceló Hotel Group",
+                  description:
+                    "Desarrollador core en la construcción del nuevo motor de reservas (alto tráfico), operando bajo metodología Extreme Programming estricta.",
+                  highlights: [
+                    {
+                      title: "Arquitectura & Stack Moderno",
+                      text: "Next.js + Arquitectura Hexagonal desplegada en Vercel. SEO y Core Web Vitals optimizados.",
+                    },
+                    {
+                      title: "Visión de Producto & Diseño",
+                      text: "Enlace clave entre diseño y desarrollo. Traduje maquetas complejas a componentes eficientes.",
+                    },
+                    {
+                      title: "Observabilidad & Producción",
+                      text: "Estrategias de monitorización y alerting (Sentry/Datadog) para estabilidad del servicio.",
+                    },
+                    {
+                      title: "Calidad & Cultura",
+                      text: "TDD y CI/CD. Mentorización de nuevos integrantes para acelerar onboarding.",
+                    },
+                  ],
+                },
+                {
+                  period: "08/2020 — 02/2022",
+                  company: "NUBBA GROUP",
+                  role: "LEAD DEVELOPER & PM",
+                  project: "RescueOnTime, Inallow + Consultoría",
+                  description:
+                    "Rol híbrido de liderazgo técnico y producto. Responsable final de la entrega en consultoría y productos propios SaaS.",
+                  highlights: [
+                    {
+                      title: "Gestión Integral de Producto",
+                      text: "Ciclo completo: preventa técnica, requisitos, diseño UX/UI, implementación y mantenimiento.",
+                    },
+                    {
+                      title: "Estrategia de Negocio",
+                      text: "Demos técnicas y feedback de mercado convertido en roadmap. Universidad de Navarra, Médicos del Mundo.",
+                    },
+                    {
+                      title: "Liderazgo Técnico & Mentoring",
+                      text: "Definí arquitectura y estándares. Transformé equipo de 1 a 5 developers.",
+                    },
+                  ],
+                },
+                {
+                  period: "03/2018 — 08/2020",
+                  company: "NUBBA GROUP",
+                  role: "FULL STACK DEVELOPER",
+                  project: "Startup Phase",
+                  description:
+                    "Segundo desarrollador en startup de 4 personas. Responsabilidad crítica desde el día uno en desarrollo Web y Mobile.",
+                  highlights: [
+                    {
+                      title: "Desarrollo End-to-End",
+                      text: "Soluciones a medida para clientes corporativos y productos SaaS internos.",
+                    },
+                    {
+                      title: "Stack Tecnológico",
+                      text: "Backend (PHP/Symfony, MySQL), Frontend (Angular 2+) y Mobile Híbrido (Ionic).",
+                    },
+                    {
+                      title: "Cultura Startup",
+                      text: "Mentalidad de resolución de problemas. Gestión de incidencias críticas en entorno de recursos limitados.",
+                    },
+                  ],
+                },
+              ];
+
+              return (
+                <>
+                  {jobs.map((job, i) => (
+                    <ExperienceCard
+                      key={i}
+                      job={job}
+                      index={i}
+                      onOpenModal={() => setOpenModalIndex(i)}
+                    />
+                  ))}
+
+                  {/* Modal de detalles - Solo mobile */}
+                  <AnimatePresence>
+                    {openModalIndex !== null && (
+                      <motion.div
+                        className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {/* Overlay/Backdrop */}
+                        <motion.div
+                          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                          onClick={() => setOpenModalIndex(null)}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                        />
+
+                        {/* Modal Content */}
+                        <motion.div
+                          className="relative w-full max-h-[85vh] bg-[#212121] border-2 border-[#de5e91] overflow-y-auto overflow-x-hidden"
+                          initial={{
+                            scale: 0.8,
+                            y: 100,
+                            opacity: 0,
+                          }}
+                          animate={{
+                            scale: 1,
+                            y: 0,
+                            opacity: 1,
+                          }}
+                          exit={{
+                            scale: 0.8,
+                            y: 100,
+                            opacity: 0,
+                          }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 25,
+                          }}
+                        >
+                          {/* Contenido del modal */}
+                          <div className="p-6 overflow-x-hidden">
+                            {/* Botón cerrar */}
+                            <button
+                              onClick={() => setOpenModalIndex(null)}
+                              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white hover:text-[#de5e91] transition-colors z-10"
+                              aria-label="Cerrar"
+                            >
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                              >
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                              </svg>
+                            </button>
+
+                            {/* Pink accent line top */}
+                            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#de5e91] to-transparent opacity-50" />
+
+                            {/* Header */}
+                            <div className="mb-6 border-l-4 border-[#de5e91] pl-6 pr-12">
+                              <span className="text-[#de5e91] font-mono text-xs tracking-wider font-bold break-words">
+                                {jobs[openModalIndex].period}
+                              </span>
+                              <h3 className="text-2xl font-black text-white mt-1 leading-tight break-words">
+                                {jobs[openModalIndex].role}
+                              </h3>
+                              <p className="text-white/70 text-sm font-medium mt-1 break-words">
+                                {jobs[openModalIndex].company}
+                              </p>
+                              <p className="text-white/50 font-mono text-xs mt-1 break-words">
+                                {jobs[openModalIndex].project}
+                              </p>
+                            </div>
+
+                            {/* Description */}
+                            <p className="text-white/60 text-sm leading-relaxed mb-6 break-words">
+                              {jobs[openModalIndex].description}
+                            </p>
+
+                            {/* Highlights - Completos en modal */}
+                            <div className="space-y-4">
+                              <h4 className="text-white font-bold text-sm mb-3">
+                                DETALLES CLAVE
+                              </h4>
+                              {jobs[openModalIndex].highlights.map(
+                                (highlight, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="border-l-2 border-[#de5e91]/50 pl-4 py-2 hover:border-[#de5e91] transition-colors duration-300"
+                                  >
+                                    <h5 className="text-white font-bold text-sm mb-1 break-words">
+                                      {highlight.title}
+                                    </h5>
+                                    <p className="text-white/60 text-sm leading-relaxed break-words">
+                                      {highlight.text}
+                                    </p>
+                                  </div>
+                                )
+                              )}
+                            </div>
+
+                            {/* Bottom accent */}
+                            <div className="mt-8 pt-4 border-t border-[#de5e91]/20">
+                              <button
+                                onClick={() => setOpenModalIndex(null)}
+                                className="w-full py-3 border-2 border-white/30 text-white font-mono text-sm font-bold hover:border-white hover:bg-white hover:text-[#212121] transition-all duration-300"
+                              >
+                                CERRAR
+                              </button>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </>
+              );
+            })()}
           </div>
         </div>
       </section>
@@ -899,12 +1070,12 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 overflow-hidden">
             {/* Profesor */}
             <motion.div
-              className="relative group"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="relative group overflow-visible"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               <div className="absolute -inset-4 bg-[#de5e91] opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
@@ -929,8 +1100,8 @@ export default function Home() {
             {/* Charlas */}
             <motion.div
               className="space-y-8"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               <div className="relative group">
