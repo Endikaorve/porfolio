@@ -481,7 +481,7 @@ export default function Home() {
                   proyecto bancario crítico (+1M usuarios).
                 </p>
                 <p className="text-white/60 text-lg leading-relaxed">
-                  Combino expertise técnica profunda (arquitectura, testing, XP)
+                  Combino expertise técnica profunda -arquitectura, testing, XP-
                   con visión estratégica de producto. Lidero desde la definición
                   de la solución hasta la entrega, asegurando que cada línea de
                   código aporte valor real al negocio.
