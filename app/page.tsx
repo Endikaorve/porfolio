@@ -3,6 +3,111 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+// Componente individual para cada card de experiencia
+function ExperienceCard({
+  job,
+  index,
+}: {
+  job: {
+    period: string;
+    company: string;
+    role: string;
+    project: string;
+    description: string;
+    highlights: Array<{ title: string; text: string }>;
+  };
+  index: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "center center"],
+  });
+
+  // Rotaciones diferentes para cada card (alternando positivo/negativo)
+  const rotations = [-2.5, 2, -1.8, 2.2];
+  const targetRotation = rotations[index % rotations.length];
+
+  // La rotación va de 0 (cuando aparece) al valor target (cuando llega al centro)
+  const rotation = useTransform(scrollYProgress, [0, 1], [0, targetRotation]);
+
+  return (
+    <div
+      ref={cardRef}
+      className="card-outer h-screen w-full flex items-center justify-center sticky top-0"
+      style={{ zIndex: index + 1 }}
+    >
+      {/* Card content */}
+      <motion.div
+        className="relative p-5 md:p-12 w-full bg-[#212121] border-2 border-[#de5e91]/30"
+        style={{
+          rotate: rotation,
+        }}
+      >
+        {/* Subtle noise texture overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          }}
+        />
+
+        {/* Pink accent line top */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#de5e91] to-transparent opacity-50" />
+
+        {/* Header */}
+        <div className="relative z-10 mb-4 md:mb-6 border-l-4 border-[#de5e91] pl-6">
+          <span className="text-[#de5e91] font-mono text-xs md:text-sm tracking-wider font-bold">
+            {job.period}
+          </span>
+          <h3 className="text-2xl md:text-4xl font-black text-white mt-1 md:mt-2 leading-tight">
+            {job.role}
+          </h3>
+          <div className="flex flex-wrap items-center gap-1 md:gap-2 mt-1 md:mt-2">
+            <p className="text-white/70 text-sm md:text-lg font-medium">
+              {job.company}
+            </p>
+            <span className="text-white/30 hidden md:inline">·</span>
+            <p className="text-white/50 font-mono text-xs md:text-sm hidden md:block">
+              {job.project}
+            </p>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-white/60 text-sm md:text-lg leading-relaxed mb-4 md:mb-8 relative z-10 pl-6">
+          {job.description}
+        </p>
+
+        {/* Highlights Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-4 relative z-10">
+          {job.highlights.map((highlight, idx) => (
+            <div
+              key={idx}
+              className="border-l-2 border-[#de5e91]/50 pl-3 md:pl-4 py-1 md:py-2 hover:border-[#de5e91] transition-colors duration-300"
+            >
+              <h4 className="text-white font-bold text-xs md:text-sm">
+                {highlight.title}
+              </h4>
+              {/* Text hidden on mobile */}
+              <p className="hidden md:block text-white/50 text-sm leading-relaxed mt-1">
+                {highlight.text}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom accent line with gradient */}
+        <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#de5e91]/40 to-transparent" />
+
+        {/* Corner accent details */}
+        <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#de5e91]/20" />
+        <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-[#de5e91]/20" />
+      </motion.div>
+    </div>
+  );
+}
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
@@ -421,14 +526,6 @@ export default function Home() {
                   text: "Manager directo de 8 engineers. 1-on-1s, planes de carrera y formación continua.",
                 },
               ],
-              rotation: -1.5,
-              bg: "#2a2a2a",
-              clipPath: `polygon(
-                0% 2.3%, 4.1% 0%, 16.8% 1.2%, 33.2% 0%, 51.5% 0.7%, 72.3% 0%, 86.9% 1.1%, 98.2% 0%, 100% 1.8%,
-                99.3% 16.4%, 100% 37.2%, 99.4% 57.8%, 100% 77.3%, 99.2% 91.5%, 100% 98.6%,
-                97.8% 100%, 86.4% 99.3%, 71.8% 100%, 51.2% 99.4%, 32.5% 100%, 16.1% 99.5%, 4.3% 100%, 0% 98.4%,
-                0.6% 87.2%, 0% 67.5%, 0.4% 47.3%, 0% 27.1%, 0.7% 11.8%
-              )`,
             },
             {
               period: "03/2022 — 04/2023",
@@ -455,14 +552,6 @@ export default function Home() {
                   text: "TDD y CI/CD. Mentorización de nuevos integrantes para acelerar onboarding.",
                 },
               ],
-              rotation: 1.2,
-              bg: "#262626",
-              clipPath: `polygon(
-                0% 2.8%, 3.5% 0%, 17.2% 0.8%, 31.8% 0%, 52.1% 0.5%, 71.5% 0%, 87.3% 0.9%, 97.5% 0%, 100% 2.1%,
-                99.6% 17.8%, 100% 38.5%, 99.2% 56.2%, 100% 76.8%, 99.4% 90.3%, 100% 98.2%,
-                98.1% 100%, 85.7% 99.6%, 72.4% 100%, 50.8% 99.2%, 31.2% 100%, 15.5% 99.7%, 3.8% 100%, 0% 98.7%,
-                0.4% 86.5%, 0% 66.2%, 0.5% 46.8%, 0% 26.5%, 0.6% 12.3%
-              )`,
             },
             {
               period: "08/2020 — 02/2022",
@@ -485,14 +574,6 @@ export default function Home() {
                   text: "Definí arquitectura y estándares. Transformé equipo de 1 a 5 developers.",
                 },
               ],
-              rotation: -0.8,
-              bg: "#2d2d2d",
-              clipPath: `polygon(
-                0% 2.5%, 4.5% 0%, 16.1% 1.0%, 32.8% 0%, 50.9% 0.6%, 73.1% 0%, 86.2% 1.3%, 97.9% 0%, 100% 1.6%,
-                99.5% 15.9%, 100% 36.8%, 99.3% 58.4%, 100% 78.1%, 99.6% 92.1%, 100% 98.4%,
-                97.4% 100%, 87.1% 99.4%, 70.9% 100%, 52.3% 99.5%, 30.8% 100%, 16.7% 99.3%, 4.1% 100%, 0% 98.2%,
-                0.5% 88.1%, 0% 68.3%, 0.3% 48.1%, 0% 28.4%, 0.8% 10.9%
-              )`,
             },
             {
               period: "03/2018 — 08/2020",
@@ -515,95 +596,9 @@ export default function Home() {
                   text: "Mentalidad de resolución de problemas. Gestión de incidencias críticas en entorno de recursos limitados.",
                 },
               ],
-              rotation: 1.8,
-              bg: "#252525",
-              clipPath: `polygon(
-                0% 2.1%, 3.8% 0%, 17.5% 1.1%, 30.5% 0%, 51.8% 0.4%, 70.8% 0%, 85.8% 1.2%, 98.5% 0%, 100% 2.4%,
-                99.2% 16.2%, 100% 37.9%, 99.5% 55.6%, 100% 75.9%, 99.3% 89.8%, 100% 98.9%,
-                97.6% 100%, 86.8% 99.2%, 71.2% 100%, 50.5% 99.6%, 32.1% 100%, 15.8% 99.4%, 4.6% 100%, 0% 98.5%,
-                0.7% 85.8%, 0% 67.9%, 0.4% 45.5%, 0% 25.8%, 0.5% 11.5%
-              )`,
             },
           ].map((job, i) => (
-            // Card outer - fullscreen sticky container with centered content
-            <div
-              key={i}
-              className="card-outer h-screen w-full flex items-center justify-center sticky top-0"
-              style={{ zIndex: i + 1 }}
-            >
-              {/* Card content */}
-              <div
-                className="relative p-5 md:p-12 shadow-2xl w-full"
-                style={{
-                  backgroundColor: job.bg,
-                  clipPath: job.clipPath,
-                  transform: `rotate(${job.rotation}deg)`,
-                }}
-              >
-                {/* Subtle paper texture overlay */}
-                <div
-                  className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-                  }}
-                />
-
-                {/* Card number indicator */}
-                <div className="absolute -top-4 -right-2 md:-right-4">
-                  <span
-                    className="text-6xl md:text-8xl font-black opacity-10"
-                    style={{ color: "#de5e91" }}
-                  >
-                    0{i + 1}
-                  </span>
-                </div>
-
-                {/* Header */}
-                <div className="relative z-10 mb-4 md:mb-6">
-                  <span className="text-[#de5e91] font-mono text-xs md:text-sm tracking-wider">
-                    {job.period}
-                  </span>
-                  <h3 className="text-2xl md:text-4xl font-black text-white mt-1 md:mt-2 leading-tight">
-                    {job.role}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-1 md:gap-2 mt-1 md:mt-2">
-                    <p className="text-white/70 text-sm md:text-lg font-medium">
-                      {job.company}
-                    </p>
-                    <span className="text-white/30 hidden md:inline">·</span>
-                    <p className="text-white/50 font-mono text-xs md:text-sm hidden md:block">
-                      {job.project}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-white/60 text-sm md:text-lg leading-relaxed mb-4 md:mb-8 relative z-10">
-                  {job.description}
-                </p>
-
-                {/* Highlights Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-4 relative z-10">
-                  {job.highlights.map((highlight, idx) => (
-                    <div
-                      key={idx}
-                      className="border-l-2 border-[#de5e91]/50 pl-3 md:pl-4 py-1 md:py-2"
-                    >
-                      <h4 className="text-white font-bold text-xs md:text-sm">
-                        {highlight.title}
-                      </h4>
-                      {/* Text hidden on mobile */}
-                      <p className="hidden md:block text-white/50 text-sm leading-relaxed mt-1">
-                        {highlight.text}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#de5e91]/30 to-transparent" />
-              </div>
-            </div>
+            <ExperienceCard key={i} job={job} index={i} />
           ))}
         </div>
       </section>
