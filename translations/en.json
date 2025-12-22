@@ -218,5 +218,9 @@
   "languageSwitcher": {
     "es": "ES",
     "en": "EN"
+  },
+  "cv": {
+    "download": "DOWNLOAD CV",
+    "downloadShort": "CV"
   }
 }

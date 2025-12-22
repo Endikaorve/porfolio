@@ -9,6 +9,7 @@ import { routing } from "@/i18n/routing";
 import { Locale } from "@/i18n/config";
 import "../globals.css";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { CVDownloadButton } from "@/components/cv-download-button";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -67,6 +68,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       >
         <NextIntlClientProvider messages={messages}>
           <LanguageSwitcher />
+          <CVDownloadButton />
           {children}
         </NextIntlClientProvider>
         <Analytics />
