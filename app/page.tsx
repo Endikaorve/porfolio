@@ -1,53 +1,58 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll()
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [cursorVariant, setCursorVariant] = useState("default")
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [cursorVariant, setCursorVariant] = useState("default");
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: e.clientX,
         y: e.clientY,
-      })
-    }
+      });
+    };
 
     const handleMouseEnter = (e: Event) => {
-      const target = e.target as HTMLElement
-      if (target.tagName === "A" || target.tagName === "BUTTON" || target.closest("a") || target.closest("button")) {
-        setCursorVariant("hover")
+      const target = e.target as HTMLElement;
+      if (
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("a") ||
+        target.closest("button")
+      ) {
+        setCursorVariant("hover");
       }
-    }
+    };
 
     const handleMouseLeave = () => {
-      setCursorVariant("default")
-    }
+      setCursorVariant("default");
+    };
 
-    window.addEventListener("mousemove", handleMouseMove)
-    
+    window.addEventListener("mousemove", handleMouseMove);
+
     // Add hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll("a, button")
+    const interactiveElements = document.querySelectorAll("a, button");
     interactiveElements.forEach((el) => {
-      el.addEventListener("mouseenter", handleMouseEnter)
-      el.addEventListener("mouseleave", handleMouseLeave)
-    })
+      el.addEventListener("mouseenter", handleMouseEnter);
+      el.addEventListener("mouseleave", handleMouseLeave);
+    });
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("mousemove", handleMouseMove);
       interactiveElements.forEach((el) => {
-        el.removeEventListener("mouseenter", handleMouseEnter)
-        el.removeEventListener("mouseleave", handleMouseLeave)
-      })
-    }
-  }, [])
+        el.removeEventListener("mouseenter", handleMouseEnter);
+        el.removeEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+  }, []);
 
-  const backgroundX = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const backgroundX = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   const variants = {
     default: {
@@ -62,10 +67,13 @@ export default function Home() {
       backgroundColor: "rgba(222, 94, 145, 0.15)",
       border: "1px solid rgba(222, 94, 145, 0.8)",
     },
-  }
+  };
 
   return (
-    <main ref={containerRef} className="relative bg-[#212121] overflow-x-hidden">
+    <main
+      ref={containerRef}
+      className="relative bg-[#212121] overflow-x-hidden"
+    >
       {/* Custom Cursor System - Awwwards Style */}
       <div className="hidden md:block">
         {/* Cursor principal - punto pequeño */}
@@ -102,7 +110,8 @@ export default function Home() {
           style={{
             left: mousePosition.x - 30,
             top: mousePosition.y - 30,
-            background: "radial-gradient(circle, rgba(222, 94, 145, 0.15) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(222, 94, 145, 0.15) 0%, transparent 70%)",
           }}
           animate={{
             width: cursorVariant === "hover" ? 120 : 60,
@@ -176,16 +185,7 @@ export default function Home() {
           </div>
 
           {/* Subtítulo dinámico */}
-          <motion.p
-            className="absolute -right-4 top-1/2 -translate-y-1/2 text-[#de5e91] text-xl md:text-2xl font-mono rotate-90 origin-center whitespace-nowrap"
-            animate={{
-              opacity: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Number.POSITIVE_INFINITY,
-            }}
-          >
+          <motion.p className="absolute -right-4 top-1/2 -translate-y-1/2 text-[#de5e91] text-xl md:text-2xl font-mono rotate-90 origin-center whitespace-nowrap font-bold">
             TECH LEAD · PRODUCT ENGINEER
           </motion.p>
         </motion.div>
@@ -201,7 +201,10 @@ export default function Home() {
             repeat: Number.POSITIVE_INFINITY,
           }}
         >
-          <span className="text-white text-sm font-mono rotate-180" style={{ writingMode: "vertical-rl" }}>
+          <span
+            className="text-white text-sm font-mono rotate-180"
+            style={{ writingMode: "vertical-rl" }}
+          >
             SCROLL
           </span>
           <div className="w-px h-20 bg-gradient-to-b from-[#de5e91] to-transparent" />
@@ -249,21 +252,27 @@ export default function Home() {
             >
               <div className="space-y-6">
                 <p className="text-white text-xl leading-relaxed">
-                  +7 años desarrollando software que importa. Tech Lead & Engineering Manager de un equipo de +20
-                  desarrolladores en un proyecto bancario crítico (+1M usuarios).
+                  +7 años desarrollando software que importa. Tech Lead &
+                  Engineering Manager de un equipo de +20 desarrolladores en un
+                  proyecto bancario crítico (+1M usuarios).
                 </p>
                 <p className="text-white/60 text-lg leading-relaxed">
-                  Combino expertise técnica profunda (arquitectura, testing, XP) con visión estratégica de producto.
-                  Lidero desde la definición de la solución hasta la entrega, asegurando que cada línea de código aporte
-                  valor real al negocio.
+                  Combino expertise técnica profunda (arquitectura, testing, XP)
+                  con visión estratégica de producto. Lidero desde la definición
+                  de la solución hasta la entrega, asegurando que cada línea de
+                  código aporte valor real al negocio.
                 </p>
                 <div className="flex gap-4 pt-4">
                   <div className="border-l-4 border-[#de5e91] pl-4">
-                    <span className="text-3xl font-black text-white">TECH LEAD</span>
+                    <span className="text-3xl font-black text-white">
+                      TECH LEAD
+                    </span>
                     <p className="text-white/60 text-sm">+20 ENGINEERS</p>
                   </div>
                   <div className="border-l-4 border-white pl-4">
-                    <span className="text-3xl font-black text-[#de5e91]">7+ YEARS</span>
+                    <span className="text-3xl font-black text-[#de5e91]">
+                      7+ YEARS
+                    </span>
                     <p className="text-white/60 text-sm">PRODUCT ENG.</p>
                   </div>
                 </div>
@@ -363,9 +372,15 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 viewport={{ once: true }}
               >
-                <span className="text-white/30 font-mono text-sm">{item.number}</span>
-                <h3 className="text-3xl font-black text-white mt-2 mb-4">{item.title}</h3>
-                <p className="text-white/70 text-lg leading-relaxed">{item.description}</p>
+                <span className="text-white/30 font-mono text-sm">
+                  {item.number}
+                </span>
+                <h3 className="text-3xl font-black text-white mt-2 mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-white/70 text-lg leading-relaxed">
+                  {item.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -456,14 +471,23 @@ export default function Home() {
                 <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-[#de5e91] border-4 border-[#212121]" />
 
                 <div className="pb-4">
-                  <span className="text-[#de5e91] font-mono text-sm">{job.period}</span>
-                  <h3 className="text-4xl font-black text-white mt-2">{job.role}</h3>
+                  <span className="text-[#de5e91] font-mono text-sm">
+                    {job.period}
+                  </span>
+                  <h3 className="text-4xl font-black text-white mt-2">
+                    {job.role}
+                  </h3>
                   <p className="text-white/60 text-lg mt-1">{job.company}</p>
-                  <p className="text-white/40 font-mono text-sm mt-1">{job.project}</p>
+                  <p className="text-white/40 font-mono text-sm mt-1">
+                    {job.project}
+                  </p>
 
                   <ul className="mt-6 space-y-2">
                     {job.highlights.map((highlight, idx) => (
-                      <li key={idx} className="text-white/70 flex items-start gap-3">
+                      <li
+                        key={idx}
+                        className="text-white/70 flex items-start gap-3"
+                      >
                         <span className="text-[#de5e91] mt-1">▹</span>
                         <span>{highlight}</span>
                       </li>
@@ -503,11 +527,16 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#de5e91] to-purple-600" />
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
               <div className="absolute inset-0 p-12 flex flex-col justify-end">
-                <span className="text-white/60 text-sm font-mono mb-2">01 / BANKING · FINTECH</span>
-                <h3 className="text-5xl font-black text-white mb-4">DIGITAL BANKING PLATFORM</h3>
+                <span className="text-white/60 text-sm font-mono mb-2">
+                  01 / BANKING · FINTECH
+                </span>
+                <h3 className="text-5xl font-black text-white mb-4">
+                  DIGITAL BANKING PLATFORM
+                </h3>
                 <p className="text-white/80 text-lg max-w-md">
-                  Migración Angular → React. Arquitectura escalable para +1M usuarios. TDD, CI/CD, Optimistic UI.
-                  Liderando equipo de +20 developers.
+                  Migración Angular → React. Arquitectura escalable para +1M
+                  usuarios. TDD, CI/CD, Optimistic UI. Liderando equipo de +20
+                  developers.
                 </p>
               </div>
               <motion.div
@@ -528,10 +557,15 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-400" />
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <span className="text-white/60 text-sm font-mono mb-2">02 / HOSPITALITY</span>
-                <h3 className="text-3xl font-black text-white mb-2">BOOKING ENGINE</h3>
+                <span className="text-white/60 text-sm font-mono mb-2">
+                  02 / HOSPITALITY
+                </span>
+                <h3 className="text-3xl font-black text-white mb-2">
+                  BOOKING ENGINE
+                </h3>
                 <p className="text-white/70 text-sm">
-                  Next.js + Hexagonal Architecture. XP estricto. Alto tráfico. Optimización SEO y Core Web Vitals.
+                  Next.js + Hexagonal Architecture. XP estricto. Alto tráfico.
+                  Optimización SEO y Core Web Vitals.
                 </p>
               </div>
               <motion.div
@@ -552,11 +586,15 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-500" />
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <span className="text-white/60 text-sm font-mono mb-2">03 / SAAS · PRODUCTS</span>
-                <h3 className="text-4xl font-black text-white mb-2">ENTERPRISE SOLUTIONS</h3>
+                <span className="text-white/60 text-sm font-mono mb-2">
+                  03 / SAAS · PRODUCTS
+                </span>
+                <h3 className="text-4xl font-black text-white mb-2">
+                  ENTERPRISE SOLUTIONS
+                </h3>
                 <p className="text-white/70">
-                  Productos propios desde 0. Full-stack. Universidad de Navarra, Médicos del Mundo. Estrategia
-                  comercial.
+                  Productos propios desde 0. Full-stack. Universidad de Navarra,
+                  Médicos del Mundo. Estrategia comercial.
                 </p>
               </div>
               <motion.div
@@ -577,10 +615,15 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-400" />
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <span className="text-white/60 text-sm font-mono mb-2">04 / ARCHITECTURE</span>
-                <h3 className="text-4xl font-black text-white mb-2">DESIGN SYSTEMS & MICRO-FRONTENDS</h3>
+                <span className="text-white/60 text-sm font-mono mb-2">
+                  04 / ARCHITECTURE
+                </span>
+                <h3 className="text-4xl font-black text-white mb-2">
+                  DESIGN SYSTEMS & MICRO-FRONTENDS
+                </h3>
                 <p className="text-white/70">
-                  Componentes reusables, documentados y testeados. Arquitectura escalable para múltiples equipos.
+                  Componentes reusables, documentados y testeados. Arquitectura
+                  escalable para múltiples equipos.
                 </p>
               </div>
               <motion.div
@@ -594,7 +637,12 @@ export default function Home() {
 
       <section className="relative py-32">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mb-20">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
             <h2 className="text-6xl md:text-8xl font-black text-white leading-none">
               COMMUNITY
               <br />
@@ -612,12 +660,19 @@ export default function Home() {
             >
               <div className="absolute -inset-4 bg-[#de5e91] opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
               <div className="relative border-l-4 border-[#de5e91] pl-8 py-4">
-                <span className="text-white/40 font-mono text-sm">2023 — PRESENT</span>
-                <h3 className="text-3xl font-black text-white mt-2 mb-3">CURSO XP & SOFTWARE ENGINEERING</h3>
-                <p className="text-white/70 mb-4">Profesor principal en Biko2/Jakala</p>
+                <span className="text-white/40 font-mono text-sm">
+                  2023 — PRESENT
+                </span>
+                <h3 className="text-3xl font-black text-white mt-2 mb-3">
+                  CURSO XP & SOFTWARE ENGINEERING
+                </h3>
+                <p className="text-white/70 mb-4">
+                  Profesor principal en Biko2/Jakala
+                </p>
                 <p className="text-white/60 leading-relaxed">
-                  Formación que va más allá del código: TDD, Arquitectura Hexagonal, XP, Pair Programming, CI/CD.
-                  Enfoque en desarrollo sostenible y profesional.
+                  Formación que va más allá del código: TDD, Arquitectura
+                  Hexagonal, XP, Pair Programming, CI/CD. Enfoque en desarrollo
+                  sostenible y profesional.
                 </p>
               </div>
             </motion.div>
@@ -632,11 +687,18 @@ export default function Home() {
               <div className="relative group">
                 <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
                 <div className="relative border-l-4 border-white pl-8 py-4">
-                  <span className="text-white/40 font-mono text-sm">2025 · WORKSHOP</span>
-                  <h3 className="text-2xl font-black text-white mt-2 mb-2">MÁS ALLÁ DEL 'VIBE CODING' CON IA</h3>
-                  <p className="text-white/60 text-sm mb-2">Pamplona Software Crafters</p>
+                  <span className="text-white/40 font-mono text-sm">
+                    2025 · WORKSHOP
+                  </span>
+                  <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                    MÁS ALLÁ DEL 'VIBE CODING' CON IA
+                  </h3>
+                  <p className="text-white/60 text-sm mb-2">
+                    Pamplona Software Crafters
+                  </p>
                   <p className="text-white/50 leading-relaxed text-sm">
-                    Context Engineering y estrategias para integrar IA en desarrollo profesional sin perder calidad.
+                    Context Engineering y estrategias para integrar IA en
+                    desarrollo profesional sin perder calidad.
                   </p>
                 </div>
               </div>
@@ -644,12 +706,18 @@ export default function Home() {
               <div className="relative group">
                 <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
                 <div className="relative border-l-4 border-white pl-8 py-4">
-                  <span className="text-white/40 font-mono text-sm">2025 · CHARLA</span>
-                  <h3 className="text-2xl font-black text-white mt-2 mb-2">ESTRATEGIAS DE RENDERIZADO EN REACT</h3>
-                  <p className="text-white/60 text-sm mb-2">Comunidad Pamplona</p>
+                  <span className="text-white/40 font-mono text-sm">
+                    2025 · CHARLA
+                  </span>
+                  <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                    ESTRATEGIAS DE RENDERIZADO EN REACT
+                  </h3>
+                  <p className="text-white/60 text-sm mb-2">
+                    Comunidad Pamplona
+                  </p>
                   <p className="text-white/50 leading-relaxed text-sm">
-                    Deep dive técnico: CSR, SSR, SSG, ISR, RSC. Arquitecturas modernas y su impacto en Performance y
-                    SEO.
+                    Deep dive técnico: CSR, SSR, SSG, ISR, RSC. Arquitecturas
+                    modernas y su impacto en Performance y SEO.
                   </p>
                 </div>
               </div>
@@ -723,5 +791,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  )
+  );
 }
