@@ -10,40 +10,104 @@ import {
 
 // Componente minimalista de partículas decorativas
 function ExperienceParticles() {
-  // Cuadrados decorativos simples y sutiles
+  // Partículas decorativas con diferentes estilos
   const particles = [
-    // Esquina superior izquierda
-    { x: "5%", y: "15%", size: 16, opacity: 0.3 },
-    { x: "12%", y: "8%", size: 12, opacity: 0.25 },
-    // Esquina superior derecha
-    { x: "88%", y: "10%", size: 20, opacity: 0.25 },
-    { x: "92%", y: "20%", size: 14, opacity: 0.28 },
-    // Lateral izquierdo medio
-    { x: "10%", y: "50%", size: 12, opacity: 0.25 },
-    { x: "6%", y: "60%", size: 16, opacity: 0.3 },
-    // Lateral derecho medio
-    { x: "85%", y: "50%", size: 18, opacity: 0.28 },
-    { x: "90%", y: "42%", size: 14, opacity: 0.25 },
-    // Esquina inferior derecha
-    { x: "90%", y: "75%", size: 14, opacity: 0.3 },
-    { x: "86%", y: "82%", size: 18, opacity: 0.28 },
+    // Cuadrados - Esquina superior izquierda
+    { type: "square", x: "5%", y: "15%", size: 16, opacity: 0.3 },
+    { type: "square", x: "12%", y: "8%", size: 12, opacity: 0.25 },
+    // Círculo - Esquina superior izquierda
+    { type: "circle", x: "8%", y: "25%", size: 10, opacity: 0.28 },
+    // Cuadrados - Esquina superior derecha
+    { type: "square", x: "88%", y: "10%", size: 20, opacity: 0.25 },
+    { type: "square", x: "92%", y: "20%", size: 14, opacity: 0.28 },
+    // Rectángulo horizontal - Arriba derecha
+    { type: "rect-h", x: "85%", y: "5%", width: 24, height: 8, opacity: 0.25 },
+    // Cuadrados - Lateral izquierdo medio
+    { type: "square", x: "10%", y: "50%", size: 12, opacity: 0.25 },
+    { type: "square", x: "6%", y: "60%", size: 16, opacity: 0.3 },
+    // Círculo - Lateral izquierdo
+    { type: "circle", x: "4%", y: "45%", size: 8, opacity: 0.3 },
+    // Cuadrados - Lateral derecho medio
+    { type: "square", x: "85%", y: "50%", size: 18, opacity: 0.28 },
+    { type: "square", x: "90%", y: "42%", size: 14, opacity: 0.25 },
+    // Rectángulo vertical - Derecha medio
+    { type: "rect-v", x: "93%", y: "55%", width: 8, height: 20, opacity: 0.28 },
+    // Cuadrados - Esquina inferior derecha
+    { type: "square", x: "90%", y: "75%", size: 14, opacity: 0.3 },
+    { type: "square", x: "86%", y: "82%", size: 18, opacity: 0.28 },
+    // Círculo - Inferior derecha
+    { type: "circle", x: "92%", y: "88%", size: 12, opacity: 0.25 },
   ];
 
   return (
     <div className="absolute inset-0 pointer-events-none w-full overflow-hidden">
-      {particles.map((particle, i) => (
-        <div
-          key={`particle-${i}`}
-          className="absolute border border-[#de5e91]"
-          style={{
-            left: particle.x,
-            top: particle.y,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            opacity: particle.opacity,
-          }}
-        />
-      ))}
+      {particles.map((particle, i) => {
+        // Círculos
+        if (particle.type === "circle") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute border border-[#de5e91] rounded-full"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        // Rectángulos horizontales
+        if (particle.type === "rect-h") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute border border-[#de5e91]"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.width}px`,
+                height: `${particle.height}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        // Rectángulos verticales
+        if (particle.type === "rect-v") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute border border-[#de5e91]"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.width}px`,
+                height: `${particle.height}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        // Cuadrados (default)
+        return (
+          <div
+            key={`particle-${i}`}
+            className="absolute border border-[#de5e91]"
+            style={{
+              left: particle.x,
+              top: particle.y,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+            }}
+          />
+        );
+      })}
     </div>
   );
 }
