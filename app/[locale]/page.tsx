@@ -201,6 +201,9 @@ export default function Home() {
   const [cursorVariant, setCursorVariant] = useState("default");
   const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
 
+  // Hero intro animation state
+  const [heroReady, setHeroReady] = useState(false);
+
   // Hero parallax - scroll horizontal
   const { scrollYProgress: heroScrollProgress } = useScroll({
     target: heroRef,
@@ -216,6 +219,12 @@ export default function Home() {
     [0, 0.1, 1],
     ["0%", "0%", "120%"]
   );
+
+  // Trigger floating animations after intro sequence
+  useEffect(() => {
+    const timer = setTimeout(() => setHeroReady(true), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -487,50 +496,70 @@ export default function Home() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
         {/* Capa animada - texto que se mueve con scroll */}
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-full max-w-7xl px-4">
-            <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter will-change-transform"
-              style={{
-                color: "transparent",
-                WebkitTextStroke: "2px white",
-                x: endikaX,
-              }}
-              animate={{ y: [0, -20, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-              }}
-            >
-              ENDIKA
-            </motion.h1>
-            <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform"
-              style={{
-                textShadow: "0 0 40px rgba(222, 94, 145, 0.3)",
-                x: orubeX,
-              }}
-              animate={{ y: [0, 20, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-              }}
-            >
-              ORUBE
-            </motion.h1>
+            {/* ENDIKA - Reveal desde abajo */}
+            <div className={heroReady ? "" : "overflow-hidden"}>
+              <motion.h1
+                className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter will-change-transform"
+                style={{
+                  color: "transparent",
+                  WebkitTextStroke: "2px white",
+                  x: heroReady ? endikaX : 0,
+                }}
+                initial={{ y: "110%" }}
+                animate={heroReady ? { y: [0, -20, 0] } : { y: 0 }}
+                transition={
+                  heroReady
+                    ? {
+                        duration: 4,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "easeInOut",
+                      }
+                    : {
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: 0,
+                      }
+                }
+              >
+                ENDIKA
+              </motion.h1>
+            </div>
+
+            {/* ORUBE - Reveal desde arriba */}
+            <div className={heroReady ? "" : "overflow-hidden"}>
+              <motion.h1
+                className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform"
+                style={{
+                  textShadow: "0 0 40px rgba(222, 94, 145, 0.3)",
+                  x: heroReady ? orubeX : 0,
+                }}
+                initial={{ y: "-110%" }}
+                animate={heroReady ? { y: [0, 20, 0] } : { y: 0 }}
+                transition={
+                  heroReady
+                    ? {
+                        duration: 4,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "easeInOut",
+                      }
+                    : {
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: 0.1,
+                      }
+                }
+              >
+                ORUBE
+              </motion.h1>
+            </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Capa estática - elementos de UI */}
         <div className="relative z-10 w-full max-w-7xl px-4">
-          {/* Placeholder para mantener espacio - misma estructura que el original */}
+          {/* Placeholder para mantener espacio */}
           <div className="relative" aria-hidden="true">
             <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none">
               ENDIKA
@@ -540,35 +569,96 @@ export default function Home() {
             </div>
           </div>
 
-          <motion.p className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 text-[#de5e91] text-xl md:text-2xl font-mono rotate-90 origin-center whitespace-nowrap font-bold">
-            {t("hero.role")}
-          </motion.p>
+          {/* Rol desktop - Línea que se expande + texto reveal */}
+          <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 rotate-90 origin-center">
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+            >
+              {/* Línea decorativa que se expande */}
+              <motion.div
+                className="absolute -left-8 top-1/2 h-px bg-[#de5e91]"
+                initial={{ width: 0 }}
+                animate={{ width: 24 }}
+                transition={{
+                  duration: 0.3,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.35,
+                }}
+              />
+              <motion.p
+                className="text-[#de5e91] text-xl md:text-2xl font-mono whitespace-nowrap font-bold"
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.4,
+                }}
+              >
+                {t("hero.role")}
+              </motion.p>
+            </motion.div>
+          </div>
 
+          {/* Rol mobile - Entrada coordinada con borde animado */}
           <motion.div
-            className="md:hidden mt-24 border-l-4 border-[#de5e91] pl-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            className="md:hidden mt-24 pl-4 relative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.35 }}
           >
-            <p className="text-[#de5e91] text-sm font-mono font-bold leading-relaxed">
+            {/* Borde izquierdo animado */}
+            <motion.div
+              className="absolute left-0 top-0 w-1 bg-[#de5e91]"
+              initial={{ height: 0 }}
+              animate={{ height: "100%" }}
+              transition={{
+                duration: 0.3,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.35,
+              }}
+            />
+            <motion.p
+              className="text-[#de5e91] text-sm font-mono font-bold leading-relaxed"
+              initial={{ x: -10, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{
+                duration: 0.4,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.45,
+              }}
+            >
               TECH LEAD
               <br />
               PRODUCT ENGINEER
-            </p>
+            </motion.p>
           </motion.div>
         </div>
 
+        {/* Scroll indicator - aparece al final de la secuencia */}
         <motion.div
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-          animate={{
-            y: [0, 10, 0],
-          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
+            duration: 0.4,
+            ease: [0.16, 1, 0.3, 1],
+            delay: 0.55,
           }}
         >
-          <div className="w-px h-20 bg-gradient-to-b from-[#de5e91] to-transparent" />
+          <motion.div
+            className="w-px h-20 bg-gradient-to-b from-[#de5e91] to-transparent"
+            animate={{ y: [0, 10, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
         </motion.div>
       </section>
 
