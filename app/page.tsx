@@ -5,8 +5,18 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 // Componente de partículas decorativas que scrollean normalmente
 function ExperienceParticles({ index }: { index: number }) {
-  // Partículas decorativas únicas para cada card
-  const particles = [
+  // Offset basado en el índice para variar las posiciones (alterna entre +/-)
+  const offsetX = index % 2 === 0 ? index * 3 : -index * 3;
+  const offsetY = index % 2 === 0 ? index * 5 : -index * 4;
+
+  // Helper para parsear y modificar porcentajes
+  const adjustPosition = (pos: string, offset: number) => {
+    const value = parseFloat(pos);
+    return `${value + offset}%`;
+  };
+
+  // Partículas decorativas base que se modifican por índice
+  const baseParticles = [
     // Top-left cluster
     { x: "-20%", y: "5%", size: 3, opacity: 0.3 },
     { x: "-15%", y: "15%", size: 2, opacity: 0.2 },
@@ -26,13 +36,29 @@ function ExperienceParticles({ index }: { index: number }) {
     { x: "103%", y: "50%", size: 1, opacity: 0.15 },
   ];
 
-  // Líneas decorativas
-  const lines = [
+  // Aplicar offset único a cada partícula según el índice
+  const particles = baseParticles.map((p, i) => ({
+    ...p,
+    x: adjustPosition(p.x, (i % 2 === 0 ? offsetX : -offsetX) * 0.3),
+    y: adjustPosition(p.y, (i % 3 === 0 ? offsetY : -offsetY) * 0.2),
+  }));
+
+  // Líneas decorativas base
+  const baseLines = [
     { x1: "-10%", y1: "20%", x2: "-5%", y2: "25%", opacity: 0.2 },
     { x1: "105%", y1: "30%", x2: "110%", y2: "35%", opacity: 0.25 },
     { x1: "-15%", y1: "70%", x2: "-8%", y2: "75%", opacity: 0.15 },
     { x1: "108%", y1: "65%", x2: "115%", y2: "70%", opacity: 0.2 },
   ];
+
+  // Aplicar offset a las líneas
+  const lines = baseLines.map((l, i) => ({
+    ...l,
+    x1: adjustPosition(l.x1, (i % 2 === 0 ? offsetX : -offsetX) * 0.4),
+    y1: adjustPosition(l.y1, offsetY * 0.3),
+    x2: adjustPosition(l.x2, (i % 2 === 0 ? offsetX : -offsetX) * 0.4),
+    y2: adjustPosition(l.y2, offsetY * 0.3),
+  }));
 
   return (
     <div className="absolute inset-0 pointer-events-none w-[90%] max-w-5xl mx-auto">
