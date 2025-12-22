@@ -1,0 +1,155 @@
+---
+alwaysApply: true
+---
+
+## ✨ ANIMACIONES Y EFECTOS
+
+### Principios de Movimiento
+
+- **Framer Motion con spring physics:** `stiffness: 150-500`, `damping: 15-28`
+- **Movimientos orgánicos pero precisos:** NUNCA lentos o con delay excesivo
+- **Respuesta inmediata:** Las interacciones del usuario deben ser instantáneas
+- **Performance primero:** Solo animaciones que aporten valor
+
+### Efectos Visuales Permitidos
+
+- `backdrop-blur-sm`: Para capas con profundidad
+- `mix-blend-difference` o `mix-blend-mode`: Para efectos de fusión
+- Gradientes radiales sutiles: `rgba(222, 94, 145, 0.15)`
+- Opacidades entre 0.05 y 0.8 para capas de fondo
+- `text-stroke` para efectos tipográficos
+
+### Estados de Interacción
+
+- **Hover:** Scale (1.02-1.1), opacity, color transitions
+- **Active/Focus:** Feedback visual inmediato
+- **Transitions:** 300ms estándar, spring para movimientos complejos
+
+---
+
+## 🎯 FILOSOFÍA UX
+
+### Principio Cardinal: NO INTRUSIVO
+
+Los efectos visuales **NUNCA** deben interferir con el contenido o la navegación del usuario.
+
+### Reglas de Experiencia
+
+1. **Respuesta inmediata:** Sin delays en interacciones básicas (click, hover, scroll)
+2. **Progressive enhancement:** Efectos avanzados solo en desktop (min-width: 768px)
+3. **Feedback visual claro:** El usuario siempre sabe dónde está y qué puede hacer
+4. **Accesibilidad integrada:** Considerada desde el diseño, no como afterthought
+5. **Performance monitoring:** Usar Vercel Analytics, optimizar Core Web Vitals
+
+### Cursor Personalizado
+
+- Solo en desktop (`hidden md:block`)
+- Movimiento instantáneo, sin delay
+- Tres capas: punto preciso + círculo principal + halo
+- Estados reactivos: default y hover
+- `cursor: none` en desktop para ocultar cursor nativo
+
+---
+
+## 🏆 ESTILO AWWWARDS
+
+### Elementos Característicos
+
+- **Tipografía gigante estratégica:** Usar tamaños viewport (vw) para impacto
+- **Números de sección grandes:** En opacity baja como elementos decorativos
+- **Grid distorsionado:** Background animado que responde al scroll
+- **Elementos superpuestos:** Con propósito y jerarquía clara
+- **Espaciado generoso:** py-32, gap-8, breathing room
+- **Detalles técnicos visibles:** Coordenadas, números, timestamps con font-mono
+
+### Composición
+
+- **Asimetría intencional:** No centrar todo, crear tensión visual
+- **Profundidad con capas:** Usar z-index, absolute positioning, overlays
+- **Scroll storytelling:** Elementos que aparecen con `whileInView`
+- **Hero impactante:** Primera impresión memorable
+- **Whitespace (o blackspace):** Dejar respirar el contenido
+
+---
+
+## ⛔ LO QUE SE DEBE EVITAR
+
+### Prohibido
+
+- ❌ Delays o lags en interacciones del usuario
+- ❌ Efectos excesivos que distraigan del contenido
+- ❌ Animaciones "cute", infantiles o poco profesionales
+- ❌ Diseños genéricos o predecibles
+- ❌ Elementos decorativos sin propósito
+- ❌ Border-radius (mantener diseño angular)
+- ❌ Gradientes coloridos tipo arcoíris
+- ❌ Carousels automáticos que el usuario no controla
+- ❌ Parallax excesivo que marea
+
+### Usar con Precaución
+
+- ⚠️ Animaciones infinitas (solo para elementos no críticos)
+- ⚠️ Mix-blend-mode (puede afectar legibilidad)
+- ⚠️ Efectos 3D (sutiles y con propósito)
+- ⚠️ Scroll-jacking (nunca interferir con scroll nativo)
+
+---
+
+## 🔧 STACK TÉCNICO
+
+### Tecnologías Core
+
+- **Framework:** Next.js 15 (App Router)
+- **Animaciones:** Framer Motion
+- **Estilos:** Tailwind CSS v4
+- **Componentes:** Shadcn/ui + Radix UI
+- **Tipado:** TypeScript estricto
+
+### Convenciones de Código
+
+- Componentes funcionales con hooks
+- `"use client"` solo cuando sea necesario
+- Preferir Tailwind classes sobre CSS custom
+- Usar `motion.div` de Framer Motion para animaciones
+- Variables CSS para colores consistentes
+
+---
+
+## 📐 CRITERIO DE EVALUACIÓN
+
+### Cuando se solicite un cambio, preguntar:
+
+1. **¿Esto estaría en un sitio premiado en Awwwards?**
+2. **¿Es intrusivo o distrae del contenido?**
+3. **¿Aporta valor real a la experiencia?**
+4. **¿Es performante en mobile y desktop?**
+5. **¿Mantiene la coherencia visual?**
+
+Si alguna respuesta es negativa, **replantear el enfoque**.
+
+---
+
+## 🎨 EJEMPLOS DE REFERENCIA
+
+Este portfolio se inspira en:
+
+- Sitios premiados en Awwwards con categorías: Experimental, Developer, Agency
+- Portfolio de design studios de élite
+- Web experimental pero funcional
+- Equilibrio entre arte y usabilidad
+
+**Nivel aspiracional:** Portfolio que un Tech Lead/Engineering Manager mostraría con orgullo a un cliente enterprise o en una conferencia técnica.
+
+---
+
+## 🚀 IMPLEMENTACIÓN
+
+Siempre que trabajes en este proyecto:
+
+1. Lee esta regla antes de proponer cambios
+2. Evalúa si tu propuesta cumple los estándares
+3. Implementa con atención al detalle
+4. Prueba en diferentes dispositivos
+5. Optimiza performance
+
+**Recuerda:** Cada línea de código debe reflejar el nivel de excelencia técnica y diseño que caracteriza a este portfolio.
