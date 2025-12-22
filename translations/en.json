@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    "title": "Endika Orube | Tech Lead & Product Engineer",
+    "description": "Endika Orube's portfolio. Tech Lead & Product Engineer with 7+ years of experience in software development, leading teams and building digital products."
+  },
+  "hero": {
+    "role": "TECH LEAD · PRODUCT ENGINEER"
+  },
+  "about": {
+    "title": {
+      "line1": "SOLVING",
+      "line2": "COMPLEX",
+      "line3": "PROBLEMS"
+    },
+    "description1": "7+ years building software that matters. Tech Lead & Engineering Manager of a team of 20+ developers on a critical banking project (+1M users).",
+    "description2": "I combine deep technical expertise -architecture, testing, XP- with strategic product vision. I lead from solution definition to delivery, ensuring every line of code adds real business value.",
+    "stats": {
+      "techLead": "TECH LEAD",
+      "engineers": "+20 ENGINEERS",
+      "years": "7+ YEARS",
+      "productEng": "PRODUCT ENG."
+    }
+  },
+  "expertise": {
+    "title": {
+      "line1": "WHAT I",
+      "line2": "BRING"
+    },
+    "items": {
+      "product": {
+        "number": "01",
+        "title": "PRODUCT VISION",
+        "description": "I collaborate with POs and Business to define solutions that maximize user value. From problem to implementation."
+      },
+      "xp": {
+        "number": "02",
+        "title": "EXTREME PROGRAMMING",
+        "description": "TDD, Pair Programming, CI/CD, Continuous Integration. XP methodologies applied at scale in large teams."
+      },
+      "architecture": {
+        "number": "03",
+        "title": "SOFTWARE ARCHITECTURE",
+        "description": "Hexagonal Architecture, Micro-frontends, Design Systems. Technical decisions for systems that scale."
+      },
+      "leadership": {
+        "number": "04",
+        "title": "LEADERSHIP & MENTORING",
+        "description": "I lead technical teams, define standards, foster quality culture. Direct manager of 8 engineers."
+      }
+    }
+  },
+  "experience": {
+    "title": {
+      "line1": "CAREER",
+      "line2": "JOURNEY"
+    },
+    "viewMore": "VIEW MORE DETAILS",
+    "keyDetails": "KEY DETAILS",
+    "close": "CLOSE",
+    "jobs": {
+      "biko2Lead": {
+        "period": "04/2023 — PRESENT",
+        "company": "BIKO2 / JAKALA",
+        "role": "TECH LEAD & MANAGER",
+        "project": "Laboral Kutxa Online Banking",
+        "description": "I lead the frontend team (+20 devs) of digital banking (+1M users), combining technical direction and people management with a strategic product vision.",
+        "highlights": {
+          "engineering": {
+            "title": "Engineering & Product Strategy",
+            "text": "I collaborate with POs, Business and Design to define technical solutions. I lead the Angular → React migration focused on security, Time-to-Market and UX."
+          },
+          "excellence": {
+            "title": "Technical Excellence & XP",
+            "text": "TDD, Continuous Integration, Pair Programming. Robust architecture capable of evolving with the business."
+          },
+          "innovation": {
+            "title": "Innovation & Applied AI",
+            "text": "Team Context Engineering (Rules, Commands, MCPs for Azure DevOps). Significant improvements in speed and quality."
+          },
+          "management": {
+            "title": "People Management",
+            "text": "Direct manager of 8 engineers. 1-on-1s, career plans and continuous training."
+          }
+        }
+      },
+      "biko2Senior": {
+        "period": "03/2022 — 04/2023",
+        "company": "BIKO2 / JAKALA",
+        "role": "SENIOR WEB DEVELOPER",
+        "project": "Barceló Hotel Group Booking Engine",
+        "description": "Core developer building the new booking engine (high traffic), operating under strict Extreme Programming methodology.",
+        "highlights": {
+          "architecture": {
+            "title": "Architecture & Modern Stack",
+            "text": "Next.js + Hexagonal Architecture deployed on Vercel. SEO and Core Web Vitals optimized."
+          },
+          "product": {
+            "title": "Product Vision & Design",
+            "text": "Key link between design and development. Translated complex mockups into efficient components."
+          },
+          "observability": {
+            "title": "Observability & Production",
+            "text": "Monitoring and alerting strategies (Sentry/Datadog) for service stability."
+          },
+          "quality": {
+            "title": "Quality & Culture",
+            "text": "TDD and CI/CD. Mentoring new team members to accelerate onboarding."
+          }
+        }
+      },
+      "nubbaLead": {
+        "period": "08/2020 — 02/2022",
+        "company": "NUBBA GROUP",
+        "role": "LEAD DEVELOPER & PM",
+        "project": "RescueOnTime, Inallow + Consulting",
+        "description": "Hybrid role of technical leadership and product. Final responsible for delivery in consulting and own SaaS products.",
+        "highlights": {
+          "product": {
+            "title": "Integral Product Management",
+            "text": "Complete cycle: technical pre-sales, requirements, UX/UI design, implementation and maintenance."
+          },
+          "business": {
+            "title": "Business Strategy",
+            "text": "Technical demos and market feedback converted into roadmap. University of Navarra, Doctors Without Borders."
+          },
+          "leadership": {
+            "title": "Technical Leadership & Mentoring",
+            "text": "Defined architecture and standards. Transformed team from 1 to 5 developers."
+          }
+        }
+      },
+      "nubbaFullStack": {
+        "period": "03/2018 — 08/2020",
+        "company": "NUBBA GROUP",
+        "role": "FULL STACK DEVELOPER",
+        "project": "Startup Phase",
+        "description": "Second developer in a 4-person startup. Critical responsibility from day one in Web and Mobile development.",
+        "highlights": {
+          "development": {
+            "title": "End-to-End Development",
+            "text": "Custom solutions for corporate clients and internal SaaS products."
+          },
+          "stack": {
+            "title": "Technology Stack",
+            "text": "Backend (PHP/Symfony, MySQL), Frontend (Angular 2+) and Hybrid Mobile (Ionic)."
+          },
+          "culture": {
+            "title": "Startup Culture",
+            "text": "Problem-solving mindset. Critical incident management in limited resource environment."
+          }
+        }
+      }
+    }
+  },
+  "projects": {
+    "title": {
+      "line1": "SELECTED",
+      "line2": "WORKS"
+    },
+    "items": {
+      "banking": {
+        "category": "01 / BANKING · FINTECH",
+        "title": "DIGITAL BANKING PLATFORM",
+        "description": "Angular → React migration. Scalable architecture for +1M users. TDD, CI/CD, Optimistic UI. Leading team of 20+ developers."
+      },
+      "booking": {
+        "category": "02 / HOSPITALITY",
+        "title": "BOOKING ENGINE",
+        "description": "Next.js + Hexagonal Architecture. Strict XP. High traffic. SEO and Core Web Vitals optimization."
+      },
+      "saas": {
+        "category": "03 / SAAS · PRODUCTS",
+        "title": "ENTERPRISE SOLUTIONS",
+        "description": "Own products from scratch. Full-stack. University of Navarra, Doctors Without Borders. Commercial strategy."
+      },
+      "designSystems": {
+        "category": "04 / ARCHITECTURE",
+        "title": "DESIGN SYSTEMS & MICRO-FRONTENDS",
+        "description": "Reusable, documented and tested components. Scalable architecture for multiple teams."
+      }
+    }
+  },
+  "community": {
+    "title": {
+      "line1": "COMMUNITY",
+      "line2": "& TEACHING"
+    },
+    "teaching": {
+      "period": "2023 — PRESENT",
+      "title": "XP & SOFTWARE ENGINEERING COURSE",
+      "subtitle": "Lead instructor at Biko2/Jakala",
+      "description": "Training that goes beyond code: TDD, Hexagonal Architecture, XP, Pair Programming, CI/CD. Focus on sustainable and professional development."
+    },
+    "talks": {
+      "vibe": {
+        "year": "2025 · WORKSHOP",
+        "title": "BEYOND 'VIBE CODING' WITH AI",
+        "event": "Pamplona Software Crafters",
+        "description": "Context Engineering and strategies to integrate AI in professional development without losing quality."
+      },
+      "rendering": {
+        "year": "2025 · TALK",
+        "title": "RENDERING STRATEGIES IN REACT",
+        "event": "Pamplona Community",
+        "description": "Technical deep dive: CSR, SSR, SSG, ISR, RSC. Modern architectures and their impact on Performance and SEO."
+      }
+    }
+  },
+  "contact": {
+    "title": {
+      "line1": "LET'S",
+      "line2": "TALK"
+    },
+    "phone": "PHONE",
+    "copyright": "© 2025 ENDIKA ORUBE",
+    "location": "PAMPLONA, ES"
+  },
+  "languageSwitcher": {
+    "es": "ES",
+    "en": "EN"
+  }
+}
+
