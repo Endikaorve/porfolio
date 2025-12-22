@@ -206,7 +206,7 @@ export default function Home() {
       <section className="relative min-h-screen py-32">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-12 gap-4">
-            {/* Número gigante de fondo */}
+            {/* Título principal */}
             <motion.div
               className="col-span-12 md:col-span-6 relative"
               initial={{ opacity: 0, x: -100 }}
@@ -214,15 +214,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <span
-                className="text-[30vw] font-black leading-none text-white opacity-5 absolute -left-20 -top-20"
-                style={{
-                  WebkitTextStroke: "3px rgba(255,255,255,0.1)",
-                }}
-              >
-                01
-              </span>
-              <div className="relative z-10 pt-20">
+              <div className="relative z-10">
                 <h2 className="text-6xl md:text-7xl font-black text-[#de5e91] mb-8 leading-none">
                   SOLVING
                   <br />
