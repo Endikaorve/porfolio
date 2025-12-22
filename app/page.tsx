@@ -159,22 +159,12 @@ function ExperienceCard({
   index: number;
   onOpenModal: () => void;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "center center"],
-  });
-
-  // Rotaciones diferentes para cada card (alternando positivo/negativo)
-  const rotations = [-2.5, 2, -1.8, 2.2];
-  const targetRotation = rotations[index % rotations.length];
-
-  // La rotación va de 0 (cuando aparece) al valor target (cuando llega al centro)
-  const rotation = useTransform(scrollYProgress, [0, 1], [0, targetRotation]);
+  // Rotaciones fijas para cada card (alternando positivo/negativo)
+  const rotations = [-0.8, 1.2, -1.3, 1.7];
+  const fixedRotation = rotations[index % rotations.length];
 
   return (
     <div
-      ref={cardRef}
       className="card-outer h-screen w-full flex items-center justify-center sticky top-0"
       style={{ zIndex: index + 1 }}
     >
@@ -182,7 +172,7 @@ function ExperienceCard({
       <motion.div
         className="relative p-5 md:p-12 2xl:p-16 w-full bg-[#212121] border-2 border-[#de5e91]/30"
         style={{
-          rotate: rotation,
+          rotate: fixedRotation,
         }}
       >
         {/* Subtle noise texture overlay */}
