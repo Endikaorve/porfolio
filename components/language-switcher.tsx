@@ -17,7 +17,7 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className="fixed top-6 right-6 z-[100] flex items-center gap-1 font-mono text-sm">
+    <div className="fixed top-6 right-6 z-50 flex items-center gap-1 font-mono text-sm">
       {locales.map((loc, index) => (
         <div key={loc} className="flex items-center">
           <motion.button

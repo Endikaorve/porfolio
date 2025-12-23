@@ -1099,124 +1099,122 @@ export default function Home() {
                 onOpenModal={() => setOpenModalIndex(i)}
               />
             ))}
-
-            {/* Modal de detalles - Solo mobile */}
-            <AnimatePresence>
-              {openModalIndex !== null && (
-                <motion.div
-                  className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:hidden"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-                    onClick={() => setOpenModalIndex(null)}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  />
-
-                  <motion.div
-                    className="relative w-full max-h-[85vh] bg-[#212121] border-2 border-[#de5e91] overflow-y-auto overflow-x-hidden"
-                    initial={{
-                      scale: 0.8,
-                      y: 100,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      scale: 1,
-                      y: 0,
-                      opacity: 1,
-                    }}
-                    exit={{
-                      scale: 0.8,
-                      y: 100,
-                      opacity: 0,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 25,
-                    }}
-                  >
-                    <div className="p-6 overflow-x-hidden">
-                      <button
-                        onClick={() => setOpenModalIndex(null)}
-                        className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white hover:text-[#de5e91] transition-colors z-10"
-                        aria-label="Cerrar"
-                      >
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <line x1="18" y1="6" x2="6" y2="18" />
-                          <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
-                      </button>
-
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#de5e91] to-transparent opacity-50" />
-
-                      <div className="mb-6 border-l-4 border-[#de5e91] pl-6 pr-12">
-                        <span className="text-[#de5e91] font-mono text-xs tracking-wider font-bold break-words">
-                          {jobs[openModalIndex].period}
-                        </span>
-                        <h3 className="text-2xl font-black text-white mt-1 leading-tight break-words">
-                          {jobs[openModalIndex].role}
-                        </h3>
-                        <p className="text-white/70 text-sm font-medium mt-1 break-words">
-                          {jobs[openModalIndex].company}
-                        </p>
-                        <p className="text-white/50 font-mono text-xs mt-1 break-words">
-                          {jobs[openModalIndex].project}
-                        </p>
-                      </div>
-
-                      <p className="text-white/60 text-sm leading-relaxed mb-6 break-words">
-                        {jobs[openModalIndex].description}
-                      </p>
-
-                      <div className="space-y-4">
-                        <h4 className="text-white font-bold text-sm mb-3">
-                          {t("experience.keyDetails")}
-                        </h4>
-                        {jobs[openModalIndex].highlights.map(
-                          (highlight, idx) => (
-                            <div
-                              key={idx}
-                              className="border-l-2 border-[#de5e91]/50 pl-4 py-2 hover:border-[#de5e91] transition-colors duration-300"
-                            >
-                              <h5 className="text-white font-bold text-sm mb-1 break-words">
-                                {highlight.title}
-                              </h5>
-                              <p className="text-white/60 text-sm leading-relaxed break-words">
-                                {highlight.text}
-                              </p>
-                            </div>
-                          )
-                        )}
-                      </div>
-
-                      <div className="mt-8 pt-4 border-t border-[#de5e91]/20">
-                        <button
-                          onClick={() => setOpenModalIndex(null)}
-                          className="w-full py-3 border-2 border-white/30 text-white font-mono text-sm font-bold hover:border-white hover:bg-white hover:text-[#212121] transition-all duration-300"
-                        >
-                          {t("experience.close")}
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </div>
+
+        {/* Modal de detalles - Solo mobile - Fuera del stacking context */}
+        <AnimatePresence>
+          {openModalIndex !== null && (
+            <motion.div
+              className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <motion.div
+                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                onClick={() => setOpenModalIndex(null)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              />
+
+              <motion.div
+                className="relative w-full max-h-[85vh] bg-[#212121] border-2 border-[#de5e91] overflow-y-auto overflow-x-hidden"
+                initial={{
+                  scale: 0.8,
+                  y: 100,
+                  opacity: 0,
+                }}
+                animate={{
+                  scale: 1,
+                  y: 0,
+                  opacity: 1,
+                }}
+                exit={{
+                  scale: 0.8,
+                  y: 100,
+                  opacity: 0,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 25,
+                }}
+              >
+                <div className="p-6 overflow-x-hidden">
+                  <button
+                    onClick={() => setOpenModalIndex(null)}
+                    className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white hover:text-[#de5e91] transition-colors z-10"
+                    aria-label="Cerrar"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </button>
+
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#de5e91] to-transparent opacity-50" />
+
+                  <div className="mb-6 border-l-4 border-[#de5e91] pl-6 pr-12">
+                    <span className="text-[#de5e91] font-mono text-xs tracking-wider font-bold break-words">
+                      {jobs[openModalIndex].period}
+                    </span>
+                    <h3 className="text-2xl font-black text-white mt-1 leading-tight break-words">
+                      {jobs[openModalIndex].role}
+                    </h3>
+                    <p className="text-white/70 text-sm font-medium mt-1 break-words">
+                      {jobs[openModalIndex].company}
+                    </p>
+                    <p className="text-white/50 font-mono text-xs mt-1 break-words">
+                      {jobs[openModalIndex].project}
+                    </p>
+                  </div>
+
+                  <p className="text-white/60 text-sm leading-relaxed mb-6 break-words">
+                    {jobs[openModalIndex].description}
+                  </p>
+
+                  <div className="space-y-4">
+                    <h4 className="text-white font-bold text-sm mb-3">
+                      {t("experience.keyDetails")}
+                    </h4>
+                    {jobs[openModalIndex].highlights.map((highlight, idx) => (
+                      <div
+                        key={idx}
+                        className="border-l-2 border-[#de5e91]/50 pl-4 py-2 hover:border-[#de5e91] transition-colors duration-300"
+                      >
+                        <h5 className="text-white font-bold text-sm mb-1 break-words">
+                          {highlight.title}
+                        </h5>
+                        <p className="text-white/60 text-sm leading-relaxed break-words">
+                          {highlight.text}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 pt-4 border-t border-[#de5e91]/20">
+                    <button
+                      onClick={() => setOpenModalIndex(null)}
+                      className="w-full py-3 border-2 border-white/30 text-white font-mono text-sm font-bold hover:border-white hover:bg-white hover:text-[#212121] transition-all duration-300"
+                    >
+                      {t("experience.close")}
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* Community Section */}
