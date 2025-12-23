@@ -1,0 +1,9 @@
+# Robots.txt for Endika Orube Portfolio
+# https://endikaorube.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://endikaorube.com/sitemap.xml
+

@@ -8,6 +8,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 // React Icons - Simple Icons para tecnologías
 import {
@@ -939,9 +940,12 @@ export default function Home() {
                 {/* Contenedor de imagen con overlay */}
                 <div className="relative w-full h-full overflow-hidden group">
                   {/* Imagen */}
-                  <img
+                  <Image
                     src="/endika.jpg"
-                    alt="Endika Orube"
+                    alt="Endika Orube - Tech Lead & Product Engineer especializado en React, Next.js y arquitectura frontend en Pamplona, Navarra"
+                    width={500}
+                    height={500}
+                    priority
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                   />
 
