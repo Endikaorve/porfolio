@@ -1113,7 +1113,7 @@ export default function Home() {
               transition={{ duration: 0.2 }}
             >
               <motion.div
-                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                className="absolute inset-0 bg-black/20 backdrop-blur-sm"
                 onClick={() => setOpenModalIndex(null)}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
