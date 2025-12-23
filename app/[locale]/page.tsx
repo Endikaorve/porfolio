@@ -1358,7 +1358,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
             {/* Proyecto 1 - Banking Platform */}
             <motion.div
-              className="col-span-1 lg:col-span-8 aspect-[4/3] lg:aspect-[16/9] relative group cursor-pointer overflow-hidden"
+              className="col-span-1 lg:col-span-8 aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
               viewport={{ once: true }}
@@ -1393,7 +1393,7 @@ export default function Home() {
 
             {/* Proyecto 2 - Hotel Booking Engine */}
             <motion.div
-              className="col-span-1 lg:col-span-4 aspect-[4/3] lg:aspect-square relative group cursor-pointer overflow-hidden"
+              className="col-span-1 lg:col-span-4 aspect-[4/3] md:aspect-[16/10] lg:aspect-square relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{
                 opacity: 1,
@@ -1428,7 +1428,7 @@ export default function Home() {
 
             {/* Proyecto 3 - SaaS Products */}
             <motion.div
-              className="col-span-1 lg:col-span-5 aspect-[4/3] relative group cursor-pointer overflow-hidden"
+              className="col-span-1 lg:col-span-5 aspect-[4/3] md:aspect-[16/10] relative group cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{
                 opacity: 1,
