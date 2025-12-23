@@ -184,19 +184,19 @@
         "subprojects": {
           "p1": {
             "name": "PERSONAL PORTFOLIO",
-            "desc": "Next.js 15, Framer Motion, Tailwind v4 and Next-Intl. Awwwards style."
+            "desc": "Next.js 16, Framer Motion and Tailwind v4."
           },
           "p2": {
-            "name": "REACT RENDERING",
-            "desc": "React Rendering Strategies: CSR, SSR, SSG, ISR and RSC."
+            "name": "REACT RENDERING STRATEGIES",
+            "desc": "CSR, SSG, ISR, SSR, Streaming, PPR and RSC with Next.js."
           },
           "p3": {
-            "name": "AI WORKSHOP + POKÉDEX",
-            "desc": "Vite, Hexagonal Architecture, DDD and Testing. AI integration."
+            "name": "AI WORKSHOP SCPNA + POKÉDEX",
+            "desc": "Vite. DDD + Hexagonal Architecture + Testing. AI integration."
           },
           "p4": {
             "name": "CREAYARNOZ LANDING",
-            "desc": "High-performance landing page for graphic design studio."
+            "desc": "Landing page for graphic design and printing studio."
           }
         }
       }
