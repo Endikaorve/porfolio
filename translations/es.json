@@ -37,15 +37,20 @@
         "title": "EXTREME PROGRAMMING",
         "description": "TDD, Pair Programming, CI/CD, Integración Continua. Metodologías XP aplicadas a escala en equipos grandes."
       },
-      "architecture": {
-        "number": "02",
-        "title": "SOFTWARE DE CALIDAD",
-        "description": "Testing avanzado, código limpio, refactoring. Arquitectura Hexagonal y decisiones técnicas para sistemas que escalan sin deuda."
+      "contextEngineering": {
+        "number": "04",
+        "title": "CONTEXT ENGINEERING",
+        "description": "Integro IA generativa en el ciclo de desarrollo. Multiplico la velocidad del equipo manteniendo el control y la calidad del código."
       },
       "leadership": {
-        "number": "04",
+        "number": "05",
         "title": "LIDERAZGO Y MENTORÍA",
         "description": "Dirijo equipos técnicos, defino estándares, fomento cultura de calidad. Manager directo de 8 engineers."
+      },
+      "culture": {
+        "number": "06",
+        "title": "CULTURA TÉCNICA",
+        "description": "Lidero iniciativas de conocimiento compartido (+80 personas) y defino Learning Paths para potenciar el talento técnico y facilitar onboardings."
       }
     }
   },

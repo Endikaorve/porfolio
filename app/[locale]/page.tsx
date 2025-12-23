@@ -653,9 +653,19 @@ export default function Home() {
       description: t("expertise.items.xp.description"),
     },
     {
+      number: t("expertise.items.contextEngineering.number"),
+      title: t("expertise.items.contextEngineering.title"),
+      description: t("expertise.items.contextEngineering.description"),
+    },
+    {
       number: t("expertise.items.leadership.number"),
       title: t("expertise.items.leadership.title"),
       description: t("expertise.items.leadership.description"),
+    },
+    {
+      number: t("expertise.items.culture.number"),
+      title: t("expertise.items.culture.title"),
+      description: t("expertise.items.culture.description"),
     },
   ];
 
