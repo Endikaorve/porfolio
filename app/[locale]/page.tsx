@@ -1496,7 +1496,7 @@ export default function Home() {
 
               {/* Grid de Subproyectos */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 z-10 relative">
-                {/* Subproyecto 1: Cursor Rules */}
+                {/* Subproyecto 1: Taller IA + Pokédex */}
                 <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="text-white font-bold font-mono text-sm pr-4">
@@ -1504,13 +1504,22 @@ export default function Home() {
                     </h4>
                     <div className="flex gap-2 shrink-0">
                       <a
-                        href="https://github.com/Endikaorve"
+                        href="https://github.com/Endikaorve/pokedex-taller-scpna"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
                         aria-label="GitHub Code"
                       >
                         <Github className="w-4 h-4" />
+                      </a>
+                      <a
+                        href="https://pokedex-vite-woad.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                        aria-label="Live Demo"
+                      >
+                        <ExternalLink className="w-4 h-4" />
                       </a>
                     </div>
                   </div>
@@ -1527,7 +1536,7 @@ export default function Home() {
                     </h4>
                     <div className="flex gap-2 shrink-0">
                       <a
-                        href="https://github.com/Endikaorve/endikaorve-portfolio"
+                        href="https://github.com/Endikaorve/porfolio"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
@@ -1536,7 +1545,7 @@ export default function Home() {
                         <Github className="w-4 h-4" />
                       </a>
                       <a
-                        href="https://endikaorve.com"
+                        href="https://endikaorube.dev"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
@@ -1551,7 +1560,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* Subproyecto 3: Render Patterns */}
+                {/* Subproyecto 3: Renderizados React */}
                 <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="text-white font-bold font-mono text-sm pr-4">
@@ -1559,13 +1568,22 @@ export default function Home() {
                     </h4>
                     <div className="flex gap-2 shrink-0">
                       <a
-                        href="https://github.com/Endikaorve"
+                        href="https://github.com/Endikaorve/renderizados-web"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
                         aria-label="GitHub Code"
                       >
                         <Github className="w-4 h-4" />
+                      </a>
+                      <a
+                        href="https://dxp-renderizados-web-presentacion.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                        aria-label="Live Demo"
+                      >
+                        <ExternalLink className="w-4 h-4" />
                       </a>
                     </div>
                   </div>
@@ -1574,7 +1592,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* Subproyecto 4: UI Experiments */}
+                {/* Subproyecto 4: Landing CreaYarnoz */}
                 <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="text-white font-bold font-mono text-sm pr-4">
@@ -1582,13 +1600,22 @@ export default function Home() {
                     </h4>
                     <div className="flex gap-2 shrink-0">
                       <a
-                        href="https://github.com/Endikaorve"
+                        href="https://github.com/Endikaorve/creayarnoz"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
                         aria-label="GitHub Code"
                       >
                         <Github className="w-4 h-4" />
+                      </a>
+                      <a
+                        href="https://creayarnoz.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                        aria-label="Live Demo"
+                      >
+                        <ExternalLink className="w-4 h-4" />
                       </a>
                     </div>
                   </div>

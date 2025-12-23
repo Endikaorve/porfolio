@@ -183,20 +183,20 @@
         "description": "Espacio de experimentación técnica. Proyectos personales, demos de charlas, herramientas para desarrolladores y exploración de nuevos paradigmas (AI, RSC, Performance).",
         "subprojects": {
           "p1": {
-            "name": "CURSOR AI RULES",
-            "desc": "Reglas de contexto para pair programming con LLMs."
+            "name": "TALLER IA + POKÉDEX",
+            "desc": "Workshop IA Generativa para SCPNA. Pokédex con Vite + OpenAI."
           },
           "p2": {
             "name": "PORTFOLIO V1",
             "desc": "Next.js 15, Framer Motion y Tailwind v4."
           },
           "p3": {
-            "name": "REACT RENDER PATTERNS",
-            "desc": "Demo interactiva de patrones de renderizado."
+            "name": "RENDERIZADOS REACT",
+            "desc": "Charla + demos CSR/SSR/SSG/ISR/Streaming/PPR con Next.js."
           },
           "p4": {
-            "name": "UI EXPERIMENTS",
-            "desc": "Componentes headless y animaciones complejas."
+            "name": "LANDING CREAYARNOZ",
+            "desc": "Landing para estudio de diseño gráfico e impresión."
           }
         }
       }
