@@ -39,11 +39,11 @@ export function HeroSection() {
     >
       {/* Capa animada - texto que se mueve con scroll */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-full max-w-7xl px-4">
+        <div className="w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
           {/* ENDIKA - Reveal desde abajo */}
           <div className={heroReady ? "" : "overflow-hidden"}>
             <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter will-change-transform"
+              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter will-change-transform whitespace-nowrap"
               style={{
                 color: "transparent",
                 WebkitTextStroke: "2px white",
@@ -72,7 +72,7 @@ export function HeroSection() {
           {/* ORUBE - Reveal desde arriba */}
           <div className={heroReady ? "" : "overflow-hidden"}>
             <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform"
+              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform whitespace-nowrap"
               style={{
                 textShadow: "0 0 40px rgba(222, 94, 145, 0.3)",
                 x: heroReady ? orubeX : 0,
@@ -101,13 +101,13 @@ export function HeroSection() {
       </div>
 
       {/* Capa estática - elementos de UI */}
-      <div className="relative z-10 w-full max-w-7xl px-4">
+      <div className="relative z-10 w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
         {/* Placeholder para mantener espacio */}
         <div className="relative" aria-hidden="true">
-          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none">
+          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
             ENDIKA
           </div>
-          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none">
+          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
             ORUBE
             <span className="inline-block w-[0.12em] h-[0.12em] ml-[0.07em]" />
           </div>
