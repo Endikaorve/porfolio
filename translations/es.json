@@ -183,20 +183,20 @@
         "description": "Espacio de experimentación técnica. Proyectos personales, demos de charlas, herramientas para desarrolladores y exploración de nuevos paradigmas (AI, RSC, Performance).",
         "subprojects": {
           "p1": {
-            "name": "TALLER IA + POKÉDEX",
-            "desc": "Workshop IA Generativa para SCPNA. Pokédex con Vite + OpenAI."
+            "name": "PORTFOLIO PERSONAL",
+            "desc": "Next.js 15, Framer Motion, Tailwind v4 y Next-Intl. Diseño Awwwards."
           },
           "p2": {
-            "name": "PORTFOLIO V1",
-            "desc": "Next.js 15, Framer Motion y Tailwind v4."
+            "name": "RENDERIZADOS REACT",
+            "desc": "Estrategias de Renderizado en React: CSR, SSR, SSG, ISR y RSC."
           },
           "p3": {
-            "name": "RENDERIZADOS REACT",
-            "desc": "Charla + demos CSR/SSR/SSG/ISR/Streaming/PPR con Next.js."
+            "name": "TALLER IA + POKÉDEX",
+            "desc": "Vite, Arquitectura Hexagonal, DDD y Testing. Integración de IA."
           },
           "p4": {
             "name": "LANDING CREAYARNOZ",
-            "desc": "Landing para estudio de diseño gráfico e impresión."
+            "desc": "Landing performante para estudio de diseño gráfico e impresión."
           }
         }
       }
