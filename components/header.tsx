@@ -38,7 +38,7 @@ export function Header() {
             return (
               <Link
                 href="/blog"
-                className={`group relative px-3 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
+                className={`group relative px-1.5 md:px-2 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
                   isBlogActive
                     ? "text-[#de5e91]"
                     : "text-white/60 hover:text-[#de5e91]"
@@ -46,7 +46,7 @@ export function Header() {
               >
                 {t("blog.headerLink")}
                 <span
-                  className={`absolute bottom-1 left-3 right-3 h-px bg-[#de5e91] transition-transform duration-200 origin-left ${
+                  className={`absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-[#de5e91] transition-transform duration-200 origin-left ${
                     isBlogActive
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -57,15 +57,15 @@ export function Header() {
           })()}
 
           {/* Separador */}
-          <span className="text-white/20 select-none px-1">/</span>
+          <span className="text-white/20 select-none">|</span>
 
           {/* Language Switcher */}
-          <div className="flex items-center gap-1 font-mono text-sm">
+          <div className="flex items-center font-mono text-sm">
             {locales.map((loc, index) => (
               <div key={loc} className="flex items-center">
                 <motion.button
                   onClick={() => handleLocaleChange(loc)}
-                  className={`relative px-2 md:px-3 py-2 font-bold tracking-wider transition-colors duration-200 ${
+                  className={`relative px-1.5 md:px-2 py-2 font-bold tracking-wider transition-colors duration-200 ${
                     locale === loc
                       ? "text-[#de5e91]"
                       : "text-white/40 hover:text-white/80"
@@ -77,7 +77,7 @@ export function Header() {
                   {/* Underline indicator for active locale */}
                   {locale === loc && (
                     <motion.div
-                      className="absolute bottom-1 left-2 right-2 md:left-3 md:right-3 h-px bg-[#de5e91]"
+                      className="absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-[#de5e91]"
                       layoutId="locale-indicator"
                       transition={{
                         type: "spring",
