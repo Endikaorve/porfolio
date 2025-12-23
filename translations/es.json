@@ -28,27 +28,26 @@
     },
     "items": {
       "product": {
-        "number": "01",
         "title": "VISIÓN DE PRODUCTO",
         "description": "Colaboro con POs y Negocio para definir soluciones que maximicen el valor al usuario. Del problema a la implementación."
       },
+      "architecture": {
+        "title": "SOFTWARE DE CALIDAD",
+        "description": "Testing avanzado, código limpio, refactoring. Arquitectura Hexagonal y decisiones técnicas para sistemas que escalan sin deuda."
+      },
       "xp": {
-        "number": "03",
         "title": "EXTREME PROGRAMMING",
         "description": "TDD, Pair Programming, CI/CD, Integración Continua. Metodologías XP aplicadas a escala en equipos grandes."
       },
       "contextEngineering": {
-        "number": "04",
         "title": "CONTEXT ENGINEERING",
         "description": "Integro IA generativa en el ciclo de desarrollo. Multiplico la velocidad del equipo manteniendo el control y la calidad del código."
       },
       "leadership": {
-        "number": "05",
         "title": "LIDERAZGO Y MENTORÍA",
         "description": "Dirijo equipos técnicos, defino estándares, fomento cultura de calidad. Manager directo de 8 engineers."
       },
       "culture": {
-        "number": "06",
         "title": "CULTURA TÉCNICA",
         "description": "Lidero iniciativas de conocimiento compartido (+80 personas) y defino Learning Paths para potenciar el talento técnico y facilitar onboardings."
       }

@@ -638,32 +638,26 @@ export default function Home() {
   // Expertise items
   const expertiseItems = [
     {
-      number: t("expertise.items.product.number"),
       title: t("expertise.items.product.title"),
       description: t("expertise.items.product.description"),
     },
     {
-      number: t("expertise.items.architecture.number"),
       title: t("expertise.items.architecture.title"),
       description: t("expertise.items.architecture.description"),
     },
     {
-      number: t("expertise.items.xp.number"),
       title: t("expertise.items.xp.title"),
       description: t("expertise.items.xp.description"),
     },
     {
-      number: t("expertise.items.contextEngineering.number"),
       title: t("expertise.items.contextEngineering.title"),
       description: t("expertise.items.contextEngineering.description"),
     },
     {
-      number: t("expertise.items.leadership.number"),
       title: t("expertise.items.leadership.title"),
       description: t("expertise.items.leadership.description"),
     },
     {
-      number: t("expertise.items.culture.number"),
       title: t("expertise.items.culture.title"),
       description: t("expertise.items.culture.description"),
     },
@@ -1051,7 +1045,7 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <span className="text-white/30 font-mono text-sm">
-                  {item.number}
+                  {(i + 1).toString().padStart(2, "0")}
                 </span>
                 <h3 className="text-3xl font-black text-white mt-2 mb-4">
                   {item.title}
