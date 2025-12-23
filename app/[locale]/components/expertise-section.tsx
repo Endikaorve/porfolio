@@ -65,7 +65,7 @@ export function ExpertiseSection() {
                 <h3 className="text-3xl font-black text-white mt-2 mb-4">
                   {item.title}
                   {isHighlighted && (
-                    <span className="ml-3 text-sm text-[#de5e91] align-baseline">
+                    <span className="ml-3 text-sm text-[#de5e91] align-top">
                       [ ✦ ]
                     </span>
                   )}
@@ -81,4 +81,3 @@ export function ExpertiseSection() {
     </section>
   );
 }
-
