@@ -8,12 +8,12 @@
   },
   "about": {
     "title": {
-      "line1": "CODE",
+      "line1": "BUILD",
       "line2": "WITH",
       "line3": "PURPOSE"
     },
     "description1": "7+ years building software that matters. Tech Lead & Engineering Manager of a team of 20+ developers on a critical banking project (+1M users).",
-    "description2": "I combine deep technical expertise -architecture, testing, XP- with strategic product vision. I lead from solution definition to delivery, ensuring every line of code adds real business value.",
+    "description2": "Combining deep technical expertise -architecture, testing, XP- with strategic product vision. Leading from solution definition to delivery, ensuring every line of code adds real business value.",
     "stats": {
       "techLead": "TECH LEAD",
       "engineers": "+20 ENGINEERS",
@@ -23,13 +23,13 @@
   },
   "expertise": {
     "title": {
-      "line1": "WHAT I",
-      "line2": "BRING"
+      "line1": "MY",
+      "line2": "EXPERTISE"
     },
     "items": {
       "product": {
         "title": "PRODUCT VISION",
-        "description": "Product mindset applied to development. I collaborate in defining solutions that maximize user value. From problem to delivery."
+        "description": "Product mindset applied to development. Collaborating in defining solutions that maximize user value. From problem to delivery."
       },
       "architecture": {
         "title": "TECHNICAL EXCELLENCE",
@@ -37,19 +37,19 @@
       },
       "xp": {
         "title": "PRAGMATISM",
-        "description": "Pragmatic, not dogmatic. I adapt best practices to real context: deadlines, team maturity, business constraints. Balance between quality and needs."
+        "description": "Pragmatic, not dogmatic. Adapting best practices to real context: deadlines, team maturity, business constraints. Balancing quality and needs."
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
-        "description": "I design the team's Context Engineering strategy. I standardize best practices and integrate generative AI into the development cycle, multiplying velocity without losing control or quality."
+        "description": "Designing the team's Context Engineering strategy. Standardizing best practices and integrating generative AI into the development cycle, multiplying velocity without losing control or quality."
       },
       "leadership": {
         "title": "LEADERSHIP & MENTORING",
-        "description": "Direct manager of 8 engineers. 1-on-1s, career plans and continuous training. I foster autonomy and high-performance culture."
+        "description": "Direct manager of 8 engineers. 1-on-1s, career plans and continuous training. Fostering autonomy and high-performance culture."
       },
       "culture": {
         "title": "CULTURAL TRANSFORMATION",
-        "description": "I lead the technical knowledge strategy for +80 people. I organize knowledge-sharing sessions and define Learning Paths to empower talent and foster continuous improvement."
+        "description": "Leading the technical knowledge strategy for +80 people. Organizing knowledge-sharing sessions and defining Learning Paths to empower talent and foster continuous improvement."
       }
     }
   },
@@ -67,11 +67,11 @@
         "company": "BIKO2 / JAKALA",
         "role": "TECH LEAD & MANAGER",
         "project": "Laboral Kutxa Online Banking",
-        "description": "I lead the frontend team (+20 devs) of digital banking (+1M users), combining technical direction and people management with a strategic product vision.",
+        "description": "Currently leading the frontend team (+20 devs) of digital banking (+1M users), combining technical direction and people management with a strategic product vision.",
         "highlights": {
           "engineering": {
             "title": "Engineering & Product Strategy",
-            "text": "I collaborate with POs, Business and Design to define technical solutions. I lead the Angular → React migration focused on security, Time-to-Market and UX."
+            "text": "Collaborating with POs, Business and Design to define technical solutions. Leading the Angular → React migration focused on security, Time-to-Market and UX."
           },
           "excellence": {
             "title": "Technical Excellence & XP",
@@ -158,8 +158,8 @@
   },
   "projects": {
     "title": {
-      "line1": "SELECTED",
-      "line2": "WORKS"
+      "line1": "FEATURED",
+      "line2": "PROJECTS"
     },
     "items": {
       "banking": {
