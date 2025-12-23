@@ -75,15 +75,15 @@
           },
           "excellence": {
             "title": "Excelencia Técnica & XP",
-            "text": "TDD, Integración Continua, Pair Programming. Arquitectura robusta capaz de evolucionar con el negocio."
+            "text": "Impulso TDD, Integración Continua y Pair Programming. Construyo una arquitectura robusta capaz de evolucionar con el negocio."
           },
           "innovation": {
             "title": "Innovación & IA aplicada",
-            "text": "Context Engineering del equipo (Rules, Comandos, MCPs para Azure DevOps). Mejoras significativas en velocidad y calidad."
+            "text": "Defino la estrategia de Context Engineering (Rules, Comandos, MCPs). Logro mejoras significativas en velocidad y calidad."
           },
           "management": {
             "title": "Gestión de Personas",
-            "text": "Manager directo de 8 engineers. 1-on-1s, planes de carrera y formación continua."
+            "text": "Ejerzo como Manager directo de 8 engineers: 1-on-1s, planes de carrera y formación continua."
           }
         }
       },
@@ -96,19 +96,19 @@
         "highlights": {
           "architecture": {
             "title": "Arquitectura & Stack Moderno",
-            "text": "Next.js + Arquitectura Hexagonal desplegada en Vercel. SEO y Core Web Vitals optimizados."
+            "text": "Implementé Next.js + Arquitectura Hexagonal en Vercel. Optimicé SEO y Core Web Vitals al máximo nivel."
           },
           "product": {
             "title": "Visión de Producto & Diseño",
-            "text": "Enlace clave entre diseño y desarrollo. Traduje maquetas complejas a componentes eficientes."
+            "text": "Actué como enlace clave entre diseño y desarrollo. Traduje maquetas complejas a componentes eficientes."
           },
           "observability": {
             "title": "Observabilidad & Producción",
-            "text": "Estrategias de monitorización y alerting (Sentry/Datadog) para estabilidad del servicio."
+            "text": "Diseñé estrategias de monitorización y alerting (Sentry/Datadog) para garantizar la estabilidad del servicio."
           },
           "quality": {
             "title": "Calidad & Cultura",
-            "text": "TDD y CI/CD. Mentorización de nuevos integrantes para acelerar onboarding."
+            "text": "Apliqué TDD y CI/CD riguroso. Mentoricé a nuevos integrantes para acelerar su onboarding."
           }
         }
       },
@@ -121,15 +121,15 @@
         "highlights": {
           "product": {
             "title": "Gestión Integral de Producto",
-            "text": "Ciclo completo: preventa técnica, requisitos, diseño UX/UI, implementación y mantenimiento."
+            "text": "Gestioné el ciclo completo: preventa técnica, requisitos, diseño UX/UI, implementación y mantenimiento."
           },
           "business": {
             "title": "Estrategia de Negocio",
-            "text": "Demos técnicas y feedback de mercado convertido en roadmap. Universidad de Navarra, Médicos del Mundo."
+            "text": "Transformé demos técnicas y feedback de mercado en el roadmap de producto. Clientes como Universidad de Navarra y Médicos del Mundo."
           },
           "leadership": {
             "title": "Liderazgo Técnico & Mentoring",
-            "text": "Definí arquitectura y estándares. Transformé equipo de 1 a 5 developers."
+            "text": "Definí la arquitectura y los estándares de desarrollo. Lideré el crecimiento del equipo de 1 a 5 developers."
           }
         }
       },
@@ -142,15 +142,15 @@
         "highlights": {
           "development": {
             "title": "Desarrollo End-to-End",
-            "text": "Soluciones a medida para clientes corporativos y productos SaaS internos."
+            "text": "Desarrollé soluciones a medida para clientes corporativos y productos SaaS internos."
           },
           "stack": {
             "title": "Stack Tecnológico",
-            "text": "Backend (PHP/Symfony, MySQL), Frontend (Angular 2+) y Mobile Híbrido (Ionic)."
+            "text": "Dominio del stack: Backend (PHP/Symfony, MySQL), Frontend (Angular 2+) y Mobile Híbrido (Ionic)."
           },
           "culture": {
             "title": "Cultura Startup",
-            "text": "Mentalidad de resolución de problemas. Gestión de incidencias críticas en entorno de recursos limitados."
+            "text": "Mentalidad de resolución de problemas. Gestioné incidencias críticas en un entorno de recursos limitados."
           }
         }
       }
