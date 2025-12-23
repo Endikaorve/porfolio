@@ -795,6 +795,7 @@ export default function Home() {
                 }
               >
                 ORUBE
+                <span className="inline-block w-[0.12em] h-[0.12em] bg-primary ml-[0.07em]" />
               </motion.h1>
             </div>
           </div>
@@ -809,6 +810,7 @@ export default function Home() {
             </div>
             <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none">
               ORUBE
+              <span className="inline-block w-[0.12em] h-[0.12em] ml-[0.07em]" />
             </div>
           </div>
 
