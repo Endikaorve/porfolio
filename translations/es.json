@@ -39,7 +39,7 @@
       },
       "architecture": {
         "number": "02",
-        "title": "CALIDAD DE SOFTWARE",
+        "title": "SOFTWARE DE CALIDAD",
         "description": "Testing avanzado, código limpio, refactoring. Arquitectura Hexagonal y decisiones técnicas para sistemas que escalan sin deuda."
       },
       "leadership": {
