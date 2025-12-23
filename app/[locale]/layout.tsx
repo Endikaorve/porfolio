@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: "Endika Orube Portfolio",
       images: [
         {
-          url: `${BASE_URL}/endika.jpg`,
+          url: `${BASE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
           alt: "Endika Orube - Tech Lead & Product Engineer",
@@ -92,7 +92,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: t.metadata.title,
       description: t.metadata.description,
-      images: [`${BASE_URL}/endika.jpg`],
+      images: [`${BASE_URL}/og-image.jpg`],
     },
 
     // Robots
