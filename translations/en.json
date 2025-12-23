@@ -29,7 +29,7 @@
     "items": {
       "product": {
         "title": "PRODUCT VISION",
-        "description": "Product mindset applied to development. Collaborating in defining solutions that maximize user value. From problem to delivery."
+        "description": "Product mindset applied to development. Collaborating to define solutions that maximize user value. From problem to delivery."
       },
       "architecture": {
         "title": "TECHNICAL EXCELLENCE",
@@ -37,7 +37,7 @@
       },
       "xp": {
         "title": "PRAGMATISM",
-        "description": "Pragmatic, not dogmatic. Adapting best practices to real context: deadlines, team maturity, business constraints. Balancing quality and needs."
+        "description": "Pragmatic, not dogmatic. Adapting best practices to real-world context: deadlines, team maturity, business constraints. Balancing quality and needs."
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
@@ -45,7 +45,7 @@
       },
       "leadership": {
         "title": "LEADERSHIP & MENTORING",
-        "description": "Direct manager of 8 engineers. 1-on-1s, career plans and continuous training. Fostering autonomy and high-performance culture."
+        "description": "Direct manager of 8 engineers. 1-on-1s, career plans and continuous training. Fostering autonomy and a high-performance culture."
       },
       "culture": {
         "title": "CULTURAL TRANSFORMATION",
@@ -71,7 +71,7 @@
         "highlights": {
           "engineering": {
             "title": "Engineering & Product Strategy",
-            "text": "Collaborating with POs, Business and Design to define technical solutions. Leading the Angular → React migration focused on security, Time-to-Market and UX."
+            "text": "Collaborating with Product Owners, Business Stakeholders, and Design to define technical solutions. Leading the Angular → React migration focused on security, Time-to-Market and UX."
           },
           "excellence": {
             "title": "Technical Excellence & XP",
@@ -79,7 +79,7 @@
           },
           "innovation": {
             "title": "Innovation & Applied AI",
-            "text": "Team Context Engineering (Rules, Commands, MCPs for Azure DevOps). Significant improvements in speed and quality."
+            "text": "Team Context Engineering strategy (Rules, Commands, MCPs for Azure DevOps). Significant improvements in speed and quality."
           },
           "management": {
             "title": "People Management",
@@ -92,7 +92,7 @@
         "company": "BIKO2 / JAKALA",
         "role": "SENIOR WEB DEVELOPER",
         "project": "Barceló Hotel Group Booking Engine",
-        "description": "Core developer building the new booking engine (high traffic), operating under strict Extreme Programming methodology.",
+        "description": "Core developer for the new booking engine (high traffic), operating under strict Extreme Programming methodology.",
         "highlights": {
           "architecture": {
             "title": "Architecture & Modern Stack",
@@ -108,7 +108,7 @@
           },
           "quality": {
             "title": "Quality & Culture",
-            "text": "TDD and CI/CD. Mentoring new team members to accelerate onboarding."
+            "text": "TDD and CI/CD. Mentoring of new team members to accelerate onboarding."
           }
         }
       },
@@ -120,12 +120,12 @@
         "description": "Hybrid role of technical leadership and product. Final responsible for delivery in consulting and own SaaS products.",
         "highlights": {
           "product": {
-            "title": "Integral Product Management",
-            "text": "Complete cycle: technical pre-sales, requirements, UX/UI design, implementation and maintenance."
+            "title": "End-to-End Product Management",
+            "text": "Full lifecycle: technical pre-sales, requirements, UX/UI design, implementation, and maintenance."
           },
           "business": {
             "title": "Business Strategy",
-            "text": "Technical demos and market feedback converted into roadmap. University of Navarra, Doctors Without Borders."
+            "text": "Translated technical demos and market feedback into the product roadmap. University of Navarra, Doctors Without Borders."
           },
           "leadership": {
             "title": "Technical Leadership & Mentoring",
@@ -165,7 +165,7 @@
       "banking": {
         "category": "01 / BANKING · FINTECH",
         "title": "DIGITAL BANKING PLATFORM",
-        "description": "Angular → React migration. Scalable architecture for +1M users. TDD, CI/CD, Optimistic UI. Leading team of 20+ developers."
+        "description": "Angular → React migration. Scalable architecture for +1M users. TDD, CI/CD, Optimistic UI. Leading a team of 20+ developers."
       },
       "booking": {
         "category": "02 / HOSPITALITY",
