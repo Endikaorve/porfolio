@@ -9,6 +9,164 @@ import {
 } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+// React Icons - Simple Icons para tecnologías
+import {
+  SiReact,
+  SiNextdotjs,
+  SiAngular,
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiPhp,
+  SiSymfony,
+  SiMysql,
+  SiJest,
+  SiVitest,
+  SiCypress,
+  SiGit,
+  SiVercel,
+  SiSentry,
+  SiDatadog,
+  SiIonic,
+} from "react-icons/si";
+import { VscAzureDevops } from "react-icons/vsc";
+
+// Icono de Cursor IDE (cursor.com) - logo oficial
+const CursorIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    fillRule="evenodd"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M22.106 5.68L12.5.135a.998.998 0 00-.998 0L1.893 5.68a.84.84 0 00-.419.726v11.186c0 .3.16.577.42.727l9.607 5.547a.999.999 0 00.998 0l9.608-5.547a.84.84 0 00.42-.727V6.407a.84.84 0 00-.42-.726zm-.603 1.176L12.228 22.92c-.063.108-.228.064-.228-.061V12.34a.59.59 0 00-.295-.51l-9.11-5.26c-.107-.062-.063-.228.062-.228h18.55c.264 0 .428.286.296.514z" />
+  </svg>
+);
+
+// Tech data con iconos de react-icons
+const techStack = [
+  // Lenguajes & fundamentos (core)
+  { Icon: SiJavascript, name: "JavaScript" },
+  { Icon: SiTypescript, name: "TypeScript" },
+  { Icon: SiHtml5, name: "HTML5" },
+  { Icon: SiCss3, name: "CSS3" },
+  { Icon: CursorIcon, name: "Cursor" },
+
+  // Frameworks & librerías actuales
+  { Icon: SiReact, name: "React" },
+  { Icon: SiNextdotjs, name: "Next.js" },
+  { Icon: SiTailwindcss, name: "Tailwind" },
+
+  // Testing - TDD es tu marca
+  { Icon: SiJest, name: "Jest" },
+  { Icon: SiVitest, name: "Vitest" },
+  { Icon: SiCypress, name: "Cypress" },
+
+  // DevOps & CI/CD
+  { Icon: SiGit, name: "Git" },
+  { Icon: VscAzureDevops, name: "Azure DevOps" },
+  { Icon: SiVercel, name: "Vercel" },
+
+  // Observabilidad
+  { Icon: SiSentry, name: "Sentry" },
+  { Icon: SiDatadog, name: "Datadog" },
+
+  // Experiencia previa
+  { Icon: SiAngular, name: "Angular" },
+  { Icon: SiNodedotjs, name: "Node.js" },
+  { Icon: SiPhp, name: "PHP" },
+  { Icon: SiSymfony, name: "Symfony" },
+  { Icon: SiMysql, name: "MySQL" },
+  { Icon: SiIonic, name: "Ionic" },
+];
+
+// Sección de Hard Skills con SCROLL HORIZONTAL REAL (pinned section)
+// Cuando el usuario hace scroll vertical, el contenido se mueve horizontalmente
+function TechSkillsSection() {
+  const t = useTranslations();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Transforma scroll vertical a movimiento horizontal
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative h-[300vh]" // Altura extra para scroll
+    >
+      {/* Container sticky que se fija en la pantalla */}
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+        {/* Fondo con gradiente */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#de5e91]/[0.03] to-transparent pointer-events-none" />
+
+        {/* Título fijo arriba a la izquierda */}
+        <div className="absolute top-8 md:top-12 left-8 md:left-16 z-20">
+          <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[6vw] font-black leading-none">
+            <span className="text-white">{t("tech.title.line1")}</span>
+            <br />
+            <span
+              className="text-transparent"
+              style={{ WebkitTextStroke: "2px #de5e91" }}
+            >
+              {t("tech.title.line2")}
+            </span>
+          </h2>
+        </div>
+
+        {/* Contenido horizontal que se mueve */}
+        <motion.div
+          className="flex gap-16 md:gap-24 items-center pl-[10vw] pr-[20vw]"
+          style={{ x }}
+        >
+          {techStack.map((tech, i) => (
+            <motion.div
+              key={`tech-${i}`}
+              className="flex-shrink-0 flex flex-col items-center gap-4 group"
+              whileHover={{ scale: 1.15, y: -8 }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            >
+              <div className="relative">
+                <tech.Icon className="w-16 h-16 md:w-24 md:h-24 text-white/20 group-hover:text-[#de5e91] transition-colors duration-300" />
+                {/* Glow en hover */}
+                <div className="absolute inset-0 bg-[#de5e91]/0 group-hover:bg-[#de5e91]/10 blur-xl transition-all duration-300 -z-10" />
+              </div>
+              <span className="text-xs md:text-sm font-mono text-white/30 group-hover:text-white/60 transition-colors duration-300 whitespace-nowrap">
+                {tech.name}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Fade edges */}
+        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#212121] to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#212121] to-transparent pointer-events-none z-10" />
+
+        {/* Líneas decorativas */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#de5e91]/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#de5e91]/20 to-transparent" />
+
+        {/* Indicador de scroll */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+          <motion.div
+            className="w-px h-8 bg-gradient-to-b from-[#de5e91]/50 to-transparent"
+            animate={{ scaleY: [1, 0.5, 1] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+          />
+          <span className="text-xs font-mono text-white/30">scroll</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // Componente minimalista de partículas decorativas
 function ExperienceParticles() {
   const particles = [
@@ -1130,6 +1288,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Tech Skills Section */}
+      <TechSkillsSection />
 
       {/* Projects Section */}
       <section className="relative py-32">

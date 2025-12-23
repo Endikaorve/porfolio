@@ -180,6 +180,12 @@
       }
     }
   },
+  "tech": {
+    "title": {
+      "line1": "MY",
+      "line2": "STACK"
+    }
+  },
   "community": {
     "title": {
       "line1": "COMMUNITY",
