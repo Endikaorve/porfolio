@@ -178,9 +178,27 @@
         "description": "De la idea a producción. Productos propios (RescueOnTime, Inallow) y consultoría 360º. Visión de negocio y tecnología."
       },
       "labs": {
-        "category": "04 / R&D · LABS · OPEN SOURCE",
+        "category": "04 / I+D · LABS · OPEN SOURCE",
         "title": "PERSONAL LABS & OPEN SOURCE",
-        "description": "Espacio de experimentación técnica. Demos de charlas, herramientas para desarrolladores y exploración de nuevos paradigmas (AI, RSC, Performance)."
+        "description": "Espacio de experimentación técnica. Proyectos personales, demos de charlas, herramientas para desarrolladores y exploración de nuevos paradigmas (AI, RSC, Performance).",
+        "subprojects": {
+          "p1": {
+            "name": "CURSOR AI RULES",
+            "desc": "Reglas de contexto para pair programming con LLMs."
+          },
+          "p2": {
+            "name": "PORTFOLIO V1",
+            "desc": "Next.js 15, Framer Motion y Tailwind v4."
+          },
+          "p3": {
+            "name": "REACT RENDER PATTERNS",
+            "desc": "Demo interactiva de patrones de renderizado."
+          },
+          "p4": {
+            "name": "UI EXPERIMENTS",
+            "desc": "Componentes headless y animaciones complejas."
+          }
+        }
       }
     }
   },

@@ -180,7 +180,25 @@
       "labs": {
         "category": "04 / R&D · LABS · OPEN SOURCE",
         "title": "PERSONAL LABS & OPEN SOURCE",
-        "description": "Space for technical experimentation. Talk demos, developer tools, and exploration of new paradigms (AI, RSC, Performance)."
+        "description": "Space for technical experimentation. Personal projects, talk demos, developer tools, and exploration of new paradigms (AI, RSC, Performance).",
+        "subprojects": {
+          "p1": {
+            "name": "CURSOR AI RULES",
+            "desc": "Context rules for LLM pair programming."
+          },
+          "p2": {
+            "name": "PORTFOLIO V1",
+            "desc": "Next.js 15, Framer Motion and Tailwind v4."
+          },
+          "p3": {
+            "name": "REACT RENDER PATTERNS",
+            "desc": "Interactive demo of rendering patterns."
+          },
+          "p4": {
+            "name": "UI EXPERIMENTS",
+            "desc": "Headless components and complex animations."
+          }
+        }
       }
     }
   },

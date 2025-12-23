@@ -34,6 +34,7 @@ import {
   SiIonic,
 } from "react-icons/si";
 import { VscAzureDevops } from "react-icons/vsc";
+import { Github, ExternalLink } from "lucide-react";
 
 // Icono de Cursor IDE (cursor.com) - logo oficial
 const CursorIcon = ({ className }: { className?: string }) => (
@@ -1470,11 +1471,8 @@ export default function Home() {
             </motion.div>
 
             {/* Proyecto 4 - Labs & R&D */}
-            <motion.a
-              href="https://github.com/Endikaorve"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="col-span-1 md:col-span-7 aspect-[4/3] relative group cursor-pointer overflow-hidden block"
+            <motion.div
+              className="col-span-1 md:col-span-7 relative group overflow-hidden bg-[#1a1a1a] border border-[#de5e91]/20 p-6 md:p-8 flex flex-col justify-between"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{
                 opacity: 1,
@@ -1482,11 +1480,127 @@ export default function Home() {
                 transition: { duration: 0.6, delay: 0.3 },
               }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
-              <div className="absolute inset-0 bg-[#1a1a1a]" />
+              {/* Header de la card principal */}
+              <div className="mb-8 z-10 relative">
+                <span className="text-[#de5e91]/70 text-xs md:text-sm font-mono mb-2 tracking-wider block">
+                  {t("projects.items.labs.category")}
+                </span>
+                <h3 className="text-2xl md:text-4xl font-black text-white mb-2">
+                  {t("projects.items.labs.title")}
+                </h3>
+                <p className="text-white/50 text-sm md:text-base leading-relaxed max-w-2xl">
+                  {t("projects.items.labs.description")}
+                </p>
+              </div>
+
+              {/* Grid de Subproyectos */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 z-10 relative">
+                {/* Subproyecto 1: Cursor Rules */}
+                <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-white font-bold font-mono text-sm pr-4">
+                      {t("projects.items.labs.subprojects.p1.name")}
+                    </h4>
+                    <div className="flex gap-2 shrink-0">
+                      <a
+                        href="https://github.com/Endikaorve"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                        aria-label="GitHub Code"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-white/50 text-xs leading-relaxed mt-auto">
+                    {t("projects.items.labs.subprojects.p1.desc")}
+                  </p>
+                </div>
+
+                {/* Subproyecto 2: Portfolio */}
+                <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-white font-bold font-mono text-sm pr-4">
+                      {t("projects.items.labs.subprojects.p2.name")}
+                    </h4>
+                    <div className="flex gap-2 shrink-0">
+                      <a
+                        href="https://github.com/Endikaorve/endikaorve-portfolio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                        aria-label="GitHub Code"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                      <a
+                        href="https://endikaorve.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                        aria-label="Live Demo"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-white/50 text-xs leading-relaxed mt-auto">
+                    {t("projects.items.labs.subprojects.p2.desc")}
+                  </p>
+                </div>
+
+                {/* Subproyecto 3: Render Patterns */}
+                <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-white font-bold font-mono text-sm pr-4">
+                      {t("projects.items.labs.subprojects.p3.name")}
+                    </h4>
+                    <div className="flex gap-2 shrink-0">
+                      <a
+                        href="https://github.com/Endikaorve"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                        aria-label="GitHub Code"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-white/50 text-xs leading-relaxed mt-auto">
+                    {t("projects.items.labs.subprojects.p3.desc")}
+                  </p>
+                </div>
+
+                {/* Subproyecto 4: UI Experiments */}
+                <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-white font-bold font-mono text-sm pr-4">
+                      {t("projects.items.labs.subprojects.p4.name")}
+                    </h4>
+                    <div className="flex gap-2 shrink-0">
+                      <a
+                        href="https://github.com/Endikaorve"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                        aria-label="GitHub Code"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-white/50 text-xs leading-relaxed mt-auto">
+                    {t("projects.items.labs.subprojects.p4.desc")}
+                  </p>
+                </div>
+              </div>
+
+              {/* Background decorativo */}
               <div
-                className="absolute inset-0 opacity-40"
+                className="absolute inset-0 opacity-20 pointer-events-none"
                 style={{
                   backgroundImage: `
                     repeating-linear-gradient(
@@ -1499,38 +1613,10 @@ export default function Home() {
                   `,
                 }}
               />
-              <div className="absolute inset-0 border border-[#de5e91]/20 group-hover:border-[#de5e91]/40 transition-colors duration-300" />
               <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-[#de5e91]/50 via-[#de5e91]/20 to-transparent" />
-              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                <span className="text-[#de5e91]/70 text-xs md:text-sm font-mono mb-2 tracking-wider">
-                  {t("projects.items.labs.category")}
-                </span>
-                <h3 className="text-2xl md:text-4xl font-black text-white mb-2">
-                  {t("projects.items.labs.title")}
-                </h3>
-                <p className="text-white/50 text-sm md:text-base leading-relaxed">
-                  {t("projects.items.labs.description")}
-                </p>
-                {/* Icono de enlace externo sutil */}
-                <div className="absolute top-8 right-8 text-[#de5e91]/40 group-hover:text-[#de5e91] transition-colors">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="w-6 h-6"
-                  >
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" y1="14" x2="21" y2="3" />
-                  </svg>
-                </div>
-              </div>
-              <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
-              <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
-            </motion.a>
+              <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-[#de5e91]/30" />
+              <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-[#de5e91]/30" />
+            </motion.div>
           </div>
         </div>
       </section>
