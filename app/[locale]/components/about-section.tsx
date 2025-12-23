@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 
 export function AboutSection() {
   const t = useTranslations();
@@ -10,7 +11,7 @@ export function AboutSection() {
   return (
     <section className="relative min-h-screen py-32">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-12 gap-4 md:gap-8">
+        <div className="grid grid-cols-12 gap-4 md:gap-8 lg:gap-12">
           {/* Foto - Mobile first, luego reposicionada en desktop */}
           <motion.div
             className="col-span-12 md:col-span-5 md:row-span-2 relative order-first md:order-none"
@@ -101,6 +102,16 @@ export function AboutSection() {
               <p className="text-white/60 text-base md:text-lg leading-relaxed">
                 {t("about.description2")}
               </p>
+
+              {/* CTA al Blog */}
+              <Link
+                href="/blog"
+                className="group inline-flex items-center gap-2 text-[#de5e91] hover:text-white transition-colors duration-200 font-bold text-lg"
+              >
+                {t("blog.ctaFromAbout")}
+              </Link>
+
+              {/* Stats */}
               <div className="flex gap-4 pt-4">
                 <div className="border-l-4 border-[#de5e91] pl-4">
                   <span className="text-2xl md:text-3xl font-black text-white">
@@ -126,4 +137,3 @@ export function AboutSection() {
     </section>
   );
 }
-

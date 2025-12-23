@@ -1,0 +1,117 @@
+---
+title: "Context Engineering para Equipos: Multiplicando la Productividad con IA"
+description: "Cómo diseñé e implementé una estrategia de Context Engineering para un equipo de +20 desarrolladores, logrando mejoras significativas en velocidad y calidad del código."
+date: "2025-01-15"
+author: "Endika Orube"
+tags: ["Context Engineering", "AI", "Leadership", "Productivity", "Teams"]
+readTime: "12 min"
+featured: true
+---
+
+El término **Context Engineering** está revolucionando la forma en que los equipos de desarrollo trabajan con herramientas de IA generativa. Pero, ¿qué significa realmente implementarlo a escala en un equipo de más de 20 desarrolladores trabajando en infraestructura bancaria crítica?
+
+## De "Vibe Coding" a Ingeniería de Contexto
+
+Cuando la IA generativa empezó a integrarse en nuestros workflows de desarrollo, observé un patrón preocupante: los desarrolladores usaban las herramientas de forma **intuitiva pero inconsistente**. Cada uno tenía su propio "estilo" de prompting, sus propios trucos, y resultados muy variables.
+
+> El problema no era la IA. Era que estábamos haciendo "vibe coding" en lugar de ingeniería.
+
+La diferencia es fundamental:
+
+- **Vibe Coding**: Prompts ad-hoc, esperando que la IA "entienda" lo que queremos
+- **Context Engineering**: Diseño sistemático del contexto que la IA necesita para producir resultados consistentes y de calidad
+
+## Los Tres Pilares de Nuestra Estrategia
+
+### 1. Rules: El ADN del Proyecto
+
+Las **Rules** son archivos de configuración que definen el contexto persistente para la IA. En nuestro caso, creamos una jerarquía de reglas:
+
+```typescript
+// .cursor/rules/architecture.mdc
+// Reglas de arquitectura hexagonal
+- Los casos de uso van en /application
+- Los puertos se definen como interfaces en /domain
+- Los adaptadores implementan los puertos en /infrastructure
+- NUNCA importar desde infrastructure en domain
+
+// .cursor/rules/testing.mdc
+// Estrategia de testing
+- TDD: siempre test primero
+- Naming: should_[expected]_when_[condition]
+- Un assert por test
+- Mocks solo en boundaries
+```
+
+El impacto fue inmediato: la IA dejó de sugerir código que violaba nuestra arquitectura. Los juniors empezaron a recibir guía contextualizada sobre dónde colocar cada pieza de código.
+
+### 2. Comandos Personalizados
+
+Definimos comandos específicos para tareas repetitivas:
+
+```bash
+# /generate-component
+Genera un componente React siguiendo:
+- Atomic Design (definir nivel)
+- Props tipadas con TypeScript
+- Tests con Testing Library
+- Storybook story incluido
+```
+
+Esto **estandarizó la calidad** del código generado. Ya no dependía de la habilidad de prompting de cada desarrollador.
+
+### 3. MCPs (Model Context Protocols)
+
+La integración con **Azure DevOps** mediante MCPs fue un game-changer:
+
+- La IA puede consultar el contexto del trabajo actual
+- Accede a la documentación del proyecto
+- Conoce los estándares del equipo automáticamente
+
+## Métricas de Impacto
+
+Tras 6 meses de implementación progresiva:
+
+| Métrica | Antes | Después | Mejora |
+|---------|-------|---------|--------|
+| Tiempo medio de PR review | 4.2h | 1.8h | -57% |
+| Bugs en producción | 12/sprint | 4/sprint | -67% |
+| Onboarding de juniors | 3 semanas | 1.5 semanas | -50% |
+| Satisfacción del equipo | 6.8/10 | 8.9/10 | +31% |
+
+## Lecciones Aprendidas
+
+### Lo que funcionó
+
+1. **Empezar pequeño**: Pilotamos con 3 desarrolladores antes de escalar
+2. **Iterar rápido**: Las rules evolucionaron semanalmente al principio
+3. **Documentar decisiones**: Cada regla tiene un "por qué" asociado
+4. **Formar al equipo**: No basta con tener las herramientas, hay que saber usarlas
+
+### Lo que NO funcionó
+
+1. **Rules demasiado largas**: La IA las ignora parcialmente
+2. **Automatizar todo**: Algunos workflows necesitan criterio humano
+3. **Ignorar el feedback**: Las mejores rules vinieron del equipo
+
+## El Futuro del Context Engineering
+
+Estamos en los primeros días de esta disciplina. Lo que hoy parece vanguardia, mañana será table stakes.
+
+Mi predicción: **los equipos que dominen Context Engineering tendrán una ventaja competitiva brutal** en velocidad de entrega, calidad de código y atracción de talento.
+
+---
+
+## Recursos para Empezar
+
+Si quieres implementar Context Engineering en tu equipo:
+
+1. Empieza con 3-5 rules básicas de arquitectura
+2. Documenta tus convenciones de código existentes
+3. Identifica las tareas repetitivas que podrían ser comandos
+4. Mide antes y después
+
+La IA no va a reemplazar a los desarrolladores. Pero los desarrolladores que sepan trabajar con IA van a reemplazar a los que no.
+
+**¿Tienes preguntas sobre cómo implementar esto en tu equipo?** Escríbeme en [LinkedIn](https://linkedin.com/in/endikaorube).
+

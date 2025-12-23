@@ -1,0 +1,117 @@
+---
+title: "Context Engineering for Teams: Multiplying Productivity with AI"
+description: "How I designed and implemented a Context Engineering strategy for a team of 20+ developers, achieving significant improvements in speed and code quality."
+date: "2025-01-15"
+author: "Endika Orube"
+tags: ["Context Engineering", "AI", "Leadership", "Productivity", "Teams"]
+readTime: "12 min"
+featured: true
+---
+
+The term **Context Engineering** is revolutionizing how development teams work with generative AI tools. But what does it really mean to implement it at scale in a team of more than 20 developers working on critical banking infrastructure?
+
+## From "Vibe Coding" to Context Engineering
+
+When generative AI started integrating into our development workflows, I observed a concerning pattern: developers were using the tools **intuitively but inconsistently**. Everyone had their own "style" of prompting, their own tricks, and highly variable results.
+
+> The problem wasn't the AI. It was that we were doing "vibe coding" instead of engineering.
+
+The difference is fundamental:
+
+- **Vibe Coding**: Ad-hoc prompts, hoping the AI "understands" what we want
+- **Context Engineering**: Systematic design of the context the AI needs to produce consistent, quality results
+
+## The Three Pillars of Our Strategy
+
+### 1. Rules: The Project's DNA
+
+**Rules** are configuration files that define persistent context for the AI. In our case, we created a hierarchy of rules:
+
+```typescript
+// .cursor/rules/architecture.mdc
+// Hexagonal architecture rules
+- Use cases go in /application
+- Ports are defined as interfaces in /domain
+- Adapters implement ports in /infrastructure
+- NEVER import from infrastructure in domain
+
+// .cursor/rules/testing.mdc
+// Testing strategy
+- TDD: always test first
+- Naming: should_[expected]_when_[condition]
+- One assert per test
+- Mocks only at boundaries
+```
+
+The impact was immediate: the AI stopped suggesting code that violated our architecture. Juniors started receiving contextualized guidance on where to place each piece of code.
+
+### 2. Custom Commands
+
+We defined specific commands for repetitive tasks:
+
+```bash
+# /generate-component
+Generate a React component following:
+- Atomic Design (specify level)
+- Props typed with TypeScript
+- Tests with Testing Library
+- Storybook story included
+```
+
+This **standardized the quality** of generated code. It no longer depended on each developer's prompting skills.
+
+### 3. MCPs (Model Context Protocols)
+
+Integration with **Azure DevOps** through MCPs was a game-changer:
+
+- The AI can query the current work context
+- Accesses project documentation
+- Knows team standards automatically
+
+## Impact Metrics
+
+After 6 months of progressive implementation:
+
+| Metric | Before | After | Improvement |
+|--------|--------|-------|-------------|
+| Average PR review time | 4.2h | 1.8h | -57% |
+| Production bugs | 12/sprint | 4/sprint | -67% |
+| Junior onboarding | 3 weeks | 1.5 weeks | -50% |
+| Team satisfaction | 6.8/10 | 8.9/10 | +31% |
+
+## Lessons Learned
+
+### What worked
+
+1. **Start small**: We piloted with 3 developers before scaling
+2. **Iterate fast**: Rules evolved weekly at first
+3. **Document decisions**: Each rule has an associated "why"
+4. **Train the team**: Having the tools isn't enough, you need to know how to use them
+
+### What did NOT work
+
+1. **Rules that are too long**: The AI partially ignores them
+2. **Automating everything**: Some workflows need human judgment
+3. **Ignoring feedback**: The best rules came from the team
+
+## The Future of Context Engineering
+
+We're in the early days of this discipline. What seems cutting-edge today will be table stakes tomorrow.
+
+My prediction: **teams that master Context Engineering will have a brutal competitive advantage** in delivery speed, code quality, and talent attraction.
+
+---
+
+## Resources to Get Started
+
+If you want to implement Context Engineering in your team:
+
+1. Start with 3-5 basic architecture rules
+2. Document your existing code conventions
+3. Identify repetitive tasks that could become commands
+4. Measure before and after
+
+AI won't replace developers. But developers who know how to work with AI will replace those who don't.
+
+**Have questions about implementing this in your team?** Reach out on [LinkedIn](https://linkedin.com/in/endikaorube).
+

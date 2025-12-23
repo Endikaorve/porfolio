@@ -255,5 +255,23 @@
   "cv": {
     "download": "DESCARGAR CV",
     "downloadShort": "CV"
+  },
+  "blog": {
+    "title": {
+      "line1": "MI",
+      "line2": "BLOG"
+    },
+    "subtitle": "Reflexiones sobre liderazgo técnico, arquitectura de software, Context Engineering y el arte de construir equipos de alto rendimiento.",
+    "metaTitle": "Blog",
+    "metaDescription": "Artículos sobre liderazgo técnico, arquitectura de software, TDD, Context Engineering y desarrollo profesional.",
+    "readMore": "LEER ARTÍCULO",
+    "readTime": "MIN LECTURA",
+    "backToBlog": "VOLVER AL BLOG",
+    "backToHome": "VOLVER AL INICIO",
+    "publishedOn": "PUBLICADO",
+    "allPosts": "TODOS LOS ARTÍCULOS",
+    "noPosts": "Próximamente nuevos artículos...",
+    "headerLink": "BLOG",
+    "ctaFromAbout": "Conoce más en mi blog →"
   }
 }

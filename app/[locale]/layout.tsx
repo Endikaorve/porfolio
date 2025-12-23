@@ -8,8 +8,8 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Locale } from "@/i18n/config";
 import "../globals.css";
-import { LanguageSwitcher } from "@/components/language-switcher";
-import { CVDownloadButton } from "@/components/cv-download-button";
+import { Header } from "@/components/header";
+import { GlobalCursor } from "@/components/global-cursor";
 import { JsonLdSchema } from "@/components/json-ld";
 
 const spaceGrotesk = Space_Grotesk({
@@ -142,11 +142,11 @@ export default async function LocaleLayout({ children, params }: Props) {
         <JsonLdSchema locale={locale} />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#212121]`}
       >
         <NextIntlClientProvider messages={messages}>
-          <CVDownloadButton />
-          <LanguageSwitcher />
+          <GlobalCursor />
+          <Header />
           {children}
         </NextIntlClientProvider>
         <Analytics />

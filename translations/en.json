@@ -255,5 +255,23 @@
   "cv": {
     "download": "DOWNLOAD CV",
     "downloadShort": "CV"
+  },
+  "blog": {
+    "title": {
+      "line1": "MY",
+      "line2": "BLOG"
+    },
+    "subtitle": "Thoughts on technical leadership, software architecture, Context Engineering, and the art of building high-performance teams.",
+    "metaTitle": "Blog",
+    "metaDescription": "Articles on technical leadership, software architecture, TDD, Context Engineering and professional development.",
+    "readMore": "READ ARTICLE",
+    "readTime": "MIN READ",
+    "backToBlog": "BACK TO BLOG",
+    "backToHome": "BACK TO HOME",
+    "publishedOn": "PUBLISHED",
+    "allPosts": "ALL POSTS",
+    "noPosts": "New articles coming soon...",
+    "headerLink": "BLOG",
+    "ctaFromAbout": "Learn more on my blog →"
   }
 }

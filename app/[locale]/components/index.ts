@@ -12,6 +12,12 @@ export { TechSkillsSection } from "./tech-skills-section";
 export { ProjectsSection } from "./projects-section";
 export { ContactSection } from "./contact-section";
 
+// Componentes del Blog (importar directamente, no desde este index)
+// export { BlogCard } from "./blog-card";
+// export { BlogPostLayout } from "./blog-post-layout";
+// export { CodeBlock } from "./code-block";
+// export { mdxComponents } from "./mdx-components";
+
 // Iconos personalizados
 export { CursorIcon, PlaywrightIcon } from "./icons";
 

@@ -10,6 +10,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Permitir importar archivos .mdx
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 };
 
 export default withNextIntl(nextConfig);
