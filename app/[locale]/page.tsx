@@ -89,13 +89,32 @@ const techStack = [
 function TechSkillsSection() {
   const t = useTranslations();
   const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [scrollRange, setScrollRange] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
 
+  // Calcula el rango de scroll basado en el contenido real
+  useEffect(() => {
+    const calculateScrollRange = () => {
+      if (contentRef.current) {
+        const contentWidth = contentRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        // Cuánto necesitamos mover para ver todo el contenido
+        setScrollRange(contentWidth - viewportWidth + 100); // +100 para padding extra
+      }
+    };
+
+    calculateScrollRange();
+    window.addEventListener("resize", calculateScrollRange);
+    return () => window.removeEventListener("resize", calculateScrollRange);
+  }, []);
+
   // Transforma scroll vertical a movimiento horizontal
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
 
   return (
     <section
@@ -123,7 +142,8 @@ function TechSkillsSection() {
 
         {/* Contenido horizontal que se mueve */}
         <motion.div
-          className="flex gap-16 md:gap-24 items-center pl-[10vw] pr-[20vw]"
+          ref={contentRef}
+          className="flex gap-12 md:gap-24 items-center pl-[10vw] pr-[20vw]"
           style={{ x }}
         >
           {techStack.map((tech, i) => (
@@ -134,7 +154,7 @@ function TechSkillsSection() {
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
             >
               <div className="relative">
-                <tech.Icon className="w-16 h-16 md:w-24 md:h-24 text-white/20 group-hover:text-[#de5e91] transition-colors duration-300" />
+                <tech.Icon className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 text-white/20 group-hover:text-[#de5e91] transition-colors duration-300" />
                 {/* Glow en hover */}
                 <div className="absolute inset-0 bg-[#de5e91]/0 group-hover:bg-[#de5e91]/10 blur-xl transition-all duration-300 -z-10" />
               </div>
