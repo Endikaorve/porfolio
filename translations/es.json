@@ -33,14 +33,14 @@
         "description": "Colaboro con POs y Negocio para definir soluciones que maximicen el valor al usuario. Del problema a la implementación."
       },
       "xp": {
-        "number": "02",
+        "number": "03",
         "title": "EXTREME PROGRAMMING",
         "description": "TDD, Pair Programming, CI/CD, Integración Continua. Metodologías XP aplicadas a escala en equipos grandes."
       },
       "architecture": {
-        "number": "03",
-        "title": "ARQUITECTURA DE SOFTWARE",
-        "description": "Arquitectura Hexagonal, Micro-frontends, Design Systems. Decisiones técnicas para sistemas que escalan."
+        "number": "02",
+        "title": "CALIDAD DE SOFTWARE",
+        "description": "Testing avanzado, código limpio, refactoring. Arquitectura Hexagonal y decisiones técnicas para sistemas que escalan sin deuda."
       },
       "leadership": {
         "number": "04",

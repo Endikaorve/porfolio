@@ -643,14 +643,14 @@ export default function Home() {
       description: t("expertise.items.product.description"),
     },
     {
-      number: t("expertise.items.xp.number"),
-      title: t("expertise.items.xp.title"),
-      description: t("expertise.items.xp.description"),
-    },
-    {
       number: t("expertise.items.architecture.number"),
       title: t("expertise.items.architecture.title"),
       description: t("expertise.items.architecture.description"),
+    },
+    {
+      number: t("expertise.items.xp.number"),
+      title: t("expertise.items.xp.title"),
+      description: t("expertise.items.xp.description"),
     },
     {
       number: t("expertise.items.leadership.number"),

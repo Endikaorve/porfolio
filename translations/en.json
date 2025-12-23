@@ -33,14 +33,14 @@
         "description": "I collaborate with POs and Business to define solutions that maximize user value. From problem to implementation."
       },
       "xp": {
-        "number": "02",
+        "number": "03",
         "title": "EXTREME PROGRAMMING",
         "description": "TDD, Pair Programming, CI/CD, Continuous Integration. XP methodologies applied at scale in large teams."
       },
       "architecture": {
-        "number": "03",
-        "title": "SOFTWARE ARCHITECTURE",
-        "description": "Hexagonal Architecture, Micro-frontends, Design Systems. Technical decisions for systems that scale."
+        "number": "02",
+        "title": "SOFTWARE QUALITY",
+        "description": "Advanced testing, clean code, refactoring. Hexagonal Architecture and technical decisions for systems that scale without debt."
       },
       "leadership": {
         "number": "04",
