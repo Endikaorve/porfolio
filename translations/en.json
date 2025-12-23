@@ -32,12 +32,12 @@
         "description": "I collaborate with POs and Business to define solutions that maximize user value. From problem to implementation."
       },
       "architecture": {
-        "title": "SOFTWARE QUALITY",
-        "description": "Advanced testing, clean code, refactoring. Hexagonal Architecture and technical decisions for systems that scale without debt."
+        "title": "TECHNICAL EXCELLENCE",
+        "description": "XP methodologies at scale: TDD, Pair Programming, CI/CD. Hexagonal Architecture, clean code and systems that scale without technical debt."
       },
       "xp": {
-        "title": "EXTREME PROGRAMMING",
-        "description": "TDD, Pair Programming, CI/CD, Continuous Integration. XP methodologies applied at scale in large teams."
+        "title": "PRAGMATISM",
+        "description": "Pragmatic, not dogmatic. I adapt best practices to real context: deadlines, team maturity, business constraints. Balance between quality and needs."
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
