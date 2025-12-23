@@ -1284,9 +1284,28 @@ export default function Home() {
                 <p className="text-white/70 mb-4">
                   {t("community.teaching.subtitle")}
                 </p>
-                <p className="text-white/60 leading-relaxed">
+                <p className="text-white/60 leading-relaxed mb-6">
                   {t("community.teaching.description")}
                 </p>
+
+                {/* Temas del curso */}
+                <div className="space-y-3 mt-6">
+                  <div className="border-l-2 border-[#de5e91]/40 pl-4 py-1">
+                    <p className="text-white/70 text-sm leading-relaxed">
+                      {t("community.teaching.topics.engineering")}
+                    </p>
+                  </div>
+                  <div className="border-l-2 border-[#de5e91]/40 pl-4 py-1">
+                    <p className="text-white/70 text-sm leading-relaxed">
+                      {t("community.teaching.topics.architecture")}
+                    </p>
+                  </div>
+                  <div className="border-l-2 border-[#de5e91]/40 pl-4 py-1">
+                    <p className="text-white/70 text-sm leading-relaxed">
+                      {t("community.teaching.topics.culture")}
+                    </p>
+                  </div>
+                </div>
               </div>
             </motion.div>
 

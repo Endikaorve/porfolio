@@ -217,7 +217,12 @@
       "period": "2023 — PRESENT",
       "title": "XP & SOFTWARE ENGINEERING COURSE",
       "subtitle": "Lead instructor at Biko2/Jakala",
-      "description": "Training that goes beyond code: TDD, Hexagonal Architecture, XP, Pair Programming, CI/CD. Focus on sustainable and professional development."
+      "description": "Training that goes beyond code: learning to develop valuable software in a professional, sustainable, and agile manner.",
+      "topics": {
+        "engineering": "Engineering & Quality: TDD, Testing Strategies, Refactoring, Simple Design and Clean Code.",
+        "architecture": "Architecture & Methodologies: Extreme Programming, Hexagonal Architecture, Agile, CI/CD and Pair Programming.",
+        "culture": "Culture & Profession: Shared Knowledge, Ethics in Development, UX for developers and Career Development."
+      }
     },
     "talks": {
       "vibe": {
