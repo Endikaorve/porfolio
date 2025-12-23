@@ -1531,15 +1531,6 @@ export default function Home() {
                       >
                         <Github className="w-4 h-4" />
                       </a>
-                      <a
-                        href="https://endikaorube.dev"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
-                        aria-label="Live Demo"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
                     </div>
                   </div>
                   <p className="text-white/50 text-xs leading-relaxed mt-auto">
