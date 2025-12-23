@@ -67,8 +67,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <LanguageSwitcher />
           <CVDownloadButton />
+          <LanguageSwitcher />
           {children}
         </NextIntlClientProvider>
         <Analytics />
