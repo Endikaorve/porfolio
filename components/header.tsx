@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname, Link } from "@/i18n/navigation";
 import { Locale, locales } from "@/i18n/config";
@@ -29,22 +28,8 @@ export function Header() {
         damping: 25,
       }}
     >
-      <nav className="flex items-center justify-between">
-        {/* CV Download - Izquierda */}
-        <motion.a
-          href="/Endika Orube Vega - CV.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-2 font-mono text-sm font-bold tracking-wider text-[#de5e91] hover:text-white transition-colors duration-200 border border-[#de5e91]/30 hover:border-[#de5e91]/60 backdrop-blur-sm"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          aria-label="Descargar CV"
-        >
-          <Download className="w-3.5 h-3.5" />
-          <span>{t("cv.downloadShort")}</span>
-        </motion.a>
-
-        {/* Navegación - Derecha */}
+      <nav className="flex items-center justify-end">
+        {/* Navegación */}
         <div className="flex items-center gap-1 md:gap-2">
           {/* Blog Link */}
           {(() => {

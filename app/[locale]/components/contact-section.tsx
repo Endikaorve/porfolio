@@ -100,6 +100,15 @@ export function ContactSection() {
               >
                 {t("contact.github")}
               </motion.a>
+              <motion.a
+                href="/Endika Orube Vega - CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-lg font-mono hover:text-[#de5e91] transition-colors"
+                whileHover={{ y: -5 }}
+              >
+                {t("cv.downloadShort")}
+              </motion.a>
             </div>
           </div>
         </motion.div>
@@ -115,4 +124,3 @@ export function ContactSection() {
     </section>
   );
 }
-

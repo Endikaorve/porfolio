@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { Download } from "lucide-react";
 
 export function AboutSection() {
   const t = useTranslations();
@@ -103,13 +104,29 @@ export function AboutSection() {
                 {t("about.description2")}
               </p>
 
-              {/* CTA al Blog */}
-              <Link
-                href="/blog"
-                className="group inline-flex items-center gap-2 text-[#de5e91] hover:text-white transition-colors duration-200 font-bold text-lg"
-              >
-                {t("blog.ctaFromAbout")}
-              </Link>
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2">
+                {/* CTA al Blog */}
+                <Link
+                  href="/blog"
+                  className="group inline-flex items-center gap-2 text-[#de5e91] hover:text-white transition-colors duration-200 font-bold text-lg"
+                >
+                  {t("blog.ctaFromAbout")}
+                </Link>
+
+                {/* CTA CV */}
+                <motion.a
+                  href="/Endika Orube Vega - CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 text-white/60 hover:text-[#de5e91] transition-colors duration-200 font-bold text-lg"
+                  whileHover={{ x: 3 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                >
+                  <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
+                  {t("cv.download")}
+                </motion.a>
+              </div>
 
               {/* Stats */}
               <div className="flex gap-4 pt-4">
