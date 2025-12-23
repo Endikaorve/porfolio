@@ -1469,9 +1469,12 @@ export default function Home() {
               <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-white/20 group-hover:border-white/40 transition-colors duration-300" />
             </motion.div>
 
-            {/* Proyecto 4 - Micro-frontends & Design Systems */}
-            <motion.div
-              className="col-span-1 md:col-span-7 aspect-[4/3] relative group cursor-pointer overflow-hidden"
+            {/* Proyecto 4 - Labs & R&D */}
+            <motion.a
+              href="https://github.com/Endikaorve"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="col-span-1 md:col-span-7 aspect-[4/3] relative group cursor-pointer overflow-hidden block"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{
                 opacity: 1,
@@ -1500,18 +1503,34 @@ export default function Home() {
               <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-[#de5e91]/50 via-[#de5e91]/20 to-transparent" />
               <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
                 <span className="text-[#de5e91]/70 text-xs md:text-sm font-mono mb-2 tracking-wider">
-                  {t("projects.items.designSystems.category")}
+                  {t("projects.items.labs.category")}
                 </span>
                 <h3 className="text-2xl md:text-4xl font-black text-white mb-2">
-                  {t("projects.items.designSystems.title")}
+                  {t("projects.items.labs.title")}
                 </h3>
                 <p className="text-white/50 text-sm md:text-base leading-relaxed">
-                  {t("projects.items.designSystems.description")}
+                  {t("projects.items.labs.description")}
                 </p>
+                {/* Icono de enlace externo sutil */}
+                <div className="absolute top-8 right-8 text-[#de5e91]/40 group-hover:text-[#de5e91] transition-colors">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="w-6 h-6"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </div>
               </div>
               <div className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-r-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
               <div className="absolute bottom-4 left-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-l-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
-            </motion.div>
+            </motion.a>
           </div>
         </div>
       </section>

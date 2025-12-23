@@ -163,24 +163,24 @@
     },
     "items": {
       "banking": {
-        "category": "01 / BANKING · FINTECH",
-        "title": "PLATAFORMA BANCA DIGITAL",
-        "description": "Migración Angular → React. Arquitectura escalable para +1M usuarios. TDD, CI/CD, Optimistic UI. Liderando equipo de +20 developers."
+        "category": "01 / BANKING",
+        "title": "BANCA ONLINE (+1M USERS)",
+        "description": "Migración Angular → React de infraestructura crítica. Arquitectura para escala masiva, seguridad y UX. Liderando a +20 devs."
       },
       "booking": {
-        "category": "02 / HOSPITALITY",
+        "category": "02 / E-COMMERCE · HIGH TRAFFIC",
         "title": "MOTOR DE RESERVAS",
-        "description": "Next.js + Hexagonal Architecture. XP estricto. Alto tráfico. Optimización SEO y Core Web Vitals."
+        "description": "Next.js + Hexagonal. Performance extrema y Core Web Vitals para conversión. XP estricto y calidad de código."
       },
       "saas": {
-        "category": "03 / SAAS · PRODUCTS",
-        "title": "SOLUCIONES ENTERPRISE",
-        "description": "Productos propios desde 0. Full-stack. Universidad de Navarra, Médicos del Mundo. Estrategia comercial."
+        "category": "03 / PRODUCT ENGINEERING",
+        "title": "STARTUP & SAAS",
+        "description": "De la idea a producción. Productos propios (RescueOnTime, Inallow) y consultoría 360º. Visión de negocio y tecnología."
       },
-      "designSystems": {
-        "category": "04 / ARCHITECTURE",
-        "title": "DESIGN SYSTEMS & MICRO-FRONTENDS",
-        "description": "Componentes reusables, documentados y testeados. Arquitectura escalable para múltiples equipos."
+      "labs": {
+        "category": "04 / R&D · LABS · OPEN SOURCE",
+        "title": "PERSONAL LABS & OPEN SOURCE",
+        "description": "Espacio de experimentación técnica. Demos de charlas, herramientas para desarrolladores y exploración de nuevos paradigmas (AI, RSC, Performance)."
       }
     }
   },
