@@ -155,8 +155,6 @@ function TechSkillsSection() {
             >
               <div className="relative">
                 <tech.Icon className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 text-white/20 group-hover:text-[#de5e91] transition-colors duration-300" />
-                {/* Glow en hover */}
-                <div className="absolute inset-0 bg-[#de5e91]/0 group-hover:bg-[#de5e91]/10 blur-xl transition-all duration-300 -z-10" />
               </div>
               <span className="text-xs md:text-sm font-mono text-white/30 group-hover:text-white/60 transition-colors duration-300 whitespace-nowrap">
                 {tech.name}
