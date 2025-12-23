@@ -41,6 +41,8 @@ The content is organized as follows:
 
 <directory_structure>
 .cursor/
+  commands/
+    post.md
   rules/
     cv.mdc
     design-philosophy.mdc
@@ -141,10 +143,7 @@ components/
   theme-provider.tsx
 content/
   blog/
-    context-engineering-teams/
-      en.mdx
-      es.mdx
-    tdd-at-scale/
+    bienvenida/
       en.mdx
       es.mdx
 hooks/
@@ -178,6 +177,195 @@ tsconfig.json
 
 <files>
 This section contains the contents of the repository's files.
+
+<file path=".cursor/commands/post.md">
+# Guía de Estilo: La Voz de Endika
+
+---
+
+> **Nota importante:** Estas son guías, no un corsé. Están basadas en un único post y en intuiciones sobre cómo quiero sonar. El estilo evolucionará con cada texto. Esto es un punto de partida, no un límite.
+
+---
+
+## 1. TONO GENERAL
+
+**Lo que soy:**
+
+- **Directo**: Voy al grano. No doy rodeos ni uso tres frases donde cabe una.
+- **Desenfadado**: Cercano, como si hablara con un colega. Pero sin forzar.
+- **Confiado sin ser arrogante**: Sé de lo que hablo, pero no necesito demostrarlo en cada frase.
+- **Personal sin ser confesional**: Comparto reflexiones, no mi diario.
+
+**Lo que NO soy:**
+
+- Corporativo
+- Vendedor
+- Pretencioso
+- "Influencer"
+
+---
+
+## 2. ESTRUCTURA Y RITMO
+
+**Frases:**
+
+- Cortas. Directas. Con punch.
+- Alternar longitud para crear ritmo.
+- Permitirse frases de una palabra: _"Sí, horas."_
+
+**Párrafos:**
+
+- Breves. Respiran.
+- Cada uno aporta algo. Si no, fuera.
+
+**Transiciones:**
+
+- Naturales, conversacionales: _"Así que aquí estamos."_
+- Evitar conectores formales: _"Por consiguiente..."_, _"En consecuencia..."_
+
+**Cierres (opcional):**
+
+- Separador `---` antes del cierre
+- Agradecimiento simple, sin ser meloso: _"Gracias por pasarte."_
+- Dejar la puerta abierta: _"Esto acaba de empezar."_
+
+---
+
+## 3. VOCABULARIO Y EXPRESIONES
+
+**Usar expresiones de este estilo o similares:**
+
+- "Brutal" (para algo muy bueno/impresionante)
+- "Darle vueltas" (pensar sobre algo)
+- "Lo que toque" (lo que sea relevante)
+- "Entre medias" (en medio de todo)
+- "De manual" (típico, de libro)
+- "Fuerza" (impacto visual)
+- "Merece la pena"
+
+**Evitar:**
+
+- Jerga de marketing: _"estrategia de contenidos"_, _"propuesta de valor"_
+- Muletillas vacías: _"sin duda"_, _"claramente"_, _"obviamente"_
+- Superlativos gratuitos: _"increíble"_, _"alucinante"_, _"brutal"_ (si no lo es)
+- Anglicismos innecesarios cuando hay alternativa natural
+
+**Sobre el humor:**
+
+- Sutil, no forzado
+- Autodeprecación ligera está bien: _"Espero que esto no sea el primero y el último"_
+- Si hay que explicar el chiste, no es un chiste
+
+---
+
+## 4. AUTENTICIDAD
+
+**Sí:**
+
+- Mencionar errores y aprendizajes propios
+- Ser honesto sobre motivaciones (incluidas las menos nobles)
+- Admitir limitaciones: _"No voy a prometerte un post cada semana"_
+- Mostrar el proceso, no solo el resultado
+
+**No:**
+
+- Vender humo
+- Fingir que todo es fácil
+- Aparentar saber más de lo que sé
+- Ser falso-humilde (_"este humilde servidor..."_)
+
+---
+
+## 5. TÍTULOS Y SUBTÍTULOS
+
+**Títulos:**
+
+- Directos, que conecten con el contenido
+- Pueden ser frases incompletas
+- Personales > genéricos
+- ✅ _"Tenía cosas que contar"_
+- ❌ _"Bienvenida a mi blog"_
+
+**Subtítulos:**
+
+- Complementan al título, no lo repiten
+- Pueden funcionar como continuación: _"Así que me creé un sitio..."_
+- Sin keywords forzadas
+
+**Encabezados (H2, H3):**
+
+- Claros, descriptivos
+- Pueden ser preguntas: _"Por qué esta web"_
+- Evitar clickbait interno
+
+---
+
+## 6. LONGITUD
+
+**Regla de oro:** Si un párrafo no aporta, se va.
+
+---
+
+## 7. FORMATO
+
+**Negritas:** Para conceptos clave que quiero que destaquen
+**Cursivas:** Para términos que uso con distancia (ej: _personal branding_)
+**Listas:** Para enumerar, pero con contexto breve en cada punto
+**Código:** Solo cuando aporte valor real, no por decorar
+
+**Emojis:** No. Nunca en los posts.
+**Exclamaciones:** Muy pocas. Que el contenido transmita la energía.
+
+---
+
+## 8. TRADUCCIONES (ES → EN)
+
+**Principio:** Adaptar, no traducir literal. El feeling importa más que la palabra exacta.
+
+**Equivalencias de tono:**
+| Español | Inglés |
+|---------|--------|
+| "brutal" (positivo) | "insane", "wild" |
+| "dándole vueltas" | "going back and forth" |
+| "lo que toque" | "whatever comes up" |
+| "tiene fuerza" | "packs a punch" |
+| "de manual" | "textbook" |
+| "merece la pena" | "worth it" |
+
+**Ajustes necesarios:**
+
+- "brutal" en inglés es negativo → usar alternativas
+- Mantener ritmo y cadencia de frases cortas
+- "actually", "yeah" añaden naturalidad en inglés
+- Evitar traducciones que suenen a Google Translate
+
+---
+
+## 9. LO QUE SIEMPRE PREGUNTARME
+
+Antes de publicar:
+
+1. **¿Suena a mí?** — Si pudiera ser de cualquiera, reescribir.
+2. **¿Aporta algo?** — Si es relleno, fuera.
+3. **¿Soy honesto?** — Si estoy vendiendo humo, parar.
+4. **¿Lo diría en voz alta?** — Si suena raro hablado, reescribir.
+5. **¿Hay algo que sobre?** — Probablemente sí. Cortar.
+
+---
+
+## 10. EJEMPLOS DE REFERENCIA
+
+**Buenas frases (para recordar el tono):**
+
+- _"No un perfil de LinkedIn. No un CV en PDF. Algo más... mío."_
+- _"Los CVs tradicionales son fotos fijas. Esto aspira a ser algo más dinámico."_
+- _"Publicaré cuando tenga algo que merezca la pena contar."_
+- _"Es el tipo de desarrollo que me emociona: rápido, visual, con feedback inmediato."_
+
+**Subtítulo de referencia:**
+
+- _"Lo que aprendo, lo que pienso, lo que me pregunto. Sobre equipos, producto, código y todo lo que hay entre medias."_
+</file>
 
 <file path=".cursor/rules/design-philosophy.mdc">
 ---
@@ -9134,354 +9322,6 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 }
 </file>
 
-<file path="content/blog/context-engineering-teams/en.mdx">
----
-title: "Context Engineering for Teams: Multiplying Productivity with AI"
-description: "How I designed and implemented a Context Engineering strategy for a team of 20+ developers, achieving significant improvements in speed and code quality."
-date: "2025-01-15"
-author: "Endika Orube"
-tags: ["Context Engineering", "AI", "Leadership", "Productivity", "Teams"]
-readTime: "12 min"
-featured: true
----
-
-The term **Context Engineering** is revolutionizing how development teams work with generative AI tools. But what does it really mean to implement it at scale in a team of more than 20 developers working on critical banking infrastructure?
-
-## From "Vibe Coding" to Context Engineering
-
-When generative AI started integrating into our development workflows, I observed a concerning pattern: developers were using the tools **intuitively but inconsistently**. Everyone had their own "style" of prompting, their own tricks, and highly variable results.
-
-> The problem wasn't the AI. It was that we were doing "vibe coding" instead of engineering.
-
-The difference is fundamental:
-
-- **Vibe Coding**: Ad-hoc prompts, hoping the AI "understands" what we want
-- **Context Engineering**: Systematic design of the context the AI needs to produce consistent, quality results
-
-## The Three Pillars of Our Strategy
-
-### 1. Rules: The Project's DNA
-
-**Rules** are configuration files that define persistent context for the AI. In our case, we created a hierarchy of rules:
-
-```typescript
-// .cursor/rules/architecture.mdc
-// Hexagonal architecture rules
-- Use cases go in /application
-- Ports are defined as interfaces in /domain
-- Adapters implement ports in /infrastructure
-- NEVER import from infrastructure in domain
-
-// .cursor/rules/testing.mdc
-// Testing strategy
-- TDD: always test first
-- Naming: should_[expected]_when_[condition]
-- One assert per test
-- Mocks only at boundaries
-```
-
-The impact was immediate: the AI stopped suggesting code that violated our architecture. Juniors started receiving contextualized guidance on where to place each piece of code.
-
-### 2. Custom Commands
-
-We defined specific commands for repetitive tasks:
-
-```bash
-# /generate-component
-Generate a React component following:
-- Atomic Design (specify level)
-- Props typed with TypeScript
-- Tests with Testing Library
-- Storybook story included
-```
-
-This **standardized the quality** of generated code. It no longer depended on each developer's prompting skills.
-
-### 3. MCPs (Model Context Protocols)
-
-Integration with **Azure DevOps** through MCPs was a game-changer:
-
-- The AI can query the current work context
-- Accesses project documentation
-- Knows team standards automatically
-
-## Impact Metrics
-
-After 6 months of progressive implementation:
-
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Average PR review time | 4.2h | 1.8h | -57% |
-| Production bugs | 12/sprint | 4/sprint | -67% |
-| Junior onboarding | 3 weeks | 1.5 weeks | -50% |
-| Team satisfaction | 6.8/10 | 8.9/10 | +31% |
-
-## Lessons Learned
-
-### What worked
-
-1. **Start small**: We piloted with 3 developers before scaling
-2. **Iterate fast**: Rules evolved weekly at first
-3. **Document decisions**: Each rule has an associated "why"
-4. **Train the team**: Having the tools isn't enough, you need to know how to use them
-
-### What did NOT work
-
-1. **Rules that are too long**: The AI partially ignores them
-2. **Automating everything**: Some workflows need human judgment
-3. **Ignoring feedback**: The best rules came from the team
-
-## The Future of Context Engineering
-
-We're in the early days of this discipline. What seems cutting-edge today will be table stakes tomorrow.
-
-My prediction: **teams that master Context Engineering will have a brutal competitive advantage** in delivery speed, code quality, and talent attraction.
-
----
-
-## Resources to Get Started
-
-If you want to implement Context Engineering in your team:
-
-1. Start with 3-5 basic architecture rules
-2. Document your existing code conventions
-3. Identify repetitive tasks that could become commands
-4. Measure before and after
-
-AI won't replace developers. But developers who know how to work with AI will replace those who don't.
-
-**Have questions about implementing this in your team?** Reach out on [LinkedIn](https://linkedin.com/in/endikaorube).
-</file>
-
-<file path="content/blog/context-engineering-teams/es.mdx">
----
-title: "Context Engineering para Equipos: Multiplicando la Productividad con IA"
-description: "Cómo diseñé e implementé una estrategia de Context Engineering para un equipo de +20 desarrolladores, logrando mejoras significativas en velocidad y calidad del código."
-date: "2025-01-15"
-author: "Endika Orube"
-tags: ["Context Engineering", "AI", "Leadership", "Productivity", "Teams"]
-readTime: "12 min"
-featured: true
----
-
-El término **Context Engineering** está revolucionando la forma en que los equipos de desarrollo trabajan con herramientas de IA generativa. Pero, ¿qué significa realmente implementarlo a escala en un equipo de más de 20 desarrolladores trabajando en infraestructura bancaria crítica?
-
-## De "Vibe Coding" a Ingeniería de Contexto
-
-Cuando la IA generativa empezó a integrarse en nuestros workflows de desarrollo, observé un patrón preocupante: los desarrolladores usaban las herramientas de forma **intuitiva pero inconsistente**. Cada uno tenía su propio "estilo" de prompting, sus propios trucos, y resultados muy variables.
-
-> El problema no era la IA. Era que estábamos haciendo "vibe coding" en lugar de ingeniería.
-
-La diferencia es fundamental:
-
-- **Vibe Coding**: Prompts ad-hoc, esperando que la IA "entienda" lo que queremos
-- **Context Engineering**: Diseño sistemático del contexto que la IA necesita para producir resultados consistentes y de calidad
-
-## Los Tres Pilares de Nuestra Estrategia
-
-### 1. Rules: El ADN del Proyecto
-
-Las **Rules** son archivos de configuración que definen el contexto persistente para la IA. En nuestro caso, creamos una jerarquía de reglas:
-
-```typescript
-// .cursor/rules/architecture.mdc
-// Reglas de arquitectura hexagonal
-- Los casos de uso van en /application
-- Los puertos se definen como interfaces en /domain
-- Los adaptadores implementan los puertos en /infrastructure
-- NUNCA importar desde infrastructure en domain
-
-// .cursor/rules/testing.mdc
-// Estrategia de testing
-- TDD: siempre test primero
-- Naming: should_[expected]_when_[condition]
-- Un assert por test
-- Mocks solo en boundaries
-```
-
-El impacto fue inmediato: la IA dejó de sugerir código que violaba nuestra arquitectura. Los juniors empezaron a recibir guía contextualizada sobre dónde colocar cada pieza de código.
-
-### 2. Comandos Personalizados
-
-Definimos comandos específicos para tareas repetitivas:
-
-```bash
-# /generate-component
-Genera un componente React siguiendo:
-- Atomic Design (definir nivel)
-- Props tipadas con TypeScript
-- Tests con Testing Library
-- Storybook story incluido
-```
-
-Esto **estandarizó la calidad** del código generado. Ya no dependía de la habilidad de prompting de cada desarrollador.
-
-### 3. MCPs (Model Context Protocols)
-
-La integración con **Azure DevOps** mediante MCPs fue un game-changer:
-
-- La IA puede consultar el contexto del trabajo actual
-- Accede a la documentación del proyecto
-- Conoce los estándares del equipo automáticamente
-
-## Métricas de Impacto
-
-Tras 6 meses de implementación progresiva:
-
-| Métrica | Antes | Después | Mejora |
-|---------|-------|---------|--------|
-| Tiempo medio de PR review | 4.2h | 1.8h | -57% |
-| Bugs en producción | 12/sprint | 4/sprint | -67% |
-| Onboarding de juniors | 3 semanas | 1.5 semanas | -50% |
-| Satisfacción del equipo | 6.8/10 | 8.9/10 | +31% |
-
-## Lecciones Aprendidas
-
-### Lo que funcionó
-
-1. **Empezar pequeño**: Pilotamos con 3 desarrolladores antes de escalar
-2. **Iterar rápido**: Las rules evolucionaron semanalmente al principio
-3. **Documentar decisiones**: Cada regla tiene un "por qué" asociado
-4. **Formar al equipo**: No basta con tener las herramientas, hay que saber usarlas
-
-### Lo que NO funcionó
-
-1. **Rules demasiado largas**: La IA las ignora parcialmente
-2. **Automatizar todo**: Algunos workflows necesitan criterio humano
-3. **Ignorar el feedback**: Las mejores rules vinieron del equipo
-
-## El Futuro del Context Engineering
-
-Estamos en los primeros días de esta disciplina. Lo que hoy parece vanguardia, mañana será table stakes.
-
-Mi predicción: **los equipos que dominen Context Engineering tendrán una ventaja competitiva brutal** en velocidad de entrega, calidad de código y atracción de talento.
-
----
-
-## Recursos para Empezar
-
-Si quieres implementar Context Engineering en tu equipo:
-
-1. Empieza con 3-5 rules básicas de arquitectura
-2. Documenta tus convenciones de código existentes
-3. Identifica las tareas repetitivas que podrían ser comandos
-4. Mide antes y después
-
-La IA no va a reemplazar a los desarrolladores. Pero los desarrolladores que sepan trabajar con IA van a reemplazar a los que no.
-
-**¿Tienes preguntas sobre cómo implementar esto en tu equipo?** Escríbeme en [LinkedIn](https://linkedin.com/in/endikaorube).
-</file>
-
-<file path="content/blog/tdd-at-scale/en.mdx">
----
-title: "TDD at Scale: It's Not Just Testing"
-description: "Why Test-Driven Development is a design tool, not just a testing technique, and how to implement it in large teams."
-date: "2025-01-10"
-author: "Endika Orube"
-tags: ["TDD", "Testing", "XP", "Architecture"]
-readTime: "5 min"
-featured: false
----
-
-After years of applying TDD in projects of different sizes, there's one truth I constantly repeat:
-
-> TDD is not a testing technique. It's a **design** technique.
-
-## The Common Mistake
-
-Most teams that "try" TDD abandon it because they see it as "writing tests first." And sure, that feels like extra work.
-
-But the **Red-Green-Refactor** cycle has a deeper purpose:
-
-1. **Red**: Define the behavior you need
-2. **Green**: Implement the minimum to make it work
-3. **Refactor**: Improve the design without changing behavior
-
-The magic is in step 3. Constant refactoring, protected by tests, produces **simple and maintainable** code.
-
-## TDD in Teams of 20+ People
-
-In a large team, TDD is not optional. It's **survival**:
-
-- Tests are executable documentation
-- Anyone can modify code with confidence
-- Integrations stop being scary
-
-```typescript
-// A well-named test is documentation
-it('should_reject_transfer_when_insufficient_balance', () => {
-  const account = new Account({ balance: 100 });
-  
-  expect(() => account.transfer(150)).toThrow(InsufficientFunds);
-});
-```
-
-## Start Today
-
-You don't need to convince the whole team. Start yourself:
-
-1. Write a test before your next bug fix
-2. Observe how it changes the way you think
-3. Share the results
-
-TDD spreads when people see the benefits.
-</file>
-
-<file path="content/blog/tdd-at-scale/es.mdx">
----
-title: "TDD a Escala: No Es Solo Testing"
-description: "Por qué Test-Driven Development es una herramienta de diseño, no solo de testing, y cómo implementarlo en equipos grandes."
-date: "2025-01-10"
-author: "Endika Orube"
-tags: ["TDD", "Testing", "XP", "Architecture"]
-readTime: "5 min"
-featured: false
----
-
-Después de años aplicando TDD en proyectos de distintos tamaños, hay una verdad que repito constantemente:
-
-> TDD no es una técnica de testing. Es una técnica de **diseño**.
-
-## El Error Común
-
-La mayoría de equipos que "intentan" TDD lo abandonan porque lo ven como "escribir tests antes". Y claro, eso se siente como trabajo extra.
-
-Pero el ciclo **Red-Green-Refactor** tiene un propósito más profundo:
-
-1. **Red**: Define el comportamiento que necesitas
-2. **Green**: Implementa lo mínimo para que funcione
-3. **Refactor**: Mejora el diseño sin cambiar el comportamiento
-
-La magia está en el paso 3. El refactor constante, protegido por tests, produce código **simple y mantenible**.
-
-## TDD en Equipos de +20 Personas
-
-En un equipo grande, TDD no es opcional. Es **supervivencia**:
-
-- Los tests son documentación ejecutable
-- Cualquiera puede modificar código con confianza
-- Las integraciones dejan de dar miedo
-
-```typescript
-// Un test bien nombrado es documentación
-it('should_reject_transfer_when_insufficient_balance', () => {
-  const account = new Account({ balance: 100 });
-  
-  expect(() => account.transfer(150)).toThrow(InsufficientFunds);
-});
-```
-
-## Empieza Hoy
-
-No necesitas convencer a todo el equipo. Empieza tú:
-
-1. Escribe un test antes de tu próximo bug fix
-2. Observa cómo cambia tu forma de pensar
-3. Comparte los resultados
-
-El TDD se contagia cuando la gente ve los beneficios.
-</file>
-
 <file path="hooks/use-mobile.ts">
 import * as React from 'react'
 
@@ -10598,108 +10438,54 @@ export default function RootLayout({
 }
 </file>
 
-<file path="components/header.tsx">
-"use client";
+<file path="content/blog/bienvenida/es.mdx">
+---
+title: "Tenía cosas que contar"
+description: "Así que me creé un sitio donde hacerlo. Sobre por qué existe esta web y qué espero hacer con ella."
+date: "2025-12-23"
+author: "Endika Orube"
+tags: ["Personal", "Reflexiones"]
+readTime: "3 min"
+featured: true
+---
 
-import { motion } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
-import { useRouter, usePathname, Link } from "@/i18n/navigation";
-import { Locale, locales } from "@/i18n/config";
+Llevaba tiempo dándole vueltas a tener un espacio propio en internet. No un perfil de LinkedIn. No un CV en PDF. Algo más... mío.
 
-export function Header() {
-  const locale = useLocale() as Locale;
-  const router = useRouter();
-  const pathname = usePathname();
-  const t = useTranslations();
+2025 ha sido un año de crecimiento profesional intenso. He asumido más responsabilidades liderando equipos, he dado charlas en conferencias, he explorado a fondo cómo integrar IA en flujos de desarrollo reales. Y en algún momento del camino me di cuenta de que tenía cosas que contar. Reflexiones que se quedaban en conversaciones de pasillo o en notas sueltas que nunca llegaban a ningún sitio.
 
-  const handleLocaleChange = (newLocale: Locale) => {
-    if (newLocale !== locale) {
-      router.replace(pathname, { locale: newLocale });
-    }
-  };
+Así que aquí estamos.
 
-  return (
-    <motion.header
-      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        type: "spring",
-        stiffness: 300,
-        damping: 25,
-      }}
-    >
-      <nav className="flex items-center justify-end">
-        {/* Navegación */}
-        <div className="flex items-center gap-1 md:gap-2">
-          {/* Blog Link */}
-          {(() => {
-            const isBlogActive =
-              pathname === "/blog" || pathname.startsWith("/blog/");
-            return (
-              <Link
-                href="/blog"
-                className={`group relative px-3 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
-                  isBlogActive
-                    ? "text-[#de5e91]"
-                    : "text-white/60 hover:text-[#de5e91]"
-                }`}
-              >
-                {t("blog.headerLink")}
-                <span
-                  className={`absolute bottom-1 left-3 right-3 h-px bg-[#de5e91] transition-transform duration-200 origin-left ${
-                    isBlogActive
-                      ? "scale-x-100"
-                      : "scale-x-0 group-hover:scale-x-100"
-                  }`}
-                />
-              </Link>
-            );
-          })()}
+## Por qué esta web
 
-          {/* Separador */}
-          <span className="text-white/20 select-none px-1">/</span>
+La motivación es simple: quería un **CV vivo**. Un sitio que evolucione conmigo, que refleje no solo lo que he hecho, sino cómo pienso. Los CVs tradicionales son fotos fijas. Esto aspira a ser algo más dinámico.
 
-          {/* Language Switcher */}
-          <div className="flex items-center gap-1 font-mono text-sm">
-            {locales.map((loc, index) => (
-              <div key={loc} className="flex items-center">
-                <motion.button
-                  onClick={() => handleLocaleChange(loc)}
-                  className={`relative px-2 md:px-3 py-2 font-bold tracking-wider transition-colors duration-200 ${
-                    locale === loc
-                      ? "text-[#de5e91]"
-                      : "text-white/40 hover:text-white/80"
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {loc.toUpperCase()}
-                  {/* Underline indicator for active locale */}
-                  {locale === loc && (
-                    <motion.div
-                      className="absolute bottom-1 left-2 right-2 md:left-3 md:right-3 h-px bg-[#de5e91]"
-                      layoutId="locale-indicator"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 25,
-                      }}
-                    />
-                  )}
-                </motion.button>
-                {/* Separator between locales */}
-                {index < locales.length - 1 && (
-                  <span className="text-white/20 select-none">/</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </nav>
-    </motion.header>
-  );
-}
+También hay una parte de **crear marca personal**. No me refiero a *personal branding* de manual con estrategia de contenidos y calendario editorial. Me refiero a tener un lugar donde, si alguien quiere saber quién soy profesionalmente, pueda hacerse una idea real.
+
+Pero sobre todo, quiero **compartir conocimiento**. He aprendido mucho estos años —de equipos, de producto, de tecnología, de errores— y creo que parte de ese conocimiento puede ser útil para otros.
+
+## Sobre el proceso de construirla
+
+Esta web la he construido en unas horas. Sí, horas. Y no porque sea un sitio simple (creo que visualmente tiene bastante fuerza), sino porque quería poner a prueba todo el potencial del desarrollo asistido con IA.
+
+Ha sido un experimento fascinante. La velocidad de iteración que consigues cuando usas bien estas herramientas es brutal. Puedes probar ideas, descartarlas, probar otras, refinar... todo en un ciclo muy corto. Es el tipo de desarrollo que me emociona: rápido, visual, con feedback inmediato.
+
+El diseño lo quería potente. Nada de plantillas genéricas. Algo con personalidad, que transmitiera que detrás hay alguien que se preocupa por los detalles.
+
+## Qué vas a encontrar aquí
+
+Honestamente, un poco de todo. Reflexiones sobre:
+
+- **Liderazgo técnico y equipos**: Lo que aprendo en el día a día gestionando desarrolladores.
+- **Producto**: Esa visión que intento mantener de que el código sirve para algo más que pasar tests.
+- **Tecnología**: React, arquitectura, testing, lo que toque.
+- **IA aplicada al desarrollo**: Context Engineering, herramientas, flujos de trabajo.
+- **Filosofía del software**: Las preguntas incómodas sobre cómo construimos software y por qué.
+
+No tengo un calendario de publicación. No voy a prometerte un post cada semana. Publicaré cuando tenga algo que merezca la pena contar. Espero que esto no sea el primero y el último, pero tampoco voy a forzar contenido por rellenar.
+
+---
+
+Si has llegado hasta aquí, gracias por pasarte. Esto acaba de empezar.
 </file>
 
 <file path="tsconfig.json">
@@ -10950,6 +10736,160 @@ export function AboutSection() {
     </section>
   );
 }
+</file>
+
+<file path="components/header.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter, usePathname, Link } from "@/i18n/navigation";
+import { Locale, locales } from "@/i18n/config";
+
+export function Header() {
+  const locale = useLocale() as Locale;
+  const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations();
+
+  const handleLocaleChange = (newLocale: Locale) => {
+    if (newLocale !== locale) {
+      router.replace(pathname, { locale: newLocale });
+    }
+  };
+
+  return (
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 25,
+      }}
+    >
+      <nav className="flex items-center justify-end">
+        {/* Navegación */}
+        <div className="flex items-center gap-1 md:gap-2">
+          {/* Blog Link */}
+          {(() => {
+            const isBlogActive =
+              pathname === "/blog" || pathname.startsWith("/blog/");
+            return (
+              <Link
+                href="/blog"
+                className={`group relative px-1.5 md:px-2 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
+                  isBlogActive
+                    ? "text-[#de5e91]"
+                    : "text-white/60 hover:text-[#de5e91]"
+                }`}
+              >
+                {t("blog.headerLink")}
+                <span
+                  className={`absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-[#de5e91] transition-transform duration-200 origin-left ${
+                    isBlogActive
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
+              </Link>
+            );
+          })()}
+
+          {/* Separador */}
+          <span className="text-white/20 select-none">|</span>
+
+          {/* Language Switcher */}
+          <div className="flex items-center font-mono text-sm">
+            {locales.map((loc, index) => (
+              <div key={loc} className="flex items-center">
+                <motion.button
+                  onClick={() => handleLocaleChange(loc)}
+                  className={`relative px-1.5 md:px-2 py-2 font-bold tracking-wider transition-colors duration-200 ${
+                    locale === loc
+                      ? "text-[#de5e91]"
+                      : "text-white/40 hover:text-white/80"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {loc.toUpperCase()}
+                  {/* Underline indicator for active locale */}
+                  {locale === loc && (
+                    <motion.div
+                      className="absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-[#de5e91]"
+                      layoutId="locale-indicator"
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 25,
+                      }}
+                    />
+                  )}
+                </motion.button>
+                {/* Separator between locales */}
+                {index < locales.length - 1 && (
+                  <span className="text-white/20 select-none">/</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </motion.header>
+  );
+}
+</file>
+
+<file path="content/blog/bienvenida/en.mdx">
+---
+title: "I had things to say"
+description: "So I built a place to say them. On why this site exists and what I hope to do with it."
+date: "2025-12-23"
+author: "Endika Orube"
+tags: ["Personal", "Reflections"]
+readTime: "3 min"
+featured: true
+---
+
+I'd been going back and forth on having my own space online for a while. Not a LinkedIn profile. Not a PDF resume. Something more... mine.
+
+2025 has been a year of intense professional growth. I've taken on more responsibilities leading teams, given talks at conferences, dug deep into how to integrate AI into real development workflows. And somewhere along the way, I realized I had things to say. Thoughts that kept getting stuck in hallway conversations or scattered notes that never went anywhere.
+
+So here we are.
+
+## Why this website
+
+The motivation is simple: I wanted a **living CV**. A site that evolves with me, that reflects not just what I've done, but how I think. Traditional resumes are static snapshots. This aims to be something more dynamic.
+
+There's also a part about **building a personal brand**. I don't mean textbook *personal branding* with content strategies and editorial calendars. I mean having a place where, if someone wants to know who I am professionally, they can get the real picture.
+
+But above all, I want to **share knowledge**. I've learned a lot over these years —about teams, product, technology, and yeah, mistakes— and I think some of that can be useful to others.
+
+## On the building process
+
+I built this site in a matter of hours. Yes, hours. Not because it's simple (I think it packs quite a visual punch), but because I wanted to push the limits of AI-assisted development.
+
+It's been a fascinating experiment. The iteration speed you get when you use these tools right is insane. Try an idea, throw it out, try another, refine... all in a very tight loop. This is the kind of development that gets me excited: fast, visual, instant feedback.
+
+I wanted the design to be bold. No generic templates. Something with personality, that shows there's someone behind it who actually cares about the details.
+
+## What you'll find here
+
+Honestly, a bit of everything. Thoughts on:
+
+- **Technical leadership and teams**: What I learn day-to-day managing developers.
+- **Product**: That mindset I try to keep —that code should serve something beyond passing tests.
+- **Technology**: React, architecture, testing, whatever comes up.
+- **AI applied to development**: Context Engineering, tools, workflows.
+- **Software philosophy**: The uncomfortable questions about how we build software and why.
+
+I don't have a publishing schedule. I'm not going to promise you a post every week. I'll publish when I have something worth saying. Hopefully this won't be the first and last, but I'm not going to force content just to fill space either.
+
+---
+
+If you've made it this far, thanks for stopping by. This is just getting started.
 </file>
 
 <file path="next.config.mjs">
@@ -11766,7 +11706,7 @@ export default function RootPage() {
       "line1": "MY",
       "line2": "BLOG"
     },
-    "subtitle": "Thoughts on technical leadership, software architecture, Context Engineering, and the art of building high-performance teams.",
+    "subtitle": "What I learn, what I think, what I question. About teams, product, code, and everything in between.",
     "metaTitle": "Blog",
     "metaDescription": "Articles on technical leadership, software architecture, TDD, Context Engineering and professional development.",
     "readMore": "READ ARTICLE",
@@ -12046,7 +11986,7 @@ export default function RootPage() {
       "line1": "MI",
       "line2": "BLOG"
     },
-    "subtitle": "Reflexiones sobre liderazgo técnico, arquitectura de software, Context Engineering y el arte de construir equipos de alto rendimiento.",
+    "subtitle": "Lo que aprendo, lo que pienso, lo que me pregunto. Sobre equipos, producto, código y todo lo que hay entre medias.",
     "metaTitle": "Blog",
     "metaDescription": "Artículos sobre liderazgo técnico, arquitectura de software, TDD, Context Engineering y desarrollo profesional.",
     "readMore": "LEER ARTÍCULO",
