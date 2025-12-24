@@ -17,6 +17,7 @@ export function Header() {
     }
   };
 
+  const isHomeActive = pathname === "/";
   const isAboutActive = pathname === "/about";
   const isBlogActive = pathname === "/blog" || pathname.startsWith("/blog/");
 
@@ -32,12 +33,34 @@ export function Header() {
       }}
     >
       <nav className="flex items-center justify-end">
-        {/* Navegación */}
-        <div className="flex items-center gap-1 md:gap-2">
+        {/* Navegación - gap uniforme entre elementos */}
+        <div className="flex items-center gap-3 md:gap-4">
+          {/* Home Link */}
+          <Link
+            href="/"
+            className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
+              isHomeActive
+                ? "text-primary"
+                : "text-white/60 hover:text-primary"
+            }`}
+          >
+            {t("nav.home")}
+            <span
+              className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+                isHomeActive
+                  ? "scale-x-100"
+                  : "scale-x-0 group-hover:scale-x-100"
+              }`}
+            />
+          </Link>
+
+          {/* Separador */}
+          <span className="text-white/20 select-none">|</span>
+
           {/* About Link */}
           <Link
             href="/about"
-            className={`group relative px-1.5 md:px-2 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
+            className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
               isAboutActive
                 ? "text-primary"
                 : "text-white/60 hover:text-primary"
@@ -45,7 +68,7 @@ export function Header() {
           >
             {t("aboutPage.headerLink")}
             <span
-              className={`absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-primary transition-transform duration-200 origin-left ${
+              className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
                 isAboutActive
                   ? "scale-x-100"
                   : "scale-x-0 group-hover:scale-x-100"
@@ -53,10 +76,13 @@ export function Header() {
             />
           </Link>
 
+          {/* Separador */}
+          <span className="text-white/20 select-none">|</span>
+
           {/* Blog Link */}
           <Link
             href="/blog"
-            className={`group relative px-1.5 md:px-2 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
+            className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
               isBlogActive
                 ? "text-primary"
                 : "text-white/60 hover:text-primary"
@@ -64,7 +90,7 @@ export function Header() {
           >
             {t("blog.headerLink")}
             <span
-              className={`absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-primary transition-transform duration-200 origin-left ${
+              className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
                 isBlogActive
                   ? "scale-x-100"
                   : "scale-x-0 group-hover:scale-x-100"
@@ -75,13 +101,13 @@ export function Header() {
           {/* Separador */}
           <span className="text-white/20 select-none">|</span>
 
-          {/* Language Switcher */}
-          <div className="flex items-center font-mono text-sm">
+          {/* Language Switcher - elemento con gap interno */}
+          <div className="flex items-center gap-1 font-mono text-sm">
             {locales.map((loc, index) => (
-              <div key={loc} className="flex items-center">
+              <div key={loc} className="flex items-center gap-1">
                 <motion.button
                   onClick={() => handleLocaleChange(loc)}
-                  className={`relative px-1.5 md:px-2 py-2 font-bold tracking-wider transition-colors duration-200 ${
+                  className={`relative py-2 font-bold tracking-wider transition-colors duration-200 ${
                     locale === loc
                       ? "text-primary"
                       : "text-white/40 hover:text-white/80"
@@ -93,7 +119,7 @@ export function Header() {
                   {/* Underline indicator for active locale */}
                   {locale === loc && (
                     <motion.div
-                      className="absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-primary"
+                      className="absolute bottom-1 left-0 right-0 h-px bg-primary"
                       layoutId="locale-indicator"
                       transition={{
                         type: "spring",
