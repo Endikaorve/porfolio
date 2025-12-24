@@ -3,14 +3,14 @@
  * Usado en listados, previews y feeds
  */
 export interface BlogPost {
-  slug: string
-  title: string
-  description: string
-  date: string
-  author: string
-  tags: string[]
-  readTime: string
-  featured?: boolean
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  tags: string[];
+  readTime: string;
+  featured?: boolean;
 }
 
 /**
@@ -18,6 +18,5 @@ export interface BlogPost {
  * Extiende BlogPost añadiendo el campo content
  */
 export interface BlogPostDetail extends BlogPost {
-  content: string
+  content: string;
 }
-

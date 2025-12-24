@@ -1,16 +1,16 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
-import rehypeHighlight from "rehype-highlight";
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeHighlight from 'rehype-highlight';
 
-import { blogService } from "@/core/blog/services/blog.service";
-import { routing } from "@/i18n/routing";
-import { BlogPostLayout } from "../_components/blog-post-layout";
-import { mdxComponents } from "../_components/mdx-components";
-import "@/di";
+import { blogService } from '@/core/blog/services/blog.service';
+import { routing } from '@/i18n/routing';
+import { BlogPostLayout } from '../_components/blog-post-layout';
+import { mdxComponents } from '../_components/mdx-components';
+import '@/di';
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) {
     return {
-      title: "Post not found",
+      title: 'Post not found',
     };
   }
 
@@ -48,13 +48,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.title,
       description: post.description,
-      type: "article",
+      type: 'article',
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: post.title,
       description: post.description,
     },
@@ -86,4 +86,3 @@ export default async function BlogPostPage({ params }: Props) {
     </BlogPostLayout>
   );
 }
-

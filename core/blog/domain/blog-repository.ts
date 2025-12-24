@@ -1,4 +1,4 @@
-import type { BlogPost, BlogPostDetail } from './blog'
+import type { BlogPost, BlogPostDetail } from './blog';
 
 /**
  * Contrato del repositorio de blog
@@ -9,7 +9,7 @@ export interface BlogRepository {
    * Lista todos los slugs disponibles de posts del blog
    * Útil para generateStaticParams
    */
-  listSlugs(): Promise<string[]>
+  listSlugs(): Promise<string[]>;
 
   /**
    * Obtiene un post completo por slug e idioma
@@ -20,7 +20,7 @@ export interface BlogRepository {
   getBlogPostDetailBySlug(
     slug: string,
     locale: string
-  ): Promise<BlogPostDetail | null>
+  ): Promise<BlogPostDetail | null>;
 
   /**
    * Lista todos los posts (solo metadata) para un idioma específico
@@ -28,6 +28,5 @@ export interface BlogRepository {
    * @param locale - Idioma de los posts (es, en, etc.)
    * @returns Array de posts con metadata
    */
-  listBlogPosts(locale: string): Promise<BlogPost[]>
+  listBlogPosts(locale: string): Promise<BlogPost[]>;
 }
-

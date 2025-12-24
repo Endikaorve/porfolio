@@ -1,28 +1,31 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 interface CustomCursorProps {
   mousePosition: { x: number; y: number };
-  cursorVariant: "default" | "hover";
+  cursorVariant: 'default' | 'hover';
 }
 
 const variants = {
   default: {
     width: 40,
     height: 40,
-    backgroundColor: "white",
-    border: "1px solid color-mix(in srgb, var(--pink) 50%, transparent)",
+    backgroundColor: 'white',
+    border: '1px solid color-mix(in srgb, var(--pink) 50%, transparent)',
   },
   hover: {
     width: 80,
     height: 80,
-    backgroundColor: "white",
-    border: "1px solid color-mix(in srgb, var(--pink) 80%, transparent)",
+    backgroundColor: 'white',
+    border: '1px solid color-mix(in srgb, var(--pink) 80%, transparent)',
   },
 };
 
-export function CustomCursor({ mousePosition, cursorVariant }: CustomCursorProps) {
+export function CustomCursor({
+  mousePosition,
+  cursorVariant,
+}: CustomCursorProps) {
   return (
     <div className="hidden md:block">
       {/* Punto central - siempre centrado */}
@@ -31,7 +34,7 @@ export function CustomCursor({ mousePosition, cursorVariant }: CustomCursorProps
         style={{
           left: mousePosition.x,
           top: mousePosition.y,
-          transform: "translate(-50%, -50%)",
+          transform: 'translate(-50%, -50%)',
         }}
       >
         <div className="w-1 h-1 bg-white rounded-full" />
@@ -43,12 +46,12 @@ export function CustomCursor({ mousePosition, cursorVariant }: CustomCursorProps
         style={{
           left: mousePosition.x,
           top: mousePosition.y,
-          transform: "translate(-50%, -50%)",
+          transform: 'translate(-50%, -50%)',
         }}
         variants={variants}
         animate={cursorVariant}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 150,
           damping: 15,
           mass: 0.1,
@@ -61,16 +64,16 @@ export function CustomCursor({ mousePosition, cursorVariant }: CustomCursorProps
         style={{
           left: mousePosition.x,
           top: mousePosition.y,
-          transform: "translate(-50%, -50%)",
+          transform: 'translate(-50%, -50%)',
           background:
-            "radial-gradient(circle, color-mix(in srgb, var(--pink) 15%, transparent) 0%, transparent 70%)",
+            'radial-gradient(circle, color-mix(in srgb, var(--pink) 15%, transparent) 0%, transparent 70%)',
         }}
         animate={{
-          width: cursorVariant === "hover" ? 120 : 60,
-          height: cursorVariant === "hover" ? 120 : 60,
+          width: cursorVariant === 'hover' ? 120 : 60,
+          height: cursorVariant === 'hover' ? 120 : 60,
         }}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 100,
           damping: 20,
         }}
@@ -78,4 +81,3 @@ export function CustomCursor({ mousePosition, cursorVariant }: CustomCursorProps
     </div>
   );
 }
-

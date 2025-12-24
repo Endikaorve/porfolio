@@ -1,6 +1,6 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
-const BASE_URL = "https://endikaorube.com";
+const BASE_URL = 'https://endikaorube.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${BASE_URL}/es`,
       lastModified,
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 1,
       alternates: {
         languages: {
@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${BASE_URL}/en`,
       lastModified,
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 1,
       alternates: {
         languages: {
@@ -32,4 +32,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
-

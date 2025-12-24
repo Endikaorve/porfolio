@@ -1,5 +1,5 @@
-import type { BlogPost, BlogPostDetail } from '../../domain/blog'
-import type { BlogFileDTO } from '../dto/blog-file.dto'
+import type { BlogPost, BlogPostDetail } from '../../domain/blog';
+import type { BlogFileDTO } from '../dto/blog-file.dto';
 
 /**
  * Construye una entidad BlogPostDetail (con contenido) desde un DTO del filesystem
@@ -18,7 +18,7 @@ export function buildBlogPostDetail(dto: BlogFileDTO): BlogPostDetail {
     readTime: dto.frontmatter.readTime || '5 min',
     featured: dto.frontmatter.featured || false,
     content: dto.content,
-  }
+  };
 }
 
 /**
@@ -37,6 +37,5 @@ export function buildBlogPost(dto: BlogFileDTO): BlogPost {
     tags: dto.frontmatter.tags || [],
     readTime: dto.frontmatter.readTime || '5 min',
     featured: dto.frontmatter.featured || false,
-  }
+  };
 }
-

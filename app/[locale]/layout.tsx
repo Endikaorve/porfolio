@@ -1,24 +1,24 @@
-import type React from "react";
-import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
-import { Locale } from "@/i18n/config";
-import "../globals.css";
-import { Header } from "@/components/header";
-import { GlobalCursor } from "@/components/global-cursor";
-import { JsonLdSchema } from "@/components/json-ld";
+import type React from 'react';
+import type { Metadata } from 'next';
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+import { Locale } from '@/i18n/config';
+import '../globals.css';
+import { Header } from '@/components/header';
+import { GlobalCursor } from '@/components/global-cursor';
+import { JsonLdSchema } from '@/components/json-ld';
 
 const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-sans",
+  subsets: ['latin'],
+  variable: '--font-sans',
 });
 const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
+  subsets: ['latin'],
+  variable: '--font-mono',
 });
 
 type Props = {
@@ -30,7 +30,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const BASE_URL = "https://endikaorube.com";
+const BASE_URL = 'https://endikaorube.com';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -43,20 +43,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t.metadata.title,
     description: t.metadata.description,
     keywords: [
-      "Tech Lead",
-      "Product Engineer",
-      "Frontend Developer",
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Software Architecture",
-      "TDD",
-      "Pamplona",
-      "Spain",
-      "Navarra",
+      'Tech Lead',
+      'Product Engineer',
+      'Frontend Developer',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Software Architecture',
+      'TDD',
+      'Pamplona',
+      'Spain',
+      'Navarra',
     ],
-    authors: [{ name: "Endika Orube", url: BASE_URL }],
-    creator: "Endika Orube",
+    authors: [{ name: 'Endika Orube', url: BASE_URL }],
+    creator: 'Endika Orube',
     metadataBase: new URL(BASE_URL),
 
     // Alternates & hreflang
@@ -70,26 +70,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     // Open Graph
     openGraph: {
-      type: "website",
-      locale: locale === "es" ? "es_ES" : "en_US",
-      alternateLocale: locale === "es" ? "en_US" : "es_ES",
+      type: 'website',
+      locale: locale === 'es' ? 'es_ES' : 'en_US',
+      alternateLocale: locale === 'es' ? 'en_US' : 'es_ES',
       url: currentUrl,
       title: t.metadata.title,
       description: t.metadata.description,
-      siteName: "Endika Orube Portfolio",
+      siteName: 'Endika Orube Portfolio',
       images: [
         {
           url: `${BASE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: "Endika Orube - Tech Lead & Product Engineer",
+          alt: 'Endika Orube - Tech Lead & Product Engineer',
         },
       ],
     },
 
     // Twitter Cards
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: t.metadata.title,
       description: t.metadata.description,
       images: [`${BASE_URL}/og-image.jpg`],
@@ -102,21 +102,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       googleBot: {
         index: true,
         follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
 
     // Icons
     icons: {
       icon: [
-        { url: "/favicon.ico", sizes: "any" },
-        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       ],
       apple: [
-        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+        { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
       ],
     },
   };

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { HeroSection, MeSection, ContactSection } from "./_components";
+import { HeroSection, MeSection, ContactSection } from './_components';
 
 export default function Home() {
   return (

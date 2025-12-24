@@ -4,18 +4,17 @@
  */
 export interface BlogFileDTO {
   /** Slug del post (nombre de la carpeta) */
-  slug: string
+  slug: string;
   /** Frontmatter extraído del archivo MDX con gray-matter */
   frontmatter: {
-    title?: string
-    description?: string
-    date?: string
-    author?: string
-    tags?: string[]
-    readTime?: string
-    featured?: boolean
-  }
+    title?: string;
+    description?: string;
+    date?: string;
+    author?: string;
+    tags?: string[];
+    readTime?: string;
+    featured?: boolean;
+  };
   /** Contenido markdown/MDX del post */
-  content: string
+  content: string;
 }
-

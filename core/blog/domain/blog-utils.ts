@@ -1,4 +1,4 @@
-import type { BlogPost } from './blog'
+import type { BlogPost } from './blog';
 
 /**
  * Formatea la fecha de un blog post según el idioma
@@ -7,12 +7,11 @@ import type { BlogPost } from './blog'
  * @returns Fecha formateada según el locale
  */
 export function formatBlogPostDate(blog: BlogPost, locale: string): string {
-  const { date } = blog
-  const dateObj = new Date(date)
+  const { date } = blog;
+  const dateObj = new Date(date);
   return dateObj.toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
-  })
+  });
 }
-

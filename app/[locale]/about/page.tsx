@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { useScroll, useTransform } from "framer-motion";
+import { useRef } from 'react';
+import { useScroll, useTransform } from 'framer-motion';
 
 import {
   AnimatedBackground,
@@ -11,15 +11,15 @@ import {
   CommunitySection,
   TechSkillsSection,
   ProjectsSection,
-} from "./_components";
+} from './_components';
 
 export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
 
   // Background parallax
-  const backgroundX = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const backgroundX = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
   return (
     <main ref={containerRef} className="relative">
@@ -36,4 +36,3 @@ export default function AboutPage() {
     </main>
   );
 }
-

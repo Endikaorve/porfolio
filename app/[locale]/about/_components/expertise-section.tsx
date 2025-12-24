@@ -1,35 +1,35 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export function ExpertiseSection() {
   const t = useTranslations();
 
   const expertiseItems = [
     {
-      title: t("expertise.items.product.title"),
-      description: t("expertise.items.product.description"),
+      title: t('expertise.items.product.title'),
+      description: t('expertise.items.product.description'),
     },
     {
-      title: t("expertise.items.architecture.title"),
-      description: t("expertise.items.architecture.description"),
+      title: t('expertise.items.architecture.title'),
+      description: t('expertise.items.architecture.description'),
     },
     {
-      title: t("expertise.items.xp.title"),
-      description: t("expertise.items.xp.description"),
+      title: t('expertise.items.xp.title'),
+      description: t('expertise.items.xp.description'),
     },
     {
-      title: t("expertise.items.contextEngineering.title"),
-      description: t("expertise.items.contextEngineering.description"),
+      title: t('expertise.items.contextEngineering.title'),
+      description: t('expertise.items.contextEngineering.description'),
     },
     {
-      title: t("expertise.items.leadership.title"),
-      description: t("expertise.items.leadership.description"),
+      title: t('expertise.items.leadership.title'),
+      description: t('expertise.items.leadership.description'),
     },
     {
-      title: t("expertise.items.culture.title"),
-      description: t("expertise.items.culture.description"),
+      title: t('expertise.items.culture.title'),
+      description: t('expertise.items.culture.description'),
     },
   ];
 
@@ -42,9 +42,9 @@ export function ExpertiseSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          {t("expertise.title.line1")}
+          {t('expertise.title.line1')}
           <br />
-          <span className="text-primary">{t("expertise.title.line2")}</span>
+          <span className="text-primary">{t('expertise.title.line2')}</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -60,7 +60,7 @@ export function ExpertiseSection() {
                 viewport={{ once: true }}
               >
                 <span className="text-white/30 font-mono text-sm">
-                  {(i + 1).toString().padStart(2, "0")}
+                  {(i + 1).toString().padStart(2, '0')}
                 </span>
                 <h3 className="text-3xl font-black text-white mt-2 mb-4">
                   {item.title}

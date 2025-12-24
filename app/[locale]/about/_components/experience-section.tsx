@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 // Tipos
 interface Job {
@@ -18,47 +18,47 @@ interface Job {
 function ExperienceParticles() {
   const particles = [
     // Lateral izquierdo - mezcla de bordes y rellenos
-    { type: "square-filled", x: "5%", y: "3%", size: 6, opacity: 0.12 },
-    { type: "square", x: "12%", y: "8%", size: 12, opacity: 0.25 },
-    { type: "circle-filled", x: "3%", y: "12%", size: 8, opacity: 0.15 },
-    { type: "square-filled", x: "8%", y: "18%", size: 8, opacity: 0.15 },
-    { type: "circle", x: "11%", y: "22%", size: 10, opacity: 0.22 },
-    { type: "circle-filled", x: "5%", y: "28%", size: 6, opacity: 0.12 },
-    { type: "square", x: "3%", y: "35%", size: 10, opacity: 0.2 },
-    { type: "square-filled", x: "9%", y: "40%", size: 10, opacity: 0.15 },
-    { type: "circle", x: "4%", y: "45%", size: 8, opacity: 0.3 },
-    { type: "square-filled", x: "10%", y: "52%", size: 6, opacity: 0.15 },
-    { type: "square", x: "6%", y: "58%", size: 16, opacity: 0.3 },
-    { type: "circle-filled", x: "12%", y: "64%", size: 8, opacity: 0.12 },
-    { type: "square-filled", x: "4%", y: "70%", size: 10, opacity: 0.15 },
-    { type: "square", x: "8%", y: "76%", size: 12, opacity: 0.22 },
-    { type: "circle-filled", x: "11%", y: "82%", size: 6, opacity: 0.12 },
-    { type: "square", x: "5%", y: "88%", size: 14, opacity: 0.25 },
-    { type: "circle-filled", x: "9%", y: "94%", size: 8, opacity: 0.15 },
+    { type: 'square-filled', x: '5%', y: '3%', size: 6, opacity: 0.12 },
+    { type: 'square', x: '12%', y: '8%', size: 12, opacity: 0.25 },
+    { type: 'circle-filled', x: '3%', y: '12%', size: 8, opacity: 0.15 },
+    { type: 'square-filled', x: '8%', y: '18%', size: 8, opacity: 0.15 },
+    { type: 'circle', x: '11%', y: '22%', size: 10, opacity: 0.22 },
+    { type: 'circle-filled', x: '5%', y: '28%', size: 6, opacity: 0.12 },
+    { type: 'square', x: '3%', y: '35%', size: 10, opacity: 0.2 },
+    { type: 'square-filled', x: '9%', y: '40%', size: 10, opacity: 0.15 },
+    { type: 'circle', x: '4%', y: '45%', size: 8, opacity: 0.3 },
+    { type: 'square-filled', x: '10%', y: '52%', size: 6, opacity: 0.15 },
+    { type: 'square', x: '6%', y: '58%', size: 16, opacity: 0.3 },
+    { type: 'circle-filled', x: '12%', y: '64%', size: 8, opacity: 0.12 },
+    { type: 'square-filled', x: '4%', y: '70%', size: 10, opacity: 0.15 },
+    { type: 'square', x: '8%', y: '76%', size: 12, opacity: 0.22 },
+    { type: 'circle-filled', x: '11%', y: '82%', size: 6, opacity: 0.12 },
+    { type: 'square', x: '5%', y: '88%', size: 14, opacity: 0.25 },
+    { type: 'circle-filled', x: '9%', y: '94%', size: 8, opacity: 0.15 },
     // Lateral derecho - mezcla de bordes y rellenos
-    { type: "rect-h", x: "85%", y: "4%", width: 24, height: 8, opacity: 0.25 },
-    { type: "square-filled", x: "92%", y: "9%", size: 10, opacity: 0.12 },
-    { type: "circle", x: "88%", y: "15%", size: 12, opacity: 0.22 },
-    { type: "square", x: "94%", y: "20%", size: 14, opacity: 0.28 },
-    { type: "circle-filled", x: "86%", y: "26%", size: 6, opacity: 0.15 },
-    { type: "square-filled", x: "91%", y: "32%", size: 8, opacity: 0.12 },
-    { type: "square", x: "87%", y: "38%", size: 10, opacity: 0.2 },
-    { type: "square-filled", x: "94%", y: "44%", size: 8, opacity: 0.12 },
-    { type: "square", x: "85%", y: "50%", size: 18, opacity: 0.28 },
-    { type: "rect-v", x: "93%", y: "55%", width: 8, height: 20, opacity: 0.28 },
-    { type: "circle-filled", x: "88%", y: "62%", size: 10, opacity: 0.15 },
-    { type: "square-filled", x: "92%", y: "68%", size: 6, opacity: 0.15 },
-    { type: "square", x: "86%", y: "74%", size: 14, opacity: 0.3 },
-    { type: "circle-filled", x: "93%", y: "80%", size: 10, opacity: 0.12 },
-    { type: "square-filled", x: "88%", y: "86%", size: 8, opacity: 0.15 },
-    { type: "square", x: "91%", y: "92%", size: 12, opacity: 0.25 },
-    { type: "circle-filled", x: "86%", y: "97%", size: 6, opacity: 0.12 },
+    { type: 'rect-h', x: '85%', y: '4%', width: 24, height: 8, opacity: 0.25 },
+    { type: 'square-filled', x: '92%', y: '9%', size: 10, opacity: 0.12 },
+    { type: 'circle', x: '88%', y: '15%', size: 12, opacity: 0.22 },
+    { type: 'square', x: '94%', y: '20%', size: 14, opacity: 0.28 },
+    { type: 'circle-filled', x: '86%', y: '26%', size: 6, opacity: 0.15 },
+    { type: 'square-filled', x: '91%', y: '32%', size: 8, opacity: 0.12 },
+    { type: 'square', x: '87%', y: '38%', size: 10, opacity: 0.2 },
+    { type: 'square-filled', x: '94%', y: '44%', size: 8, opacity: 0.12 },
+    { type: 'square', x: '85%', y: '50%', size: 18, opacity: 0.28 },
+    { type: 'rect-v', x: '93%', y: '55%', width: 8, height: 20, opacity: 0.28 },
+    { type: 'circle-filled', x: '88%', y: '62%', size: 10, opacity: 0.15 },
+    { type: 'square-filled', x: '92%', y: '68%', size: 6, opacity: 0.15 },
+    { type: 'square', x: '86%', y: '74%', size: 14, opacity: 0.3 },
+    { type: 'circle-filled', x: '93%', y: '80%', size: 10, opacity: 0.12 },
+    { type: 'square-filled', x: '88%', y: '86%', size: 8, opacity: 0.15 },
+    { type: 'square', x: '91%', y: '92%', size: 12, opacity: 0.25 },
+    { type: 'circle-filled', x: '86%', y: '97%', size: 6, opacity: 0.12 },
   ];
 
   return (
     <div className="absolute inset-0 pointer-events-none w-full overflow-hidden">
       {particles.map((particle, i) => {
-        if (particle.type === "circle") {
+        if (particle.type === 'circle') {
           return (
             <div
               key={`particle-${i}`}
@@ -74,7 +74,7 @@ function ExperienceParticles() {
           );
         }
 
-        if (particle.type === "circle-filled") {
+        if (particle.type === 'circle-filled') {
           return (
             <div
               key={`particle-${i}`}
@@ -90,7 +90,7 @@ function ExperienceParticles() {
           );
         }
 
-        if (particle.type === "square-filled") {
+        if (particle.type === 'square-filled') {
           return (
             <div
               key={`particle-${i}`}
@@ -106,7 +106,7 @@ function ExperienceParticles() {
           );
         }
 
-        if (particle.type === "rect-h") {
+        if (particle.type === 'rect-h') {
           return (
             <div
               key={`particle-${i}`}
@@ -122,7 +122,7 @@ function ExperienceParticles() {
           );
         }
 
-        if (particle.type === "rect-v") {
+        if (particle.type === 'rect-v') {
           return (
             <div
               key={`particle-${i}`}
@@ -166,7 +166,7 @@ function ExperienceCard({
   index: number;
   onOpenModal: () => void;
 }) {
-  const t = useTranslations("experience");
+  const t = useTranslations('experience');
   const rotations = [-0.8, 1.2, -1.3, 1.7];
   const fixedRotation = rotations[index % rotations.length];
 
@@ -232,7 +232,7 @@ function ExperienceCard({
           onClick={onOpenModal}
           className="md:hidden mt-6 relative z-10 w-full py-3 border-2 border-primary text-primary font-mono text-sm font-bold hover:bg-primary hover:text-surface-dark transition-all duration-300 active:scale-95"
         >
-          {t("viewMore")}
+          {t('viewMore')}
         </button>
 
         <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
@@ -244,14 +244,8 @@ function ExperienceCard({
 }
 
 // Modal de detalles para mobile
-function ExperienceModal({
-  job,
-  onClose,
-}: {
-  job: Job;
-  onClose: () => void;
-}) {
-  const t = useTranslations("experience");
+function ExperienceModal({ job, onClose }: { job: Job; onClose: () => void }) {
+  const t = useTranslations('experience');
 
   return (
     <motion.div
@@ -287,7 +281,7 @@ function ExperienceModal({
           opacity: 0,
         }}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 300,
           damping: 25,
         }}
@@ -334,7 +328,7 @@ function ExperienceModal({
 
           <div className="space-y-4">
             <h4 className="text-white font-bold text-sm mb-3">
-              {t("keyDetails")}
+              {t('keyDetails')}
             </h4>
             {job.highlights.map((highlight, idx) => (
               <div
@@ -356,7 +350,7 @@ function ExperienceModal({
               onClick={onClose}
               className="w-full py-3 border-2 border-white/30 text-white font-mono text-sm font-bold hover:border-white hover:bg-white hover:text-surface-dark transition-all duration-300"
             >
-              {t("close")}
+              {t('close')}
             </button>
           </div>
         </div>
@@ -372,106 +366,110 @@ export function ExperienceSection() {
   // Bloquear scroll cuando el modal está abierto
   useEffect(() => {
     if (openModalIndex !== null) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [openModalIndex]);
 
   // Jobs data using translations
   const jobs: Job[] = [
     {
-      period: t("experience.jobs.biko2Lead.period"),
-      company: t("experience.jobs.biko2Lead.company"),
-      role: t("experience.jobs.biko2Lead.role"),
-      project: t("experience.jobs.biko2Lead.project"),
-      description: t("experience.jobs.biko2Lead.description"),
+      period: t('experience.jobs.biko2Lead.period'),
+      company: t('experience.jobs.biko2Lead.company'),
+      role: t('experience.jobs.biko2Lead.role'),
+      project: t('experience.jobs.biko2Lead.project'),
+      description: t('experience.jobs.biko2Lead.description'),
       highlights: [
         {
-          title: t("experience.jobs.biko2Lead.highlights.engineering.title"),
-          text: t("experience.jobs.biko2Lead.highlights.engineering.text"),
+          title: t('experience.jobs.biko2Lead.highlights.engineering.title'),
+          text: t('experience.jobs.biko2Lead.highlights.engineering.text'),
         },
         {
-          title: t("experience.jobs.biko2Lead.highlights.excellence.title"),
-          text: t("experience.jobs.biko2Lead.highlights.excellence.text"),
+          title: t('experience.jobs.biko2Lead.highlights.excellence.title'),
+          text: t('experience.jobs.biko2Lead.highlights.excellence.text'),
         },
         {
-          title: t("experience.jobs.biko2Lead.highlights.innovation.title"),
-          text: t("experience.jobs.biko2Lead.highlights.innovation.text"),
+          title: t('experience.jobs.biko2Lead.highlights.innovation.title'),
+          text: t('experience.jobs.biko2Lead.highlights.innovation.text'),
         },
         {
-          title: t("experience.jobs.biko2Lead.highlights.management.title"),
-          text: t("experience.jobs.biko2Lead.highlights.management.text"),
+          title: t('experience.jobs.biko2Lead.highlights.management.title'),
+          text: t('experience.jobs.biko2Lead.highlights.management.text'),
         },
       ],
     },
     {
-      period: t("experience.jobs.biko2Senior.period"),
-      company: t("experience.jobs.biko2Senior.company"),
-      role: t("experience.jobs.biko2Senior.role"),
-      project: t("experience.jobs.biko2Senior.project"),
-      description: t("experience.jobs.biko2Senior.description"),
+      period: t('experience.jobs.biko2Senior.period'),
+      company: t('experience.jobs.biko2Senior.company'),
+      role: t('experience.jobs.biko2Senior.role'),
+      project: t('experience.jobs.biko2Senior.project'),
+      description: t('experience.jobs.biko2Senior.description'),
       highlights: [
         {
-          title: t("experience.jobs.biko2Senior.highlights.architecture.title"),
-          text: t("experience.jobs.biko2Senior.highlights.architecture.text"),
+          title: t('experience.jobs.biko2Senior.highlights.architecture.title'),
+          text: t('experience.jobs.biko2Senior.highlights.architecture.text'),
         },
         {
-          title: t("experience.jobs.biko2Senior.highlights.product.title"),
-          text: t("experience.jobs.biko2Senior.highlights.product.text"),
+          title: t('experience.jobs.biko2Senior.highlights.product.title'),
+          text: t('experience.jobs.biko2Senior.highlights.product.text'),
         },
         {
-          title: t("experience.jobs.biko2Senior.highlights.observability.title"),
-          text: t("experience.jobs.biko2Senior.highlights.observability.text"),
+          title: t(
+            'experience.jobs.biko2Senior.highlights.observability.title'
+          ),
+          text: t('experience.jobs.biko2Senior.highlights.observability.text'),
         },
         {
-          title: t("experience.jobs.biko2Senior.highlights.quality.title"),
-          text: t("experience.jobs.biko2Senior.highlights.quality.text"),
+          title: t('experience.jobs.biko2Senior.highlights.quality.title'),
+          text: t('experience.jobs.biko2Senior.highlights.quality.text'),
         },
       ],
     },
     {
-      period: t("experience.jobs.nubbaLead.period"),
-      company: t("experience.jobs.nubbaLead.company"),
-      role: t("experience.jobs.nubbaLead.role"),
-      project: t("experience.jobs.nubbaLead.project"),
-      description: t("experience.jobs.nubbaLead.description"),
+      period: t('experience.jobs.nubbaLead.period'),
+      company: t('experience.jobs.nubbaLead.company'),
+      role: t('experience.jobs.nubbaLead.role'),
+      project: t('experience.jobs.nubbaLead.project'),
+      description: t('experience.jobs.nubbaLead.description'),
       highlights: [
         {
-          title: t("experience.jobs.nubbaLead.highlights.product.title"),
-          text: t("experience.jobs.nubbaLead.highlights.product.text"),
+          title: t('experience.jobs.nubbaLead.highlights.product.title'),
+          text: t('experience.jobs.nubbaLead.highlights.product.text'),
         },
         {
-          title: t("experience.jobs.nubbaLead.highlights.business.title"),
-          text: t("experience.jobs.nubbaLead.highlights.business.text"),
+          title: t('experience.jobs.nubbaLead.highlights.business.title'),
+          text: t('experience.jobs.nubbaLead.highlights.business.text'),
         },
         {
-          title: t("experience.jobs.nubbaLead.highlights.leadership.title"),
-          text: t("experience.jobs.nubbaLead.highlights.leadership.text"),
+          title: t('experience.jobs.nubbaLead.highlights.leadership.title'),
+          text: t('experience.jobs.nubbaLead.highlights.leadership.text'),
         },
       ],
     },
     {
-      period: t("experience.jobs.nubbaFullStack.period"),
-      company: t("experience.jobs.nubbaFullStack.company"),
-      role: t("experience.jobs.nubbaFullStack.role"),
-      project: t("experience.jobs.nubbaFullStack.project"),
-      description: t("experience.jobs.nubbaFullStack.description"),
+      period: t('experience.jobs.nubbaFullStack.period'),
+      company: t('experience.jobs.nubbaFullStack.company'),
+      role: t('experience.jobs.nubbaFullStack.role'),
+      project: t('experience.jobs.nubbaFullStack.project'),
+      description: t('experience.jobs.nubbaFullStack.description'),
       highlights: [
         {
-          title: t("experience.jobs.nubbaFullStack.highlights.development.title"),
-          text: t("experience.jobs.nubbaFullStack.highlights.development.text"),
+          title: t(
+            'experience.jobs.nubbaFullStack.highlights.development.title'
+          ),
+          text: t('experience.jobs.nubbaFullStack.highlights.development.text'),
         },
         {
-          title: t("experience.jobs.nubbaFullStack.highlights.stack.title"),
-          text: t("experience.jobs.nubbaFullStack.highlights.stack.text"),
+          title: t('experience.jobs.nubbaFullStack.highlights.stack.title'),
+          text: t('experience.jobs.nubbaFullStack.highlights.stack.text'),
         },
         {
-          title: t("experience.jobs.nubbaFullStack.highlights.culture.title"),
-          text: t("experience.jobs.nubbaFullStack.highlights.culture.text"),
+          title: t('experience.jobs.nubbaFullStack.highlights.culture.title'),
+          text: t('experience.jobs.nubbaFullStack.highlights.culture.text'),
         },
       ],
     },
@@ -486,15 +484,15 @@ export function ExperienceSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <span className="text-white">{t("experience.title.line1")}</span>
+          <span className="text-white">{t('experience.title.line1')}</span>
           <br />
           <span
             className="text-transparent"
             style={{
-              WebkitTextStroke: "2px var(--pink)",
+              WebkitTextStroke: '2px var(--pink)',
             }}
           >
-            {t("experience.title.line2")}
+            {t('experience.title.line2')}
           </span>
         </motion.h2>
       </div>
@@ -534,4 +532,3 @@ export function ExperienceSection() {
     </section>
   );
 }
-

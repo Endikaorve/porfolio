@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 export function MeSection() {
   const t = useTranslations();
@@ -25,7 +25,7 @@ export function MeSection() {
         >
           {/* Texto principal minimalista */}
           <p className="text-2xl md:text-3xl lg:text-4xl text-white/90 leading-relaxed font-light mb-12">
-            {t("me.description")}
+            {t('me.description')}
           </p>
 
           {/* CTA sutil */}
@@ -34,12 +34,16 @@ export function MeSection() {
             className="inline-flex items-center gap-3 text-primary hover:text-white transition-colors duration-300 group"
           >
             <span className="text-lg font-mono font-bold tracking-wider">
-              {t("me.cta")}
+              {t('me.cta')}
             </span>
             <motion.span
               className="text-2xl"
               animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
             >
               →
             </motion.span>
@@ -57,10 +61,9 @@ export function MeSection() {
         <motion.div
           className="w-px h-16 bg-gradient-to-b from-primary/50 to-transparent"
           animate={{ scaleY: [1, 0.6, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         />
       </motion.div>
     </section>
   );
 }
-

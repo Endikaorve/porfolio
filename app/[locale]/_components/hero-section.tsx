@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export function HeroSection() {
   const t = useTranslations();
@@ -12,18 +12,18 @@ export function HeroSection() {
   // Hero parallax - scroll horizontal
   const { scrollYProgress: heroScrollProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"],
+    offset: ['start start', 'end start'],
   });
 
   const endikaX = useTransform(
     heroScrollProgress,
     [0, 0.1, 1],
-    ["0%", "0%", "-120%"]
+    ['0%', '0%', '-120%']
   );
   const orubeX = useTransform(
     heroScrollProgress,
     [0, 0.1, 1],
-    ["0%", "0%", "120%"]
+    ['0%', '0%', '120%']
   );
 
   // Trigger floating animations after intro sequence
@@ -41,22 +41,22 @@ export function HeroSection() {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
           {/* ENDIKA - Reveal desde abajo */}
-          <div className={heroReady ? "" : "overflow-hidden"}>
+          <div className={heroReady ? '' : 'overflow-hidden'}>
             <motion.h1
               className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter will-change-transform whitespace-nowrap"
               style={{
-                color: "transparent",
-                WebkitTextStroke: "2px white",
+                color: 'transparent',
+                WebkitTextStroke: '2px white',
                 x: heroReady ? endikaX : 0,
               }}
-              initial={{ y: "110%" }}
+              initial={{ y: '110%' }}
               animate={heroReady ? { y: [0, -20, 0] } : { y: 0 }}
               transition={
                 heroReady
                   ? {
                       duration: 4,
                       repeat: Number.POSITIVE_INFINITY,
-                      ease: "easeInOut",
+                      ease: 'easeInOut',
                     }
                   : {
                       duration: 0.5,
@@ -70,21 +70,22 @@ export function HeroSection() {
           </div>
 
           {/* ORUBE - Reveal desde arriba */}
-          <div className={heroReady ? "" : "overflow-hidden"}>
+          <div className={heroReady ? '' : 'overflow-hidden'}>
             <motion.h1
               className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform whitespace-nowrap"
               style={{
-                textShadow: "0 0 40px color-mix(in srgb, var(--pink) 30%, transparent)",
+                textShadow:
+                  '0 0 40px color-mix(in srgb, var(--pink) 30%, transparent)',
                 x: heroReady ? orubeX : 0,
               }}
-              initial={{ y: "-110%" }}
+              initial={{ y: '-110%' }}
               animate={heroReady ? { y: [0, 20, 0] } : { y: 0 }}
               transition={
                 heroReady
                   ? {
                       duration: 4,
                       repeat: Number.POSITIVE_INFINITY,
-                      ease: "easeInOut",
+                      ease: 'easeInOut',
                     }
                   : {
                       duration: 0.5,
@@ -142,7 +143,7 @@ export function HeroSection() {
                 delay: 0.4,
               }}
             >
-              {t("hero.role")}
+              {t('hero.role')}
             </motion.p>
           </motion.div>
         </div>
@@ -158,7 +159,7 @@ export function HeroSection() {
           <motion.div
             className="absolute left-0 top-0 w-1 bg-primary"
             initial={{ height: 0 }}
-            animate={{ height: "100%" }}
+            animate={{ height: '100%' }}
             transition={{
               duration: 0.3,
               ease: [0.16, 1, 0.3, 1],
@@ -199,7 +200,7 @@ export function HeroSection() {
           transition={{
             duration: 2,
             repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
+            ease: 'easeInOut',
             delay: 2,
           }}
         />
@@ -207,4 +208,3 @@ export function HeroSection() {
     </section>
   );
 }
-

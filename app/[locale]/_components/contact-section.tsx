@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export function ContactSection() {
   const t = useTranslations();
@@ -13,19 +13,19 @@ export function ContactSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
         <div
           className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: "20%", left: "-50%" }}
+          style={{ top: '20%', left: '-50%' }}
         />
         <div
           className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: "40%", left: "-50%" }}
+          style={{ top: '40%', left: '-50%' }}
         />
         <div
           className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: "60%", left: "-50%" }}
+          style={{ top: '60%', left: '-50%' }}
         />
         <div
           className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: "80%", left: "-50%" }}
+          style={{ top: '80%', left: '-50%' }}
         />
       </div>
 
@@ -42,11 +42,11 @@ export function ContactSection() {
       {/* Círculo decorativo exterior */}
       <motion.div
         className="absolute w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] border border-white/[0.02] pointer-events-none"
-        style={{ borderRadius: "50%" }}
+        style={{ borderRadius: '50%' }}
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 1, ease: 'easeOut' }}
       />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -57,15 +57,15 @@ export function ContactSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-[15vw] font-black leading-none mb-12">
-            <span className="text-white">{t("contact.title.line1")}</span>
+            <span className="text-white">{t('contact.title.line1')}</span>
             <br />
             <span
               className="text-transparent"
               style={{
-                WebkitTextStroke: "2px var(--pink)",
+                WebkitTextStroke: '2px var(--pink)',
               }}
             >
-              {t("contact.title.line2")}
+              {t('contact.title.line2')}
             </span>
           </h2>
 
@@ -98,7 +98,7 @@ export function ContactSection() {
                 className="text-white text-lg font-mono hover:text-primary transition-colors"
                 whileHover={{ y: -5 }}
               >
-                {t("contact.github")}
+                {t('contact.github')}
               </motion.a>
               <motion.a
                 href="/Endika Orube Vega - CV.pdf"
@@ -107,7 +107,7 @@ export function ContactSection() {
                 className="text-white text-lg font-mono hover:text-primary transition-colors"
                 whileHover={{ y: -5 }}
               >
-                {t("cv.downloadShort")}
+                {t('cv.downloadShort')}
               </motion.a>
             </div>
           </div>
@@ -117,8 +117,8 @@ export function ContactSection() {
       {/* Footer minimalista */}
       <div className="absolute bottom-8 left-0 right-0">
         <div className="container mx-auto px-4 flex justify-between items-center text-white/40 text-sm font-mono">
-          <span>{t("contact.copyright")}</span>
-          <span>{t("contact.location")}</span>
+          <span>{t('contact.copyright')}</span>
+          <span>{t('contact.location')}</span>
         </div>
       </div>
     </section>

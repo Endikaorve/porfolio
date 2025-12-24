@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { techStack } from "./tech-stack";
+import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { techStack } from './tech-stack';
 
 export function TechSkillsSection() {
   const t = useTranslations();
@@ -13,7 +13,7 @@ export function TechSkillsSection() {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end end"],
+    offset: ['start start', 'end end'],
   });
 
   // Calcula el rango de scroll basado en el contenido real
@@ -28,8 +28,8 @@ export function TechSkillsSection() {
     };
 
     calculateScrollRange();
-    window.addEventListener("resize", calculateScrollRange);
-    return () => window.removeEventListener("resize", calculateScrollRange);
+    window.addEventListener('resize', calculateScrollRange);
+    return () => window.removeEventListener('resize', calculateScrollRange);
   }, []);
 
   // Transforma scroll vertical a movimiento horizontal
@@ -49,13 +49,13 @@ export function TechSkillsSection() {
         <div className="absolute top-8 md:top-12 left-0 right-0 z-20">
           <div className="container mx-auto px-4">
             <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[6vw] font-black leading-none">
-              <span className="text-white">{t("tech.title.line1")}</span>
+              <span className="text-white">{t('tech.title.line1')}</span>
               <br />
               <span
                 className="text-transparent"
-                style={{ WebkitTextStroke: "2px var(--pink)" }}
+                style={{ WebkitTextStroke: '2px var(--pink)' }}
               >
-                {t("tech.title.line2")}
+                {t('tech.title.line2')}
               </span>
             </h2>
           </div>
@@ -72,7 +72,7 @@ export function TechSkillsSection() {
               key={`tech-${i}`}
               className="flex-shrink-0 flex flex-col items-center gap-4 group"
               whileHover={{ scale: 1.15, y: -8 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             >
               <div className="relative">
                 <tech.Icon className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 text-white/20 group-hover:text-primary transition-colors duration-300" />

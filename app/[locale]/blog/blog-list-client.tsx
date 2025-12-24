@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { BlogCard } from "./_components/blog-card";
-import type { BlogPost } from "@/core/blog/domain/blog";
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { BlogCard } from './_components/blog-card';
+import type { BlogPost } from '@/core/blog/domain/blog';
 
 interface BlogListClientProps {
   posts: BlogPost[];
@@ -11,7 +11,7 @@ interface BlogListClientProps {
 }
 
 export function BlogListClient({ posts, locale }: BlogListClientProps) {
-  const t = useTranslations("blog");
+  const t = useTranslations('blog');
 
   return (
     <main className="relative min-h-screen">
@@ -24,13 +24,13 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none">
-            <span className="text-primary">{t("title.line1")}</span>
+            <span className="text-primary">{t('title.line1')}</span>
             <br />
-            <span className="text-white">{t("title.line2")}</span>
+            <span className="text-white">{t('title.line2')}</span>
           </h1>
 
           <p className="mt-8 text-white/60 text-lg md:text-xl max-w-2xl">
-            {t("subtitle")}
+            {t('subtitle')}
           </p>
         </motion.section>
 
@@ -54,7 +54,7 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <p className="text-white/40 text-lg">{t("noPosts")}</p>
+              <p className="text-white/40 text-lg">{t('noPosts')}</p>
             </motion.div>
           )}
         </section>
@@ -62,4 +62,3 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
     </main>
   );
 }
-

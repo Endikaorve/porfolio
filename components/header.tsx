@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
-import { useRouter, usePathname, Link } from "@/i18n/navigation";
-import { Locale, locales } from "@/i18n/config";
+import { motion } from 'framer-motion';
+import { useLocale, useTranslations } from 'next-intl';
+import { useRouter, usePathname, Link } from '@/i18n/navigation';
+import { Locale, locales } from '@/i18n/config';
 
 export function Header() {
   const locale = useLocale() as Locale;
@@ -17,9 +17,9 @@ export function Header() {
     }
   };
 
-  const isHomeActive = pathname === "/";
-  const isAboutActive = pathname === "/about";
-  const isBlogActive = pathname === "/blog" || pathname.startsWith("/blog/");
+  const isHomeActive = pathname === '/';
+  const isAboutActive = pathname === '/about';
+  const isBlogActive = pathname === '/blog' || pathname.startsWith('/blog/');
 
   return (
     <motion.header
@@ -27,7 +27,7 @@ export function Header() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 25,
       }}
@@ -39,17 +39,15 @@ export function Header() {
           <Link
             href="/"
             className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
-              isHomeActive
-                ? "text-primary"
-                : "text-white/60 hover:text-primary"
+              isHomeActive ? 'text-primary' : 'text-white/60 hover:text-primary'
             }`}
           >
-            {t("nav.home")}
+            {t('nav.home')}
             <span
               className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
                 isHomeActive
-                  ? "scale-x-100"
-                  : "scale-x-0 group-hover:scale-x-100"
+                  ? 'scale-x-100'
+                  : 'scale-x-0 group-hover:scale-x-100'
               }`}
             />
           </Link>
@@ -62,16 +60,16 @@ export function Header() {
             href="/about"
             className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
               isAboutActive
-                ? "text-primary"
-                : "text-white/60 hover:text-primary"
+                ? 'text-primary'
+                : 'text-white/60 hover:text-primary'
             }`}
           >
-            {t("aboutPage.headerLink")}
+            {t('aboutPage.headerLink')}
             <span
               className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
                 isAboutActive
-                  ? "scale-x-100"
-                  : "scale-x-0 group-hover:scale-x-100"
+                  ? 'scale-x-100'
+                  : 'scale-x-0 group-hover:scale-x-100'
               }`}
             />
           </Link>
@@ -83,17 +81,15 @@ export function Header() {
           <Link
             href="/blog"
             className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
-              isBlogActive
-                ? "text-primary"
-                : "text-white/60 hover:text-primary"
+              isBlogActive ? 'text-primary' : 'text-white/60 hover:text-primary'
             }`}
           >
-            {t("blog.headerLink")}
+            {t('blog.headerLink')}
             <span
               className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
                 isBlogActive
-                  ? "scale-x-100"
-                  : "scale-x-0 group-hover:scale-x-100"
+                  ? 'scale-x-100'
+                  : 'scale-x-0 group-hover:scale-x-100'
               }`}
             />
           </Link>
@@ -109,8 +105,8 @@ export function Header() {
                   onClick={() => handleLocaleChange(loc)}
                   className={`relative py-2 font-bold tracking-wider transition-colors duration-200 ${
                     locale === loc
-                      ? "text-primary"
-                      : "text-white/40 hover:text-white/80"
+                      ? 'text-primary'
+                      : 'text-white/40 hover:text-white/80'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -122,7 +118,7 @@ export function Header() {
                       className="absolute bottom-1 left-0 right-0 h-px bg-primary"
                       layoutId="locale-indicator"
                       transition={{
-                        type: "spring",
+                        type: 'spring',
                         stiffness: 300,
                         damping: 25,
                       }}

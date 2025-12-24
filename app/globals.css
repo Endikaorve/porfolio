@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -6,12 +6,12 @@
   /* Paleta de colores personalizada: negro/gris oscuro, blanco y rosa */
   --background: oklch(1 0 0); /* Blanco */
   --foreground: oklch(0.145 0 0); /* Negro profundo */
-  
+
   /* Grises de fondo - valores HEX exactos para consistencia visual */
   --surface-dark: #212121;
   --surface-darker: #1a1a1a;
   --surface-darkest: #0a0a0a;
-  
+
   /* Rosa primary - valor HEX exacto */
   --pink: #de5e91;
   --pink-light: #ff8fb3;
@@ -87,8 +87,8 @@
 
 @theme inline {
   /* Usando Space Grotesk y JetBrains Mono para look más moderno */
-  --font-sans: "Space Grotesk", "Space Grotesk Fallback";
-  --font-mono: "JetBrains Mono", "JetBrains Mono Fallback";
+  --font-sans: 'Space Grotesk', 'Space Grotesk Fallback';
+  --font-mono: 'JetBrains Mono', 'JetBrains Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   /* Superficies oscuras */
@@ -139,7 +139,7 @@
   * {
     @apply border-border outline-ring/50;
   }
-  
+
   body {
     @apply bg-background text-foreground;
   }
@@ -149,8 +149,9 @@
     * {
       cursor: none !important;
     }
-    
-    a, button {
+
+    a,
+    button {
       cursor: none !important;
     }
   }

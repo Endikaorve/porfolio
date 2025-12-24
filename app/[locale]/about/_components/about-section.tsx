@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { Download } from "lucide-react";
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
+import { Download } from 'lucide-react';
 
 export function AboutSection() {
   const t = useTranslations();
@@ -42,7 +42,7 @@ export function AboutSection() {
                   className="absolute inset-0 mix-blend-multiply opacity-30 group-hover:opacity-0 transition-opacity duration-500"
                   style={{
                     background:
-                      "linear-gradient(135deg, color-mix(in srgb, var(--pink) 40%, transparent) 0%, transparent 60%)",
+                      'linear-gradient(135deg, color-mix(in srgb, var(--pink) 40%, transparent) 0%, transparent 60%)',
                   }}
                 />
 
@@ -50,7 +50,7 @@ export function AboutSection() {
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                   <div
                     className="absolute w-[200%] h-px bg-primary/40 -rotate-45"
-                    style={{ top: "20%", left: "-50%" }}
+                    style={{ top: '20%', left: '-50%' }}
                   />
                 </div>
 
@@ -79,11 +79,11 @@ export function AboutSection() {
           >
             <div className="relative z-10">
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary mb-8 leading-none">
-                {t("about.title.line1")}
+                {t('about.title.line1')}
                 <br />
-                {t("about.title.line2")}
+                {t('about.title.line2')}
                 <br />
-                <span className="text-white">{t("about.title.line3")}</span>
+                <span className="text-white">{t('about.title.line3')}</span>
               </h2>
             </div>
           </motion.div>
@@ -98,10 +98,10 @@ export function AboutSection() {
           >
             <div className="space-y-6">
               <p className="text-white text-lg md:text-xl leading-relaxed">
-                {t("about.description1")}
+                {t('about.description1')}
               </p>
               <p className="text-white/60 text-base md:text-lg leading-relaxed">
-                {t("about.description2")}
+                {t('about.description2')}
               </p>
 
               {/* CTAs */}
@@ -111,7 +111,7 @@ export function AboutSection() {
                   href="/blog"
                   className="group inline-flex items-center gap-2 text-primary hover:text-white transition-colors duration-200 font-bold text-lg"
                 >
-                  {t("blog.ctaFromAbout")}
+                  {t('blog.ctaFromAbout')}
                 </Link>
 
                 {/* CTA CV */}
@@ -121,10 +121,10 @@ export function AboutSection() {
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-bold text-lg"
                   whileHover={{ x: 3 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 >
                   <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
-                  {t("cv.download")}
+                  {t('cv.download')}
                 </motion.a>
               </div>
 
@@ -132,18 +132,18 @@ export function AboutSection() {
               <div className="flex gap-4 pt-4">
                 <div className="border-l-4 border-primary pl-4">
                   <span className="text-2xl md:text-3xl font-black text-white">
-                    {t("about.stats.techLead")}
+                    {t('about.stats.techLead')}
                   </span>
                   <p className="text-white/60 text-sm">
-                    {t("about.stats.engineers")}
+                    {t('about.stats.engineers')}
                   </p>
                 </div>
                 <div className="border-l-4 border-white pl-4">
                   <span className="text-2xl md:text-3xl font-black text-primary">
-                    {t("about.stats.years")}
+                    {t('about.stats.years')}
                   </span>
                   <p className="text-white/60 text-sm">
-                    {t("about.stats.productEng")}
+                    {t('about.stats.productEng')}
                   </p>
                 </div>
               </div>

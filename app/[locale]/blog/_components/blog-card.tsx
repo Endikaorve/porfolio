@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Link } from "@/i18n/navigation";
-import type { BlogPost } from "@/core/blog/domain/blog";
-import { formatBlogPostDate } from "@/core/blog/domain/blog-utils";
+import { motion } from 'framer-motion';
+import { Link } from '@/i18n/navigation';
+import type { BlogPost } from '@/core/blog/domain/blog';
+import { formatBlogPostDate } from '@/core/blog/domain/blog-utils';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -13,7 +13,7 @@ interface BlogCardProps {
 
 export function BlogCard({ post, index, locale }: BlogCardProps) {
   const formattedDate = formatBlogPostDate(post, locale);
-  const number = String(index + 1).padStart(2, "0");
+  const number = String(index + 1).padStart(2, '0');
 
   return (
     <motion.article
@@ -22,7 +22,7 @@ export function BlogCard({ post, index, locale }: BlogCardProps) {
       transition={{
         duration: 0.5,
         delay: index * 0.1,
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 25,
       }}
@@ -73,7 +73,7 @@ export function BlogCard({ post, index, locale }: BlogCardProps) {
             className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100"
             initial={{ x: -10, opacity: 0 }}
             whileHover={{ x: 0, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
           >
             <span className="text-2xl text-primary">→</span>
           </motion.div>
@@ -82,4 +82,3 @@ export function BlogCard({ post, index, locale }: BlogCardProps) {
     </motion.article>
   );
 }
-

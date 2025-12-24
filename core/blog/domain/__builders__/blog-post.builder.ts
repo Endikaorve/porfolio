@@ -1,4 +1,4 @@
-import type { BlogPost, BlogPostDetail } from '../blog'
+import type { BlogPost, BlogPostDetail } from '../blog';
 
 /**
  * Builder para crear objetos BlogPost en tests
@@ -14,50 +14,50 @@ export class BlogPostBuilder {
     tags: ['test', 'vitest'],
     readTime: '5 min',
     featured: false,
-  }
+  };
 
   withSlug(slug: string): this {
-    this.blogPost.slug = slug
-    return this
+    this.blogPost.slug = slug;
+    return this;
   }
 
   withTitle(title: string): this {
-    this.blogPost.title = title
-    return this
+    this.blogPost.title = title;
+    return this;
   }
 
   withDescription(description: string): this {
-    this.blogPost.description = description
-    return this
+    this.blogPost.description = description;
+    return this;
   }
 
   withDate(date: string): this {
-    this.blogPost.date = date
-    return this
+    this.blogPost.date = date;
+    return this;
   }
 
   withAuthor(author: string): this {
-    this.blogPost.author = author
-    return this
+    this.blogPost.author = author;
+    return this;
   }
 
   withTags(tags: string[]): this {
-    this.blogPost.tags = tags
-    return this
+    this.blogPost.tags = tags;
+    return this;
   }
 
   withReadTime(readTime: string): this {
-    this.blogPost.readTime = readTime
-    return this
+    this.blogPost.readTime = readTime;
+    return this;
   }
 
   withFeatured(featured: boolean): this {
-    this.blogPost.featured = featured
-    return this
+    this.blogPost.featured = featured;
+    return this;
   }
 
   build(): BlogPost {
-    return { ...this.blogPost }
+    return { ...this.blogPost };
   }
 }
 
@@ -66,29 +66,28 @@ export class BlogPostBuilder {
  * Extiende BlogPostBuilder añadiendo el campo content
  */
 export class BlogPostDetailBuilder extends BlogPostBuilder {
-  private content: string = '# Test Content\n\nThis is test markdown content.'
+  private content: string = '# Test Content\n\nThis is test markdown content.';
 
   withContent(content: string): this {
-    this.content = content
-    return this
+    this.content = content;
+    return this;
   }
 
   build(): BlogPostDetail {
-    const blogPost = super.build()
+    const blogPost = super.build();
     return {
       ...blogPost,
       content: this.content,
-    }
+    };
   }
 }
 
 /**
  * Función helper para crear un BlogPost con valores por defecto
  */
-export const aBlogPost = () => new BlogPostBuilder()
+export const aBlogPost = () => new BlogPostBuilder();
 
 /**
  * Función helper para crear un BlogPostDetail con valores por defecto
  */
-export const aBlogPostDetail = () => new BlogPostDetailBuilder()
-
+export const aBlogPostDetail = () => new BlogPostDetailBuilder();

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { Github, ExternalLink } from "lucide-react";
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { Github, ExternalLink } from 'lucide-react';
 
 export function ProjectsSection() {
   const t = useTranslations();
@@ -16,9 +16,9 @@ export function ProjectsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          {t("projects.title.line1")}
+          {t('projects.title.line1')}
           <br />
-          <span className="text-primary">{t("projects.title.line2")}</span>
+          <span className="text-primary">{t('projects.title.line2')}</span>
         </motion.h2>
 
         {/* Mobile: Stack uniforme | Desktop: Grid asimétrico */}
@@ -45,13 +45,13 @@ export function ProjectsSection() {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent opacity-60" />
             <div className="absolute inset-0 p-6 lg:p-12 flex flex-col justify-end">
               <span className="text-primary text-xs lg:text-sm font-mono mb-2 tracking-wider">
-                {t("projects.items.banking.category")}
+                {t('projects.items.banking.category')}
               </span>
               <h3 className="text-2xl lg:text-5xl font-black text-white mb-2 lg:mb-4">
-                {t("projects.items.banking.title")}
+                {t('projects.items.banking.title')}
               </h3>
               <p className="text-white/60 text-sm lg:text-lg max-w-md leading-relaxed">
-                {t("projects.items.banking.description")}
+                {t('projects.items.banking.description')}
               </p>
             </div>
             <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors duration-300" />
@@ -81,13 +81,13 @@ export function ProjectsSection() {
             <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-white/40 via-white/10 to-transparent" />
             <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
               <span className="text-white/50 text-xs lg:text-sm font-mono mb-2 tracking-wider">
-                {t("projects.items.booking.category")}
+                {t('projects.items.booking.category')}
               </span>
               <h3 className="text-2xl lg:text-3xl font-black text-white mb-2">
-                {t("projects.items.booking.title")}
+                {t('projects.items.booking.title')}
               </h3>
               <p className="text-white/50 text-sm leading-relaxed">
-                {t("projects.items.booking.description")}
+                {t('projects.items.booking.description')}
               </p>
             </div>
             <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-white/20 group-hover:border-white/50 transition-colors duration-300" />
@@ -124,13 +124,13 @@ export function ProjectsSection() {
             <div className="absolute left-0 bottom-0 w-1 h-full bg-gradient-to-t from-white/30 via-white/10 to-transparent" />
             <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
               <span className="text-white/50 text-xs lg:text-sm font-mono mb-2 tracking-wider">
-                {t("projects.items.saas.category")}
+                {t('projects.items.saas.category')}
               </span>
               <h3 className="text-2xl lg:text-4xl font-black text-white mb-2">
-                {t("projects.items.saas.title")}
+                {t('projects.items.saas.title')}
               </h3>
               <p className="text-white/50 text-sm lg:text-base leading-relaxed">
-                {t("projects.items.saas.description")}
+                {t('projects.items.saas.description')}
               </p>
             </div>
             <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-white/20 group-hover:border-white/40 transition-colors duration-300" />
@@ -151,13 +151,13 @@ export function ProjectsSection() {
             {/* Header de la card principal */}
             <div className="mb-8 z-10 relative">
               <span className="text-primary/70 text-xs lg:text-sm font-mono mb-2 tracking-wider block">
-                {t("projects.items.labs.category")}
+                {t('projects.items.labs.category')}
               </span>
               <h3 className="text-2xl lg:text-4xl font-black text-white mb-2">
-                {t("projects.items.labs.title")}
+                {t('projects.items.labs.title')}
               </h3>
               <p className="text-white/50 text-sm lg:text-base leading-relaxed max-w-2xl">
-                {t("projects.items.labs.description")}
+                {t('projects.items.labs.description')}
               </p>
             </div>
 
@@ -167,7 +167,7 @@ export function ProjectsSection() {
               <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-white font-bold font-mono text-sm pr-4">
-                    {t("projects.items.labs.subprojects.p1.name")}
+                    {t('projects.items.labs.subprojects.p1.name')}
                   </h4>
                   <div className="flex gap-2 shrink-0">
                     <a
@@ -182,7 +182,7 @@ export function ProjectsSection() {
                   </div>
                 </div>
                 <p className="text-white/50 text-xs leading-relaxed mt-auto">
-                  {t("projects.items.labs.subprojects.p1.desc")}
+                  {t('projects.items.labs.subprojects.p1.desc')}
                 </p>
               </div>
 
@@ -190,7 +190,7 @@ export function ProjectsSection() {
               <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-white font-bold font-mono text-sm pr-4">
-                    {t("projects.items.labs.subprojects.p2.name")}
+                    {t('projects.items.labs.subprojects.p2.name')}
                   </h4>
                   <div className="flex gap-2 shrink-0">
                     <a
@@ -214,7 +214,7 @@ export function ProjectsSection() {
                   </div>
                 </div>
                 <p className="text-white/50 text-xs leading-relaxed mt-auto">
-                  {t("projects.items.labs.subprojects.p2.desc")}
+                  {t('projects.items.labs.subprojects.p2.desc')}
                 </p>
               </div>
 
@@ -222,7 +222,7 @@ export function ProjectsSection() {
               <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-white font-bold font-mono text-sm pr-4">
-                    {t("projects.items.labs.subprojects.p3.name")}
+                    {t('projects.items.labs.subprojects.p3.name')}
                   </h4>
                   <div className="flex gap-2 shrink-0">
                     <a
@@ -246,7 +246,7 @@ export function ProjectsSection() {
                   </div>
                 </div>
                 <p className="text-white/50 text-xs leading-relaxed mt-auto">
-                  {t("projects.items.labs.subprojects.p3.desc")}
+                  {t('projects.items.labs.subprojects.p3.desc')}
                 </p>
               </div>
 
@@ -254,7 +254,7 @@ export function ProjectsSection() {
               <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-white font-bold font-mono text-sm pr-4">
-                    {t("projects.items.labs.subprojects.p4.name")}
+                    {t('projects.items.labs.subprojects.p4.name')}
                   </h4>
                   <div className="flex gap-2 shrink-0">
                     <a
@@ -278,7 +278,7 @@ export function ProjectsSection() {
                   </div>
                 </div>
                 <p className="text-white/50 text-xs leading-relaxed mt-auto">
-                  {t("projects.items.labs.subprojects.p4.desc")}
+                  {t('projects.items.labs.subprojects.p4.desc')}
                 </p>
               </div>
             </div>
@@ -307,4 +307,3 @@ export function ProjectsSection() {
     </section>
   );
 }
-

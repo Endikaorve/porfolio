@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Link } from "@/i18n/navigation";
-import type { BlogPostDetail } from "@/core/blog/domain/blog";
-import { formatBlogPostDate } from "@/core/blog/domain/blog-utils";
-import { useTranslations } from "next-intl";
+import { motion } from 'framer-motion';
+import { Link } from '@/i18n/navigation';
+import type { BlogPostDetail } from '@/core/blog/domain/blog';
+import { formatBlogPostDate } from '@/core/blog/domain/blog-utils';
+import { useTranslations } from 'next-intl';
 
 interface BlogPostLayoutProps {
   post: BlogPostDetail;
@@ -17,7 +17,7 @@ export function BlogPostLayout({
   locale,
   children,
 }: BlogPostLayoutProps) {
-  const t = useTranslations("blog");
+  const t = useTranslations('blog');
   const formattedDate = formatBlogPostDate(post, locale);
 
   return (
@@ -37,11 +37,11 @@ export function BlogPostLayout({
             <motion.span
               className="inline-block"
               whileHover={{ x: -4 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             >
               ←
             </motion.span>
-            {t("backToBlog")}
+            {t('backToBlog')}
           </Link>
         </motion.header>
 
@@ -129,11 +129,11 @@ export function BlogPostLayout({
                 <motion.span
                   className="inline-block"
                   whileHover={{ x: -4 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                 >
                   ←
                 </motion.span>
-                {t("allPosts")}
+                {t('allPosts')}
               </Link>
             </div>
           </div>

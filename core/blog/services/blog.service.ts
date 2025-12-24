@@ -1,7 +1,7 @@
-import type { BlogRepository } from '../domain/blog-repository'
-import type { BlogPost, BlogPostDetail } from '../domain/blog'
+import type { BlogRepository } from '../domain/blog-repository';
+import type { BlogPost, BlogPostDetail } from '../domain/blog';
 
-let blogRepository: BlogRepository
+let blogRepository: BlogRepository;
 
 /**
  * Servicio de blog que encapsula la lógica de negocio
@@ -14,7 +14,7 @@ export const blogService = {
    * @returns Array de posts ordenados por fecha descendente
    */
   listBlogPosts: (locale: string): Promise<BlogPost[]> => {
-    return blogRepository.listBlogPosts(locale)
+    return blogRepository.listBlogPosts(locale);
   },
 
   /**
@@ -27,7 +27,7 @@ export const blogService = {
     slug: string,
     locale: string
   ): Promise<BlogPostDetail | null> => {
-    return blogRepository.getBlogPostDetailBySlug(slug, locale)
+    return blogRepository.getBlogPostDetailBySlug(slug, locale);
   },
 
   /**
@@ -36,9 +36,9 @@ export const blogService = {
    * @returns Array de slugs
    */
   listSlugs: (): Promise<string[]> => {
-    return blogRepository.listSlugs()
+    return blogRepository.listSlugs();
   },
-}
+};
 
 /**
  * Inyecta la implementación del repositorio
@@ -46,6 +46,5 @@ export const blogService = {
  * @param repository - Implementación del repositorio
  */
 export const setBlogRepository = (repository: BlogRepository) => {
-  blogRepository = repository
-}
-
+  blogRepository = repository;
+};

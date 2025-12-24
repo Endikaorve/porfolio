@@ -1,7 +1,9 @@
-import type { MDXComponents } from "mdx/types";
-import { CodeBlock } from "./code-block";
+import type { MDXComponents } from 'mdx/types';
+import { CodeBlock } from './code-block';
 
-export function useMDXComponents(components: MDXComponents = {}): MDXComponents {
+export function useMDXComponents(
+  components: MDXComponents = {}
+): MDXComponents {
   return {
     // Headings con estilos editoriales
     h1: ({ children }) => (
@@ -40,19 +42,19 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
       <a
         href={href}
         className="text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all duration-200"
-        target={href?.startsWith("http") ? "_blank" : undefined}
-        rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+        target={href?.startsWith('http') ? '_blank' : undefined}
+        rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
       >
         {children}
       </a>
     ),
 
     // Listas
-    ul: ({ children }) => (
-      <ul className="space-y-3 mb-6 pl-4">{children}</ul>
-    ),
+    ul: ({ children }) => <ul className="space-y-3 mb-6 pl-4">{children}</ul>,
     ol: ({ children }) => (
-      <ol className="space-y-3 mb-6 pl-4 list-decimal list-inside">{children}</ol>
+      <ol className="space-y-3 mb-6 pl-4 list-decimal list-inside">
+        {children}
+      </ol>
     ),
     li: ({ children }) => (
       <li className="text-white/80 text-lg leading-relaxed flex items-start gap-3">
@@ -112,20 +114,14 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     strong: ({ children }) => (
       <strong className="font-bold text-white">{children}</strong>
     ),
-    em: ({ children }) => (
-      <em className="italic text-white/90">{children}</em>
-    ),
+    em: ({ children }) => <em className="italic text-white/90">{children}</em>,
 
     // Imágenes
     img: ({ src, alt }) => (
       <figure className="my-10">
         <div className="relative border border-white/10 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={src}
-            alt={alt || ""}
-            className="w-full h-auto"
-          />
+          <img src={src} alt={alt || ''} className="w-full h-auto" />
         </div>
         {alt && (
           <figcaption className="mt-3 text-sm text-white/50 font-mono text-center">
@@ -163,4 +159,3 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
 
 // Exportar los componentes para usar con MDXRemote
 export const mdxComponents = useMDXComponents();
-
