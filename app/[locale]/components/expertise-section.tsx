@@ -44,7 +44,7 @@ export function ExpertiseSection() {
         >
           {t("expertise.title.line1")}
           <br />
-          <span className="text-[#de5e91]">{t("expertise.title.line2")}</span>
+          <span className="text-primary">{t("expertise.title.line2")}</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -53,7 +53,7 @@ export function ExpertiseSection() {
             return (
               <motion.div
                 key={i}
-                className="border-l-4 border-[#de5e91] pl-8 py-6"
+                className="border-l-4 border-primary pl-8 py-6"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
@@ -65,7 +65,7 @@ export function ExpertiseSection() {
                 <h3 className="text-3xl font-black text-white mt-2 mb-4">
                   {item.title}
                   {isHighlighted && (
-                    <span className="ml-3 text-sm text-[#de5e91] align-top">
+                    <span className="ml-3 text-sm text-primary align-top">
                       [ ✦ ]
                     </span>
                   )}

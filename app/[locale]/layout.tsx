@@ -142,7 +142,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <JsonLdSchema locale={locale} />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#212121]`}
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-surface-dark`}
       >
         <NextIntlClientProvider messages={messages}>
           <GlobalCursor />

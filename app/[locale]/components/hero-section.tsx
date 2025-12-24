@@ -74,7 +74,7 @@ export function HeroSection() {
             <motion.h1
               className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform whitespace-nowrap"
               style={{
-                textShadow: "0 0 40px rgba(222, 94, 145, 0.3)",
+                textShadow: "0 0 40px color-mix(in srgb, var(--pink) 30%, transparent)",
                 x: heroReady ? orubeX : 0,
               }}
               initial={{ y: "-110%" }}
@@ -123,7 +123,7 @@ export function HeroSection() {
           >
             {/* Línea decorativa que se expande */}
             <motion.div
-              className="absolute -left-8 top-1/2 h-px bg-[#de5e91]"
+              className="absolute -left-8 top-1/2 h-px bg-primary"
               initial={{ width: 0 }}
               animate={{ width: 24 }}
               transition={{
@@ -133,7 +133,7 @@ export function HeroSection() {
               }}
             />
             <motion.p
-              className="text-[#de5e91] text-xl md:text-2xl font-mono whitespace-nowrap font-bold"
+              className="text-primary text-xl md:text-2xl font-mono whitespace-nowrap font-bold"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{
@@ -156,7 +156,7 @@ export function HeroSection() {
         >
           {/* Borde izquierdo animado */}
           <motion.div
-            className="absolute left-0 top-0 w-1 bg-[#de5e91]"
+            className="absolute left-0 top-0 w-1 bg-primary"
             initial={{ height: 0 }}
             animate={{ height: "100%" }}
             transition={{
@@ -166,7 +166,7 @@ export function HeroSection() {
             }}
           />
           <motion.p
-            className="text-[#de5e91] text-sm font-mono font-bold leading-relaxed"
+            className="text-primary text-sm font-mono font-bold leading-relaxed"
             initial={{ x: -10, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{
@@ -194,7 +194,7 @@ export function HeroSection() {
         }}
       >
         <motion.div
-          className="w-px h-20 bg-gradient-to-b from-[#de5e91] to-transparent"
+          className="w-px h-20 bg-gradient-to-b from-primary to-transparent"
           animate={{ y: [0, 10, 0] }}
           transition={{
             duration: 2,

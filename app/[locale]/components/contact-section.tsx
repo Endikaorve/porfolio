@@ -31,12 +31,12 @@ export function ContactSection() {
 
       {/* Elementos técnicos en esquinas */}
       <div className="absolute bottom-24 left-8 hidden md:block">
-        <div className="w-16 h-px bg-gradient-to-r from-[#de5e91]/30 to-transparent" />
-        <div className="w-px h-16 bg-gradient-to-b from-[#de5e91]/30 to-transparent" />
+        <div className="w-16 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+        <div className="w-px h-16 bg-gradient-to-b from-primary/30 to-transparent" />
       </div>
       <div className="absolute bottom-24 right-8 hidden md:flex flex-col items-end">
-        <div className="w-16 h-px bg-gradient-to-l from-[#de5e91]/30 to-transparent" />
-        <div className="w-px h-16 bg-gradient-to-b from-[#de5e91]/30 to-transparent ml-auto" />
+        <div className="w-16 h-px bg-gradient-to-l from-primary/30 to-transparent" />
+        <div className="w-px h-16 bg-gradient-to-b from-primary/30 to-transparent ml-auto" />
       </div>
 
       {/* Círculo decorativo exterior */}
@@ -62,7 +62,7 @@ export function ContactSection() {
             <span
               className="text-transparent"
               style={{
-                WebkitTextStroke: "2px #de5e91",
+                WebkitTextStroke: "2px var(--pink)",
               }}
             >
               {t("contact.title.line2")}
@@ -72,11 +72,11 @@ export function ContactSection() {
           <div className="flex flex-col md:flex-row gap-8 justify-center items-center mt-20">
             <motion.a
               href="mailto:endikaorve@gmail.com"
-              className="text-white text-2xl font-mono hover:text-[#de5e91] transition-colors relative group"
+              className="text-white text-2xl font-mono hover:text-primary transition-colors relative group"
               whileHover={{ scale: 1.1 }}
             >
               endikaorve@gmail.com
-              <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#de5e91] group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
             </motion.a>
 
             <span className="text-white/20 text-4xl hidden md:block">/</span>
@@ -86,7 +86,7 @@ export function ContactSection() {
                 href="https://www.linkedin.com/in/endikaorube/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white text-lg font-mono hover:text-[#de5e91] transition-colors"
+                className="text-white text-lg font-mono hover:text-primary transition-colors"
                 whileHover={{ y: -5 }}
               >
                 LINKEDIN
@@ -95,7 +95,7 @@ export function ContactSection() {
                 href="https://github.com/Endikaorve"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white text-lg font-mono hover:text-[#de5e91] transition-colors"
+                className="text-white text-lg font-mono hover:text-primary transition-colors"
                 whileHover={{ y: -5 }}
               >
                 {t("contact.github")}
@@ -104,7 +104,7 @@ export function ContactSection() {
                 href="/Endika Orube Vega - CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white text-lg font-mono hover:text-[#de5e91] transition-colors"
+                className="text-white text-lg font-mono hover:text-primary transition-colors"
                 whileHover={{ y: -5 }}
               >
                 {t("cv.downloadShort")}

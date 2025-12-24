@@ -12,13 +12,13 @@ const variants = {
     width: 40,
     height: 40,
     backgroundColor: "white",
-    border: "1px solid rgba(222, 94, 145, 0.5)",
+    border: "1px solid color-mix(in srgb, var(--pink) 50%, transparent)",
   },
   hover: {
     width: 80,
     height: 80,
     backgroundColor: "white",
-    border: "1px solid rgba(222, 94, 145, 0.8)",
+    border: "1px solid color-mix(in srgb, var(--pink) 80%, transparent)",
   },
 };
 
@@ -63,7 +63,7 @@ export function CustomCursor({ mousePosition, cursorVariant }: CustomCursorProps
           top: mousePosition.y,
           transform: "translate(-50%, -50%)",
           background:
-            "radial-gradient(circle, rgba(222, 94, 145, 0.15) 0%, transparent 70%)",
+            "radial-gradient(circle, color-mix(in srgb, var(--pink) 15%, transparent) 0%, transparent 70%)",
         }}
         animate={{
           width: cursorVariant === "hover" ? 120 : 60,

@@ -43,7 +43,7 @@ export function TechSkillsSection() {
       {/* Container sticky que se fija en la pantalla */}
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         {/* Fondo con gradiente */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#de5e91]/[0.03] to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
 
         {/* Título fijo arriba a la izquierda */}
         <div className="absolute top-8 md:top-12 left-8 md:left-16 z-20">
@@ -52,7 +52,7 @@ export function TechSkillsSection() {
             <br />
             <span
               className="text-transparent"
-              style={{ WebkitTextStroke: "2px #de5e91" }}
+              style={{ WebkitTextStroke: "2px var(--pink)" }}
             >
               {t("tech.title.line2")}
             </span>
@@ -73,7 +73,7 @@ export function TechSkillsSection() {
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
             >
               <div className="relative">
-                <tech.Icon className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 text-white/20 group-hover:text-[#de5e91] transition-colors duration-300" />
+                <tech.Icon className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 text-white/20 group-hover:text-primary transition-colors duration-300" />
               </div>
               <span className="text-xs md:text-sm font-mono text-white/30 group-hover:text-white/60 transition-colors duration-300 whitespace-nowrap">
                 {tech.name}
@@ -83,17 +83,17 @@ export function TechSkillsSection() {
         </motion.div>
 
         {/* Fade edges */}
-        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#212121] to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#212121] to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-surface-dark to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-surface-dark to-transparent pointer-events-none z-10" />
 
         {/* Líneas decorativas */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#de5e91]/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#de5e91]/20 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
         {/* Indicador de scroll */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
           <motion.div
-            className="w-px h-8 bg-gradient-to-b from-[#de5e91]/50 to-transparent"
+            className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent"
             animate={{ scaleY: [1, 0.5, 1] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           />

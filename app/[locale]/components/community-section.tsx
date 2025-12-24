@@ -18,7 +18,7 @@ export function CommunitySection() {
           <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
             {t("community.title.line1")}
             <br />
-            <span className="text-[#de5e91]">
+            <span className="text-primary">
               {t("community.title.line2")}
             </span>
           </h2>
@@ -32,8 +32,8 @@ export function CommunitySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="absolute -inset-4 bg-[#de5e91] opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
-            <div className="relative border-l-4 border-[#de5e91] pl-8 py-4">
+            <div className="absolute -inset-4 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
+            <div className="relative border-l-4 border-primary pl-8 py-4">
               <span className="text-white/40 font-mono text-sm">
                 {t("community.teaching.period")}
               </span>
@@ -49,17 +49,17 @@ export function CommunitySection() {
 
               {/* Temas del curso */}
               <div className="space-y-3 mt-6">
-                <div className="border-l-2 border-[#de5e91]/40 pl-4 py-1">
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
                   <p className="text-white/70 text-sm leading-relaxed">
                     {t("community.teaching.topics.engineering")}
                   </p>
                 </div>
-                <div className="border-l-2 border-[#de5e91]/40 pl-4 py-1">
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
                   <p className="text-white/70 text-sm leading-relaxed">
                     {t("community.teaching.topics.architecture")}
                   </p>
                 </div>
-                <div className="border-l-2 border-[#de5e91]/40 pl-4 py-1">
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
                   <p className="text-white/70 text-sm leading-relaxed">
                     {t("community.teaching.topics.culture")}
                   </p>

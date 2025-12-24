@@ -26,7 +26,7 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-[#de5e91] transition-colors duration-200 font-mono text-sm group"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-mono text-sm group"
           >
             <motion.span
               className="inline-block"
@@ -47,7 +47,7 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none">
-            <span className="text-[#de5e91]">{t("title.line1")}</span>
+            <span className="text-primary">{t("title.line1")}</span>
             <br />
             <span className="text-white">{t("title.line2")}</span>
           </h1>

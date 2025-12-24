@@ -32,7 +32,7 @@ export function BlogPostLayout({
         >
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-[#de5e91] transition-colors duration-200 font-mono text-sm group"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-mono text-sm group"
           >
             <motion.span
               className="inline-block"
@@ -54,10 +54,10 @@ export function BlogPostLayout({
         >
           {/* Metadata */}
           <div className="flex flex-wrap items-center gap-4 mb-8 text-sm font-mono text-white/40">
-            <time dateTime={post.date} className="text-[#de5e91]">
+            <time dateTime={post.date} className="text-primary">
               {formattedDate}
             </time>
-            <span className="w-1 h-1 bg-[#de5e91]/50" />
+            <span className="w-1 h-1 bg-primary/50" />
             <span>{post.readTime}</span>
           </div>
 
@@ -76,7 +76,7 @@ export function BlogPostLayout({
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-4 py-2 text-sm font-mono uppercase tracking-wider text-[#de5e91] border border-[#de5e91]/30 bg-[#de5e91]/5"
+                className="px-4 py-2 text-sm font-mono uppercase tracking-wider text-primary border border-primary/30 bg-primary/5"
               >
                 {tag}
               </span>
@@ -84,7 +84,7 @@ export function BlogPostLayout({
           </div>
 
           {/* Línea divisoria */}
-          <div className="h-px bg-gradient-to-r from-[#de5e91]/50 via-[#de5e91]/20 to-transparent mb-16" />
+          <div className="h-px bg-gradient-to-r from-primary/50 via-primary/20 to-transparent mb-16" />
         </motion.div>
 
         {/* Contenido del artículo */}
@@ -105,12 +105,12 @@ export function BlogPostLayout({
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <div className="max-w-3xl mx-auto">
-            <div className="h-px bg-gradient-to-r from-transparent via-[#de5e91]/30 to-transparent mb-12" />
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-12" />
 
             {/* Autor */}
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 border border-[#de5e91]/30 flex items-center justify-center">
-                <span className="text-[#de5e91] font-black text-lg">E</span>
+              <div className="w-12 h-12 border border-primary/30 flex items-center justify-center">
+                <span className="text-primary font-black text-lg">E</span>
               </div>
               <div>
                 <p className="font-bold text-white">{post.author}</p>
@@ -124,7 +124,7 @@ export function BlogPostLayout({
             <div className="mt-12 pt-8 border-t border-white/10">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-[#de5e91] hover:text-white transition-colors duration-200 font-bold group"
+                className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors duration-200 font-bold group"
               >
                 <motion.span
                   className="inline-block"

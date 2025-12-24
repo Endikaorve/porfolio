@@ -11,7 +11,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     ),
     h2: ({ children }) => (
       <h2 className="text-3xl md:text-4xl font-black text-white mt-16 mb-6 leading-tight relative">
-        <span className="absolute -left-4 md:-left-6 top-0 text-[#de5e91]/30 font-mono text-lg">
+        <span className="absolute -left-4 md:-left-6 top-0 text-primary/30 font-mono text-lg">
           //
         </span>
         {children}
@@ -39,7 +39,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     a: ({ href, children }) => (
       <a
         href={href}
-        className="text-[#de5e91] underline underline-offset-4 decoration-[#de5e91]/30 hover:decoration-[#de5e91] transition-all duration-200"
+        className="text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all duration-200"
         target={href?.startsWith("http") ? "_blank" : undefined}
         rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
       >
@@ -56,15 +56,15 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
     ),
     li: ({ children }) => (
       <li className="text-white/80 text-lg leading-relaxed flex items-start gap-3">
-        <span className="text-[#de5e91] mt-1.5 text-sm">▸</span>
+        <span className="text-primary mt-1.5 text-sm">▸</span>
         <span>{children}</span>
       </li>
     ),
 
     // Blockquotes
     blockquote: ({ children }) => (
-      <blockquote className="relative my-8 pl-6 py-4 border-l-4 border-[#de5e91] bg-[#de5e91]/5">
-        <span className="absolute -left-3 -top-4 text-5xl text-[#de5e91]/20 font-serif">
+      <blockquote className="relative my-8 pl-6 py-4 border-l-4 border-primary bg-primary/5">
+        <span className="absolute -left-3 -top-4 text-5xl text-primary/20 font-serif">
           "
         </span>
         <div className="text-white/90 text-lg italic">{children}</div>
@@ -83,7 +83,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
       }
       // Si no, es código inline
       return (
-        <code className="px-2 py-1 bg-white/10 text-[#de5e91] font-mono text-sm">
+        <code className="px-2 py-1 bg-white/10 text-primary font-mono text-sm">
           {children}
         </code>
       );
@@ -97,7 +97,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
           <span className="w-3 h-3 bg-white/10" />
           <span className="w-3 h-3 bg-white/10" />
         </div>
-        <pre className="pt-12 pb-6 px-6 bg-[#0a0a0a] border border-white/10 overflow-x-auto text-sm">
+        <pre className="pt-12 pb-6 px-6 bg-surface-darkest border border-white/10 overflow-x-auto text-sm">
           {children}
         </pre>
       </div>
@@ -105,7 +105,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
 
     // Separadores
     hr: () => (
-      <hr className="my-16 border-none h-px bg-gradient-to-r from-transparent via-[#de5e91]/30 to-transparent" />
+      <hr className="my-16 border-none h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
     ),
 
     // Strong y em
@@ -142,7 +142,7 @@ export function useMDXComponents(components: MDXComponents = {}): MDXComponents 
       </div>
     ),
     thead: ({ children }) => (
-      <thead className="border-b-2 border-[#de5e91]/30">{children}</thead>
+      <thead className="border-b-2 border-primary/30">{children}</thead>
     ),
     tbody: ({ children }) => <tbody>{children}</tbody>,
     tr: ({ children }) => (

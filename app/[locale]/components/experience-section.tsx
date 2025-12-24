@@ -62,7 +62,7 @@ function ExperienceParticles() {
           return (
             <div
               key={`particle-${i}`}
-              className="absolute border border-[#de5e91] rounded-full"
+              className="absolute border border-primary rounded-full"
               style={{
                 left: particle.x,
                 top: particle.y,
@@ -78,7 +78,7 @@ function ExperienceParticles() {
           return (
             <div
               key={`particle-${i}`}
-              className="absolute bg-[#de5e91] rounded-full"
+              className="absolute bg-primary rounded-full"
               style={{
                 left: particle.x,
                 top: particle.y,
@@ -94,7 +94,7 @@ function ExperienceParticles() {
           return (
             <div
               key={`particle-${i}`}
-              className="absolute bg-[#de5e91]"
+              className="absolute bg-primary"
               style={{
                 left: particle.x,
                 top: particle.y,
@@ -110,7 +110,7 @@ function ExperienceParticles() {
           return (
             <div
               key={`particle-${i}`}
-              className="absolute border border-[#de5e91]"
+              className="absolute border border-primary"
               style={{
                 left: particle.x,
                 top: particle.y,
@@ -126,7 +126,7 @@ function ExperienceParticles() {
           return (
             <div
               key={`particle-${i}`}
-              className="absolute border border-[#de5e91]"
+              className="absolute border border-primary"
               style={{
                 left: particle.x,
                 top: particle.y,
@@ -141,7 +141,7 @@ function ExperienceParticles() {
         return (
           <div
             key={`particle-${i}`}
-            className="absolute border border-[#de5e91]"
+            className="absolute border border-primary"
             style={{
               left: particle.x,
               top: particle.y,
@@ -176,7 +176,7 @@ function ExperienceCard({
       style={{ zIndex: index + 1 }}
     >
       <motion.div
-        className="relative p-5 md:p-12 2xl:p-16 w-full bg-[#212121] border-2 border-[#de5e91]/30 pointer-events-auto"
+        className="relative p-5 md:p-12 2xl:p-16 w-full bg-surface-dark border-2 border-primary/30 pointer-events-auto"
         style={{
           rotate: fixedRotation,
         }}
@@ -188,10 +188,10 @@ function ExperienceCard({
           }}
         />
 
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#de5e91] to-transparent opacity-50" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
 
-        <div className="relative z-10 mb-4 md:mb-6 2xl:mb-8 border-l-4 2xl:border-l-[6px] border-[#de5e91] pl-6 2xl:pl-8">
-          <span className="text-[#de5e91] font-mono text-xs md:text-sm 2xl:text-base tracking-wider font-bold">
+        <div className="relative z-10 mb-4 md:mb-6 2xl:mb-8 border-l-4 2xl:border-l-[6px] border-primary pl-6 2xl:pl-8">
+          <span className="text-primary font-mono text-xs md:text-sm 2xl:text-base tracking-wider font-bold">
             {job.period}
           </span>
           <h3 className="text-2xl md:text-4xl 2xl:text-5xl font-black text-white mt-1 md:mt-2 leading-tight">
@@ -216,7 +216,7 @@ function ExperienceCard({
           {job.highlights.map((highlight, idx) => (
             <div
               key={idx}
-              className="border-l-2 2xl:border-l-[3px] border-[#de5e91]/50 pl-3 md:pl-4 2xl:pl-6 py-1 md:py-2 2xl:py-3 hover:border-[#de5e91] transition-colors duration-300"
+              className="border-l-2 2xl:border-l-[3px] border-primary/50 pl-3 md:pl-4 2xl:pl-6 py-1 md:py-2 2xl:py-3 hover:border-primary transition-colors duration-300"
             >
               <h4 className="text-white font-bold text-xs md:text-sm 2xl:text-base">
                 {highlight.title}
@@ -230,14 +230,14 @@ function ExperienceCard({
 
         <button
           onClick={onOpenModal}
-          className="md:hidden mt-6 relative z-10 w-full py-3 border-2 border-[#de5e91] text-[#de5e91] font-mono text-sm font-bold hover:bg-[#de5e91] hover:text-[#212121] transition-all duration-300 active:scale-95"
+          className="md:hidden mt-6 relative z-10 w-full py-3 border-2 border-primary text-primary font-mono text-sm font-bold hover:bg-primary hover:text-surface-dark transition-all duration-300 active:scale-95"
         >
           {t("viewMore")}
         </button>
 
-        <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#de5e91]/40 to-transparent" />
-        <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#de5e91]/20" />
-        <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-[#de5e91]/20" />
+        <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary/20" />
+        <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-primary/20" />
       </motion.div>
     </div>
   );
@@ -270,7 +270,7 @@ function ExperienceModal({
       />
 
       <motion.div
-        className="relative w-full max-h-[85vh] bg-[#212121] border-2 border-[#de5e91] overflow-y-auto overflow-x-hidden"
+        className="relative w-full max-h-[85vh] bg-surface-dark border-2 border-primary overflow-y-auto overflow-x-hidden"
         initial={{
           scale: 0.8,
           y: 100,
@@ -295,7 +295,7 @@ function ExperienceModal({
         <div className="p-6 overflow-x-hidden">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white hover:text-[#de5e91] transition-colors z-10"
+            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white hover:text-primary transition-colors z-10"
             aria-label="Cerrar"
           >
             <svg
@@ -311,10 +311,10 @@ function ExperienceModal({
             </svg>
           </button>
 
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#de5e91] to-transparent opacity-50" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
 
-          <div className="mb-6 border-l-4 border-[#de5e91] pl-6 pr-12">
-            <span className="text-[#de5e91] font-mono text-xs tracking-wider font-bold break-words">
+          <div className="mb-6 border-l-4 border-primary pl-6 pr-12">
+            <span className="text-primary font-mono text-xs tracking-wider font-bold break-words">
               {job.period}
             </span>
             <h3 className="text-2xl font-black text-white mt-1 leading-tight break-words">
@@ -339,7 +339,7 @@ function ExperienceModal({
             {job.highlights.map((highlight, idx) => (
               <div
                 key={idx}
-                className="border-l-2 border-[#de5e91]/50 pl-4 py-2 hover:border-[#de5e91] transition-colors duration-300"
+                className="border-l-2 border-primary/50 pl-4 py-2 hover:border-primary transition-colors duration-300"
               >
                 <h5 className="text-white font-bold text-sm mb-1 break-words">
                   {highlight.title}
@@ -351,10 +351,10 @@ function ExperienceModal({
             ))}
           </div>
 
-          <div className="mt-8 pt-4 border-t border-[#de5e91]/20">
+          <div className="mt-8 pt-4 border-t border-primary/20">
             <button
               onClick={onClose}
-              className="w-full py-3 border-2 border-white/30 text-white font-mono text-sm font-bold hover:border-white hover:bg-white hover:text-[#212121] transition-all duration-300"
+              className="w-full py-3 border-2 border-white/30 text-white font-mono text-sm font-bold hover:border-white hover:bg-white hover:text-surface-dark transition-all duration-300"
             >
               {t("close")}
             </button>
@@ -491,7 +491,7 @@ export function ExperienceSection() {
           <span
             className="text-transparent"
             style={{
-              WebkitTextStroke: "2px #de5e91",
+              WebkitTextStroke: "2px var(--pink)",
             }}
           >
             {t("experience.title.line2")}

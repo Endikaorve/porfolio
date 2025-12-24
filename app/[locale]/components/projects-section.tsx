@@ -18,7 +18,7 @@ export function ProjectsSection() {
         >
           {t("projects.title.line1")}
           <br />
-          <span className="text-[#de5e91]">{t("projects.title.line2")}</span>
+          <span className="text-primary">{t("projects.title.line2")}</span>
         </motion.h2>
 
         {/* Mobile: Stack uniforme | Desktop: Grid asimétrico */}
@@ -31,20 +31,20 @@ export function ProjectsSection() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
           >
-            <div className="absolute inset-0 bg-[#1a1a1a]" />
+            <div className="absolute inset-0 bg-surface-darker" />
             <div
               className="absolute inset-0 opacity-20"
               style={{
                 backgroundImage: `
-                  linear-gradient(45deg, transparent 40%, rgba(222, 94, 145, 0.1) 50%, transparent 60%),
-                  linear-gradient(-45deg, transparent 40%, rgba(222, 94, 145, 0.05) 50%, transparent 60%)
+                  linear-gradient(45deg, transparent 40%, color-mix(in srgb, var(--pink) 10%, transparent) 50%, transparent 60%),
+                  linear-gradient(-45deg, transparent 40%, color-mix(in srgb, var(--pink) 5%, transparent) 50%, transparent 60%)
                 `,
               }}
             />
-            <div className="absolute inset-0 border border-[#de5e91]/20 group-hover:border-[#de5e91]/50 transition-colors duration-300" />
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#de5e91] via-[#de5e91]/50 to-transparent opacity-60" />
+            <div className="absolute inset-0 border border-primary/20 group-hover:border-primary/50 transition-colors duration-300" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent opacity-60" />
             <div className="absolute inset-0 p-6 lg:p-12 flex flex-col justify-end">
-              <span className="text-[#de5e91] text-xs lg:text-sm font-mono mb-2 tracking-wider">
+              <span className="text-primary text-xs lg:text-sm font-mono mb-2 tracking-wider">
                 {t("projects.items.banking.category")}
               </span>
               <h3 className="text-2xl lg:text-5xl font-black text-white mb-2 lg:mb-4">
@@ -54,8 +54,8 @@ export function ProjectsSection() {
                 {t("projects.items.banking.description")}
               </p>
             </div>
-            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
-            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
+            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors duration-300" />
+            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-primary/30 group-hover:border-primary transition-colors duration-300" />
           </motion.div>
 
           {/* Proyecto 2 - Hotel Booking Engine */}
@@ -70,11 +70,11 @@ export function ProjectsSection() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
           >
-            <div className="absolute inset-0 bg-[#1a1a1a]" />
+            <div className="absolute inset-0 bg-surface-darker" />
             <div
               className="absolute inset-0 opacity-30"
               style={{
-                backgroundImage: `radial-gradient(circle at 80% 20%, rgba(222, 94, 145, 0.15) 0%, transparent 50%)`,
+                backgroundImage: `radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--pink) 15%, transparent) 0%, transparent 50%)`,
               }}
             />
             <div className="absolute inset-0 border border-white/10 group-hover:border-white/30 transition-colors duration-300" />
@@ -105,7 +105,7 @@ export function ProjectsSection() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
           >
-            <div className="absolute inset-0 bg-[#1a1a1a]" />
+            <div className="absolute inset-0 bg-surface-darker" />
             <div
               className="absolute inset-0 opacity-50"
               style={{
@@ -139,7 +139,7 @@ export function ProjectsSection() {
 
           {/* Proyecto 4 - Labs & R&D */}
           <motion.div
-            className="col-span-1 lg:col-span-7 relative group overflow-hidden bg-[#1a1a1a] border border-[#de5e91]/20 p-6 lg:p-8 flex flex-col justify-between"
+            className="col-span-1 lg:col-span-7 relative group overflow-hidden bg-surface-darker border border-primary/20 p-6 lg:p-8 flex flex-col justify-between"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{
               opacity: 1,
@@ -150,7 +150,7 @@ export function ProjectsSection() {
           >
             {/* Header de la card principal */}
             <div className="mb-8 z-10 relative">
-              <span className="text-[#de5e91]/70 text-xs lg:text-sm font-mono mb-2 tracking-wider block">
+              <span className="text-primary/70 text-xs lg:text-sm font-mono mb-2 tracking-wider block">
                 {t("projects.items.labs.category")}
               </span>
               <h3 className="text-2xl lg:text-4xl font-black text-white mb-2">
@@ -164,7 +164,7 @@ export function ProjectsSection() {
             {/* Grid de Subproyectos */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 z-10 relative">
               {/* Subproyecto 1: Portfolio */}
-              <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+              <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-white font-bold font-mono text-sm pr-4">
                     {t("projects.items.labs.subprojects.p1.name")}
@@ -174,7 +174,7 @@ export function ProjectsSection() {
                       href="https://github.com/Endikaorve/porfolio"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
                       aria-label="GitHub Code"
                     >
                       <Github className="w-4 h-4" />
@@ -187,7 +187,7 @@ export function ProjectsSection() {
               </div>
 
               {/* Subproyecto 2: Renderizados React */}
-              <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+              <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-white font-bold font-mono text-sm pr-4">
                     {t("projects.items.labs.subprojects.p2.name")}
@@ -197,7 +197,7 @@ export function ProjectsSection() {
                       href="https://github.com/Endikaorve/renderizados-web"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
                       aria-label="GitHub Code"
                     >
                       <Github className="w-4 h-4" />
@@ -206,7 +206,7 @@ export function ProjectsSection() {
                       href="https://dxp-renderizados-web-presentacion.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
                       aria-label="Live Demo"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -219,7 +219,7 @@ export function ProjectsSection() {
               </div>
 
               {/* Subproyecto 3: Taller IA + Pokédex */}
-              <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+              <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-white font-bold font-mono text-sm pr-4">
                     {t("projects.items.labs.subprojects.p3.name")}
@@ -229,7 +229,7 @@ export function ProjectsSection() {
                       href="https://github.com/Endikaorve/pokedex-taller-scpna"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
                       aria-label="GitHub Code"
                     >
                       <Github className="w-4 h-4" />
@@ -238,7 +238,7 @@ export function ProjectsSection() {
                       href="https://pokedex-vite-woad.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
                       aria-label="Live Demo"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -251,7 +251,7 @@ export function ProjectsSection() {
               </div>
 
               {/* Subproyecto 4: Landing CreaYarnoz */}
-              <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+              <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-white font-bold font-mono text-sm pr-4">
                     {t("projects.items.labs.subprojects.p4.name")}
@@ -261,7 +261,7 @@ export function ProjectsSection() {
                       href="https://github.com/Endikaorve/creayarnoz"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
                       aria-label="GitHub Code"
                     >
                       <Github className="w-4 h-4" />
@@ -270,7 +270,7 @@ export function ProjectsSection() {
                       href="https://creayarnoz.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
                       aria-label="Live Demo"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -292,15 +292,15 @@ export function ProjectsSection() {
                     90deg,
                     transparent,
                     transparent 40px,
-                    rgba(222, 94, 145, 0.03) 40px,
-                    rgba(222, 94, 145, 0.03) 80px
+                    color-mix(in srgb, var(--pink) 3%, transparent) 40px,
+                    color-mix(in srgb, var(--pink) 3%, transparent) 80px
                   )
                 `,
               }}
             />
-            <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-[#de5e91]/50 via-[#de5e91]/20 to-transparent" />
-            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-[#de5e91]/30" />
-            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-[#de5e91]/30" />
+            <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
+            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-primary/30" />
+            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-primary/30" />
           </motion.div>
         </div>
       </div>
