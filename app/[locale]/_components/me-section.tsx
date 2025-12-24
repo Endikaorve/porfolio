@@ -8,7 +8,7 @@ export function MeSection() {
   const t = useTranslations();
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-dvh flex items-center justify-center overflow-hidden snap-start snap-always">
       {/* Líneas decorativas sutiles */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
