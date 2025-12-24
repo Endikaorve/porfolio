@@ -7,7 +7,7 @@ export function ContactSection() {
   const t = useTranslations();
 
   return (
-    <section className="relative h-dvh flex items-center justify-center overflow-hidden snap-start snap-always">
+    <section className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always">
       {/* Background Elements */}
       {/* Líneas diagonales decorativas */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">

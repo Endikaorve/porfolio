@@ -35,7 +35,7 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative h-dvh flex items-center justify-center overflow-hidden snap-start snap-always"
+      className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always"
     >
       {/* Capa animada - texto que se mueve con scroll */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
