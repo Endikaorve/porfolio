@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { BlogCard } from "./_components/blog-card";
 import type { BlogPostMeta } from "@/lib/blog-types";
 
@@ -17,31 +16,9 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
   return (
     <main className="relative min-h-screen">
       <div className="container mx-auto px-4">
-        {/* Header con navegación */}
-        <motion.header
-          className="pt-20 md:pt-24 mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-mono text-sm group"
-          >
-            <motion.span
-              className="inline-block"
-              whileHover={{ x: -4 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            >
-              ←
-            </motion.span>
-            {t("backToHome")}
-          </Link>
-        </motion.header>
-
         {/* Hero */}
         <motion.section
-          className="pb-12 md:pb-16"
+          className="pt-28 md:pt-32 pb-12 md:pb-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
