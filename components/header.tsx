@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Braces } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname, Link } from '@/i18n/navigation';
 import { Locale, locales } from '@/i18n/config';
@@ -38,11 +39,11 @@ export function Header() {
           {/* Home Link */}
           <Link
             href="/"
-            className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
+            className={`group relative py-2 transition-colors duration-200 ${
               isHomeActive ? 'text-primary' : 'text-white/60 hover:text-primary'
             }`}
           >
-            {t('nav.home')}
+            <Braces size={18} strokeWidth={2} />
             <span
               className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
                 isHomeActive
