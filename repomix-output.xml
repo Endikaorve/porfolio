@@ -161,8 +161,6 @@ lib/
   utils.ts
 public/
   robots.txt
-styles/
-  globals.css
 translations/
   en.json
   es.json
@@ -623,96 +621,6 @@ export default async function BlogPostPage({ params }: Props) {
 }
 </file>
 
-<file path="app/[locale]/blog/blog-list-client.tsx">
-"use client";
-
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { BlogCard } from "../components/blog-card";
-import type { BlogPostMeta } from "@/lib/blog-types";
-
-interface BlogListClientProps {
-  posts: BlogPostMeta[];
-  locale: string;
-}
-
-export function BlogListClient({ posts, locale }: BlogListClientProps) {
-  const t = useTranslations("blog");
-
-  return (
-    <main className="relative min-h-screen">
-      <div className="container mx-auto px-4">
-        {/* Header con navegación */}
-        <motion.header
-          className="pt-20 md:pt-24 mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-[#de5e91] transition-colors duration-200 font-mono text-sm group"
-          >
-            <motion.span
-              className="inline-block"
-              whileHover={{ x: -4 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            >
-              ←
-            </motion.span>
-            {t("backToHome")}
-          </Link>
-        </motion.header>
-
-        {/* Hero */}
-        <motion.section
-          className="pb-12 md:pb-16"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none">
-            <span className="text-[#de5e91]">{t("title.line1")}</span>
-            <br />
-            <span className="text-white">{t("title.line2")}</span>
-          </h1>
-
-          <p className="mt-8 text-white/60 text-lg md:text-xl max-w-2xl">
-            {t("subtitle")}
-          </p>
-        </motion.section>
-
-        {/* Lista de posts */}
-        <section className="pb-32">
-          {posts.length > 0 ? (
-            <div className="space-y-4">
-              {posts.map((post, index) => (
-                <BlogCard
-                  key={post.slug}
-                  post={post}
-                  index={index}
-                  locale={locale}
-                />
-              ))}
-            </div>
-          ) : (
-            <motion.div
-              className="py-24 text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <p className="text-white/40 text-lg">{t("noPosts")}</p>
-            </motion.div>
-          )}
-        </section>
-      </div>
-    </main>
-  );
-}
-</file>
-
 <file path="app/[locale]/blog/page.tsx">
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -740,268 +648,6 @@ export default async function BlogPage({ params }: Props) {
   const posts = getBlogPosts(locale);
 
   return <BlogListClient posts={posts} locale={locale} />;
-}
-</file>
-
-<file path="app/[locale]/components/animated-background.tsx">
-"use client";
-
-import { motion, MotionValue } from "framer-motion";
-
-interface AnimatedBackgroundProps {
-  backgroundX: MotionValue<string>;
-  backgroundY: MotionValue<string>;
-}
-
-export function AnimatedBackground({ backgroundX, backgroundY }: AnimatedBackgroundProps) {
-  return (
-    <motion.div
-      className="fixed inset-0 opacity-10 pointer-events-none"
-      style={{
-        backgroundImage: `
-          linear-gradient(to right, #de5e91 1px, transparent 1px),
-          linear-gradient(to bottom, #de5e91 1px, transparent 1px)
-        `,
-        backgroundSize: "80px 80px",
-        x: backgroundX,
-        y: backgroundY,
-      }}
-    />
-  );
-}
-</file>
-
-<file path="app/[locale]/components/blog-card.tsx">
-"use client";
-
-import { motion } from "framer-motion";
-import { Link } from "@/i18n/navigation";
-import type { BlogPostMeta } from "@/lib/blog-types";
-import { formatBlogDate } from "@/lib/blog-utils";
-
-interface BlogCardProps {
-  post: BlogPostMeta;
-  index: number;
-  locale: string;
-}
-
-export function BlogCard({ post, index, locale }: BlogCardProps) {
-  const formattedDate = formatBlogDate(post.date, locale);
-  const number = String(index + 1).padStart(2, "0");
-
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.1,
-        type: "spring",
-        stiffness: 300,
-        damping: 25,
-      }}
-      viewport={{ once: true }}
-      className="group relative"
-    >
-      <Link href={`/blog/${post.slug}`} className="block">
-        {/* Número de sección grande */}
-        <span className="absolute -left-2 md:-left-8 top-0 text-6xl md:text-8xl font-black text-white/5 select-none pointer-events-none">
-          {number}
-        </span>
-
-        <div className="relative border-t border-white/10 pt-8 pb-12 pl-8 md:pl-16 transition-all duration-300 group-hover:border-[#de5e91]/50">
-          {/* Línea decorativa izquierda */}
-          <div className="absolute left-0 top-8 bottom-12 w-px bg-gradient-to-b from-[#de5e91]/50 via-[#de5e91]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-          {/* Header: Fecha y tiempo de lectura */}
-          <div className="flex items-center gap-4 mb-4 text-sm font-mono text-white/40">
-            <time dateTime={post.date}>{formattedDate}</time>
-            <span className="w-1 h-1 bg-[#de5e91]/50" />
-            <span>{post.readTime}</span>
-          </div>
-
-          {/* Título */}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 leading-tight group-hover:text-[#de5e91] transition-colors duration-300">
-            {post.title}
-          </h2>
-
-          {/* Descripción */}
-          <p className="text-white/60 text-base md:text-lg leading-relaxed mb-6 max-w-3xl">
-            {post.description}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 text-xs font-mono uppercase tracking-wider text-[#de5e91]/80 border border-[#de5e91]/20 bg-[#de5e91]/5 group-hover:border-[#de5e91]/40 transition-colors duration-300"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Flecha de navegación */}
-          <motion.div
-            className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100"
-            initial={{ x: -10, opacity: 0 }}
-            whileHover={{ x: 0, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 400, damping: 20 }}
-          >
-            <span className="text-2xl text-[#de5e91]">→</span>
-          </motion.div>
-        </div>
-      </Link>
-    </motion.article>
-  );
-}
-</file>
-
-<file path="app/[locale]/components/blog-post-layout.tsx">
-"use client";
-
-import { motion } from "framer-motion";
-import { Link } from "@/i18n/navigation";
-import type { BlogPost } from "@/lib/blog-types";
-import { formatBlogDate } from "@/lib/blog-utils";
-import { useTranslations } from "next-intl";
-
-interface BlogPostLayoutProps {
-  post: BlogPost;
-  locale: string;
-  children: React.ReactNode;
-}
-
-export function BlogPostLayout({
-  post,
-  locale,
-  children,
-}: BlogPostLayoutProps) {
-  const t = useTranslations("blog");
-  const formattedDate = formatBlogDate(post.date, locale);
-
-  return (
-    <article className="relative min-h-screen">
-      <div className="relative">
-        {/* Header con navegación */}
-        <motion.header
-          className="container mx-auto px-4 pt-20 md:pt-24"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-[#de5e91] transition-colors duration-200 font-mono text-sm group"
-          >
-            <motion.span
-              className="inline-block"
-              whileHover={{ x: -4 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            >
-              ←
-            </motion.span>
-            {t("backToBlog")}
-          </Link>
-        </motion.header>
-
-        {/* Hero del artículo */}
-        <motion.div
-          className="container mx-auto px-4 py-16 md:py-24"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          {/* Metadata */}
-          <div className="flex flex-wrap items-center gap-4 mb-8 text-sm font-mono text-white/40">
-            <time dateTime={post.date} className="text-[#de5e91]">
-              {formattedDate}
-            </time>
-            <span className="w-1 h-1 bg-[#de5e91]/50" />
-            <span>{post.readTime}</span>
-          </div>
-
-          {/* Título */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-none mb-8 max-w-5xl">
-            {post.title}
-          </h1>
-
-          {/* Descripción */}
-          <p className="text-xl md:text-2xl text-white/60 leading-relaxed mb-12 max-w-3xl">
-            {post.description}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-16">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-4 py-2 text-sm font-mono uppercase tracking-wider text-[#de5e91] border border-[#de5e91]/30 bg-[#de5e91]/5"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Línea divisoria */}
-          <div className="h-px bg-gradient-to-r from-[#de5e91]/50 via-[#de5e91]/20 to-transparent mb-16" />
-        </motion.div>
-
-        {/* Contenido del artículo */}
-        <motion.div
-          className="container mx-auto px-4 pb-32"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <div className="max-w-3xl mx-auto">{children}</div>
-        </motion.div>
-
-        {/* Footer del artículo */}
-        <motion.footer
-          className="container mx-auto px-4 pb-16"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <div className="max-w-3xl mx-auto">
-            <div className="h-px bg-gradient-to-r from-transparent via-[#de5e91]/30 to-transparent mb-12" />
-
-            {/* Autor */}
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 border border-[#de5e91]/30 flex items-center justify-center">
-                <span className="text-[#de5e91] font-black text-lg">E</span>
-              </div>
-              <div>
-                <p className="font-bold text-white">{post.author}</p>
-                <p className="text-white/40 text-sm font-mono">
-                  Tech Lead & Product Engineer
-                </p>
-              </div>
-            </div>
-
-            {/* Volver al blog */}
-            <div className="mt-12 pt-8 border-t border-white/10">
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 text-[#de5e91] hover:text-white transition-colors duration-200 font-bold group"
-              >
-                <motion.span
-                  className="inline-block"
-                  whileHover={{ x: -4 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                >
-                  ←
-                </motion.span>
-                {t("allPosts")}
-              </Link>
-            </div>
-          </div>
-        </motion.footer>
-      </div>
-    </article>
-  );
 }
 </file>
 
@@ -1062,749 +708,6 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
 }
 </file>
 
-<file path="app/[locale]/components/community-section.tsx">
-"use client";
-
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-
-export function CommunitySection() {
-  const t = useTranslations();
-
-  return (
-    <section className="relative py-32">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
-            {t("community.title.line1")}
-            <br />
-            <span className="text-[#de5e91]">
-              {t("community.title.line2")}
-            </span>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 overflow-hidden">
-          {/* Profesor */}
-          <motion.div
-            className="relative group overflow-visible"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute -inset-4 bg-[#de5e91] opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
-            <div className="relative border-l-4 border-[#de5e91] pl-8 py-4">
-              <span className="text-white/40 font-mono text-sm">
-                {t("community.teaching.period")}
-              </span>
-              <h3 className="text-3xl font-black text-white mt-2 mb-3">
-                {t("community.teaching.title")}
-              </h3>
-              <p className="text-white/70 mb-4">
-                {t("community.teaching.subtitle")}
-              </p>
-              <p className="text-white/60 leading-relaxed mb-6">
-                {t("community.teaching.description")}
-              </p>
-
-              {/* Temas del curso */}
-              <div className="space-y-3 mt-6">
-                <div className="border-l-2 border-[#de5e91]/40 pl-4 py-1">
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {t("community.teaching.topics.engineering")}
-                  </p>
-                </div>
-                <div className="border-l-2 border-[#de5e91]/40 pl-4 py-1">
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {t("community.teaching.topics.architecture")}
-                  </p>
-                </div>
-                <div className="border-l-2 border-[#de5e91]/40 pl-4 py-1">
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {t("community.teaching.topics.culture")}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Charlas */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
-              <div className="relative border-l-4 border-white pl-8 py-4">
-                <span className="text-white/40 font-mono text-sm">
-                  {t("community.talks.vibe.year")}
-                </span>
-                <h3 className="text-2xl font-black text-white mt-2 mb-2">
-                  {t("community.talks.vibe.title")}
-                </h3>
-                <p className="text-white/60 text-sm mb-2">
-                  {t("community.talks.vibe.event")}
-                </p>
-                <p className="text-white/50 leading-relaxed text-sm">
-                  {t("community.talks.vibe.description")}
-                </p>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
-              <div className="relative border-l-4 border-white pl-8 py-4">
-                <span className="text-white/40 font-mono text-sm">
-                  {t("community.talks.rendering.year")}
-                </span>
-                <h3 className="text-2xl font-black text-white mt-2 mb-2">
-                  {t("community.talks.rendering.title")}
-                </h3>
-                <p className="text-white/60 text-sm mb-2">
-                  {t("community.talks.rendering.event")}
-                </p>
-                <p className="text-white/50 leading-relaxed text-sm">
-                  {t("community.talks.rendering.description")}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-</file>
-
-<file path="app/[locale]/components/custom-cursor.tsx">
-"use client";
-
-import { motion } from "framer-motion";
-
-interface CustomCursorProps {
-  mousePosition: { x: number; y: number };
-  cursorVariant: "default" | "hover";
-}
-
-const variants = {
-  default: {
-    width: 40,
-    height: 40,
-    backgroundColor: "white",
-    border: "1px solid rgba(222, 94, 145, 0.5)",
-  },
-  hover: {
-    width: 80,
-    height: 80,
-    backgroundColor: "white",
-    border: "1px solid rgba(222, 94, 145, 0.8)",
-  },
-};
-
-export function CustomCursor({ mousePosition, cursorVariant }: CustomCursorProps) {
-  return (
-    <div className="hidden md:block">
-      {/* Punto central - siempre centrado */}
-      <motion.div
-        className="fixed pointer-events-none z-[9999] mix-blend-difference"
-        style={{
-          left: mousePosition.x,
-          top: mousePosition.y,
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        <div className="w-1 h-1 bg-white rounded-full" />
-      </motion.div>
-
-      {/* Círculo principal - centrado con transform */}
-      <motion.div
-        className="fixed pointer-events-none z-[9998] rounded-full mix-blend-difference"
-        style={{
-          left: mousePosition.x,
-          top: mousePosition.y,
-          transform: "translate(-50%, -50%)",
-        }}
-        variants={variants}
-        animate={cursorVariant}
-        transition={{
-          type: "spring",
-          stiffness: 150,
-          damping: 15,
-          mass: 0.1,
-        }}
-      />
-
-      {/* Halo - centrado con transform */}
-      <motion.div
-        className="fixed pointer-events-none z-[9997] rounded-full"
-        style={{
-          left: mousePosition.x,
-          top: mousePosition.y,
-          transform: "translate(-50%, -50%)",
-          background:
-            "radial-gradient(circle, rgba(222, 94, 145, 0.15) 0%, transparent 70%)",
-        }}
-        animate={{
-          width: cursorVariant === "hover" ? 120 : 60,
-          height: cursorVariant === "hover" ? 120 : 60,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 20,
-        }}
-      />
-    </div>
-  );
-}
-</file>
-
-<file path="app/[locale]/components/experience-section.tsx">
-"use client";
-
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
-
-// Tipos
-interface Job {
-  period: string;
-  company: string;
-  role: string;
-  project: string;
-  description: string;
-  highlights: Array<{ title: string; text: string }>;
-}
-
-// Componente minimalista de partículas decorativas
-function ExperienceParticles() {
-  const particles = [
-    // Lateral izquierdo - mezcla de bordes y rellenos
-    { type: "square-filled", x: "5%", y: "3%", size: 6, opacity: 0.12 },
-    { type: "square", x: "12%", y: "8%", size: 12, opacity: 0.25 },
-    { type: "circle-filled", x: "3%", y: "12%", size: 8, opacity: 0.15 },
-    { type: "square-filled", x: "8%", y: "18%", size: 8, opacity: 0.15 },
-    { type: "circle", x: "11%", y: "22%", size: 10, opacity: 0.22 },
-    { type: "circle-filled", x: "5%", y: "28%", size: 6, opacity: 0.12 },
-    { type: "square", x: "3%", y: "35%", size: 10, opacity: 0.2 },
-    { type: "square-filled", x: "9%", y: "40%", size: 10, opacity: 0.15 },
-    { type: "circle", x: "4%", y: "45%", size: 8, opacity: 0.3 },
-    { type: "square-filled", x: "10%", y: "52%", size: 6, opacity: 0.15 },
-    { type: "square", x: "6%", y: "58%", size: 16, opacity: 0.3 },
-    { type: "circle-filled", x: "12%", y: "64%", size: 8, opacity: 0.12 },
-    { type: "square-filled", x: "4%", y: "70%", size: 10, opacity: 0.15 },
-    { type: "square", x: "8%", y: "76%", size: 12, opacity: 0.22 },
-    { type: "circle-filled", x: "11%", y: "82%", size: 6, opacity: 0.12 },
-    { type: "square", x: "5%", y: "88%", size: 14, opacity: 0.25 },
-    { type: "circle-filled", x: "9%", y: "94%", size: 8, opacity: 0.15 },
-    // Lateral derecho - mezcla de bordes y rellenos
-    { type: "rect-h", x: "85%", y: "4%", width: 24, height: 8, opacity: 0.25 },
-    { type: "square-filled", x: "92%", y: "9%", size: 10, opacity: 0.12 },
-    { type: "circle", x: "88%", y: "15%", size: 12, opacity: 0.22 },
-    { type: "square", x: "94%", y: "20%", size: 14, opacity: 0.28 },
-    { type: "circle-filled", x: "86%", y: "26%", size: 6, opacity: 0.15 },
-    { type: "square-filled", x: "91%", y: "32%", size: 8, opacity: 0.12 },
-    { type: "square", x: "87%", y: "38%", size: 10, opacity: 0.2 },
-    { type: "square-filled", x: "94%", y: "44%", size: 8, opacity: 0.12 },
-    { type: "square", x: "85%", y: "50%", size: 18, opacity: 0.28 },
-    { type: "rect-v", x: "93%", y: "55%", width: 8, height: 20, opacity: 0.28 },
-    { type: "circle-filled", x: "88%", y: "62%", size: 10, opacity: 0.15 },
-    { type: "square-filled", x: "92%", y: "68%", size: 6, opacity: 0.15 },
-    { type: "square", x: "86%", y: "74%", size: 14, opacity: 0.3 },
-    { type: "circle-filled", x: "93%", y: "80%", size: 10, opacity: 0.12 },
-    { type: "square-filled", x: "88%", y: "86%", size: 8, opacity: 0.15 },
-    { type: "square", x: "91%", y: "92%", size: 12, opacity: 0.25 },
-    { type: "circle-filled", x: "86%", y: "97%", size: 6, opacity: 0.12 },
-  ];
-
-  return (
-    <div className="absolute inset-0 pointer-events-none w-full overflow-hidden">
-      {particles.map((particle, i) => {
-        if (particle.type === "circle") {
-          return (
-            <div
-              key={`particle-${i}`}
-              className="absolute border border-[#de5e91] rounded-full"
-              style={{
-                left: particle.x,
-                top: particle.y,
-                width: `${particle.size}px`,
-                height: `${particle.size}px`,
-                opacity: particle.opacity,
-              }}
-            />
-          );
-        }
-
-        if (particle.type === "circle-filled") {
-          return (
-            <div
-              key={`particle-${i}`}
-              className="absolute bg-[#de5e91] rounded-full"
-              style={{
-                left: particle.x,
-                top: particle.y,
-                width: `${particle.size}px`,
-                height: `${particle.size}px`,
-                opacity: particle.opacity,
-              }}
-            />
-          );
-        }
-
-        if (particle.type === "square-filled") {
-          return (
-            <div
-              key={`particle-${i}`}
-              className="absolute bg-[#de5e91]"
-              style={{
-                left: particle.x,
-                top: particle.y,
-                width: `${particle.size}px`,
-                height: `${particle.size}px`,
-                opacity: particle.opacity,
-              }}
-            />
-          );
-        }
-
-        if (particle.type === "rect-h") {
-          return (
-            <div
-              key={`particle-${i}`}
-              className="absolute border border-[#de5e91]"
-              style={{
-                left: particle.x,
-                top: particle.y,
-                width: `${particle.width}px`,
-                height: `${particle.height}px`,
-                opacity: particle.opacity,
-              }}
-            />
-          );
-        }
-
-        if (particle.type === "rect-v") {
-          return (
-            <div
-              key={`particle-${i}`}
-              className="absolute border border-[#de5e91]"
-              style={{
-                left: particle.x,
-                top: particle.y,
-                width: `${particle.width}px`,
-                height: `${particle.height}px`,
-                opacity: particle.opacity,
-              }}
-            />
-          );
-        }
-
-        return (
-          <div
-            key={`particle-${i}`}
-            className="absolute border border-[#de5e91]"
-            style={{
-              left: particle.x,
-              top: particle.y,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              opacity: particle.opacity,
-            }}
-          />
-        );
-      })}
-    </div>
-  );
-}
-
-// Componente individual para cada card de experiencia
-function ExperienceCard({
-  job,
-  index,
-  onOpenModal,
-}: {
-  job: Job;
-  index: number;
-  onOpenModal: () => void;
-}) {
-  const t = useTranslations("experience");
-  const rotations = [-0.8, 1.2, -1.3, 1.7];
-  const fixedRotation = rotations[index % rotations.length];
-
-  return (
-    <div
-      className="card-outer h-screen w-full flex items-center justify-center sticky top-0 pointer-events-none"
-      style={{ zIndex: index + 1 }}
-    >
-      <motion.div
-        className="relative p-5 md:p-12 2xl:p-16 w-full bg-[#212121] border-2 border-[#de5e91]/30 pointer-events-auto"
-        style={{
-          rotate: fixedRotation,
-        }}
-      >
-        <div
-          className="absolute inset-0 opacity-[0.02] pointer-events-none"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          }}
-        />
-
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#de5e91] to-transparent opacity-50" />
-
-        <div className="relative z-10 mb-4 md:mb-6 2xl:mb-8 border-l-4 2xl:border-l-[6px] border-[#de5e91] pl-6 2xl:pl-8">
-          <span className="text-[#de5e91] font-mono text-xs md:text-sm 2xl:text-base tracking-wider font-bold">
-            {job.period}
-          </span>
-          <h3 className="text-2xl md:text-4xl 2xl:text-5xl font-black text-white mt-1 md:mt-2 leading-tight">
-            {job.role}
-          </h3>
-          <div className="flex flex-wrap items-center gap-1 md:gap-2 2xl:gap-3 mt-1 md:mt-2">
-            <p className="text-white/70 text-sm md:text-lg 2xl:text-xl font-medium">
-              {job.company}
-            </p>
-            <span className="text-white/30 hidden md:inline">·</span>
-            <p className="text-white/50 font-mono text-xs md:text-sm 2xl:text-base hidden md:block">
-              {job.project}
-            </p>
-          </div>
-        </div>
-
-        <p className="text-white/60 text-sm md:text-lg 2xl:text-xl leading-relaxed mb-4 md:mb-8 2xl:mb-10 relative z-10 pl-6 2xl:pl-8">
-          {job.description}
-        </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-4 2xl:gap-6 relative z-10">
-          {job.highlights.map((highlight, idx) => (
-            <div
-              key={idx}
-              className="border-l-2 2xl:border-l-[3px] border-[#de5e91]/50 pl-3 md:pl-4 2xl:pl-6 py-1 md:py-2 2xl:py-3 hover:border-[#de5e91] transition-colors duration-300"
-            >
-              <h4 className="text-white font-bold text-xs md:text-sm 2xl:text-base">
-                {highlight.title}
-              </h4>
-              <p className="hidden md:block text-white/50 text-sm 2xl:text-base leading-relaxed mt-1">
-                {highlight.text}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <button
-          onClick={onOpenModal}
-          className="md:hidden mt-6 relative z-10 w-full py-3 border-2 border-[#de5e91] text-[#de5e91] font-mono text-sm font-bold hover:bg-[#de5e91] hover:text-[#212121] transition-all duration-300 active:scale-95"
-        >
-          {t("viewMore")}
-        </button>
-
-        <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#de5e91]/40 to-transparent" />
-        <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#de5e91]/20" />
-        <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-[#de5e91]/20" />
-      </motion.div>
-    </div>
-  );
-}
-
-// Modal de detalles para mobile
-function ExperienceModal({
-  job,
-  onClose,
-}: {
-  job: Job;
-  onClose: () => void;
-}) {
-  const t = useTranslations("experience");
-
-  return (
-    <motion.div
-      className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:hidden"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-    >
-      <motion.div
-        className="absolute inset-0 bg-black/20 backdrop-blur-sm"
-        onClick={onClose}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      />
-
-      <motion.div
-        className="relative w-full max-h-[85vh] bg-[#212121] border-2 border-[#de5e91] overflow-y-auto overflow-x-hidden"
-        initial={{
-          scale: 0.8,
-          y: 100,
-          opacity: 0,
-        }}
-        animate={{
-          scale: 1,
-          y: 0,
-          opacity: 1,
-        }}
-        exit={{
-          scale: 0.8,
-          y: 100,
-          opacity: 0,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 25,
-        }}
-      >
-        <div className="p-6 overflow-x-hidden">
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white hover:text-[#de5e91] transition-colors z-10"
-            aria-label="Cerrar"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#de5e91] to-transparent opacity-50" />
-
-          <div className="mb-6 border-l-4 border-[#de5e91] pl-6 pr-12">
-            <span className="text-[#de5e91] font-mono text-xs tracking-wider font-bold break-words">
-              {job.period}
-            </span>
-            <h3 className="text-2xl font-black text-white mt-1 leading-tight break-words">
-              {job.role}
-            </h3>
-            <p className="text-white/70 text-sm font-medium mt-1 break-words">
-              {job.company}
-            </p>
-            <p className="text-white/50 font-mono text-xs mt-1 break-words">
-              {job.project}
-            </p>
-          </div>
-
-          <p className="text-white/60 text-sm leading-relaxed mb-6 break-words">
-            {job.description}
-          </p>
-
-          <div className="space-y-4">
-            <h4 className="text-white font-bold text-sm mb-3">
-              {t("keyDetails")}
-            </h4>
-            {job.highlights.map((highlight, idx) => (
-              <div
-                key={idx}
-                className="border-l-2 border-[#de5e91]/50 pl-4 py-2 hover:border-[#de5e91] transition-colors duration-300"
-              >
-                <h5 className="text-white font-bold text-sm mb-1 break-words">
-                  {highlight.title}
-                </h5>
-                <p className="text-white/60 text-sm leading-relaxed break-words">
-                  {highlight.text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 pt-4 border-t border-[#de5e91]/20">
-            <button
-              onClick={onClose}
-              className="w-full py-3 border-2 border-white/30 text-white font-mono text-sm font-bold hover:border-white hover:bg-white hover:text-[#212121] transition-all duration-300"
-            >
-              {t("close")}
-            </button>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-export function ExperienceSection() {
-  const t = useTranslations();
-  const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
-
-  // Bloquear scroll cuando el modal está abierto
-  useEffect(() => {
-    if (openModalIndex !== null) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [openModalIndex]);
-
-  // Jobs data using translations
-  const jobs: Job[] = [
-    {
-      period: t("experience.jobs.biko2Lead.period"),
-      company: t("experience.jobs.biko2Lead.company"),
-      role: t("experience.jobs.biko2Lead.role"),
-      project: t("experience.jobs.biko2Lead.project"),
-      description: t("experience.jobs.biko2Lead.description"),
-      highlights: [
-        {
-          title: t("experience.jobs.biko2Lead.highlights.engineering.title"),
-          text: t("experience.jobs.biko2Lead.highlights.engineering.text"),
-        },
-        {
-          title: t("experience.jobs.biko2Lead.highlights.excellence.title"),
-          text: t("experience.jobs.biko2Lead.highlights.excellence.text"),
-        },
-        {
-          title: t("experience.jobs.biko2Lead.highlights.innovation.title"),
-          text: t("experience.jobs.biko2Lead.highlights.innovation.text"),
-        },
-        {
-          title: t("experience.jobs.biko2Lead.highlights.management.title"),
-          text: t("experience.jobs.biko2Lead.highlights.management.text"),
-        },
-      ],
-    },
-    {
-      period: t("experience.jobs.biko2Senior.period"),
-      company: t("experience.jobs.biko2Senior.company"),
-      role: t("experience.jobs.biko2Senior.role"),
-      project: t("experience.jobs.biko2Senior.project"),
-      description: t("experience.jobs.biko2Senior.description"),
-      highlights: [
-        {
-          title: t("experience.jobs.biko2Senior.highlights.architecture.title"),
-          text: t("experience.jobs.biko2Senior.highlights.architecture.text"),
-        },
-        {
-          title: t("experience.jobs.biko2Senior.highlights.product.title"),
-          text: t("experience.jobs.biko2Senior.highlights.product.text"),
-        },
-        {
-          title: t("experience.jobs.biko2Senior.highlights.observability.title"),
-          text: t("experience.jobs.biko2Senior.highlights.observability.text"),
-        },
-        {
-          title: t("experience.jobs.biko2Senior.highlights.quality.title"),
-          text: t("experience.jobs.biko2Senior.highlights.quality.text"),
-        },
-      ],
-    },
-    {
-      period: t("experience.jobs.nubbaLead.period"),
-      company: t("experience.jobs.nubbaLead.company"),
-      role: t("experience.jobs.nubbaLead.role"),
-      project: t("experience.jobs.nubbaLead.project"),
-      description: t("experience.jobs.nubbaLead.description"),
-      highlights: [
-        {
-          title: t("experience.jobs.nubbaLead.highlights.product.title"),
-          text: t("experience.jobs.nubbaLead.highlights.product.text"),
-        },
-        {
-          title: t("experience.jobs.nubbaLead.highlights.business.title"),
-          text: t("experience.jobs.nubbaLead.highlights.business.text"),
-        },
-        {
-          title: t("experience.jobs.nubbaLead.highlights.leadership.title"),
-          text: t("experience.jobs.nubbaLead.highlights.leadership.text"),
-        },
-      ],
-    },
-    {
-      period: t("experience.jobs.nubbaFullStack.period"),
-      company: t("experience.jobs.nubbaFullStack.company"),
-      role: t("experience.jobs.nubbaFullStack.role"),
-      project: t("experience.jobs.nubbaFullStack.project"),
-      description: t("experience.jobs.nubbaFullStack.description"),
-      highlights: [
-        {
-          title: t("experience.jobs.nubbaFullStack.highlights.development.title"),
-          text: t("experience.jobs.nubbaFullStack.highlights.development.text"),
-        },
-        {
-          title: t("experience.jobs.nubbaFullStack.highlights.stack.title"),
-          text: t("experience.jobs.nubbaFullStack.highlights.stack.text"),
-        },
-        {
-          title: t("experience.jobs.nubbaFullStack.highlights.culture.title"),
-          text: t("experience.jobs.nubbaFullStack.highlights.culture.text"),
-        },
-      ],
-    },
-  ];
-
-  return (
-    <section className="relative py-20">
-      <div className="container mx-auto px-4 pb-20">
-        <motion.h2
-          className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black leading-none"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <span className="text-white">{t("experience.title.line1")}</span>
-          <br />
-          <span
-            className="text-transparent"
-            style={{
-              WebkitTextStroke: "2px #de5e91",
-            }}
-          >
-            {t("experience.title.line2")}
-          </span>
-        </motion.h2>
-      </div>
-
-      <div className="experience-cards relative">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ zIndex: 0 }}
-        >
-          <ExperienceParticles />
-        </div>
-
-        <div
-          className="w-[90%] max-w-5xl 2xl:max-w-6xl mx-auto relative"
-          style={{ zIndex: 1 }}
-        >
-          {jobs.map((job, i) => (
-            <ExperienceCard
-              key={i}
-              job={job}
-              index={i}
-              onOpenModal={() => setOpenModalIndex(i)}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Modal de detalles - Solo mobile - Fuera del stacking context */}
-      <AnimatePresence>
-        {openModalIndex !== null && (
-          <ExperienceModal
-            job={jobs[openModalIndex]}
-            onClose={() => setOpenModalIndex(null)}
-          />
-        )}
-      </AnimatePresence>
-    </section>
-  );
-}
-</file>
-
 <file path="app/[locale]/components/icons.tsx">
 // Icono de Cursor IDE (cursor.com) - logo oficial
 export const CursorIcon = ({ className }: { className?: string }) => (
@@ -1830,594 +733,6 @@ export const PlaywrightIcon = ({ className }: { className?: string }) => (
     <path d="m72.086 86.132-.594-.144c-13.125-3.844-15.15-14.311-15.15-14.311l18.182 5.082L84.15 39.77l-.116-.031c-11.807-3.162-19.64-8.692-22.744-11.292-4.4-3.685-6.335-6.246-8.24-2.372-1.682 3.417-3.836 8.977-5.92 16.762-4.516 16.857-7.892 52.429 20.027 59.914l.572.129zm-18.807-30.85s4.4-6.843 11.862-4.722c7.467 2.121 8.045 10.376 8.045 10.376zm-8.517 23.451L31.787 82.41s1.41-8.029 10.968-11.212l-7.347-27.573-.635.193c-9.111 2.457-16.476 1.805-19.55 1.273-4.357-.751-6.636-1.708-6.422 1.606.186 2.923.882 7.454 2.477 13.44 3.45 12.961 14.854 37.937 36.405 32.132l.635-.199-3.555-13.337ZM19.548 60.315l15.316-4.035s-.446 5.892-6.188 7.405c-5.743 1.512-9.128-3.371-9.128-3.371zm89.824-18.979c-3.981.698-13.532 1.567-25.336-1.596-11.807-3.162-19.64-8.692-22.744-11.292-4.4-3.685-6.335-6.246-8.24-2.372-1.684 3.417-3.837 8.977-5.921 16.762-4.516 16.857-7.892 52.429 20.027 59.914 27.912 7.479 42.772-25.017 47.289-41.875 2.084-7.783 2.998-13.676 3.25-17.476.287-4.305-2.67-3.055-8.324-2.064zM53.28 55.282s4.4-6.843 11.862-4.722c7.467 2.121 8.045 10.376 8.045 10.376zm18.215 30.706c-13.125-3.845-15.15-14.311-15.15-14.311l35.259 9.858c0-.002-7.117 8.25-20.109 4.453zm12.466-21.51s4.394-6.838 11.854-4.711c7.46 2.124 8.048 10.379 8.048 10.379zM51.732 83.935v-7.179l-19.945 5.656s1.474-8.563 11.876-11.514c3.155-.894 5.846-.888 8.069-.459V40.995h9.987c-1.087-3.36-2.139-5.947-3.023-7.744-1.461-2.975-2.96-1.003-6.361 1.842-2.396 2.001-8.45 6.271-17.561 8.726-9.111 2.457-16.476 1.805-19.55 1.273-4.357-.752-6.636-1.708-6.422 1.605.186 2.923.882 7.455 2.477 13.44 3.45 12.962 14.854 37.937 36.405 32.132 5.629-1.517 9.603-4.515 12.357-8.336h-8.309Zm-32.185-23.62 15.316-4.035s-.446 5.892-6.188 7.405c-5.743 1.512-9.128-3.371-9.128-3.371z" />
   </svg>
 );
-</file>
-
-<file path="app/[locale]/components/mdx-components.tsx">
-import type { MDXComponents } from "mdx/types";
-import { CodeBlock } from "./code-block";
-
-export function useMDXComponents(components: MDXComponents = {}): MDXComponents {
-  return {
-    // Headings con estilos editoriales
-    h1: ({ children }) => (
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mt-12 mb-6 leading-tight">
-        {children}
-      </h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-3xl md:text-4xl font-black text-white mt-16 mb-6 leading-tight relative">
-        <span className="absolute -left-4 md:-left-6 top-0 text-[#de5e91]/30 font-mono text-lg">
-          //
-        </span>
-        {children}
-      </h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="text-2xl md:text-3xl font-bold text-white mt-12 mb-4 leading-tight">
-        {children}
-      </h3>
-    ),
-    h4: ({ children }) => (
-      <h4 className="text-xl md:text-2xl font-bold text-white/90 mt-8 mb-3">
-        {children}
-      </h4>
-    ),
-
-    // Párrafos
-    p: ({ children }) => (
-      <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-6">
-        {children}
-      </p>
-    ),
-
-    // Links
-    a: ({ href, children }) => (
-      <a
-        href={href}
-        className="text-[#de5e91] underline underline-offset-4 decoration-[#de5e91]/30 hover:decoration-[#de5e91] transition-all duration-200"
-        target={href?.startsWith("http") ? "_blank" : undefined}
-        rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-      >
-        {children}
-      </a>
-    ),
-
-    // Listas
-    ul: ({ children }) => (
-      <ul className="space-y-3 mb-6 pl-4">{children}</ul>
-    ),
-    ol: ({ children }) => (
-      <ol className="space-y-3 mb-6 pl-4 list-decimal list-inside">{children}</ol>
-    ),
-    li: ({ children }) => (
-      <li className="text-white/80 text-lg leading-relaxed flex items-start gap-3">
-        <span className="text-[#de5e91] mt-1.5 text-sm">▸</span>
-        <span>{children}</span>
-      </li>
-    ),
-
-    // Blockquotes
-    blockquote: ({ children }) => (
-      <blockquote className="relative my-8 pl-6 py-4 border-l-4 border-[#de5e91] bg-[#de5e91]/5">
-        <span className="absolute -left-3 -top-4 text-5xl text-[#de5e91]/20 font-serif">
-          "
-        </span>
-        <div className="text-white/90 text-lg italic">{children}</div>
-      </blockquote>
-    ),
-
-    // Código inline
-    code: ({ className, children, ...props }) => {
-      // Si tiene className, es un bloque de código
-      if (className) {
-        return (
-          <CodeBlock className={className} {...props}>
-            {children}
-          </CodeBlock>
-        );
-      }
-      // Si no, es código inline
-      return (
-        <code className="px-2 py-1 bg-white/10 text-[#de5e91] font-mono text-sm">
-          {children}
-        </code>
-      );
-    },
-
-    // Bloque de código pre
-    pre: ({ children }) => (
-      <div className="relative my-8 overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
-          <span className="w-3 h-3 bg-white/20" />
-          <span className="w-3 h-3 bg-white/10" />
-          <span className="w-3 h-3 bg-white/10" />
-        </div>
-        <pre className="pt-12 pb-6 px-6 bg-[#0a0a0a] border border-white/10 overflow-x-auto text-sm">
-          {children}
-        </pre>
-      </div>
-    ),
-
-    // Separadores
-    hr: () => (
-      <hr className="my-16 border-none h-px bg-gradient-to-r from-transparent via-[#de5e91]/30 to-transparent" />
-    ),
-
-    // Strong y em
-    strong: ({ children }) => (
-      <strong className="font-bold text-white">{children}</strong>
-    ),
-    em: ({ children }) => (
-      <em className="italic text-white/90">{children}</em>
-    ),
-
-    // Imágenes
-    img: ({ src, alt }) => (
-      <figure className="my-10">
-        <div className="relative border border-white/10 overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={src}
-            alt={alt || ""}
-            className="w-full h-auto"
-          />
-        </div>
-        {alt && (
-          <figcaption className="mt-3 text-sm text-white/50 font-mono text-center">
-            {alt}
-          </figcaption>
-        )}
-      </figure>
-    ),
-
-    // Tablas
-    table: ({ children }) => (
-      <div className="my-8 overflow-x-auto">
-        <table className="w-full border-collapse">{children}</table>
-      </div>
-    ),
-    thead: ({ children }) => (
-      <thead className="border-b-2 border-[#de5e91]/30">{children}</thead>
-    ),
-    tbody: ({ children }) => <tbody>{children}</tbody>,
-    tr: ({ children }) => (
-      <tr className="border-b border-white/10">{children}</tr>
-    ),
-    th: ({ children }) => (
-      <th className="text-left py-3 px-4 font-bold text-white text-sm uppercase tracking-wider">
-        {children}
-      </th>
-    ),
-    td: ({ children }) => (
-      <td className="py-3 px-4 text-white/80">{children}</td>
-    ),
-
-    ...components,
-  };
-}
-
-// Exportar los componentes para usar con MDXRemote
-export const mdxComponents = useMDXComponents();
-</file>
-
-<file path="app/[locale]/components/projects-section.tsx">
-"use client";
-
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { Github, ExternalLink } from "lucide-react";
-
-export function ProjectsSection() {
-  const t = useTranslations();
-
-  return (
-    <section className="relative py-32">
-      <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black text-white mb-20 leading-none"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          {t("projects.title.line1")}
-          <br />
-          <span className="text-[#de5e91]">{t("projects.title.line2")}</span>
-        </motion.h2>
-
-        {/* Mobile: Stack uniforme | Desktop: Grid asimétrico */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
-          {/* Proyecto 1 - Banking Platform */}
-          <motion.div
-            className="col-span-1 lg:col-span-8 aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] relative group cursor-pointer overflow-hidden"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-          >
-            <div className="absolute inset-0 bg-[#1a1a1a]" />
-            <div
-              className="absolute inset-0 opacity-20"
-              style={{
-                backgroundImage: `
-                  linear-gradient(45deg, transparent 40%, rgba(222, 94, 145, 0.1) 50%, transparent 60%),
-                  linear-gradient(-45deg, transparent 40%, rgba(222, 94, 145, 0.05) 50%, transparent 60%)
-                `,
-              }}
-            />
-            <div className="absolute inset-0 border border-[#de5e91]/20 group-hover:border-[#de5e91]/50 transition-colors duration-300" />
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#de5e91] via-[#de5e91]/50 to-transparent opacity-60" />
-            <div className="absolute inset-0 p-6 lg:p-12 flex flex-col justify-end">
-              <span className="text-[#de5e91] text-xs lg:text-sm font-mono mb-2 tracking-wider">
-                {t("projects.items.banking.category")}
-              </span>
-              <h3 className="text-2xl lg:text-5xl font-black text-white mb-2 lg:mb-4">
-                {t("projects.items.banking.title")}
-              </h3>
-              <p className="text-white/60 text-sm lg:text-lg max-w-md leading-relaxed">
-                {t("projects.items.banking.description")}
-              </p>
-            </div>
-            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
-            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-[#de5e91]/30 group-hover:border-[#de5e91] transition-colors duration-300" />
-          </motion.div>
-
-          {/* Proyecto 2 - Hotel Booking Engine */}
-          <motion.div
-            className="col-span-1 lg:col-span-4 aspect-[4/3] md:aspect-[16/10] lg:aspect-square relative group cursor-pointer overflow-hidden"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.6, delay: 0.1 },
-            }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-          >
-            <div className="absolute inset-0 bg-[#1a1a1a]" />
-            <div
-              className="absolute inset-0 opacity-30"
-              style={{
-                backgroundImage: `radial-gradient(circle at 80% 20%, rgba(222, 94, 145, 0.15) 0%, transparent 50%)`,
-              }}
-            />
-            <div className="absolute inset-0 border border-white/10 group-hover:border-white/30 transition-colors duration-300" />
-            <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-white/40 via-white/10 to-transparent" />
-            <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
-              <span className="text-white/50 text-xs lg:text-sm font-mono mb-2 tracking-wider">
-                {t("projects.items.booking.category")}
-              </span>
-              <h3 className="text-2xl lg:text-3xl font-black text-white mb-2">
-                {t("projects.items.booking.title")}
-              </h3>
-              <p className="text-white/50 text-sm leading-relaxed">
-                {t("projects.items.booking.description")}
-              </p>
-            </div>
-            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-white/20 group-hover:border-white/50 transition-colors duration-300" />
-          </motion.div>
-
-          {/* Proyecto 3 - SaaS Products */}
-          <motion.div
-            className="col-span-1 lg:col-span-5 aspect-[4/3] md:aspect-[16/10] relative group cursor-pointer overflow-hidden"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.6, delay: 0.2 },
-            }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-          >
-            <div className="absolute inset-0 bg-[#1a1a1a]" />
-            <div
-              className="absolute inset-0 opacity-50"
-              style={{
-                backgroundImage: `
-                  repeating-linear-gradient(
-                    -45deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(255, 255, 255, 0.02) 20px,
-                    rgba(255, 255, 255, 0.02) 40px
-                  )
-                `,
-              }}
-            />
-            <div className="absolute inset-0 border border-white/15 group-hover:border-white/30 transition-colors duration-300" />
-            <div className="absolute left-0 bottom-0 w-1 h-full bg-gradient-to-t from-white/30 via-white/10 to-transparent" />
-            <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
-              <span className="text-white/50 text-xs lg:text-sm font-mono mb-2 tracking-wider">
-                {t("projects.items.saas.category")}
-              </span>
-              <h3 className="text-2xl lg:text-4xl font-black text-white mb-2">
-                {t("projects.items.saas.title")}
-              </h3>
-              <p className="text-white/50 text-sm lg:text-base leading-relaxed">
-                {t("projects.items.saas.description")}
-              </p>
-            </div>
-            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-white/20 group-hover:border-white/40 transition-colors duration-300" />
-            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-white/20 group-hover:border-white/40 transition-colors duration-300" />
-          </motion.div>
-
-          {/* Proyecto 4 - Labs & R&D */}
-          <motion.div
-            className="col-span-1 lg:col-span-7 relative group overflow-hidden bg-[#1a1a1a] border border-[#de5e91]/20 p-6 lg:p-8 flex flex-col justify-between"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.6, delay: 0.3 },
-            }}
-            viewport={{ once: true }}
-          >
-            {/* Header de la card principal */}
-            <div className="mb-8 z-10 relative">
-              <span className="text-[#de5e91]/70 text-xs lg:text-sm font-mono mb-2 tracking-wider block">
-                {t("projects.items.labs.category")}
-              </span>
-              <h3 className="text-2xl lg:text-4xl font-black text-white mb-2">
-                {t("projects.items.labs.title")}
-              </h3>
-              <p className="text-white/50 text-sm lg:text-base leading-relaxed max-w-2xl">
-                {t("projects.items.labs.description")}
-              </p>
-            </div>
-
-            {/* Grid de Subproyectos */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 z-10 relative">
-              {/* Subproyecto 1: Portfolio */}
-              <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-white font-bold font-mono text-sm pr-4">
-                    {t("projects.items.labs.subprojects.p1.name")}
-                  </h4>
-                  <div className="flex gap-2 shrink-0">
-                    <a
-                      href="https://github.com/Endikaorve/porfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
-                      aria-label="GitHub Code"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-                <p className="text-white/50 text-xs leading-relaxed mt-auto">
-                  {t("projects.items.labs.subprojects.p1.desc")}
-                </p>
-              </div>
-
-              {/* Subproyecto 2: Renderizados React */}
-              <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-white font-bold font-mono text-sm pr-4">
-                    {t("projects.items.labs.subprojects.p2.name")}
-                  </h4>
-                  <div className="flex gap-2 shrink-0">
-                    <a
-                      href="https://github.com/Endikaorve/renderizados-web"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
-                      aria-label="GitHub Code"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                    <a
-                      href="https://dxp-renderizados-web-presentacion.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
-                      aria-label="Live Demo"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-                <p className="text-white/50 text-xs leading-relaxed mt-auto">
-                  {t("projects.items.labs.subprojects.p2.desc")}
-                </p>
-              </div>
-
-              {/* Subproyecto 3: Taller IA + Pokédex */}
-              <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-white font-bold font-mono text-sm pr-4">
-                    {t("projects.items.labs.subprojects.p3.name")}
-                  </h4>
-                  <div className="flex gap-2 shrink-0">
-                    <a
-                      href="https://github.com/Endikaorve/pokedex-taller-scpna"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
-                      aria-label="GitHub Code"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                    <a
-                      href="https://pokedex-vite-woad.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
-                      aria-label="Live Demo"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-                <p className="text-white/50 text-xs leading-relaxed mt-auto">
-                  {t("projects.items.labs.subprojects.p3.desc")}
-                </p>
-              </div>
-
-              {/* Subproyecto 4: Landing CreaYarnoz */}
-              <div className="bg-white/5 border border-white/10 p-4 hover:border-[#de5e91]/50 transition-colors duration-300 group/item flex flex-col h-full relative">
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-white font-bold font-mono text-sm pr-4">
-                    {t("projects.items.labs.subprojects.p4.name")}
-                  </h4>
-                  <div className="flex gap-2 shrink-0">
-                    <a
-                      href="https://github.com/Endikaorve/creayarnoz"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
-                      aria-label="GitHub Code"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                    <a
-                      href="https://creayarnoz.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-[#de5e91] transition-colors p-1"
-                      aria-label="Live Demo"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-                <p className="text-white/50 text-xs leading-relaxed mt-auto">
-                  {t("projects.items.labs.subprojects.p4.desc")}
-                </p>
-              </div>
-            </div>
-
-            {/* Background decorativo */}
-            <div
-              className="absolute inset-0 opacity-20 pointer-events-none"
-              style={{
-                backgroundImage: `
-                  repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 40px,
-                    rgba(222, 94, 145, 0.03) 40px,
-                    rgba(222, 94, 145, 0.03) 80px
-                  )
-                `,
-              }}
-            />
-            <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-[#de5e91]/50 via-[#de5e91]/20 to-transparent" />
-            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-[#de5e91]/30" />
-            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-[#de5e91]/30" />
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-</file>
-
-<file path="app/[locale]/components/tech-skills-section.tsx">
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { techStack } from "./tech-stack";
-
-export function TechSkillsSection() {
-  const t = useTranslations();
-  const sectionRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [scrollRange, setScrollRange] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Calcula el rango de scroll basado en el contenido real
-  useEffect(() => {
-    const calculateScrollRange = () => {
-      if (contentRef.current) {
-        const contentWidth = contentRef.current.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        // Cuánto necesitamos mover para ver todo el contenido
-        setScrollRange(contentWidth - viewportWidth + 100); // +100 para padding extra
-      }
-    };
-
-    calculateScrollRange();
-    window.addEventListener("resize", calculateScrollRange);
-    return () => window.removeEventListener("resize", calculateScrollRange);
-  }, []);
-
-  // Transforma scroll vertical a movimiento horizontal
-  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
-
-  return (
-    <section
-      ref={sectionRef}
-      className="relative h-[300vh]" // Altura extra para scroll
-    >
-      {/* Container sticky que se fija en la pantalla */}
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        {/* Fondo con gradiente */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#de5e91]/[0.03] to-transparent pointer-events-none" />
-
-        {/* Título fijo arriba a la izquierda */}
-        <div className="absolute top-8 md:top-12 left-8 md:left-16 z-20">
-          <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[6vw] font-black leading-none">
-            <span className="text-white">{t("tech.title.line1")}</span>
-            <br />
-            <span
-              className="text-transparent"
-              style={{ WebkitTextStroke: "2px #de5e91" }}
-            >
-              {t("tech.title.line2")}
-            </span>
-          </h2>
-        </div>
-
-        {/* Contenido horizontal que se mueve */}
-        <motion.div
-          ref={contentRef}
-          className="flex gap-12 md:gap-24 items-center pl-[10vw] pr-[20vw]"
-          style={{ x }}
-        >
-          {techStack.map((tech, i) => (
-            <motion.div
-              key={`tech-${i}`}
-              className="flex-shrink-0 flex flex-col items-center gap-4 group"
-              whileHover={{ scale: 1.15, y: -8 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            >
-              <div className="relative">
-                <tech.Icon className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 text-white/20 group-hover:text-[#de5e91] transition-colors duration-300" />
-              </div>
-              <span className="text-xs md:text-sm font-mono text-white/30 group-hover:text-white/60 transition-colors duration-300 whitespace-nowrap">
-                {tech.name}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Fade edges */}
-        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#212121] to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#212121] to-transparent pointer-events-none z-10" />
-
-        {/* Líneas decorativas */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#de5e91]/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#de5e91]/20 to-transparent" />
-
-        {/* Indicador de scroll */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <motion.div
-            className="w-px h-8 bg-gradient-to-b from-[#de5e91]/50 to-transparent"
-            animate={{ scaleY: [1, 0.5, 1] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-          />
-          <span className="text-xs font-mono text-white/30">scroll</span>
-        </div>
-      </div>
-    </section>
-  );
-}
 </file>
 
 <file path="app/[locale]/components/tech-stack.ts">
@@ -9756,134 +8071,6 @@ Allow: /
 Sitemap: https://endikaorube.com/sitemap.xml
 </file>
 
-<file path="styles/globals.css">
-@import 'tailwindcss';
-@import 'tw-animate-css';
-
-@custom-variant dark (&:is(.dark *));
-
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
-}
-
-@theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-</file>
-
 <file path=".gitignore">
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
@@ -9969,214 +8156,472 @@ export const config = {
 };
 </file>
 
-<file path="app/[locale]/components/contact-section.tsx">
+<file path="app/[locale]/blog/blog-list-client.tsx">
 "use client";
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { BlogCard } from "../components/blog-card";
+import type { BlogPostMeta } from "@/lib/blog-types";
 
-export function ContactSection() {
-  const t = useTranslations();
+interface BlogListClientProps {
+  posts: BlogPostMeta[];
+  locale: string;
+}
+
+export function BlogListClient({ posts, locale }: BlogListClientProps) {
+  const t = useTranslations("blog");
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-32 overflow-hidden">
-      {/* Background Elements */}
-      {/* Líneas diagonales decorativas */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
-        <div
-          className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: "20%", left: "-50%" }}
-        />
-        <div
-          className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: "40%", left: "-50%" }}
-        />
-        <div
-          className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: "60%", left: "-50%" }}
-        />
-        <div
-          className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: "80%", left: "-50%" }}
-        />
-      </div>
-
-      {/* Elementos técnicos en esquinas */}
-      <div className="absolute bottom-24 left-8 hidden md:block">
-        <div className="w-16 h-px bg-gradient-to-r from-[#de5e91]/30 to-transparent" />
-        <div className="w-px h-16 bg-gradient-to-b from-[#de5e91]/30 to-transparent" />
-      </div>
-      <div className="absolute bottom-24 right-8 hidden md:flex flex-col items-end">
-        <div className="w-16 h-px bg-gradient-to-l from-[#de5e91]/30 to-transparent" />
-        <div className="w-px h-16 bg-gradient-to-b from-[#de5e91]/30 to-transparent ml-auto" />
-      </div>
-
-      {/* Círculo decorativo exterior */}
-      <motion.div
-        className="absolute w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] border border-white/[0.02] pointer-events-none"
-        style={{ borderRadius: "50%" }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+    <main className="relative min-h-screen">
+      <div className="container mx-auto px-4">
+        {/* Header con navegación */}
+        <motion.header
+          className="pt-20 md:pt-24 mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-[15vw] font-black leading-none mb-12">
-            <span className="text-white">{t("contact.title.line1")}</span>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-mono text-sm group"
+          >
+            <motion.span
+              className="inline-block"
+              whileHover={{ x: -4 }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            >
+              ←
+            </motion.span>
+            {t("backToHome")}
+          </Link>
+        </motion.header>
+
+        {/* Hero */}
+        <motion.section
+          className="pb-12 md:pb-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none">
+            <span className="text-primary">{t("title.line1")}</span>
             <br />
-            <span
-              className="text-transparent"
-              style={{
-                WebkitTextStroke: "2px #de5e91",
-              }}
-            >
-              {t("contact.title.line2")}
-            </span>
-          </h2>
+            <span className="text-white">{t("title.line2")}</span>
+          </h1>
 
-          <div className="flex flex-col md:flex-row gap-8 justify-center items-center mt-20">
-            <motion.a
-              href="mailto:endikaorve@gmail.com"
-              className="text-white text-2xl font-mono hover:text-[#de5e91] transition-colors relative group"
-              whileHover={{ scale: 1.1 }}
-            >
-              endikaorve@gmail.com
-              <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#de5e91] group-hover:w-full transition-all duration-300" />
-            </motion.a>
+          <p className="mt-8 text-white/60 text-lg md:text-xl max-w-2xl">
+            {t("subtitle")}
+          </p>
+        </motion.section>
 
-            <span className="text-white/20 text-4xl hidden md:block">/</span>
-
-            <div className="flex gap-6">
-              <motion.a
-                href="https://www.linkedin.com/in/endikaorube/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-lg font-mono hover:text-[#de5e91] transition-colors"
-                whileHover={{ y: -5 }}
-              >
-                LINKEDIN
-              </motion.a>
-              <motion.a
-                href="https://github.com/Endikaorve"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-lg font-mono hover:text-[#de5e91] transition-colors"
-                whileHover={{ y: -5 }}
-              >
-                {t("contact.github")}
-              </motion.a>
-              <motion.a
-                href="/Endika Orube Vega - CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-lg font-mono hover:text-[#de5e91] transition-colors"
-                whileHover={{ y: -5 }}
-              >
-                {t("cv.downloadShort")}
-              </motion.a>
+        {/* Lista de posts */}
+        <section className="pb-32">
+          {posts.length > 0 ? (
+            <div className="space-y-4">
+              {posts.map((post, index) => (
+                <BlogCard
+                  key={post.slug}
+                  post={post}
+                  index={index}
+                  locale={locale}
+                />
+              ))}
             </div>
-          </div>
-        </motion.div>
+          ) : (
+            <motion.div
+              className="py-24 text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              <p className="text-white/40 text-lg">{t("noPosts")}</p>
+            </motion.div>
+          )}
+        </section>
       </div>
-
-      {/* Footer minimalista */}
-      <div className="absolute bottom-8 left-0 right-0">
-        <div className="container mx-auto px-4 flex justify-between items-center text-white/40 text-sm font-mono">
-          <span>{t("contact.copyright")}</span>
-          <span>{t("contact.location")}</span>
-        </div>
-      </div>
-    </section>
+    </main>
   );
 }
 </file>
 
-<file path="app/[locale]/components/expertise-section.tsx">
+<file path="app/[locale]/components/animated-background.tsx">
+"use client";
+
+import { motion, MotionValue } from "framer-motion";
+
+interface AnimatedBackgroundProps {
+  backgroundX: MotionValue<string>;
+  backgroundY: MotionValue<string>;
+}
+
+export function AnimatedBackground({ backgroundX, backgroundY }: AnimatedBackgroundProps) {
+  return (
+    <motion.div
+      className="fixed inset-0 opacity-10 pointer-events-none"
+      style={{
+        backgroundImage: `
+          linear-gradient(to right, var(--pink) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--pink) 1px, transparent 1px)
+        `,
+        backgroundSize: "80px 80px",
+        x: backgroundX,
+        y: backgroundY,
+      }}
+    />
+  );
+}
+</file>
+
+<file path="app/[locale]/components/blog-card.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { Link } from "@/i18n/navigation";
+import type { BlogPostMeta } from "@/lib/blog-types";
+import { formatBlogDate } from "@/lib/blog-utils";
+
+interface BlogCardProps {
+  post: BlogPostMeta;
+  index: number;
+  locale: string;
+}
+
+export function BlogCard({ post, index, locale }: BlogCardProps) {
+  const formattedDate = formatBlogDate(post.date, locale);
+  const number = String(index + 1).padStart(2, "0");
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 300,
+        damping: 25,
+      }}
+      viewport={{ once: true }}
+      className="group relative"
+    >
+      <Link href={`/blog/${post.slug}`} className="block">
+        {/* Número de sección grande */}
+        <span className="absolute -left-2 md:-left-8 top-0 text-6xl md:text-8xl font-black text-white/5 select-none pointer-events-none">
+          {number}
+        </span>
+
+        <div className="relative border-t border-white/10 pt-8 pb-12 pl-8 md:pl-16 transition-all duration-300 group-hover:border-primary/50">
+          {/* Línea decorativa izquierda */}
+          <div className="absolute left-0 top-8 bottom-12 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+          {/* Header: Fecha y tiempo de lectura */}
+          <div className="flex items-center gap-4 mb-4 text-sm font-mono text-white/40">
+            <time dateTime={post.date}>{formattedDate}</time>
+            <span className="w-1 h-1 bg-primary/50" />
+            <span>{post.readTime}</span>
+          </div>
+
+          {/* Título */}
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 leading-tight group-hover:text-primary transition-colors duration-300">
+            {post.title}
+          </h2>
+
+          {/* Descripción */}
+          <p className="text-white/60 text-base md:text-lg leading-relaxed mb-6 max-w-3xl">
+            {post.description}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 text-xs font-mono uppercase tracking-wider text-primary/80 border border-primary/20 bg-primary/5 group-hover:border-primary/40 transition-colors duration-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Flecha de navegación */}
+          <motion.div
+            className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100"
+            initial={{ x: -10, opacity: 0 }}
+            whileHover={{ x: 0, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          >
+            <span className="text-2xl text-primary">→</span>
+          </motion.div>
+        </div>
+      </Link>
+    </motion.article>
+  );
+}
+</file>
+
+<file path="app/[locale]/components/blog-post-layout.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { Link } from "@/i18n/navigation";
+import type { BlogPost } from "@/lib/blog-types";
+import { formatBlogDate } from "@/lib/blog-utils";
+import { useTranslations } from "next-intl";
+
+interface BlogPostLayoutProps {
+  post: BlogPost;
+  locale: string;
+  children: React.ReactNode;
+}
+
+export function BlogPostLayout({
+  post,
+  locale,
+  children,
+}: BlogPostLayoutProps) {
+  const t = useTranslations("blog");
+  const formattedDate = formatBlogDate(post.date, locale);
+
+  return (
+    <article className="relative min-h-screen">
+      <div className="relative">
+        {/* Header con navegación */}
+        <motion.header
+          className="container mx-auto px-4 pt-20 md:pt-24"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-mono text-sm group"
+          >
+            <motion.span
+              className="inline-block"
+              whileHover={{ x: -4 }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            >
+              ←
+            </motion.span>
+            {t("backToBlog")}
+          </Link>
+        </motion.header>
+
+        {/* Hero del artículo */}
+        <motion.div
+          className="container mx-auto px-4 py-16 md:py-24"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          {/* Metadata */}
+          <div className="flex flex-wrap items-center gap-4 mb-8 text-sm font-mono text-white/40">
+            <time dateTime={post.date} className="text-primary">
+              {formattedDate}
+            </time>
+            <span className="w-1 h-1 bg-primary/50" />
+            <span>{post.readTime}</span>
+          </div>
+
+          {/* Título */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-none mb-8 max-w-5xl">
+            {post.title}
+          </h1>
+
+          {/* Descripción */}
+          <p className="text-xl md:text-2xl text-white/60 leading-relaxed mb-12 max-w-3xl">
+            {post.description}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-16">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-4 py-2 text-sm font-mono uppercase tracking-wider text-primary border border-primary/30 bg-primary/5"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Línea divisoria */}
+          <div className="h-px bg-gradient-to-r from-primary/50 via-primary/20 to-transparent mb-16" />
+        </motion.div>
+
+        {/* Contenido del artículo */}
+        <motion.div
+          className="container mx-auto px-4 pb-32"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <div className="max-w-3xl mx-auto">{children}</div>
+        </motion.div>
+
+        {/* Footer del artículo */}
+        <motion.footer
+          className="container mx-auto px-4 pb-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <div className="max-w-3xl mx-auto">
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-12" />
+
+            {/* Autor */}
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 border border-primary/30 flex items-center justify-center">
+                <span className="text-primary font-black text-lg">E</span>
+              </div>
+              <div>
+                <p className="font-bold text-white">{post.author}</p>
+                <p className="text-white/40 text-sm font-mono">
+                  Tech Lead & Product Engineer
+                </p>
+              </div>
+            </div>
+
+            {/* Volver al blog */}
+            <div className="mt-12 pt-8 border-t border-white/10">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors duration-200 font-bold group"
+              >
+                <motion.span
+                  className="inline-block"
+                  whileHover={{ x: -4 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                >
+                  ←
+                </motion.span>
+                {t("allPosts")}
+              </Link>
+            </div>
+          </div>
+        </motion.footer>
+      </div>
+    </article>
+  );
+}
+</file>
+
+<file path="app/[locale]/components/community-section.tsx">
 "use client";
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-export function ExpertiseSection() {
+export function CommunitySection() {
   const t = useTranslations();
-
-  const expertiseItems = [
-    {
-      title: t("expertise.items.product.title"),
-      description: t("expertise.items.product.description"),
-    },
-    {
-      title: t("expertise.items.architecture.title"),
-      description: t("expertise.items.architecture.description"),
-    },
-    {
-      title: t("expertise.items.xp.title"),
-      description: t("expertise.items.xp.description"),
-    },
-    {
-      title: t("expertise.items.contextEngineering.title"),
-      description: t("expertise.items.contextEngineering.description"),
-    },
-    {
-      title: t("expertise.items.leadership.title"),
-      description: t("expertise.items.leadership.description"),
-    },
-    {
-      title: t("expertise.items.culture.title"),
-      description: t("expertise.items.culture.description"),
-    },
-  ];
 
   return (
     <section className="relative py-32">
       <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-6xl md:text-8xl font-black text-white mb-20 leading-none"
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          className="mb-20"
         >
-          {t("expertise.title.line1")}
-          <br />
-          <span className="text-[#de5e91]">{t("expertise.title.line2")}</span>
-        </motion.h2>
+          <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
+            {t("community.title.line1")}
+            <br />
+            <span className="text-primary">
+              {t("community.title.line2")}
+            </span>
+          </h2>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {expertiseItems.map((item, i) => {
-            const isHighlighted = i === 3; // Context Engineering
-            return (
-              <motion.div
-                key={i}
-                className="border-l-4 border-[#de5e91] pl-8 py-6"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <span className="text-white/30 font-mono text-sm">
-                  {(i + 1).toString().padStart(2, "0")}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 overflow-hidden">
+          {/* Profesor */}
+          <motion.div
+            className="relative group overflow-visible"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="absolute -inset-4 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
+            <div className="relative border-l-4 border-primary pl-8 py-4">
+              <span className="text-white/40 font-mono text-sm">
+                {t("community.teaching.period")}
+              </span>
+              <h3 className="text-3xl font-black text-white mt-2 mb-3">
+                {t("community.teaching.title")}
+              </h3>
+              <p className="text-white/70 mb-4">
+                {t("community.teaching.subtitle")}
+              </p>
+              <p className="text-white/60 leading-relaxed mb-6">
+                {t("community.teaching.description")}
+              </p>
+
+              {/* Temas del curso */}
+              <div className="space-y-3 mt-6">
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {t("community.teaching.topics.engineering")}
+                  </p>
+                </div>
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {t("community.teaching.topics.architecture")}
+                  </p>
+                </div>
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {t("community.teaching.topics.culture")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Charlas */}
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
+              <div className="relative border-l-4 border-white pl-8 py-4">
+                <span className="text-white/40 font-mono text-sm">
+                  {t("community.talks.vibe.year")}
                 </span>
-                <h3 className="text-3xl font-black text-white mt-2 mb-4">
-                  {item.title}
-                  {isHighlighted && (
-                    <span className="ml-3 text-sm text-[#de5e91] align-top">
-                      [ ✦ ]
-                    </span>
-                  )}
+                <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                  {t("community.talks.vibe.title")}
                 </h3>
-                <p className="text-white/70 text-lg leading-relaxed">
-                  {item.description}
+                <p className="text-white/60 text-sm mb-2">
+                  {t("community.talks.vibe.event")}
                 </p>
-              </motion.div>
-            );
-          })}
+                <p className="text-white/50 leading-relaxed text-sm">
+                  {t("community.talks.vibe.description")}
+                </p>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
+              <div className="relative border-l-4 border-white pl-8 py-4">
+                <span className="text-white/40 font-mono text-sm">
+                  {t("community.talks.rendering.year")}
+                </span>
+                <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                  {t("community.talks.rendering.title")}
+                </h3>
+                <p className="text-white/60 text-sm mb-2">
+                  {t("community.talks.rendering.event")}
+                </p>
+                <p className="text-white/50 leading-relaxed text-sm">
+                  {t("community.talks.rendering.description")}
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -10184,213 +8629,623 @@ export function ExpertiseSection() {
 }
 </file>
 
-<file path="app/[locale]/components/hero-section.tsx">
+<file path="app/[locale]/components/custom-cursor.tsx">
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
-export function HeroSection() {
-  const t = useTranslations();
-  const heroRef = useRef<HTMLElement>(null);
-  const [heroReady, setHeroReady] = useState(false);
+interface CustomCursorProps {
+  mousePosition: { x: number; y: number };
+  cursorVariant: "default" | "hover";
+}
 
-  // Hero parallax - scroll horizontal
-  const { scrollYProgress: heroScrollProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
+const variants = {
+  default: {
+    width: 40,
+    height: 40,
+    backgroundColor: "white",
+    border: "1px solid color-mix(in srgb, var(--pink) 50%, transparent)",
+  },
+  hover: {
+    width: 80,
+    height: 80,
+    backgroundColor: "white",
+    border: "1px solid color-mix(in srgb, var(--pink) 80%, transparent)",
+  },
+};
 
-  const endikaX = useTransform(
-    heroScrollProgress,
-    [0, 0.1, 1],
-    ["0%", "0%", "-120%"]
-  );
-  const orubeX = useTransform(
-    heroScrollProgress,
-    [0, 0.1, 1],
-    ["0%", "0%", "120%"]
-  );
-
-  // Trigger floating animations after intro sequence
-  useEffect(() => {
-    const timer = setTimeout(() => setHeroReady(true), 800);
-    return () => clearTimeout(timer);
-  }, []);
-
+export function CustomCursor({ mousePosition, cursorVariant }: CustomCursorProps) {
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* Capa animada - texto que se mueve con scroll */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
-          {/* ENDIKA - Reveal desde abajo */}
-          <div className={heroReady ? "" : "overflow-hidden"}>
-            <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter will-change-transform whitespace-nowrap"
-              style={{
-                color: "transparent",
-                WebkitTextStroke: "2px white",
-                x: heroReady ? endikaX : 0,
-              }}
-              initial={{ y: "110%" }}
-              animate={heroReady ? { y: [0, -20, 0] } : { y: 0 }}
-              transition={
-                heroReady
-                  ? {
-                      duration: 4,
-                      repeat: Number.POSITIVE_INFINITY,
-                      ease: "easeInOut",
-                    }
-                  : {
-                      duration: 0.5,
-                      ease: [0.16, 1, 0.3, 1],
-                      delay: 0,
-                    }
-              }
-            >
-              ENDIKA
-            </motion.h1>
-          </div>
-
-          {/* ORUBE - Reveal desde arriba */}
-          <div className={heroReady ? "" : "overflow-hidden"}>
-            <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform whitespace-nowrap"
-              style={{
-                textShadow: "0 0 40px rgba(222, 94, 145, 0.3)",
-                x: heroReady ? orubeX : 0,
-              }}
-              initial={{ y: "-110%" }}
-              animate={heroReady ? { y: [0, 20, 0] } : { y: 0 }}
-              transition={
-                heroReady
-                  ? {
-                      duration: 4,
-                      repeat: Number.POSITIVE_INFINITY,
-                      ease: "easeInOut",
-                    }
-                  : {
-                      duration: 0.5,
-                      ease: [0.16, 1, 0.3, 1],
-                      delay: 0.1,
-                    }
-              }
-            >
-              ORUBE
-              <span className="inline-block w-[0.12em] h-[0.12em] bg-primary ml-[0.07em]" />
-            </motion.h1>
-          </div>
-        </div>
-      </div>
-
-      {/* Capa estática - elementos de UI */}
-      <div className="relative z-10 w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
-        {/* Placeholder para mantener espacio */}
-        <div className="relative" aria-hidden="true">
-          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
-            ENDIKA
-          </div>
-          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
-            ORUBE
-            <span className="inline-block w-[0.12em] h-[0.12em] ml-[0.07em]" />
-          </div>
-        </div>
-
-        {/* Rol desktop - Línea que se expande + texto reveal */}
-        <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 rotate-90 origin-center">
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.4 }}
-          >
-            {/* Línea decorativa que se expande */}
-            <motion.div
-              className="absolute -left-8 top-1/2 h-px bg-[#de5e91]"
-              initial={{ width: 0 }}
-              animate={{ width: 24 }}
-              transition={{
-                duration: 0.3,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.35,
-              }}
-            />
-            <motion.p
-              className="text-[#de5e91] text-xl md:text-2xl font-mono whitespace-nowrap font-bold"
-              initial={{ x: 20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{
-                duration: 0.4,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.4,
-              }}
-            >
-              {t("hero.role")}
-            </motion.p>
-          </motion.div>
-        </div>
-
-        {/* Rol mobile - Entrada coordinada con borde animado */}
-        <motion.div
-          className="md:hidden mt-24 pl-4 relative"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.35 }}
-        >
-          {/* Borde izquierdo animado */}
-          <motion.div
-            className="absolute left-0 top-0 w-1 bg-[#de5e91]"
-            initial={{ height: 0 }}
-            animate={{ height: "100%" }}
-            transition={{
-              duration: 0.3,
-              ease: [0.16, 1, 0.3, 1],
-              delay: 0.35,
-            }}
-          />
-          <motion.p
-            className="text-[#de5e91] text-sm font-mono font-bold leading-relaxed"
-            initial={{ x: -10, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{
-              duration: 0.4,
-              ease: [0.16, 1, 0.3, 1],
-              delay: 0.45,
-            }}
-          >
-            TECH LEAD
-            <br />
-            PRODUCT ENGINEER
-          </motion.p>
-        </motion.div>
-      </div>
-
-      {/* Scroll indicator - aparece al final de la secuencia */}
+    <div className="hidden md:block">
+      {/* Punto central - siempre centrado */}
       <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.4,
-          ease: [0.16, 1, 0.3, 1],
-          delay: 0.55,
+        className="fixed pointer-events-none z-[9999] mix-blend-difference"
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y,
+          transform: "translate(-50%, -50%)",
         }}
       >
-        <motion.div
-          className="w-px h-20 bg-gradient-to-b from-[#de5e91] to-transparent"
-          animate={{ y: [0, 10, 0] }}
-          transition={{
-            duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-            delay: 2,
+        <div className="w-1 h-1 bg-white rounded-full" />
+      </motion.div>
+
+      {/* Círculo principal - centrado con transform */}
+      <motion.div
+        className="fixed pointer-events-none z-[9998] rounded-full mix-blend-difference"
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y,
+          transform: "translate(-50%, -50%)",
+        }}
+        variants={variants}
+        animate={cursorVariant}
+        transition={{
+          type: "spring",
+          stiffness: 150,
+          damping: 15,
+          mass: 0.1,
+        }}
+      />
+
+      {/* Halo - centrado con transform */}
+      <motion.div
+        className="fixed pointer-events-none z-[9997] rounded-full"
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y,
+          transform: "translate(-50%, -50%)",
+          background:
+            "radial-gradient(circle, color-mix(in srgb, var(--pink) 15%, transparent) 0%, transparent 70%)",
+        }}
+        animate={{
+          width: cursorVariant === "hover" ? 120 : 60,
+          height: cursorVariant === "hover" ? 120 : 60,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+        }}
+      />
+    </div>
+  );
+}
+</file>
+
+<file path="app/[locale]/components/experience-section.tsx">
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
+
+// Tipos
+interface Job {
+  period: string;
+  company: string;
+  role: string;
+  project: string;
+  description: string;
+  highlights: Array<{ title: string; text: string }>;
+}
+
+// Componente minimalista de partículas decorativas
+function ExperienceParticles() {
+  const particles = [
+    // Lateral izquierdo - mezcla de bordes y rellenos
+    { type: "square-filled", x: "5%", y: "3%", size: 6, opacity: 0.12 },
+    { type: "square", x: "12%", y: "8%", size: 12, opacity: 0.25 },
+    { type: "circle-filled", x: "3%", y: "12%", size: 8, opacity: 0.15 },
+    { type: "square-filled", x: "8%", y: "18%", size: 8, opacity: 0.15 },
+    { type: "circle", x: "11%", y: "22%", size: 10, opacity: 0.22 },
+    { type: "circle-filled", x: "5%", y: "28%", size: 6, opacity: 0.12 },
+    { type: "square", x: "3%", y: "35%", size: 10, opacity: 0.2 },
+    { type: "square-filled", x: "9%", y: "40%", size: 10, opacity: 0.15 },
+    { type: "circle", x: "4%", y: "45%", size: 8, opacity: 0.3 },
+    { type: "square-filled", x: "10%", y: "52%", size: 6, opacity: 0.15 },
+    { type: "square", x: "6%", y: "58%", size: 16, opacity: 0.3 },
+    { type: "circle-filled", x: "12%", y: "64%", size: 8, opacity: 0.12 },
+    { type: "square-filled", x: "4%", y: "70%", size: 10, opacity: 0.15 },
+    { type: "square", x: "8%", y: "76%", size: 12, opacity: 0.22 },
+    { type: "circle-filled", x: "11%", y: "82%", size: 6, opacity: 0.12 },
+    { type: "square", x: "5%", y: "88%", size: 14, opacity: 0.25 },
+    { type: "circle-filled", x: "9%", y: "94%", size: 8, opacity: 0.15 },
+    // Lateral derecho - mezcla de bordes y rellenos
+    { type: "rect-h", x: "85%", y: "4%", width: 24, height: 8, opacity: 0.25 },
+    { type: "square-filled", x: "92%", y: "9%", size: 10, opacity: 0.12 },
+    { type: "circle", x: "88%", y: "15%", size: 12, opacity: 0.22 },
+    { type: "square", x: "94%", y: "20%", size: 14, opacity: 0.28 },
+    { type: "circle-filled", x: "86%", y: "26%", size: 6, opacity: 0.15 },
+    { type: "square-filled", x: "91%", y: "32%", size: 8, opacity: 0.12 },
+    { type: "square", x: "87%", y: "38%", size: 10, opacity: 0.2 },
+    { type: "square-filled", x: "94%", y: "44%", size: 8, opacity: 0.12 },
+    { type: "square", x: "85%", y: "50%", size: 18, opacity: 0.28 },
+    { type: "rect-v", x: "93%", y: "55%", width: 8, height: 20, opacity: 0.28 },
+    { type: "circle-filled", x: "88%", y: "62%", size: 10, opacity: 0.15 },
+    { type: "square-filled", x: "92%", y: "68%", size: 6, opacity: 0.15 },
+    { type: "square", x: "86%", y: "74%", size: 14, opacity: 0.3 },
+    { type: "circle-filled", x: "93%", y: "80%", size: 10, opacity: 0.12 },
+    { type: "square-filled", x: "88%", y: "86%", size: 8, opacity: 0.15 },
+    { type: "square", x: "91%", y: "92%", size: 12, opacity: 0.25 },
+    { type: "circle-filled", x: "86%", y: "97%", size: 6, opacity: 0.12 },
+  ];
+
+  return (
+    <div className="absolute inset-0 pointer-events-none w-full overflow-hidden">
+      {particles.map((particle, i) => {
+        if (particle.type === "circle") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute border border-primary rounded-full"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        if (particle.type === "circle-filled") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute bg-primary rounded-full"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        if (particle.type === "square-filled") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute bg-primary"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        if (particle.type === "rect-h") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute border border-primary"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.width}px`,
+                height: `${particle.height}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        if (particle.type === "rect-v") {
+          return (
+            <div
+              key={`particle-${i}`}
+              className="absolute border border-primary"
+              style={{
+                left: particle.x,
+                top: particle.y,
+                width: `${particle.width}px`,
+                height: `${particle.height}px`,
+                opacity: particle.opacity,
+              }}
+            />
+          );
+        }
+
+        return (
+          <div
+            key={`particle-${i}`}
+            className="absolute border border-primary"
+            style={{
+              left: particle.x,
+              top: particle.y,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+// Componente individual para cada card de experiencia
+function ExperienceCard({
+  job,
+  index,
+  onOpenModal,
+}: {
+  job: Job;
+  index: number;
+  onOpenModal: () => void;
+}) {
+  const t = useTranslations("experience");
+  const rotations = [-0.8, 1.2, -1.3, 1.7];
+  const fixedRotation = rotations[index % rotations.length];
+
+  return (
+    <div
+      className="card-outer h-screen w-full flex items-center justify-center sticky top-0 pointer-events-none"
+      style={{ zIndex: index + 1 }}
+    >
+      <motion.div
+        className="relative p-5 md:p-12 2xl:p-16 w-full bg-surface-dark border-2 border-primary/30 pointer-events-auto"
+        style={{
+          rotate: fixedRotation,
+        }}
+      >
+        <div
+          className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
           }}
         />
+
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
+
+        <div className="relative z-10 mb-4 md:mb-6 2xl:mb-8 border-l-4 2xl:border-l-[6px] border-primary pl-6 2xl:pl-8">
+          <span className="text-primary font-mono text-xs md:text-sm 2xl:text-base tracking-wider font-bold">
+            {job.period}
+          </span>
+          <h3 className="text-2xl md:text-4xl 2xl:text-5xl font-black text-white mt-1 md:mt-2 leading-tight">
+            {job.role}
+          </h3>
+          <div className="flex flex-wrap items-center gap-1 md:gap-2 2xl:gap-3 mt-1 md:mt-2">
+            <p className="text-white/70 text-sm md:text-lg 2xl:text-xl font-medium">
+              {job.company}
+            </p>
+            <span className="text-white/30 hidden md:inline">·</span>
+            <p className="text-white/50 font-mono text-xs md:text-sm 2xl:text-base hidden md:block">
+              {job.project}
+            </p>
+          </div>
+        </div>
+
+        <p className="text-white/60 text-sm md:text-lg 2xl:text-xl leading-relaxed mb-4 md:mb-8 2xl:mb-10 relative z-10 pl-6 2xl:pl-8">
+          {job.description}
+        </p>
+
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-4 2xl:gap-6 relative z-10">
+          {job.highlights.map((highlight, idx) => (
+            <div
+              key={idx}
+              className="border-l-2 2xl:border-l-[3px] border-primary/50 pl-3 md:pl-4 2xl:pl-6 py-1 md:py-2 2xl:py-3 hover:border-primary transition-colors duration-300"
+            >
+              <h4 className="text-white font-bold text-xs md:text-sm 2xl:text-base">
+                {highlight.title}
+              </h4>
+              <p className="hidden md:block text-white/50 text-sm 2xl:text-base leading-relaxed mt-1">
+                {highlight.text}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={onOpenModal}
+          className="md:hidden mt-6 relative z-10 w-full py-3 border-2 border-primary text-primary font-mono text-sm font-bold hover:bg-primary hover:text-surface-dark transition-all duration-300 active:scale-95"
+        >
+          {t("viewMore")}
+        </button>
+
+        <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary/20" />
+        <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-primary/20" />
       </motion.div>
+    </div>
+  );
+}
+
+// Modal de detalles para mobile
+function ExperienceModal({
+  job,
+  onClose,
+}: {
+  job: Job;
+  onClose: () => void;
+}) {
+  const t = useTranslations("experience");
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      <motion.div
+        className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+        onClick={onClose}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+
+      <motion.div
+        className="relative w-full max-h-[85vh] bg-surface-dark border-2 border-primary overflow-y-auto overflow-x-hidden"
+        initial={{
+          scale: 0.8,
+          y: 100,
+          opacity: 0,
+        }}
+        animate={{
+          scale: 1,
+          y: 0,
+          opacity: 1,
+        }}
+        exit={{
+          scale: 0.8,
+          y: 100,
+          opacity: 0,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 25,
+        }}
+      >
+        <div className="p-6 overflow-x-hidden">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white hover:text-primary transition-colors z-10"
+            aria-label="Cerrar"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
+
+          <div className="mb-6 border-l-4 border-primary pl-6 pr-12">
+            <span className="text-primary font-mono text-xs tracking-wider font-bold break-words">
+              {job.period}
+            </span>
+            <h3 className="text-2xl font-black text-white mt-1 leading-tight break-words">
+              {job.role}
+            </h3>
+            <p className="text-white/70 text-sm font-medium mt-1 break-words">
+              {job.company}
+            </p>
+            <p className="text-white/50 font-mono text-xs mt-1 break-words">
+              {job.project}
+            </p>
+          </div>
+
+          <p className="text-white/60 text-sm leading-relaxed mb-6 break-words">
+            {job.description}
+          </p>
+
+          <div className="space-y-4">
+            <h4 className="text-white font-bold text-sm mb-3">
+              {t("keyDetails")}
+            </h4>
+            {job.highlights.map((highlight, idx) => (
+              <div
+                key={idx}
+                className="border-l-2 border-primary/50 pl-4 py-2 hover:border-primary transition-colors duration-300"
+              >
+                <h5 className="text-white font-bold text-sm mb-1 break-words">
+                  {highlight.title}
+                </h5>
+                <p className="text-white/60 text-sm leading-relaxed break-words">
+                  {highlight.text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 pt-4 border-t border-primary/20">
+            <button
+              onClick={onClose}
+              className="w-full py-3 border-2 border-white/30 text-white font-mono text-sm font-bold hover:border-white hover:bg-white hover:text-surface-dark transition-all duration-300"
+            >
+              {t("close")}
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export function ExperienceSection() {
+  const t = useTranslations();
+  const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
+
+  // Bloquear scroll cuando el modal está abierto
+  useEffect(() => {
+    if (openModalIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [openModalIndex]);
+
+  // Jobs data using translations
+  const jobs: Job[] = [
+    {
+      period: t("experience.jobs.biko2Lead.period"),
+      company: t("experience.jobs.biko2Lead.company"),
+      role: t("experience.jobs.biko2Lead.role"),
+      project: t("experience.jobs.biko2Lead.project"),
+      description: t("experience.jobs.biko2Lead.description"),
+      highlights: [
+        {
+          title: t("experience.jobs.biko2Lead.highlights.engineering.title"),
+          text: t("experience.jobs.biko2Lead.highlights.engineering.text"),
+        },
+        {
+          title: t("experience.jobs.biko2Lead.highlights.excellence.title"),
+          text: t("experience.jobs.biko2Lead.highlights.excellence.text"),
+        },
+        {
+          title: t("experience.jobs.biko2Lead.highlights.innovation.title"),
+          text: t("experience.jobs.biko2Lead.highlights.innovation.text"),
+        },
+        {
+          title: t("experience.jobs.biko2Lead.highlights.management.title"),
+          text: t("experience.jobs.biko2Lead.highlights.management.text"),
+        },
+      ],
+    },
+    {
+      period: t("experience.jobs.biko2Senior.period"),
+      company: t("experience.jobs.biko2Senior.company"),
+      role: t("experience.jobs.biko2Senior.role"),
+      project: t("experience.jobs.biko2Senior.project"),
+      description: t("experience.jobs.biko2Senior.description"),
+      highlights: [
+        {
+          title: t("experience.jobs.biko2Senior.highlights.architecture.title"),
+          text: t("experience.jobs.biko2Senior.highlights.architecture.text"),
+        },
+        {
+          title: t("experience.jobs.biko2Senior.highlights.product.title"),
+          text: t("experience.jobs.biko2Senior.highlights.product.text"),
+        },
+        {
+          title: t("experience.jobs.biko2Senior.highlights.observability.title"),
+          text: t("experience.jobs.biko2Senior.highlights.observability.text"),
+        },
+        {
+          title: t("experience.jobs.biko2Senior.highlights.quality.title"),
+          text: t("experience.jobs.biko2Senior.highlights.quality.text"),
+        },
+      ],
+    },
+    {
+      period: t("experience.jobs.nubbaLead.period"),
+      company: t("experience.jobs.nubbaLead.company"),
+      role: t("experience.jobs.nubbaLead.role"),
+      project: t("experience.jobs.nubbaLead.project"),
+      description: t("experience.jobs.nubbaLead.description"),
+      highlights: [
+        {
+          title: t("experience.jobs.nubbaLead.highlights.product.title"),
+          text: t("experience.jobs.nubbaLead.highlights.product.text"),
+        },
+        {
+          title: t("experience.jobs.nubbaLead.highlights.business.title"),
+          text: t("experience.jobs.nubbaLead.highlights.business.text"),
+        },
+        {
+          title: t("experience.jobs.nubbaLead.highlights.leadership.title"),
+          text: t("experience.jobs.nubbaLead.highlights.leadership.text"),
+        },
+      ],
+    },
+    {
+      period: t("experience.jobs.nubbaFullStack.period"),
+      company: t("experience.jobs.nubbaFullStack.company"),
+      role: t("experience.jobs.nubbaFullStack.role"),
+      project: t("experience.jobs.nubbaFullStack.project"),
+      description: t("experience.jobs.nubbaFullStack.description"),
+      highlights: [
+        {
+          title: t("experience.jobs.nubbaFullStack.highlights.development.title"),
+          text: t("experience.jobs.nubbaFullStack.highlights.development.text"),
+        },
+        {
+          title: t("experience.jobs.nubbaFullStack.highlights.stack.title"),
+          text: t("experience.jobs.nubbaFullStack.highlights.stack.text"),
+        },
+        {
+          title: t("experience.jobs.nubbaFullStack.highlights.culture.title"),
+          text: t("experience.jobs.nubbaFullStack.highlights.culture.text"),
+        },
+      ],
+    },
+  ];
+
+  return (
+    <section className="relative py-20">
+      <div className="container mx-auto px-4 pb-20">
+        <motion.h2
+          className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black leading-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <span className="text-white">{t("experience.title.line1")}</span>
+          <br />
+          <span
+            className="text-transparent"
+            style={{
+              WebkitTextStroke: "2px var(--pink)",
+            }}
+          >
+            {t("experience.title.line2")}
+          </span>
+        </motion.h2>
+      </div>
+
+      <div className="experience-cards relative">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ zIndex: 0 }}
+        >
+          <ExperienceParticles />
+        </div>
+
+        <div
+          className="w-[90%] max-w-5xl 2xl:max-w-6xl mx-auto relative"
+          style={{ zIndex: 1 }}
+        >
+          {jobs.map((job, i) => (
+            <ExperienceCard
+              key={i}
+              job={job}
+              index={i}
+              onOpenModal={() => setOpenModalIndex(i)}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Modal de detalles - Solo mobile - Fuera del stacking context */}
+      <AnimatePresence>
+        {openModalIndex !== null && (
+          <ExperienceModal
+            job={jobs[openModalIndex]}
+            onClose={() => setOpenModalIndex(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
@@ -10422,6 +9277,594 @@ export { CursorIcon, PlaywrightIcon } from "./icons";
 
 // Datos de configuración
 export { techStack } from "./tech-stack";
+</file>
+
+<file path="app/[locale]/components/mdx-components.tsx">
+import type { MDXComponents } from "mdx/types";
+import { CodeBlock } from "./code-block";
+
+export function useMDXComponents(components: MDXComponents = {}): MDXComponents {
+  return {
+    // Headings con estilos editoriales
+    h1: ({ children }) => (
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mt-12 mb-6 leading-tight">
+        {children}
+      </h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="text-3xl md:text-4xl font-black text-white mt-16 mb-6 leading-tight relative">
+        <span className="absolute -left-4 md:-left-6 top-0 text-primary/30 font-mono text-lg">
+          //
+        </span>
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-2xl md:text-3xl font-bold text-white mt-12 mb-4 leading-tight">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className="text-xl md:text-2xl font-bold text-white/90 mt-8 mb-3">
+        {children}
+      </h4>
+    ),
+
+    // Párrafos
+    p: ({ children }) => (
+      <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-6">
+        {children}
+      </p>
+    ),
+
+    // Links
+    a: ({ href, children }) => (
+      <a
+        href={href}
+        className="text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all duration-200"
+        target={href?.startsWith("http") ? "_blank" : undefined}
+        rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+      >
+        {children}
+      </a>
+    ),
+
+    // Listas
+    ul: ({ children }) => (
+      <ul className="space-y-3 mb-6 pl-4">{children}</ul>
+    ),
+    ol: ({ children }) => (
+      <ol className="space-y-3 mb-6 pl-4 list-decimal list-inside">{children}</ol>
+    ),
+    li: ({ children }) => (
+      <li className="text-white/80 text-lg leading-relaxed flex items-start gap-3">
+        <span className="text-primary mt-1.5 text-sm">▸</span>
+        <span>{children}</span>
+      </li>
+    ),
+
+    // Blockquotes
+    blockquote: ({ children }) => (
+      <blockquote className="relative my-8 pl-6 py-4 border-l-4 border-primary bg-primary/5">
+        <span className="absolute -left-3 -top-4 text-5xl text-primary/20 font-serif">
+          "
+        </span>
+        <div className="text-white/90 text-lg italic">{children}</div>
+      </blockquote>
+    ),
+
+    // Código inline
+    code: ({ className, children, ...props }) => {
+      // Si tiene className, es un bloque de código
+      if (className) {
+        return (
+          <CodeBlock className={className} {...props}>
+            {children}
+          </CodeBlock>
+        );
+      }
+      // Si no, es código inline
+      return (
+        <code className="px-2 py-1 bg-white/10 text-primary font-mono text-sm">
+          {children}
+        </code>
+      );
+    },
+
+    // Bloque de código pre
+    pre: ({ children }) => (
+      <div className="relative my-8 overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
+          <span className="w-3 h-3 bg-white/20" />
+          <span className="w-3 h-3 bg-white/10" />
+          <span className="w-3 h-3 bg-white/10" />
+        </div>
+        <pre className="pt-12 pb-6 px-6 bg-surface-darkest border border-white/10 overflow-x-auto text-sm">
+          {children}
+        </pre>
+      </div>
+    ),
+
+    // Separadores
+    hr: () => (
+      <hr className="my-16 border-none h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    ),
+
+    // Strong y em
+    strong: ({ children }) => (
+      <strong className="font-bold text-white">{children}</strong>
+    ),
+    em: ({ children }) => (
+      <em className="italic text-white/90">{children}</em>
+    ),
+
+    // Imágenes
+    img: ({ src, alt }) => (
+      <figure className="my-10">
+        <div className="relative border border-white/10 overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={alt || ""}
+            className="w-full h-auto"
+          />
+        </div>
+        {alt && (
+          <figcaption className="mt-3 text-sm text-white/50 font-mono text-center">
+            {alt}
+          </figcaption>
+        )}
+      </figure>
+    ),
+
+    // Tablas
+    table: ({ children }) => (
+      <div className="my-8 overflow-x-auto">
+        <table className="w-full border-collapse">{children}</table>
+      </div>
+    ),
+    thead: ({ children }) => (
+      <thead className="border-b-2 border-primary/30">{children}</thead>
+    ),
+    tbody: ({ children }) => <tbody>{children}</tbody>,
+    tr: ({ children }) => (
+      <tr className="border-b border-white/10">{children}</tr>
+    ),
+    th: ({ children }) => (
+      <th className="text-left py-3 px-4 font-bold text-white text-sm uppercase tracking-wider">
+        {children}
+      </th>
+    ),
+    td: ({ children }) => (
+      <td className="py-3 px-4 text-white/80">{children}</td>
+    ),
+
+    ...components,
+  };
+}
+
+// Exportar los componentes para usar con MDXRemote
+export const mdxComponents = useMDXComponents();
+</file>
+
+<file path="app/[locale]/components/projects-section.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { Github, ExternalLink } from "lucide-react";
+
+export function ProjectsSection() {
+  const t = useTranslations();
+
+  return (
+    <section className="relative py-32">
+      <div className="container mx-auto px-4">
+        <motion.h2
+          className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black text-white mb-20 leading-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          {t("projects.title.line1")}
+          <br />
+          <span className="text-primary">{t("projects.title.line2")}</span>
+        </motion.h2>
+
+        {/* Mobile: Stack uniforme | Desktop: Grid asimétrico */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+          {/* Proyecto 1 - Banking Platform */}
+          <motion.div
+            className="col-span-1 lg:col-span-8 aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] relative group cursor-pointer overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+          >
+            <div className="absolute inset-0 bg-surface-darker" />
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: `
+                  linear-gradient(45deg, transparent 40%, color-mix(in srgb, var(--pink) 10%, transparent) 50%, transparent 60%),
+                  linear-gradient(-45deg, transparent 40%, color-mix(in srgb, var(--pink) 5%, transparent) 50%, transparent 60%)
+                `,
+              }}
+            />
+            <div className="absolute inset-0 border border-primary/20 group-hover:border-primary/50 transition-colors duration-300" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent opacity-60" />
+            <div className="absolute inset-0 p-6 lg:p-12 flex flex-col justify-end">
+              <span className="text-primary text-xs lg:text-sm font-mono mb-2 tracking-wider">
+                {t("projects.items.banking.category")}
+              </span>
+              <h3 className="text-2xl lg:text-5xl font-black text-white mb-2 lg:mb-4">
+                {t("projects.items.banking.title")}
+              </h3>
+              <p className="text-white/60 text-sm lg:text-lg max-w-md leading-relaxed">
+                {t("projects.items.banking.description")}
+              </p>
+            </div>
+            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors duration-300" />
+            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-primary/30 group-hover:border-primary transition-colors duration-300" />
+          </motion.div>
+
+          {/* Proyecto 2 - Hotel Booking Engine */}
+          <motion.div
+            className="col-span-1 lg:col-span-4 aspect-[4/3] md:aspect-[16/10] lg:aspect-square relative group cursor-pointer overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, delay: 0.1 },
+            }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+          >
+            <div className="absolute inset-0 bg-surface-darker" />
+            <div
+              className="absolute inset-0 opacity-30"
+              style={{
+                backgroundImage: `radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--pink) 15%, transparent) 0%, transparent 50%)`,
+              }}
+            />
+            <div className="absolute inset-0 border border-white/10 group-hover:border-white/30 transition-colors duration-300" />
+            <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-white/40 via-white/10 to-transparent" />
+            <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
+              <span className="text-white/50 text-xs lg:text-sm font-mono mb-2 tracking-wider">
+                {t("projects.items.booking.category")}
+              </span>
+              <h3 className="text-2xl lg:text-3xl font-black text-white mb-2">
+                {t("projects.items.booking.title")}
+              </h3>
+              <p className="text-white/50 text-sm leading-relaxed">
+                {t("projects.items.booking.description")}
+              </p>
+            </div>
+            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-white/20 group-hover:border-white/50 transition-colors duration-300" />
+          </motion.div>
+
+          {/* Proyecto 3 - SaaS Products */}
+          <motion.div
+            className="col-span-1 lg:col-span-5 aspect-[4/3] md:aspect-[16/10] relative group cursor-pointer overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, delay: 0.2 },
+            }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+          >
+            <div className="absolute inset-0 bg-surface-darker" />
+            <div
+              className="absolute inset-0 opacity-50"
+              style={{
+                backgroundImage: `
+                  repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255, 255, 255, 0.02) 20px,
+                    rgba(255, 255, 255, 0.02) 40px
+                  )
+                `,
+              }}
+            />
+            <div className="absolute inset-0 border border-white/15 group-hover:border-white/30 transition-colors duration-300" />
+            <div className="absolute left-0 bottom-0 w-1 h-full bg-gradient-to-t from-white/30 via-white/10 to-transparent" />
+            <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
+              <span className="text-white/50 text-xs lg:text-sm font-mono mb-2 tracking-wider">
+                {t("projects.items.saas.category")}
+              </span>
+              <h3 className="text-2xl lg:text-4xl font-black text-white mb-2">
+                {t("projects.items.saas.title")}
+              </h3>
+              <p className="text-white/50 text-sm lg:text-base leading-relaxed">
+                {t("projects.items.saas.description")}
+              </p>
+            </div>
+            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-white/20 group-hover:border-white/40 transition-colors duration-300" />
+            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-white/20 group-hover:border-white/40 transition-colors duration-300" />
+          </motion.div>
+
+          {/* Proyecto 4 - Labs & R&D */}
+          <motion.div
+            className="col-span-1 lg:col-span-7 relative group overflow-hidden bg-surface-darker border border-primary/20 p-6 lg:p-8 flex flex-col justify-between"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, delay: 0.3 },
+            }}
+            viewport={{ once: true }}
+          >
+            {/* Header de la card principal */}
+            <div className="mb-8 z-10 relative">
+              <span className="text-primary/70 text-xs lg:text-sm font-mono mb-2 tracking-wider block">
+                {t("projects.items.labs.category")}
+              </span>
+              <h3 className="text-2xl lg:text-4xl font-black text-white mb-2">
+                {t("projects.items.labs.title")}
+              </h3>
+              <p className="text-white/50 text-sm lg:text-base leading-relaxed max-w-2xl">
+                {t("projects.items.labs.description")}
+              </p>
+            </div>
+
+            {/* Grid de Subproyectos */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 z-10 relative">
+              {/* Subproyecto 1: Portfolio */}
+              <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="text-white font-bold font-mono text-sm pr-4">
+                    {t("projects.items.labs.subprojects.p1.name")}
+                  </h4>
+                  <div className="flex gap-2 shrink-0">
+                    <a
+                      href="https://github.com/Endikaorve/porfolio"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
+                      aria-label="GitHub Code"
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+                <p className="text-white/50 text-xs leading-relaxed mt-auto">
+                  {t("projects.items.labs.subprojects.p1.desc")}
+                </p>
+              </div>
+
+              {/* Subproyecto 2: Renderizados React */}
+              <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="text-white font-bold font-mono text-sm pr-4">
+                    {t("projects.items.labs.subprojects.p2.name")}
+                  </h4>
+                  <div className="flex gap-2 shrink-0">
+                    <a
+                      href="https://github.com/Endikaorve/renderizados-web"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
+                      aria-label="GitHub Code"
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                    <a
+                      href="https://dxp-renderizados-web-presentacion.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
+                      aria-label="Live Demo"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+                <p className="text-white/50 text-xs leading-relaxed mt-auto">
+                  {t("projects.items.labs.subprojects.p2.desc")}
+                </p>
+              </div>
+
+              {/* Subproyecto 3: Taller IA + Pokédex */}
+              <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="text-white font-bold font-mono text-sm pr-4">
+                    {t("projects.items.labs.subprojects.p3.name")}
+                  </h4>
+                  <div className="flex gap-2 shrink-0">
+                    <a
+                      href="https://github.com/Endikaorve/pokedex-taller-scpna"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
+                      aria-label="GitHub Code"
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                    <a
+                      href="https://pokedex-vite-woad.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
+                      aria-label="Live Demo"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+                <p className="text-white/50 text-xs leading-relaxed mt-auto">
+                  {t("projects.items.labs.subprojects.p3.desc")}
+                </p>
+              </div>
+
+              {/* Subproyecto 4: Landing CreaYarnoz */}
+              <div className="bg-white/5 border border-white/10 p-4 hover:border-primary/50 transition-colors duration-300 group/item flex flex-col h-full relative">
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="text-white font-bold font-mono text-sm pr-4">
+                    {t("projects.items.labs.subprojects.p4.name")}
+                  </h4>
+                  <div className="flex gap-2 shrink-0">
+                    <a
+                      href="https://github.com/Endikaorve/creayarnoz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
+                      aria-label="GitHub Code"
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                    <a
+                      href="https://creayarnoz.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/40 hover:text-primary transition-colors p-1"
+                      aria-label="Live Demo"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+                <p className="text-white/50 text-xs leading-relaxed mt-auto">
+                  {t("projects.items.labs.subprojects.p4.desc")}
+                </p>
+              </div>
+            </div>
+
+            {/* Background decorativo */}
+            <div
+              className="absolute inset-0 opacity-20 pointer-events-none"
+              style={{
+                backgroundImage: `
+                  repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 40px,
+                    color-mix(in srgb, var(--pink) 3%, transparent) 40px,
+                    color-mix(in srgb, var(--pink) 3%, transparent) 80px
+                  )
+                `,
+              }}
+            />
+            <div className="absolute right-0 top-0 h-full w-1 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
+            <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 border-t-2 border-r-2 border-primary/30" />
+            <div className="absolute bottom-4 left-4 w-6 h-6 lg:w-8 lg:h-8 border-b-2 border-l-2 border-primary/30" />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="app/[locale]/components/tech-skills-section.tsx">
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { techStack } from "./tech-stack";
+
+export function TechSkillsSection() {
+  const t = useTranslations();
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [scrollRange, setScrollRange] = useState(0);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Calcula el rango de scroll basado en el contenido real
+  useEffect(() => {
+    const calculateScrollRange = () => {
+      if (contentRef.current) {
+        const contentWidth = contentRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        // Cuánto necesitamos mover para ver todo el contenido
+        setScrollRange(contentWidth - viewportWidth + 100); // +100 para padding extra
+      }
+    };
+
+    calculateScrollRange();
+    window.addEventListener("resize", calculateScrollRange);
+    return () => window.removeEventListener("resize", calculateScrollRange);
+  }, []);
+
+  // Transforma scroll vertical a movimiento horizontal
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative h-[300vh]" // Altura extra para scroll
+    >
+      {/* Container sticky que se fija en la pantalla */}
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+        {/* Fondo con gradiente */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
+
+        {/* Título fijo arriba a la izquierda */}
+        <div className="absolute top-8 md:top-12 left-8 md:left-16 z-20">
+          <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[6vw] font-black leading-none">
+            <span className="text-white">{t("tech.title.line1")}</span>
+            <br />
+            <span
+              className="text-transparent"
+              style={{ WebkitTextStroke: "2px var(--pink)" }}
+            >
+              {t("tech.title.line2")}
+            </span>
+          </h2>
+        </div>
+
+        {/* Contenido horizontal que se mueve */}
+        <motion.div
+          ref={contentRef}
+          className="flex gap-12 md:gap-24 items-center pl-[10vw] pr-[20vw]"
+          style={{ x }}
+        >
+          {techStack.map((tech, i) => (
+            <motion.div
+              key={`tech-${i}`}
+              className="flex-shrink-0 flex flex-col items-center gap-4 group"
+              whileHover={{ scale: 1.15, y: -8 }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            >
+              <div className="relative">
+                <tech.Icon className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 text-white/20 group-hover:text-primary transition-colors duration-300" />
+              </div>
+              <span className="text-xs md:text-sm font-mono text-white/30 group-hover:text-white/60 transition-colors duration-300 whitespace-nowrap">
+                {tech.name}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Fade edges */}
+        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-surface-dark to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-surface-dark to-transparent pointer-events-none z-10" />
+
+        {/* Líneas decorativas */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+        {/* Indicador de scroll */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+          <motion.div
+            className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent"
+            animate={{ scaleY: [1, 0.5, 1] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+          />
+          <span className="text-xs font-mono text-white/30">scroll</span>
+        </div>
+      </div>
+    </section>
+  );
+}
 </file>
 
 <file path="app/layout.tsx">
@@ -10579,158 +10022,128 @@ Del mismo modo, soy una persona muy pragmática. Entiendo que hay momentos donde
 También me encanta ir a conferencias de software, especialmente las que cuentan con espacios "open".
 </file>
 
-<file path="app/[locale]/components/about-section.tsx">
+<file path="app/[locale]/components/contact-section.tsx">
 "use client";
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { Download } from "lucide-react";
 
-export function AboutSection() {
+export function ContactSection() {
   const t = useTranslations();
 
   return (
-    <section className="relative min-h-screen py-32">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-12 gap-4 md:gap-8 lg:gap-12">
-          {/* Foto - Mobile first, luego reposicionada en desktop */}
-          <motion.div
-            className="col-span-12 md:col-span-5 md:row-span-2 relative order-first md:order-none"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative aspect-square max-w-[280px] md:max-w-none mx-auto md:mx-0">
-              {/* Marco exterior decorativo */}
-              <div className="absolute -inset-3 md:-inset-4 border border-[#de5e91]/20" />
+    <section className="relative min-h-screen flex items-center justify-center py-32 overflow-hidden">
+      {/* Background Elements */}
+      {/* Líneas diagonales decorativas */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
+        <div
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: "20%", left: "-50%" }}
+        />
+        <div
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: "40%", left: "-50%" }}
+        />
+        <div
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: "60%", left: "-50%" }}
+        />
+        <div
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: "80%", left: "-50%" }}
+        />
+      </div>
 
-              {/* Contenedor de imagen con overlay */}
-              <div className="relative w-full h-full overflow-hidden group">
-                {/* Imagen */}
-                <Image
-                  src="/endika.jpg"
-                  alt="Endika Orube - Tech Lead & Product Engineer especializado en React, Next.js y arquitectura frontend en Pamplona, Navarra"
-                  width={500}
-                  height={500}
-                  priority
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
+      {/* Elementos técnicos en esquinas */}
+      <div className="absolute bottom-24 left-8 hidden md:block">
+        <div className="w-16 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+        <div className="w-px h-16 bg-gradient-to-b from-primary/30 to-transparent" />
+      </div>
+      <div className="absolute bottom-24 right-8 hidden md:flex flex-col items-end">
+        <div className="w-16 h-px bg-gradient-to-l from-primary/30 to-transparent" />
+        <div className="w-px h-16 bg-gradient-to-b from-primary/30 to-transparent ml-auto" />
+      </div>
 
-                {/* Overlay gradiente rosa */}
-                <div
-                  className="absolute inset-0 mix-blend-multiply opacity-30 group-hover:opacity-0 transition-opacity duration-500"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(222, 94, 145, 0.4) 0%, transparent 60%)",
-                  }}
-                />
+      {/* Círculo decorativo exterior */}
+      <motion.div
+        className="absolute w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] border border-white/[0.02] pointer-events-none"
+        style={{ borderRadius: "50%" }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      />
 
-                {/* Línea diagonal decorativa */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <div
-                    className="absolute w-[200%] h-px bg-[#de5e91]/40 -rotate-45"
-                    style={{ top: "20%", left: "-50%" }}
-                  />
-                </div>
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-[15vw] font-black leading-none mb-12">
+            <span className="text-white">{t("contact.title.line1")}</span>
+            <br />
+            <span
+              className="text-transparent"
+              style={{
+                WebkitTextStroke: "2px var(--pink)",
+              }}
+            >
+              {t("contact.title.line2")}
+            </span>
+          </h2>
 
-                {/* Borde interior */}
-                <div className="absolute inset-0 border border-white/10" />
-              </div>
+          <div className="flex flex-col md:flex-row gap-8 justify-center items-center mt-20">
+            <motion.a
+              href="mailto:endikaorve@gmail.com"
+              className="text-white text-2xl font-mono hover:text-primary transition-colors relative group"
+              whileHover={{ scale: 1.1 }}
+            >
+              endikaorve@gmail.com
+              <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+            </motion.a>
 
-              {/* Esquinas decorativas */}
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-l-2 border-[#de5e91]" />
-              <div className="absolute -bottom-3 -right-3 md:-bottom-4 md:-right-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-r-2 border-[#de5e91]" />
+            <span className="text-white/20 text-4xl hidden md:block">/</span>
 
-              {/* Indicador de hover - solo desktop */}
-              <div className="hidden md:block absolute -right-12 top-1/2 -translate-y-1/2">
-                <div className="w-8 h-px bg-[#de5e91]/30" />
-              </div>
+            <div className="flex gap-6">
+              <motion.a
+                href="https://www.linkedin.com/in/endikaorube/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-lg font-mono hover:text-primary transition-colors"
+                whileHover={{ y: -5 }}
+              >
+                LINKEDIN
+              </motion.a>
+              <motion.a
+                href="https://github.com/Endikaorve"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-lg font-mono hover:text-primary transition-colors"
+                whileHover={{ y: -5 }}
+              >
+                {t("contact.github")}
+              </motion.a>
+              <motion.a
+                href="/Endika Orube Vega - CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-lg font-mono hover:text-primary transition-colors"
+                whileHover={{ y: -5 }}
+              >
+                {t("cv.downloadShort")}
+              </motion.a>
             </div>
-          </motion.div>
+          </div>
+        </motion.div>
+      </div>
 
-          {/* Título */}
-          <motion.div
-            className="col-span-12 md:col-span-7 relative mt-8 md:mt-0"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative z-10">
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-[#de5e91] mb-8 leading-none">
-                {t("about.title.line1")}
-                <br />
-                {t("about.title.line2")}
-                <br />
-                <span className="text-white">{t("about.title.line3")}</span>
-              </h2>
-            </div>
-          </motion.div>
-
-          {/* Descripción y stats */}
-          <motion.div
-            className="col-span-12 md:col-span-7 flex items-start"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="space-y-6">
-              <p className="text-white text-lg md:text-xl leading-relaxed">
-                {t("about.description1")}
-              </p>
-              <p className="text-white/60 text-base md:text-lg leading-relaxed">
-                {t("about.description2")}
-              </p>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2">
-                {/* CTA al Blog */}
-                <Link
-                  href="/blog"
-                  className="group inline-flex items-center gap-2 text-[#de5e91] hover:text-white transition-colors duration-200 font-bold text-lg"
-                >
-                  {t("blog.ctaFromAbout")}
-                </Link>
-
-                {/* CTA CV */}
-                <motion.a
-                  href="/Endika Orube Vega - CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-white/60 hover:text-[#de5e91] transition-colors duration-200 font-bold text-lg"
-                  whileHover={{ x: 3 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                >
-                  <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
-                  {t("cv.download")}
-                </motion.a>
-              </div>
-
-              {/* Stats */}
-              <div className="flex gap-4 pt-4">
-                <div className="border-l-4 border-[#de5e91] pl-4">
-                  <span className="text-2xl md:text-3xl font-black text-white">
-                    {t("about.stats.techLead")}
-                  </span>
-                  <p className="text-white/60 text-sm">
-                    {t("about.stats.engineers")}
-                  </p>
-                </div>
-                <div className="border-l-4 border-white pl-4">
-                  <span className="text-2xl md:text-3xl font-black text-[#de5e91]">
-                    {t("about.stats.years")}
-                  </span>
-                  <p className="text-white/60 text-sm">
-                    {t("about.stats.productEng")}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+      {/* Footer minimalista */}
+      <div className="absolute bottom-8 left-0 right-0">
+        <div className="container mx-auto px-4 flex justify-between items-center text-white/40 text-sm font-mono">
+          <span>{t("contact.copyright")}</span>
+          <span>{t("contact.location")}</span>
         </div>
       </div>
     </section>
@@ -10738,106 +10151,300 @@ export function AboutSection() {
 }
 </file>
 
-<file path="components/header.tsx">
+<file path="app/[locale]/components/expertise-section.tsx">
 "use client";
 
 import { motion } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
-import { useRouter, usePathname, Link } from "@/i18n/navigation";
-import { Locale, locales } from "@/i18n/config";
+import { useTranslations } from "next-intl";
 
-export function Header() {
-  const locale = useLocale() as Locale;
-  const router = useRouter();
-  const pathname = usePathname();
+export function ExpertiseSection() {
   const t = useTranslations();
 
-  const handleLocaleChange = (newLocale: Locale) => {
-    if (newLocale !== locale) {
-      router.replace(pathname, { locale: newLocale });
-    }
-  };
+  const expertiseItems = [
+    {
+      title: t("expertise.items.product.title"),
+      description: t("expertise.items.product.description"),
+    },
+    {
+      title: t("expertise.items.architecture.title"),
+      description: t("expertise.items.architecture.description"),
+    },
+    {
+      title: t("expertise.items.xp.title"),
+      description: t("expertise.items.xp.description"),
+    },
+    {
+      title: t("expertise.items.contextEngineering.title"),
+      description: t("expertise.items.contextEngineering.description"),
+    },
+    {
+      title: t("expertise.items.leadership.title"),
+      description: t("expertise.items.leadership.description"),
+    },
+    {
+      title: t("expertise.items.culture.title"),
+      description: t("expertise.items.culture.description"),
+    },
+  ];
 
   return (
-    <motion.header
-      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        type: "spring",
-        stiffness: 300,
-        damping: 25,
-      }}
-    >
-      <nav className="flex items-center justify-end">
-        {/* Navegación */}
-        <div className="flex items-center gap-1 md:gap-2">
-          {/* Blog Link */}
-          {(() => {
-            const isBlogActive =
-              pathname === "/blog" || pathname.startsWith("/blog/");
+    <section className="relative py-32">
+      <div className="container mx-auto px-4">
+        <motion.h2
+          className="text-6xl md:text-8xl font-black text-white mb-20 leading-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          {t("expertise.title.line1")}
+          <br />
+          <span className="text-primary">{t("expertise.title.line2")}</span>
+        </motion.h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {expertiseItems.map((item, i) => {
+            const isHighlighted = i === 3; // Context Engineering
             return (
-              <Link
-                href="/blog"
-                className={`group relative px-1.5 md:px-2 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
-                  isBlogActive
-                    ? "text-[#de5e91]"
-                    : "text-white/60 hover:text-[#de5e91]"
-                }`}
+              <motion.div
+                key={i}
+                className="border-l-4 border-primary pl-8 py-6"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                viewport={{ once: true }}
               >
-                {t("blog.headerLink")}
-                <span
-                  className={`absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-[#de5e91] transition-transform duration-200 origin-left ${
-                    isBlogActive
-                      ? "scale-x-100"
-                      : "scale-x-0 group-hover:scale-x-100"
-                  }`}
-                />
-              </Link>
-            );
-          })()}
-
-          {/* Separador */}
-          <span className="text-white/20 select-none">|</span>
-
-          {/* Language Switcher */}
-          <div className="flex items-center font-mono text-sm">
-            {locales.map((loc, index) => (
-              <div key={loc} className="flex items-center">
-                <motion.button
-                  onClick={() => handleLocaleChange(loc)}
-                  className={`relative px-1.5 md:px-2 py-2 font-bold tracking-wider transition-colors duration-200 ${
-                    locale === loc
-                      ? "text-[#de5e91]"
-                      : "text-white/40 hover:text-white/80"
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {loc.toUpperCase()}
-                  {/* Underline indicator for active locale */}
-                  {locale === loc && (
-                    <motion.div
-                      className="absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-[#de5e91]"
-                      layoutId="locale-indicator"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 25,
-                      }}
-                    />
+                <span className="text-white/30 font-mono text-sm">
+                  {(i + 1).toString().padStart(2, "0")}
+                </span>
+                <h3 className="text-3xl font-black text-white mt-2 mb-4">
+                  {item.title}
+                  {isHighlighted && (
+                    <span className="ml-3 text-sm text-primary align-top">
+                      [ ✦ ]
+                    </span>
                   )}
-                </motion.button>
-                {/* Separator between locales */}
-                {index < locales.length - 1 && (
-                  <span className="text-white/20 select-none">/</span>
-                )}
-              </div>
-            ))}
+                </h3>
+                <p className="text-white/70 text-lg leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="app/[locale]/components/hero-section.tsx">
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { useTranslations } from "next-intl";
+
+export function HeroSection() {
+  const t = useTranslations();
+  const heroRef = useRef<HTMLElement>(null);
+  const [heroReady, setHeroReady] = useState(false);
+
+  // Hero parallax - scroll horizontal
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const endikaX = useTransform(
+    heroScrollProgress,
+    [0, 0.1, 1],
+    ["0%", "0%", "-120%"]
+  );
+  const orubeX = useTransform(
+    heroScrollProgress,
+    [0, 0.1, 1],
+    ["0%", "0%", "120%"]
+  );
+
+  // Trigger floating animations after intro sequence
+  useEffect(() => {
+    const timer = setTimeout(() => setHeroReady(true), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <section
+      ref={heroRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Capa animada - texto que se mueve con scroll */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
+          {/* ENDIKA - Reveal desde abajo */}
+          <div className={heroReady ? "" : "overflow-hidden"}>
+            <motion.h1
+              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter will-change-transform whitespace-nowrap"
+              style={{
+                color: "transparent",
+                WebkitTextStroke: "2px white",
+                x: heroReady ? endikaX : 0,
+              }}
+              initial={{ y: "110%" }}
+              animate={heroReady ? { y: [0, -20, 0] } : { y: 0 }}
+              transition={
+                heroReady
+                  ? {
+                      duration: 4,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "easeInOut",
+                    }
+                  : {
+                      duration: 0.5,
+                      ease: [0.16, 1, 0.3, 1],
+                      delay: 0,
+                    }
+              }
+            >
+              ENDIKA
+            </motion.h1>
+          </div>
+
+          {/* ORUBE - Reveal desde arriba */}
+          <div className={heroReady ? "" : "overflow-hidden"}>
+            <motion.h1
+              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform whitespace-nowrap"
+              style={{
+                textShadow: "0 0 40px color-mix(in srgb, var(--pink) 30%, transparent)",
+                x: heroReady ? orubeX : 0,
+              }}
+              initial={{ y: "-110%" }}
+              animate={heroReady ? { y: [0, 20, 0] } : { y: 0 }}
+              transition={
+                heroReady
+                  ? {
+                      duration: 4,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "easeInOut",
+                    }
+                  : {
+                      duration: 0.5,
+                      ease: [0.16, 1, 0.3, 1],
+                      delay: 0.1,
+                    }
+              }
+            >
+              ORUBE
+              <span className="inline-block w-[0.12em] h-[0.12em] bg-primary ml-[0.07em]" />
+            </motion.h1>
           </div>
         </div>
-      </nav>
-    </motion.header>
+      </div>
+
+      {/* Capa estática - elementos de UI */}
+      <div className="relative z-10 w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
+        {/* Placeholder para mantener espacio */}
+        <div className="relative" aria-hidden="true">
+          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
+            ENDIKA
+          </div>
+          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
+            ORUBE
+            <span className="inline-block w-[0.12em] h-[0.12em] ml-[0.07em]" />
+          </div>
+        </div>
+
+        {/* Rol desktop - Línea que se expande + texto reveal */}
+        <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 rotate-90 origin-center">
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
+          >
+            {/* Línea decorativa que se expande */}
+            <motion.div
+              className="absolute -left-8 top-1/2 h-px bg-primary"
+              initial={{ width: 0 }}
+              animate={{ width: 24 }}
+              transition={{
+                duration: 0.3,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.35,
+              }}
+            />
+            <motion.p
+              className="text-primary text-xl md:text-2xl font-mono whitespace-nowrap font-bold"
+              initial={{ x: 20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{
+                duration: 0.4,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.4,
+              }}
+            >
+              {t("hero.role")}
+            </motion.p>
+          </motion.div>
+        </div>
+
+        {/* Rol mobile - Entrada coordinada con borde animado */}
+        <motion.div
+          className="md:hidden mt-24 pl-4 relative"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.35 }}
+        >
+          {/* Borde izquierdo animado */}
+          <motion.div
+            className="absolute left-0 top-0 w-1 bg-primary"
+            initial={{ height: 0 }}
+            animate={{ height: "100%" }}
+            transition={{
+              duration: 0.3,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.35,
+            }}
+          />
+          <motion.p
+            className="text-primary text-sm font-mono font-bold leading-relaxed"
+            initial={{ x: -10, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              duration: 0.4,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.45,
+            }}
+          >
+            TECH LEAD
+            <br />
+            PRODUCT ENGINEER
+          </motion.p>
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator - aparece al final de la secuencia */}
+      <motion.div
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.4,
+          ease: [0.16, 1, 0.3, 1],
+          delay: 0.55,
+        }}
+      >
+        <motion.div
+          className="w-px h-20 bg-gradient-to-b from-primary to-transparent"
+          animate={{ y: [0, 10, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+      </motion.div>
+    </section>
   );
 }
 </file>
@@ -10912,6 +10519,355 @@ const nextConfig = {
 export default withNextIntl(nextConfig);
 </file>
 
+<file path="app/[locale]/components/about-section.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { Link } from "@/i18n/navigation";
+import { Download } from "lucide-react";
+
+export function AboutSection() {
+  const t = useTranslations();
+
+  return (
+    <section className="relative min-h-screen py-32">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-12 gap-4 md:gap-8 lg:gap-12">
+          {/* Foto - Mobile first, luego reposicionada en desktop */}
+          <motion.div
+            className="col-span-12 md:col-span-5 md:row-span-2 relative order-first md:order-none"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative aspect-square max-w-[280px] md:max-w-none mx-auto md:mx-0">
+              {/* Marco exterior decorativo */}
+              <div className="absolute -inset-3 md:-inset-4 border border-primary/20" />
+
+              {/* Contenedor de imagen con overlay */}
+              <div className="relative w-full h-full overflow-hidden group">
+                {/* Imagen */}
+                <Image
+                  src="/endika.jpg"
+                  alt="Endika Orube - Tech Lead & Product Engineer especializado en React, Next.js y arquitectura frontend en Pamplona, Navarra"
+                  width={500}
+                  height={500}
+                  priority
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+
+                {/* Overlay gradiente rosa */}
+                <div
+                  className="absolute inset-0 mix-blend-multiply opacity-30 group-hover:opacity-0 transition-opacity duration-500"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, color-mix(in srgb, var(--pink) 40%, transparent) 0%, transparent 60%)",
+                  }}
+                />
+
+                {/* Línea diagonal decorativa */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div
+                    className="absolute w-[200%] h-px bg-primary/40 -rotate-45"
+                    style={{ top: "20%", left: "-50%" }}
+                  />
+                </div>
+
+                {/* Borde interior */}
+                <div className="absolute inset-0 border border-white/10" />
+              </div>
+
+              {/* Esquinas decorativas */}
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-l-2 border-primary" />
+              <div className="absolute -bottom-3 -right-3 md:-bottom-4 md:-right-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-r-2 border-primary" />
+
+              {/* Indicador de hover - solo desktop */}
+              <div className="hidden md:block absolute -right-12 top-1/2 -translate-y-1/2">
+                <div className="w-8 h-px bg-primary/30" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Título */}
+          <motion.div
+            className="col-span-12 md:col-span-7 relative mt-8 md:mt-0"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative z-10">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary mb-8 leading-none">
+                {t("about.title.line1")}
+                <br />
+                {t("about.title.line2")}
+                <br />
+                <span className="text-white">{t("about.title.line3")}</span>
+              </h2>
+            </div>
+          </motion.div>
+
+          {/* Descripción y stats */}
+          <motion.div
+            className="col-span-12 md:col-span-7 flex items-start"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="space-y-6">
+              <p className="text-white text-lg md:text-xl leading-relaxed">
+                {t("about.description1")}
+              </p>
+              <p className="text-white/60 text-base md:text-lg leading-relaxed">
+                {t("about.description2")}
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2">
+                {/* CTA al Blog */}
+                <Link
+                  href="/blog"
+                  className="group inline-flex items-center gap-2 text-primary hover:text-white transition-colors duration-200 font-bold text-lg"
+                >
+                  {t("blog.ctaFromAbout")}
+                </Link>
+
+                {/* CTA CV */}
+                <motion.a
+                  href="/Endika Orube Vega - CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-bold text-lg"
+                  whileHover={{ x: 3 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                >
+                  <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
+                  {t("cv.download")}
+                </motion.a>
+              </div>
+
+              {/* Stats */}
+              <div className="flex gap-4 pt-4">
+                <div className="border-l-4 border-primary pl-4">
+                  <span className="text-2xl md:text-3xl font-black text-white">
+                    {t("about.stats.techLead")}
+                  </span>
+                  <p className="text-white/60 text-sm">
+                    {t("about.stats.engineers")}
+                  </p>
+                </div>
+                <div className="border-l-4 border-white pl-4">
+                  <span className="text-2xl md:text-3xl font-black text-primary">
+                    {t("about.stats.years")}
+                  </span>
+                  <p className="text-white/60 text-sm">
+                    {t("about.stats.productEng")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/header.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter, usePathname, Link } from "@/i18n/navigation";
+import { Locale, locales } from "@/i18n/config";
+
+export function Header() {
+  const locale = useLocale() as Locale;
+  const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations();
+
+  const handleLocaleChange = (newLocale: Locale) => {
+    if (newLocale !== locale) {
+      router.replace(pathname, { locale: newLocale });
+    }
+  };
+
+  return (
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 25,
+      }}
+    >
+      <nav className="flex items-center justify-end">
+        {/* Navegación */}
+        <div className="flex items-center gap-1 md:gap-2">
+          {/* Blog Link */}
+          {(() => {
+            const isBlogActive =
+              pathname === "/blog" || pathname.startsWith("/blog/");
+            return (
+              <Link
+                href="/blog"
+                className={`group relative px-1.5 md:px-2 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
+                  isBlogActive
+                    ? "text-primary"
+                    : "text-white/60 hover:text-primary"
+                }`}
+              >
+                {t("blog.headerLink")}
+                <span
+                  className={`absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-primary transition-transform duration-200 origin-left ${
+                    isBlogActive
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
+              </Link>
+            );
+          })()}
+
+          {/* Separador */}
+          <span className="text-white/20 select-none">|</span>
+
+          {/* Language Switcher */}
+          <div className="flex items-center font-mono text-sm">
+            {locales.map((loc, index) => (
+              <div key={loc} className="flex items-center">
+                <motion.button
+                  onClick={() => handleLocaleChange(loc)}
+                  className={`relative px-1.5 md:px-2 py-2 font-bold tracking-wider transition-colors duration-200 ${
+                    locale === loc
+                      ? "text-primary"
+                      : "text-white/40 hover:text-white/80"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {loc.toUpperCase()}
+                  {/* Underline indicator for active locale */}
+                  {locale === loc && (
+                    <motion.div
+                      className="absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-primary"
+                      layoutId="locale-indicator"
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 25,
+                      }}
+                    />
+                  )}
+                </motion.button>
+                {/* Separator between locales */}
+                {index < locales.length - 1 && (
+                  <span className="text-white/20 select-none">/</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </motion.header>
+  );
+}
+</file>
+
+<file path="package.json">
+{
+  "name": "my-v0-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "eslint .",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@emotion/is-prop-valid": "latest",
+    "@hookform/resolvers": "^3.10.0",
+    "@radix-ui/react-accordion": "1.2.2",
+    "@radix-ui/react-alert-dialog": "1.1.4",
+    "@radix-ui/react-aspect-ratio": "1.1.1",
+    "@radix-ui/react-avatar": "1.1.2",
+    "@radix-ui/react-checkbox": "1.1.3",
+    "@radix-ui/react-collapsible": "1.1.2",
+    "@radix-ui/react-context-menu": "2.2.4",
+    "@radix-ui/react-dialog": "1.1.4",
+    "@radix-ui/react-dropdown-menu": "2.1.4",
+    "@radix-ui/react-hover-card": "1.1.4",
+    "@radix-ui/react-label": "2.1.1",
+    "@radix-ui/react-menubar": "1.1.4",
+    "@radix-ui/react-navigation-menu": "1.2.3",
+    "@radix-ui/react-popover": "1.1.4",
+    "@radix-ui/react-progress": "1.1.1",
+    "@radix-ui/react-radio-group": "1.2.2",
+    "@radix-ui/react-scroll-area": "1.2.2",
+    "@radix-ui/react-select": "2.1.4",
+    "@radix-ui/react-separator": "1.1.1",
+    "@radix-ui/react-slider": "1.2.2",
+    "@radix-ui/react-slot": "1.1.1",
+    "@radix-ui/react-switch": "1.1.2",
+    "@radix-ui/react-tabs": "1.1.2",
+    "@radix-ui/react-toast": "1.2.4",
+    "@radix-ui/react-toggle": "1.1.1",
+    "@radix-ui/react-toggle-group": "1.1.1",
+    "@radix-ui/react-tooltip": "1.1.6",
+    "@vercel/analytics": "1.3.1",
+    "autoprefixer": "^10.4.20",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "1.0.4",
+    "date-fns": "4.1.0",
+    "embla-carousel-react": "8.5.1",
+    "framer-motion": "12.23.26",
+    "gray-matter": "^4.0.3",
+    "input-otp": "1.4.1",
+    "lucide-react": "^0.454.0",
+    "next": "16.0.10",
+    "next-intl": "^4.6.1",
+    "next-mdx-remote": "^5.0.0",
+    "next-themes": "^0.4.6",
+    "react": "19.2.0",
+    "react-day-picker": "9.8.0",
+    "react-dom": "19.2.0",
+    "react-hook-form": "^7.60.0",
+    "react-icons": "^5.5.0",
+    "react-resizable-panels": "^2.1.7",
+    "recharts": "2.15.4",
+    "rehype-highlight": "^7.0.2",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "server-only": "^0.0.1",
+    "sonner": "^1.7.4",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^1.1.2",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.9",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "postcss": "^8.5",
+    "tailwindcss": "^4.1.9",
+    "tw-animate-css": "1.3.3",
+    "typescript": "^5"
+  }
+}
+</file>
+
 <file path="app/globals.css">
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -10922,28 +10878,34 @@ export default withNextIntl(nextConfig);
   /* Paleta de colores personalizada: negro/gris oscuro, blanco y rosa */
   --background: oklch(1 0 0); /* Blanco */
   --foreground: oklch(0.145 0 0); /* Negro profundo */
-  --dark-gray: oklch(0.15 0 0); /* #212121 aproximadamente */
-  --pink: oklch(0.65 0.18 345); /* #de5e91 aproximadamente */
-  --pink-light: oklch(0.75 0.15 345);
+  
+  /* Grises de fondo - valores HEX exactos para consistencia visual */
+  --surface-dark: #212121;
+  --surface-darker: #1a1a1a;
+  --surface-darkest: #0a0a0a;
+  
+  /* Rosa primary - valor HEX exacto */
+  --pink: #de5e91;
+  --pink-light: #ff8fb3;
   --pink-dark: oklch(0.55 0.2 345);
 
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.65 0.18 345); /* Rosa */
+  --primary: #de5e91; /* Rosa */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.15 0 0); /* Gris oscuro */
+  --secondary: #212121; /* Gris oscuro */
   --secondary-foreground: oklch(1 0 0);
   --muted: oklch(0.95 0 0);
   --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.65 0.18 345);
+  --accent: #de5e91;
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.2 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.65 0.18 345);
+  --ring: #de5e91;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -10961,25 +10923,25 @@ export default withNextIntl(nextConfig);
 }
 
 .dark {
-  --background: oklch(0.15 0 0);
+  --background: #212121;
   --foreground: oklch(1 0 0);
-  --card: oklch(0.18 0 0);
+  --card: #1a1a1a;
   --card-foreground: oklch(1 0 0);
-  --popover: oklch(0.15 0 0);
+  --popover: #212121;
   --popover-foreground: oklch(1 0 0);
-  --primary: oklch(0.65 0.18 345);
-  --primary-foreground: oklch(0.15 0 0);
+  --primary: #de5e91;
+  --primary-foreground: #212121;
   --secondary: oklch(0.25 0 0);
   --secondary-foreground: oklch(1 0 0);
   --muted: oklch(0.25 0 0);
   --muted-foreground: oklch(0.7 0 0);
-  --accent: oklch(0.65 0.18 345);
-  --accent-foreground: oklch(0.15 0 0);
+  --accent: #de5e91;
+  --accent-foreground: #212121;
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.3 0 0);
   --input: oklch(0.25 0 0);
-  --ring: oklch(0.65 0.18 345);
+  --ring: #de5e91;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -11001,7 +10963,11 @@ export default withNextIntl(nextConfig);
   --font-mono: "JetBrains Mono", "JetBrains Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-dark-gray: var(--dark-gray);
+  /* Superficies oscuras */
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-darker: var(--surface-darker);
+  --color-surface-darkest: var(--surface-darkest);
+  /* Rosa y variantes */
   --color-pink: var(--pink);
   --color-pink-light: var(--pink-light);
   --color-pink-dark: var(--pink-dark);
@@ -11126,7 +11092,7 @@ export default withNextIntl(nextConfig);
 
   /* Estilos para efectos de texto */
   .text-gradient {
-    background: linear-gradient(135deg, #de5e91 0%, #ff8fb3 100%);
+    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -11147,7 +11113,7 @@ export default withNextIntl(nextConfig);
   .hljs-literal,
   .hljs-section,
   .hljs-link {
-    color: #de5e91;
+    color: var(--pink);
   }
   .hljs-string,
   .hljs-title,
@@ -11178,97 +11144,11 @@ export default withNextIntl(nextConfig);
   .hljs-regexp,
   .hljs-selector-id,
   .hljs-selector-class {
-    color: #de5e91;
+    color: var(--pink);
   }
   .hljs-doctag,
   .hljs-built_in {
     color: #cc99cd;
-  }
-}
-</file>
-
-<file path="package.json">
-{
-  "name": "my-v0-project",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "lint": "eslint .",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@emotion/is-prop-valid": "latest",
-    "@hookform/resolvers": "^3.10.0",
-    "@radix-ui/react-accordion": "1.2.2",
-    "@radix-ui/react-alert-dialog": "1.1.4",
-    "@radix-ui/react-aspect-ratio": "1.1.1",
-    "@radix-ui/react-avatar": "1.1.2",
-    "@radix-ui/react-checkbox": "1.1.3",
-    "@radix-ui/react-collapsible": "1.1.2",
-    "@radix-ui/react-context-menu": "2.2.4",
-    "@radix-ui/react-dialog": "1.1.4",
-    "@radix-ui/react-dropdown-menu": "2.1.4",
-    "@radix-ui/react-hover-card": "1.1.4",
-    "@radix-ui/react-label": "2.1.1",
-    "@radix-ui/react-menubar": "1.1.4",
-    "@radix-ui/react-navigation-menu": "1.2.3",
-    "@radix-ui/react-popover": "1.1.4",
-    "@radix-ui/react-progress": "1.1.1",
-    "@radix-ui/react-radio-group": "1.2.2",
-    "@radix-ui/react-scroll-area": "1.2.2",
-    "@radix-ui/react-select": "2.1.4",
-    "@radix-ui/react-separator": "1.1.1",
-    "@radix-ui/react-slider": "1.2.2",
-    "@radix-ui/react-slot": "1.1.1",
-    "@radix-ui/react-switch": "1.1.2",
-    "@radix-ui/react-tabs": "1.1.2",
-    "@radix-ui/react-toast": "1.2.4",
-    "@radix-ui/react-toggle": "1.1.1",
-    "@radix-ui/react-toggle-group": "1.1.1",
-    "@radix-ui/react-tooltip": "1.1.6",
-    "@vercel/analytics": "1.3.1",
-    "autoprefixer": "^10.4.20",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "cmdk": "1.0.4",
-    "date-fns": "4.1.0",
-    "embla-carousel-react": "8.5.1",
-    "framer-motion": "12.23.26",
-    "gray-matter": "^4.0.3",
-    "input-otp": "1.4.1",
-    "lucide-react": "^0.454.0",
-    "next": "16.0.10",
-    "next-intl": "^4.6.1",
-    "next-mdx-remote": "^5.0.0",
-    "next-themes": "^0.4.6",
-    "react": "19.2.0",
-    "react-day-picker": "9.8.0",
-    "react-dom": "19.2.0",
-    "react-hook-form": "^7.60.0",
-    "react-icons": "^5.5.0",
-    "react-resizable-panels": "^2.1.7",
-    "recharts": "2.15.4",
-    "rehype-highlight": "^7.0.2",
-    "rehype-slug": "^6.0.0",
-    "remark-gfm": "^4.0.1",
-    "server-only": "^0.0.1",
-    "sonner": "^1.7.4",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss-animate": "^1.0.7",
-    "vaul": "^1.1.2",
-    "zod": "3.25.76"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.9",
-    "@types/node": "^22",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "postcss": "^8.5",
-    "tailwindcss": "^4.1.9",
-    "tw-animate-css": "1.3.3",
-    "typescript": "^5"
   }
 }
 </file>
@@ -11418,7 +11298,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <JsonLdSchema locale={locale} />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#212121]`}
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-surface-dark`}
       >
         <NextIntlClientProvider messages={messages}>
           <GlobalCursor />
