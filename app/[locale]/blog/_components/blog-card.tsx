@@ -2,17 +2,17 @@
 
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
-import type { BlogPostMeta } from "@/lib/blog-types";
-import { formatBlogDate } from "@/lib/blog-utils";
+import type { BlogPost } from "@/core/blog/domain/blog";
+import { formatBlogPostDate } from "@/core/blog/domain/blog-utils";
 
 interface BlogCardProps {
-  post: BlogPostMeta;
+  post: BlogPost;
   index: number;
   locale: string;
 }
 
 export function BlogCard({ post, index, locale }: BlogCardProps) {
-  const formattedDate = formatBlogDate(post.date, locale);
+  const formattedDate = formatBlogPostDate(post, locale);
   const number = String(index + 1).padStart(2, "0");
 
   return (

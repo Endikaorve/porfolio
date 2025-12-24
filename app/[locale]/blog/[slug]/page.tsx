@@ -6,10 +6,11 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
 
-import { getBlogPost, getAllBlogSlugs } from "@/lib/blog";
+import { blogService } from "@/core/blog/services/blog.service";
 import { routing } from "@/i18n/routing";
 import { BlogPostLayout } from "../_components/blog-post-layout";
 import { mdxComponents } from "../_components/mdx-components";
+import "@/di";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -17,7 +18,7 @@ type Props = {
 
 // Generar rutas estáticas para todos los posts en todos los idiomas
 export async function generateStaticParams() {
-  const slugs = getAllBlogSlugs();
+  const slugs = await blogService.listSlugs();
   const params: { locale: string; slug: string }[] = [];
 
   for (const locale of routing.locales) {
@@ -31,7 +32,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = getBlogPost(slug, locale);
+  const post = await blogService.getBlogPostDetailBySlug(slug, locale);
 
   if (!post) {
     return {
@@ -64,7 +65,7 @@ export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const post = getBlogPost(slug, locale);
+  const post = await blogService.getBlogPostDetailBySlug(slug, locale);
 
   if (!post) {
     notFound();

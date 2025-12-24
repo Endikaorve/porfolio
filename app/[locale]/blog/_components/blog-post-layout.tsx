@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
-import type { BlogPost } from "@/lib/blog-types";
-import { formatBlogDate } from "@/lib/blog-utils";
+import type { BlogPostDetail } from "@/core/blog/domain/blog";
+import { formatBlogPostDate } from "@/core/blog/domain/blog-utils";
 import { useTranslations } from "next-intl";
 
 interface BlogPostLayoutProps {
-  post: BlogPost;
+  post: BlogPostDetail;
   locale: string;
   children: React.ReactNode;
 }
@@ -18,7 +18,7 @@ export function BlogPostLayout({
   children,
 }: BlogPostLayoutProps) {
   const t = useTranslations("blog");
-  const formattedDate = formatBlogDate(post.date, locale);
+  const formattedDate = formatBlogPostDate(post, locale);
 
   return (
     <article className="relative min-h-screen">

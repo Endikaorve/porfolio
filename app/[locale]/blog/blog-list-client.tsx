@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { BlogCard } from "./_components/blog-card";
-import type { BlogPostMeta } from "@/lib/blog-types";
+import type { BlogPost } from "@/core/blog/domain/blog";
 
 interface BlogListClientProps {
-  posts: BlogPostMeta[];
+  posts: BlogPost[];
   locale: string;
 }
 

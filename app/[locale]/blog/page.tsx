@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { getBlogPosts } from "@/lib/blog";
+import { blogService } from "@/core/blog/services/blog.service";
 import { BlogListClient } from "./blog-list-client";
+import "@/di";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -21,7 +22,7 @@ export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const posts = getBlogPosts(locale);
+  const posts = await blogService.listBlogPosts(locale);
 
   return <BlogListClient posts={posts} locale={locale} />;
 }
