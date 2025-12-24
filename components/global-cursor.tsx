@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CustomCursor } from "@/app/[locale]/components/custom-cursor";
+import { CustomCursor } from "@/components/custom-cursor";
 
 export function GlobalCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorVariant, setCursorVariant] = useState<"default" | "hover">("default");
+  const [cursorVariant, setCursorVariant] = useState<"default" | "hover">(
+    "default"
+  );
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -58,6 +60,7 @@ export function GlobalCursor() {
 
   if (!isClient) return null;
 
-  return <CustomCursor mousePosition={mousePosition} cursorVariant={cursorVariant} />;
+  return (
+    <CustomCursor mousePosition={mousePosition} cursorVariant={cursorVariant} />
+  );
 }
-

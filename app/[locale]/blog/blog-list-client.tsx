@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { BlogCard } from "../components/blog-card";
+import { BlogCard } from "./_components/blog-card";
 import type { BlogPostMeta } from "@/lib/blog-types";
 
 interface BlogListClientProps {

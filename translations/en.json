@@ -256,6 +256,13 @@
     "download": "DOWNLOAD CV",
     "downloadShort": "CV"
   },
+  "me": {
+    "description": "I build software that matters. I lead teams that grow. I create products that work.",
+    "cta": "DISCOVER MY STORY"
+  },
+  "aboutPage": {
+    "headerLink": "ABOUT"
+  },
   "blog": {
     "title": {
       "line1": "MY",

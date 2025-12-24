@@ -17,6 +17,9 @@ export function Header() {
     }
   };
 
+  const isAboutActive = pathname === "/about";
+  const isBlogActive = pathname === "/blog" || pathname.startsWith("/blog/");
+
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4"
@@ -31,30 +34,43 @@ export function Header() {
       <nav className="flex items-center justify-end">
         {/* Navegación */}
         <div className="flex items-center gap-1 md:gap-2">
+          {/* About Link */}
+          <Link
+            href="/about"
+            className={`group relative px-1.5 md:px-2 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
+              isAboutActive
+                ? "text-primary"
+                : "text-white/60 hover:text-primary"
+            }`}
+          >
+            {t("aboutPage.headerLink")}
+            <span
+              className={`absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-primary transition-transform duration-200 origin-left ${
+                isAboutActive
+                  ? "scale-x-100"
+                  : "scale-x-0 group-hover:scale-x-100"
+              }`}
+            />
+          </Link>
+
           {/* Blog Link */}
-          {(() => {
-            const isBlogActive =
-              pathname === "/blog" || pathname.startsWith("/blog/");
-            return (
-              <Link
-                href="/blog"
-                className={`group relative px-1.5 md:px-2 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
-                  isBlogActive
-                    ? "text-primary"
-                    : "text-white/60 hover:text-primary"
-                }`}
-              >
-                {t("blog.headerLink")}
-                <span
-                  className={`absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-primary transition-transform duration-200 origin-left ${
-                    isBlogActive
-                      ? "scale-x-100"
-                      : "scale-x-0 group-hover:scale-x-100"
-                  }`}
-                />
-              </Link>
-            );
-          })()}
+          <Link
+            href="/blog"
+            className={`group relative px-1.5 md:px-2 py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
+              isBlogActive
+                ? "text-primary"
+                : "text-white/60 hover:text-primary"
+            }`}
+          >
+            {t("blog.headerLink")}
+            <span
+              className={`absolute bottom-1 left-1.5 right-1.5 md:left-2 md:right-2 h-px bg-primary transition-transform duration-200 origin-left ${
+                isBlogActive
+                  ? "scale-x-100"
+                  : "scale-x-0 group-hover:scale-x-100"
+              }`}
+            />
+          </Link>
 
           {/* Separador */}
           <span className="text-white/20 select-none">|</span>

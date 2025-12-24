@@ -8,8 +8,8 @@ import rehypeHighlight from "rehype-highlight";
 
 import { getBlogPost, getAllBlogSlugs } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
-import { BlogPostLayout } from "../../components/blog-post-layout";
-import { mdxComponents } from "../../components/mdx-components";
+import { BlogPostLayout } from "../_components/blog-post-layout";
+import { mdxComponents } from "../_components/mdx-components";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
