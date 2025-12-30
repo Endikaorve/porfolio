@@ -99,7 +99,7 @@ Los efectos visuales **NUNCA** deben interferir con el contenido o la navegació
 
 ### Tecnologías Core
 
-- **Framework:** Next.js 15 (App Router)
+- **Framework:** Next.js 16 (App Router)
 - **Animaciones:** Framer Motion
 - **Estilos:** Tailwind CSS v4
 - **Componentes:** Shadcn/ui + Radix UI
