@@ -5536,6 +5536,73 @@ export function AboutSection() {
 }
 </file>
 
+<file path="app/[locale]/blog/blog-list-client.tsx">
+'use client';
+
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { BlogCard } from './_components/blog-card';
+import type { BlogPost } from '@/core/blog/domain/blog';
+
+interface BlogListClientProps {
+  posts: BlogPost[];
+  locale: string;
+}
+
+export function BlogListClient({ posts, locale }: BlogListClientProps) {
+  const t = useTranslations('blog');
+
+  return (
+    <main className="relative min-h-screen">
+      <div className="container mx-auto px-4">
+        {/* Hero */}
+        <motion.section
+          className="pt-28 md:pt-32 pb-12 md:pb-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none">
+            <span className="text-primary">{t('title.line1')}</span>
+            <br />
+            <span className="text-white">{t('title.line2')}</span>
+          </h1>
+
+          <p className="mt-8 text-white/60 text-lg md:text-xl max-w-2xl">
+            {t('subtitle')}
+          </p>
+        </motion.section>
+
+        {/* Lista de posts */}
+        <section className="pb-32">
+          {posts.length > 0 ? (
+            <div className="space-y-4">
+              {posts.map((post, index) => (
+                <BlogCard
+                  key={post.slug}
+                  post={post}
+                  index={index}
+                  locale={locale}
+                />
+              ))}
+            </div>
+          ) : (
+            <motion.div
+              className="py-24 text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              <p className="text-white/40 text-lg">{t('noPosts')}</p>
+            </motion.div>
+          )}
+        </section>
+      </div>
+    </main>
+  );
+}
+</file>
+
 <file path="app/[locale]/_components/hero-section.tsx">
 'use client';
 
@@ -5774,7 +5841,7 @@ export function HeroSection() {
               delay: 0.95,
             }}
           >
-            TECH LEAD
+            TECH LEAD & MANAGER
             <br />
             PRODUCT ENGINEER
           </motion.p>
@@ -5804,73 +5871,6 @@ export function HeroSection() {
         />
       </motion.div>
     </section>
-  );
-}
-</file>
-
-<file path="app/[locale]/blog/blog-list-client.tsx">
-'use client';
-
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { BlogCard } from './_components/blog-card';
-import type { BlogPost } from '@/core/blog/domain/blog';
-
-interface BlogListClientProps {
-  posts: BlogPost[];
-  locale: string;
-}
-
-export function BlogListClient({ posts, locale }: BlogListClientProps) {
-  const t = useTranslations('blog');
-
-  return (
-    <main className="relative min-h-screen">
-      <div className="container mx-auto px-4">
-        {/* Hero */}
-        <motion.section
-          className="pt-28 md:pt-32 pb-12 md:pb-16"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none">
-            <span className="text-primary">{t('title.line1')}</span>
-            <br />
-            <span className="text-white">{t('title.line2')}</span>
-          </h1>
-
-          <p className="mt-8 text-white/60 text-lg md:text-xl max-w-2xl">
-            {t('subtitle')}
-          </p>
-        </motion.section>
-
-        {/* Lista de posts */}
-        <section className="pb-32">
-          {posts.length > 0 ? (
-            <div className="space-y-4">
-              {posts.map((post, index) => (
-                <BlogCard
-                  key={post.slug}
-                  post={post}
-                  index={index}
-                  locale={locale}
-                />
-              ))}
-            </div>
-          ) : (
-            <motion.div
-              className="py-24 text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <p className="text-white/40 text-lg">{t('noPosts')}</p>
-            </motion.div>
-          )}
-        </section>
-      </div>
-    </main>
   );
 }
 </file>
@@ -6381,6 +6381,34 @@ export function MeSection() {
 }
 </file>
 
+<file path="app/[locale]/page.tsx">
+'use client';
+
+import { useEffect } from 'react';
+import { HeroSection, MeSection } from './_components';
+
+export default function Home() {
+  // Aplicar scroll snap al html solo en la home page
+  useEffect(() => {
+    const html = document.documentElement;
+    html.style.scrollSnapType = 'y mandatory';
+    html.style.overflowY = 'scroll';
+
+    return () => {
+      html.style.scrollSnapType = '';
+      html.style.overflowY = '';
+    };
+  }, []);
+
+  return (
+    <main className="relative">
+      <HeroSection />
+      <MeSection />
+    </main>
+  );
+}
+</file>
+
 <file path="translations/en.json">
 {
   "nav": {
@@ -6391,7 +6419,7 @@ export function MeSection() {
     "description": "Endika Orube's portfolio. Tech Lead & Product Engineer with 7+ years of experience in software development, leading teams and building digital products."
   },
   "hero": {
-    "role": "TECH LEAD · PRODUCT ENGINEER"
+    "role": "TECH LEAD & MANAGER · PRODUCT ENGINEER"
   },
   "about": {
     "title": {
@@ -6647,7 +6675,7 @@ export function MeSection() {
     "downloadShort": "CV"
   },
   "me": {
-    "headline": "Software. Teams. Product.",
+    "headline": "Code. Teams. Product.",
     "cta": "DISCOVER MY STORY",
     "orConnect": "Or connect"
   },
@@ -6685,7 +6713,7 @@ export function MeSection() {
     "description": "Portfolio de Endika Orube. Tech Lead & Product Engineer con +7 años de experiencia en desarrollo de software, liderando equipos y construyendo productos digitales."
   },
   "hero": {
-    "role": "TECH LEAD · PRODUCT ENGINEER"
+    "role": "TECH LEAD & MANAGER · PRODUCT ENGINEER"
   },
   "about": {
     "title": {
@@ -6941,7 +6969,7 @@ export function MeSection() {
     "downloadShort": "CV"
   },
   "me": {
-    "headline": "Software. Equipos. Producto.",
+    "headline": "Código. Equipos. Producto.",
     "cta": "CONOCE MI HISTORIA",
     "orConnect": "O escríbeme"
   },
@@ -6966,34 +6994,6 @@ export function MeSection() {
     "headerLink": "BLOG",
     "ctaFromAbout": "Conoce más en mi blog →"
   }
-}
-</file>
-
-<file path="app/[locale]/page.tsx">
-'use client';
-
-import { useEffect } from 'react';
-import { HeroSection, MeSection } from './_components';
-
-export default function Home() {
-  // Aplicar scroll snap al html solo en la home page
-  useEffect(() => {
-    const html = document.documentElement;
-    html.style.scrollSnapType = 'y mandatory';
-    html.style.overflowY = 'scroll';
-
-    return () => {
-      html.style.scrollSnapType = '';
-      html.style.overflowY = '';
-    };
-  }, []);
-
-  return (
-    <main className="relative">
-      <HeroSection />
-      <MeSection />
-    </main>
-  );
 }
 </file>
 
