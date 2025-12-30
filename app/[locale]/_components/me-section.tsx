@@ -40,8 +40,8 @@ export function MeSection() {
 
   return (
     <section className="relative h-svh flex items-center overflow-hidden snap-start snap-always">
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 relative">
-        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24">
+      <div className="w-full max-w-7xl min-[2000px]:max-w-[100rem] mx-auto px-4 md:px-8 min-[2000px]:px-16 relative">
+        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24 xl:gap-32 min-[2000px]:gap-48">
           {/* Foto con tratamiento visual */}
           <motion.div
             className="relative flex-shrink-0"
@@ -51,10 +51,10 @@ export function MeSection() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Contenedor de la foto con efecto */}
-            <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
+            <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-80 xl:h-80 min-[2000px]:w-[26rem] min-[2000px]:h-[26rem]">
               {/* Borde decorativo offset */}
               <motion.div
-                className="absolute -inset-2 border border-primary/30"
+                className="absolute -inset-2 min-[2000px]:-inset-4 border border-primary/30"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -74,7 +74,7 @@ export function MeSection() {
 
               {/* Punto decorativo */}
               <motion.div
-                className="absolute -bottom-3 -right-3 w-6 h-6 bg-primary"
+                className="absolute -bottom-3 -right-3 min-[2000px]:-bottom-4 min-[2000px]:-right-4 w-6 h-6 min-[2000px]:w-10 min-[2000px]:h-10 bg-primary"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
@@ -91,7 +91,7 @@ export function MeSection() {
           <div className="flex-1 text-center md:text-left">
             {/* Headline - las 3 palabras core */}
             <motion.h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl min-[2000px]:text-7xl font-bold leading-tight tracking-tight text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -106,7 +106,7 @@ export function MeSection() {
 
             {/* CTA + Contact Links */}
             <motion.div
-              className="mt-12 space-y-8"
+              className="mt-12 xl:mt-16 min-[2000px]:mt-20 space-y-8 min-[2000px]:space-y-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -115,14 +115,14 @@ export function MeSection() {
               {/* CTA Principal */}
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-4"
+                className="group inline-flex items-center gap-4 min-[2000px]:gap-6"
               >
-                <span className="relative px-6 py-3 border border-primary text-primary font-mono text-sm tracking-wider overflow-hidden group-hover:text-white transition-colors duration-300">
+                <span className="relative px-6 py-3 min-[2000px]:px-10 min-[2000px]:py-5 border border-primary text-primary font-mono text-sm min-[2000px]:text-lg tracking-wider overflow-hidden group-hover:text-white transition-colors duration-300">
                   <span className="absolute inset-0 bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                   <span className="relative z-10">{t('me.cta')}</span>
                 </span>
                 <motion.span
-                  className="text-primary text-xl"
+                  className="text-primary text-xl min-[2000px]:text-3xl"
                   animate={{ x: [0, 8, 0] }}
                   transition={{
                     duration: 1.5,
@@ -136,19 +136,22 @@ export function MeSection() {
 
               {/* Links de contacto - sutiles */}
               <motion.div
-                className="flex items-center gap-2 justify-center md:justify-start"
+                className="flex items-center gap-2 min-[2000px]:gap-4 justify-center md:justify-start"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6, duration: 0.4 }}
               >
-                <span className="text-white/30 text-xs font-mono tracking-wider">
+                <span className="text-white/30 text-xs min-[2000px]:text-base font-mono tracking-wider">
                   {t('me.orConnect')}
                 </span>
-                <span className="w-4 h-px bg-white/20" />
-                <div className="flex items-center gap-2">
+                <span className="w-4 min-[2000px]:w-6 h-px bg-white/20" />
+                <div className="flex items-center gap-2 min-[2000px]:gap-4">
                   {contactLinks.map((link, index) => (
-                    <div key={link.label} className="flex items-center gap-2">
+                    <div
+                      key={link.label}
+                      className="flex items-center gap-2 min-[2000px]:gap-4"
+                    >
                       <MagneticWrapper strength={0.15}>
                         <motion.a
                           href={link.href}
@@ -156,7 +159,7 @@ export function MeSection() {
                           rel={
                             link.external ? 'noopener noreferrer' : undefined
                           }
-                          className="text-white/40 text-xs font-mono tracking-wider hover:text-primary transition-colors duration-200"
+                          className="text-white/40 text-xs min-[2000px]:text-base font-mono tracking-wider hover:text-primary transition-colors duration-200"
                           whileHover={{ y: -2 }}
                           initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
