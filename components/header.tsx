@@ -128,15 +128,7 @@ export function Header() {
                     {loc.toUpperCase()}
                     {/* Underline indicator for active locale */}
                     {locale === loc && (
-                      <motion.div
-                        className="absolute bottom-1 left-0 right-0 h-px bg-primary"
-                        layoutId="locale-indicator"
-                        transition={{
-                          type: 'spring',
-                          stiffness: 300,
-                          damping: 25,
-                        }}
-                      />
+                      <span className="absolute bottom-1 left-0 right-0 h-px bg-primary" />
                     )}
                   </motion.button>
                 </MagneticWrapper>
