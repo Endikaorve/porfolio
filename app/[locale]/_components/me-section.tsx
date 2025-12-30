@@ -15,7 +15,18 @@ import { MagneticWrapper } from '@/components/magnetic-wrapper';
  * - Estructura horizontal más íntima (foto + texto)
  * - CTA "Conoce mi historia" invita a explorar sin vender
  * - Links de contacto sutiles para acceso directo
+ * - Fondo sutil con elementos geométricos para dar profundidad
  */
+
+// Partículas decorativas minimalistas
+const particles = [
+  { type: 'square', x: '8%', y: '15%', size: 8, opacity: 0.08 },
+  { type: 'square-filled', x: '5%', y: '45%', size: 6, opacity: 0.06 },
+  { type: 'square', x: '12%', y: '75%', size: 10, opacity: 0.1 },
+  { type: 'square-filled', x: '88%', y: '20%', size: 8, opacity: 0.07 },
+  { type: 'square', x: '92%', y: '55%', size: 12, opacity: 0.09 },
+  { type: 'square-filled', x: '85%', y: '80%', size: 6, opacity: 0.06 },
+];
 
 const contactLinks = [
   {
@@ -40,7 +51,87 @@ export function MeSection() {
 
   return (
     <section className="relative h-svh flex items-center overflow-hidden snap-start snap-always">
-      <div className="w-full max-w-7xl min-[2000px]:max-w-[100rem] mx-auto px-4 md:px-8 min-[2000px]:px-16 relative">
+      {/* Background Elements */}
+      {/* Líneas horizontales decorativas */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.025]">
+        <div
+          className="absolute w-full h-px bg-gradient-to-r from-transparent via-white to-transparent"
+          style={{ top: '20%' }}
+        />
+        <div
+          className="absolute w-full h-px bg-gradient-to-r from-transparent via-white to-transparent"
+          style={{ top: '80%' }}
+        />
+      </div>
+
+      {/* Partículas geométricas sutiles */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
+        {particles.map((particle, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className={
+              particle.type === 'square-filled'
+                ? 'absolute bg-primary'
+                : 'absolute border border-primary'
+            }
+            style={{
+              left: particle.x,
+              top: particle.y,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+            }}
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: particle.opacity, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              delay: 0.5 + i * 0.1,
+              duration: 0.4,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Elementos técnicos en esquinas inferiores */}
+      <div className="absolute bottom-8 left-8 hidden md:block">
+        <motion.div
+          className="w-16 h-px bg-gradient-to-r from-white/10 to-transparent"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.4 }}
+          style={{ transformOrigin: 'left' }}
+        />
+        <motion.div
+          className="w-px h-16 bg-gradient-to-b from-white/10 to-transparent"
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7, duration: 0.4 }}
+          style={{ transformOrigin: 'top' }}
+        />
+      </div>
+      <div className="absolute bottom-8 right-8 hidden md:flex flex-col items-end">
+        <motion.div
+          className="w-16 h-px bg-gradient-to-l from-white/10 to-transparent"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.4 }}
+          style={{ transformOrigin: 'right' }}
+        />
+        <motion.div
+          className="w-px h-16 bg-gradient-to-b from-white/10 to-transparent ml-auto"
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7, duration: 0.4 }}
+          style={{ transformOrigin: 'top' }}
+        />
+      </div>
+
+      <div className="w-full max-w-7xl min-[2000px]:max-w-[100rem] mx-auto px-4 md:px-8 min-[2000px]:px-16 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24 xl:gap-32 min-[2000px]:gap-48">
           {/* Foto con tratamiento visual */}
           <motion.div

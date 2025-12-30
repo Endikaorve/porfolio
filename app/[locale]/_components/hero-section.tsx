@@ -116,6 +116,74 @@ export function HeroSection() {
       className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always"
       style={{ perspective: '1000px' }}
     >
+      {/* Background Elements */}
+      {/* Grid sutil de fondo */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, white 1px, transparent 1px),
+            linear-gradient(to bottom, white 1px, transparent 1px)
+          `,
+          backgroundSize: '120px 120px',
+        }}
+      />
+
+      {/* Líneas diagonales decorativas */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.015]">
+        <div
+          className="absolute w-[200%] h-px bg-white rotate-45"
+          style={{ top: '25%', left: '-50%' }}
+        />
+        <div
+          className="absolute w-[200%] h-px bg-white rotate-45"
+          style={{ top: '75%', left: '-50%' }}
+        />
+      </div>
+
+      {/* Elementos técnicos en esquinas */}
+      <div className="absolute top-8 left-8 hidden md:block">
+        <motion.div
+          className="w-12 h-px bg-gradient-to-r from-primary/20 to-transparent"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 1.2, duration: 0.4 }}
+          style={{ transformOrigin: 'left' }}
+        />
+        <motion.div
+          className="w-px h-12 bg-gradient-to-b from-primary/20 to-transparent"
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ delay: 1.3, duration: 0.4 }}
+          style={{ transformOrigin: 'top' }}
+        />
+      </div>
+      <div className="absolute top-8 right-8 hidden md:flex flex-col items-end">
+        <motion.div
+          className="w-12 h-px bg-gradient-to-l from-primary/20 to-transparent"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 1.2, duration: 0.4 }}
+          style={{ transformOrigin: 'right' }}
+        />
+        <motion.div
+          className="w-px h-12 bg-gradient-to-b from-primary/20 to-transparent ml-auto"
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ delay: 1.3, duration: 0.4 }}
+          style={{ transformOrigin: 'top' }}
+        />
+      </div>
+
+      {/* Círculo decorativo exterior - muy sutil */}
+      <motion.div
+        className="absolute w-[90vw] h-[90vw] max-w-[1000px] max-h-[1000px] border border-white/[0.015] pointer-events-none"
+        style={{ borderRadius: '50%' }}
+        initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ duration: 1.5, ease: 'easeOut', delay: 0.5 }}
+      />
+
       {/* Capa con el texto principal - con parallax */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
