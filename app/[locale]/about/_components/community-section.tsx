@@ -39,7 +39,8 @@ export function CommunitySection() {
                 {t('community.teaching.title')}
               </h3>
               <p className="text-white/70 mb-4">
-                {t('community.teaching.subtitle')}
+                <span className="text-primary">{t('community.teaching.subtitleHighlight')}</span>
+                {t('community.teaching.subtitleRest')}
               </p>
               <p className="text-white/60 leading-relaxed mb-6">
                 {t('community.teaching.description')}
@@ -82,7 +83,7 @@ export function CommunitySection() {
                 <h3 className="text-2xl font-black text-white mt-2 mb-2">
                   {t('community.talks.vibe.title')}
                 </h3>
-                <p className="text-white/60 text-sm mb-2">
+                <p className="text-primary text-sm mb-2">
                   {t('community.talks.vibe.event')}
                 </p>
                 <p className="text-white/50 leading-relaxed text-sm">
@@ -100,7 +101,7 @@ export function CommunitySection() {
                 <h3 className="text-2xl font-black text-white mt-2 mb-2">
                   {t('community.talks.rendering.title')}
                 </h3>
-                <p className="text-white/60 text-sm mb-2">
+                <p className="text-primary text-sm mb-2">
                   {t('community.talks.rendering.event')}
                 </p>
                 <p className="text-white/50 leading-relaxed text-sm">
