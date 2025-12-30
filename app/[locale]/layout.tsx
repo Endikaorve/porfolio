@@ -11,6 +11,7 @@ import '../globals.css';
 import { Header } from '@/components/header';
 import { GlobalCursor } from '@/components/global-cursor';
 import { JsonLdSchema } from '@/components/json-ld';
+import { ScrollToTop } from '@/components/scroll-to-top';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -145,6 +146,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-surface-dark`}
       >
         <NextIntlClientProvider messages={messages}>
+          <ScrollToTop />
           <GlobalCursor />
           <Header />
           {children}

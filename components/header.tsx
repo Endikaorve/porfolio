@@ -15,7 +15,8 @@ export function Header() {
 
   const handleLocaleChange = (newLocale: Locale) => {
     if (newLocale !== locale) {
-      router.replace(pathname, { locale: newLocale });
+      // Use scroll: false to maintain current scroll position when changing locale
+      router.replace(pathname, { locale: newLocale, scroll: false });
     }
   };
 
