@@ -261,7 +261,8 @@
   },
   "me": {
     "headline": "Software. Equipos. Producto.",
-    "cta": "CONOCE MI HISTORIA"
+    "cta": "CONOCE MI HISTORIA",
+    "orConnect": "O escríbeme"
   },
   "aboutPage": {
     "headerLink": "<EO />",

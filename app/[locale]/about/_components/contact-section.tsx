@@ -6,16 +6,16 @@ import { ScrambleText } from '@/components/scramble-text';
 import { MagneticWrapper } from '@/components/magnetic-wrapper';
 
 /**
- * ContactSection - Simplificada
+ * ContactSection - Sección de contacto
  *
- * Eliminada decoración vacía (líneas, círculos, números).
- * El foco está en el contenido: título impactante + links de contacto.
+ * Diseño minimalista centrado en el contenido:
+ * título impactante + links de contacto.
  */
 export function ContactSection() {
   const t = useTranslations();
 
   return (
-    <section className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always">
+    <section className="relative min-h-svh flex items-center justify-center overflow-hidden py-24">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           className="text-center"
@@ -122,3 +122,4 @@ export function ContactSection() {
     </section>
   );
 }
+

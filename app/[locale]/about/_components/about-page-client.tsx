@@ -11,6 +11,7 @@ import {
   CommunitySection,
   TechSkillsSection,
   ProjectsSection,
+  ContactSection,
 } from './index';
 
 export function AboutPageClient() {
@@ -33,6 +34,7 @@ export function AboutPageClient() {
       <CommunitySection />
       <TechSkillsSection />
       <ProjectsSection />
+      <ContactSection />
     </main>
   );
 }

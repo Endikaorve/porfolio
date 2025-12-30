@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
+import { MagneticWrapper } from '@/components/magnetic-wrapper';
 
 /**
  * MeSection - Rediseñada con foto y tono personal
@@ -13,7 +14,27 @@ import Image from 'next/image';
  * - Headline reflexivo: mostrar filosofía, no declarar liderazgo
  * - Estructura horizontal más íntima (foto + texto)
  * - CTA "Conoce mi historia" invita a explorar sin vender
+ * - Links de contacto sutiles para acceso directo
  */
+
+const contactLinks = [
+  {
+    label: 'Email',
+    href: 'mailto:endikaorve@gmail.com',
+    external: false,
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/endikaorube/',
+    external: true,
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/Endikaorve',
+    external: true,
+  },
+];
+
 export function MeSection() {
   const t = useTranslations();
 
@@ -83,14 +104,15 @@ export function MeSection() {
               {t('me.headline')}
             </motion.h2>
 
-            {/* CTA */}
+            {/* CTA + Contact Links */}
             <motion.div
-              className="mt-12"
+              className="mt-12 space-y-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
+              {/* CTA Principal */}
               <Link
                 href="/about"
                 className="group inline-flex items-center gap-4"
@@ -111,6 +133,49 @@ export function MeSection() {
                   →
                 </motion.span>
               </Link>
+
+              {/* Links de contacto - sutiles */}
+              <motion.div
+                className="flex items-center gap-2 justify-center md:justify-start"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6, duration: 0.4 }}
+              >
+                <span className="text-white/30 text-xs font-mono tracking-wider">
+                  {t('me.orConnect')}
+                </span>
+                <span className="w-4 h-px bg-white/20" />
+                <div className="flex items-center gap-2">
+                  {contactLinks.map((link, index) => (
+                    <div key={link.label} className="flex items-center gap-2">
+                      <MagneticWrapper strength={0.15}>
+                        <motion.a
+                          href={link.href}
+                          target={link.external ? '_blank' : undefined}
+                          rel={
+                            link.external ? 'noopener noreferrer' : undefined
+                          }
+                          className="text-white/40 text-xs font-mono tracking-wider hover:text-primary transition-colors duration-200"
+                          whileHover={{ y: -2 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay: 0.7 + index * 0.1,
+                            duration: 0.3,
+                          }}
+                        >
+                          {link.label}
+                        </motion.a>
+                      </MagneticWrapper>
+                      {index < contactLinks.length - 1 && (
+                        <span className="text-white/20 text-[6px]">●</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

@@ -261,7 +261,8 @@
   },
   "me": {
     "headline": "Software. Teams. Product.",
-    "cta": "DISCOVER MY STORY"
+    "cta": "DISCOVER MY STORY",
+    "orConnect": "Or connect"
   },
   "aboutPage": {
     "headerLink": "<EO />",

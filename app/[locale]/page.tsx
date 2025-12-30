@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { HeroSection, MeSection, ContactSection } from './_components';
+import { HeroSection, MeSection } from './_components';
 
 export default function Home() {
   // Aplicar scroll snap al html solo en la home page
@@ -20,7 +20,6 @@ export default function Home() {
     <main className="relative">
       <HeroSection />
       <MeSection />
-      <ContactSection />
     </main>
   );
 }
