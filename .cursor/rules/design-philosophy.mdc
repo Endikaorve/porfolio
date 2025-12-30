@@ -56,7 +56,6 @@ Los efectos visuales **NUNCA** deben interferir con el contenido o la navegació
 ### Elementos Característicos
 
 - **Tipografía gigante estratégica:** Usar tamaños viewport (vw) para impacto
-- **Números de sección grandes:** En opacity baja como elementos decorativos
 - **Grid distorsionado:** Background animado que responde al scroll
 - **Elementos superpuestos:** Con propósito y jerarquía clara
 - **Espaciado generoso:** py-32, gap-8, breathing room
