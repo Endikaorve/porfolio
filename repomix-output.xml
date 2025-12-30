@@ -151,164 +151,6 @@ vitest.config.ts
 <files>
 This section contains the contents of the repository's files.
 
-<file path=".cursor/rules/design-philosophy.mdc">
----
-alwaysApply: true
----
-
-## ✨ ANIMACIONES Y EFECTOS
-
-### Principios de Movimiento
-
-- **Framer Motion con spring physics:** `stiffness: 150-500`, `damping: 15-28`
-- **Movimientos orgánicos pero precisos:** NUNCA lentos o con delay excesivo
-- **Respuesta inmediata:** Las interacciones del usuario deben ser instantáneas
-- **Performance primero:** Solo animaciones que aporten valor
-
-### Efectos Visuales Permitidos
-
-- `backdrop-blur-sm`: Para capas con profundidad
-- `mix-blend-difference` o `mix-blend-mode`: Para efectos de fusión
-- Gradientes radiales sutiles: `rgba(222, 94, 145, 0.15)`
-- Opacidades entre 0.05 y 0.8 para capas de fondo
-- `text-stroke` para efectos tipográficos
-
-### Estados de Interacción
-
-- **Hover:** Scale (1.02-1.1), opacity, color transitions
-- **Active/Focus:** Feedback visual inmediato
-- **Transitions:** 300ms estándar, spring para movimientos complejos
-
----
-
-## 🎯 FILOSOFÍA UX
-
-### Principio Cardinal: NO INTRUSIVO
-
-Los efectos visuales **NUNCA** deben interferir con el contenido o la navegación del usuario.
-
-### Reglas de Experiencia
-
-1. **Respuesta inmediata:** Sin delays en interacciones básicas (click, hover, scroll)
-2. **Progressive enhancement:** Efectos avanzados solo en desktop (min-width: 768px)
-3. **Feedback visual claro:** El usuario siempre sabe dónde está y qué puede hacer
-4. **Accesibilidad integrada:** Considerada desde el diseño, no como afterthought
-5. **Performance monitoring:** Usar Vercel Analytics, optimizar Core Web Vitals
-
-### Cursor Personalizado
-
-- Solo en desktop (`hidden md:block`)
-- Movimiento instantáneo, sin delay
-- Tres capas: punto preciso + círculo principal + halo
-- Estados reactivos: default y hover
-- `cursor: none` en desktop para ocultar cursor nativo
-
----
-
-## 🏆 ESTILO AWWWARDS
-
-### Elementos Característicos
-
-- **Tipografía gigante estratégica:** Usar tamaños viewport (vw) para impacto
-- **Números de sección grandes:** En opacity baja como elementos decorativos
-- **Grid distorsionado:** Background animado que responde al scroll
-- **Elementos superpuestos:** Con propósito y jerarquía clara
-- **Espaciado generoso:** py-32, gap-8, breathing room
-- **Detalles técnicos visibles:** Coordenadas, números, timestamps con font-mono
-
-### Composición
-
-- **Asimetría intencional:** No centrar todo, crear tensión visual
-- **Profundidad con capas:** Usar z-index, absolute positioning, overlays
-- **Scroll storytelling:** Elementos que aparecen con `whileInView`
-- **Hero impactante:** Primera impresión memorable
-- **Whitespace (o blackspace):** Dejar respirar el contenido
-
----
-
-## ⛔ LO QUE SE DEBE EVITAR
-
-### Prohibido
-
-- ❌ Delays o lags en interacciones del usuario
-- ❌ Efectos excesivos que distraigan del contenido
-- ❌ Animaciones "cute", infantiles o poco profesionales
-- ❌ Diseños genéricos o predecibles
-- ❌ Elementos decorativos sin propósito
-- ❌ Border-radius (mantener diseño angular)
-- ❌ Gradientes coloridos tipo arcoíris
-- ❌ Carousels automáticos que el usuario no controla
-- ❌ Parallax excesivo que marea
-
-### Usar con Precaución
-
-- ⚠️ Animaciones infinitas (solo para elementos no críticos)
-- ⚠️ Mix-blend-mode (puede afectar legibilidad)
-- ⚠️ Efectos 3D (sutiles y con propósito)
-- ⚠️ Scroll-jacking (nunca interferir con scroll nativo)
-
----
-
-## 🔧 STACK TÉCNICO
-
-### Tecnologías Core
-
-- **Framework:** Next.js 15 (App Router)
-- **Animaciones:** Framer Motion
-- **Estilos:** Tailwind CSS v4
-- **Componentes:** Shadcn/ui + Radix UI
-- **Tipado:** TypeScript estricto
-
-### Convenciones de Código
-
-- Componentes funcionales con hooks
-- `"use client"` solo cuando sea necesario
-- Preferir Tailwind classes sobre CSS custom
-- Usar `motion.div` de Framer Motion para animaciones
-- Variables CSS para colores consistentes
-
----
-
-## 📐 CRITERIO DE EVALUACIÓN
-
-### Cuando se solicite un cambio, preguntar:
-
-1. **¿Esto estaría en un sitio premiado en Awwwards?**
-2. **¿Es intrusivo o distrae del contenido?**
-3. **¿Aporta valor real a la experiencia?**
-4. **¿Es performante en mobile y desktop?**
-5. **¿Mantiene la coherencia visual?**
-
-Si alguna respuesta es negativa, **replantear el enfoque**.
-
----
-
-## 🎨 EJEMPLOS DE REFERENCIA
-
-Este portfolio se inspira en:
-
-- Sitios premiados en Awwwards con categorías: Experimental, Developer, Agency
-- Portfolio de design studios de élite
-- Web experimental pero funcional
-- Equilibrio entre arte y usabilidad
-
-**Nivel aspiracional:** Portfolio que un Tech Lead/Engineering Manager mostraría con orgullo a un cliente enterprise o en una conferencia técnica.
-
----
-
-## 🚀 IMPLEMENTACIÓN
-
-Siempre que trabajes en este proyecto:
-
-1. Lee esta regla antes de proponer cambios
-2. Evalúa si tu propuesta cumple los estándares
-3. Implementa con atención al detalle
-4. Prueba en diferentes dispositivos
-5. Optimiza performance
-
-**Recuerda:** Cada línea de código debe reflejar el nivel de excelencia técnica y diseño que caracteriza a este portfolio.
-</file>
-
 <file path=".cursor/rules/general.mdc">
 ---
 alwaysApply: true
@@ -536,6 +378,164 @@ Antes de publicar:
 - _"Lo que aprendo, lo que pienso, lo que me pregunto. Sobre equipos, producto, código y todo lo que hay entre medias."_
 </file>
 
+<file path=".cursor/rules/design-philosophy.mdc">
+---
+alwaysApply: false
+---
+
+## ✨ ANIMACIONES Y EFECTOS
+
+### Principios de Movimiento
+
+- **Framer Motion con spring physics:** `stiffness: 150-500`, `damping: 15-28`
+- **Movimientos orgánicos pero precisos:** NUNCA lentos o con delay excesivo
+- **Respuesta inmediata:** Las interacciones del usuario deben ser instantáneas
+- **Performance primero:** Solo animaciones que aporten valor
+
+### Efectos Visuales Permitidos
+
+- `backdrop-blur-sm`: Para capas con profundidad
+- `mix-blend-difference` o `mix-blend-mode`: Para efectos de fusión
+- Gradientes radiales sutiles: `rgba(222, 94, 145, 0.15)`
+- Opacidades entre 0.05 y 0.8 para capas de fondo
+- `text-stroke` para efectos tipográficos
+
+### Estados de Interacción
+
+- **Hover:** Scale (1.02-1.1), opacity, color transitions
+- **Active/Focus:** Feedback visual inmediato
+- **Transitions:** 300ms estándar, spring para movimientos complejos
+
+---
+
+## 🎯 FILOSOFÍA UX
+
+### Principio Cardinal: NO INTRUSIVO
+
+Los efectos visuales **NUNCA** deben interferir con el contenido o la navegación del usuario.
+
+### Reglas de Experiencia
+
+1. **Respuesta inmediata:** Sin delays en interacciones básicas (click, hover, scroll)
+2. **Progressive enhancement:** Efectos avanzados solo en desktop (min-width: 768px)
+3. **Feedback visual claro:** El usuario siempre sabe dónde está y qué puede hacer
+4. **Accesibilidad integrada:** Considerada desde el diseño, no como afterthought
+5. **Performance monitoring:** Usar Vercel Analytics, optimizar Core Web Vitals
+
+### Cursor Personalizado
+
+- Solo en desktop (`hidden md:block`)
+- Movimiento instantáneo, sin delay
+- Tres capas: punto preciso + círculo principal + halo
+- Estados reactivos: default y hover
+- `cursor: none` en desktop para ocultar cursor nativo
+
+---
+
+## 🏆 ESTILO AWWWARDS
+
+### Elementos Característicos
+
+- **Tipografía gigante estratégica:** Usar tamaños viewport (vw) para impacto
+- **Números de sección grandes:** En opacity baja como elementos decorativos
+- **Grid distorsionado:** Background animado que responde al scroll
+- **Elementos superpuestos:** Con propósito y jerarquía clara
+- **Espaciado generoso:** py-32, gap-8, breathing room
+- **Detalles técnicos visibles:** Coordenadas, números, timestamps con font-mono
+
+### Composición
+
+- **Asimetría intencional:** No centrar todo, crear tensión visual
+- **Profundidad con capas:** Usar z-index, absolute positioning, overlays
+- **Scroll storytelling:** Elementos que aparecen con `whileInView`
+- **Hero impactante:** Primera impresión memorable
+- **Whitespace (o blackspace):** Dejar respirar el contenido
+
+---
+
+## ⛔ LO QUE SE DEBE EVITAR
+
+### Prohibido
+
+- ❌ Delays o lags en interacciones del usuario
+- ❌ Efectos excesivos que distraigan del contenido
+- ❌ Animaciones "cute", infantiles o poco profesionales
+- ❌ Diseños genéricos o predecibles
+- ❌ Elementos decorativos sin propósito
+- ❌ Border-radius (mantener diseño angular)
+- ❌ Gradientes coloridos tipo arcoíris
+- ❌ Carousels automáticos que el usuario no controla
+- ❌ Parallax excesivo que marea
+
+### Usar con Precaución
+
+- ⚠️ Animaciones infinitas (solo para elementos no críticos)
+- ⚠️ Mix-blend-mode (puede afectar legibilidad)
+- ⚠️ Efectos 3D (sutiles y con propósito)
+- ⚠️ Scroll-jacking (nunca interferir con scroll nativo)
+
+---
+
+## 🔧 STACK TÉCNICO
+
+### Tecnologías Core
+
+- **Framework:** Next.js 15 (App Router)
+- **Animaciones:** Framer Motion
+- **Estilos:** Tailwind CSS v4
+- **Componentes:** Shadcn/ui + Radix UI
+- **Tipado:** TypeScript estricto
+
+### Convenciones de Código
+
+- Componentes funcionales con hooks
+- `"use client"` solo cuando sea necesario
+- Preferir Tailwind classes sobre CSS custom
+- Usar `motion.div` de Framer Motion para animaciones
+- Variables CSS para colores consistentes
+
+---
+
+## 📐 CRITERIO DE EVALUACIÓN
+
+### Cuando se solicite un cambio, preguntar:
+
+1. **¿Esto estaría en un sitio premiado en Awwwards?**
+2. **¿Es intrusivo o distrae del contenido?**
+3. **¿Aporta valor real a la experiencia?**
+4. **¿Es performante en mobile y desktop?**
+5. **¿Mantiene la coherencia visual?**
+
+Si alguna respuesta es negativa, **replantear el enfoque**.
+
+---
+
+## 🎨 EJEMPLOS DE REFERENCIA
+
+Este portfolio se inspira en:
+
+- Sitios premiados en Awwwards con categorías: Experimental, Developer, Agency
+- Portfolio de design studios de élite
+- Web experimental pero funcional
+- Equilibrio entre arte y usabilidad
+
+**Nivel aspiracional:** Portfolio que un Tech Lead/Engineering Manager mostraría con orgullo a un cliente enterprise o en una conferencia técnica.
+
+---
+
+## 🚀 IMPLEMENTACIÓN
+
+Siempre que trabajes en este proyecto:
+
+1. Lee esta regla antes de proponer cambios
+2. Evalúa si tu propuesta cumple los estándares
+3. Implementa con atención al detalle
+4. Prueba en diferentes dispositivos
+5. Optimiza performance
+
+**Recuerda:** Cada línea de código debe reflejar el nivel de excelencia técnica y diseño que caracteriza a este portfolio.
+</file>
+
 <file path="app/[locale]/about/_components/about-page-client.tsx">
 'use client';
 
@@ -574,6 +574,30 @@ export function AboutPageClient() {
       <ProjectsSection />
     </main>
   );
+}
+</file>
+
+<file path="app/layout.tsx">
+import type React from 'react';
+
+// Este layout raíz es requerido por Next.js pero el contenido
+// real está en app/[locale]/layout.tsx
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return children;
+}
+</file>
+
+<file path="app/page.tsx">
+import { redirect } from 'next/navigation';
+import { defaultLocale } from '@/i18n/config';
+
+// Redirige la ruta raíz al locale por defecto
+export default function RootPage() {
+  redirect(`/${defaultLocale}`);
 }
 </file>
 
@@ -768,6 +792,56 @@ export function useScrambleText(
 }
 </file>
 
+<file path="i18n/config.ts">
+export const locales = ['es', 'en'] as const;
+export type Locale = (typeof locales)[number];
+export const defaultLocale: Locale = 'es';
+
+export const localeNames: Record<Locale, string> = {
+  es: 'Español',
+  en: 'English',
+};
+</file>
+
+<file path="i18n/navigation.ts">
+import { createNavigation } from 'next-intl/navigation';
+import { routing } from './routing';
+
+export const { Link, redirect, usePathname, useRouter, getPathname } =
+  createNavigation(routing);
+</file>
+
+<file path="i18n/request.ts">
+import { getRequestConfig } from 'next-intl/server';
+import { routing } from './routing';
+import { Locale } from './config';
+
+export default getRequestConfig(async ({ requestLocale }) => {
+  let locale = await requestLocale;
+
+  // Validate that the incoming locale is valid
+  if (!locale || !routing.locales.includes(locale as Locale)) {
+    locale = routing.defaultLocale;
+  }
+
+  return {
+    locale,
+    messages: (await import(`../translations/${locale}.json`)).default,
+  };
+});
+</file>
+
+<file path="i18n/routing.ts">
+import { defineRouting } from 'next-intl/routing';
+import { locales, defaultLocale } from './config';
+
+export const routing = defineRouting({
+  locales,
+  defaultLocale,
+  localePrefix: 'always',
+});
+</file>
+
 <file path="public/robots.txt">
 # Robots.txt for Endika Orube Portfolio
 # https://endikaorube.com
@@ -804,6 +878,26 @@ const config = {
 };
 
 export default config;
+</file>
+
+<file path="proxy.ts">
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing';
+
+const intlMiddleware = createMiddleware(routing);
+
+export default function proxy(request: Request) {
+  return intlMiddleware(request);
+}
+
+export const config = {
+  matcher: [
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … if they contain a dot (e.g. `favicon.ico`)
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+  ],
+};
 </file>
 
 <file path="tsconfig.json">
@@ -1988,20 +2082,6 @@ export function useMDXComponents(
 
 // Exportar los componentes para usar con MDXRemote
 export const mdxComponents = useMDXComponents();
-</file>
-
-<file path="app/layout.tsx">
-import type React from 'react';
-
-// Este layout raíz es requerido por Next.js pero el contenido
-// real está en app/[locale]/layout.tsx
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return children;
-}
 </file>
 
 <file path="components/json-ld.tsx">
@@ -3200,74 +3280,24 @@ import { injectBlogDependencies } from '@/core/blog/_di';
 injectBlogDependencies();
 </file>
 
-<file path="i18n/config.ts">
-export const locales = ['es', 'en'] as const;
-export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = 'es';
+<file path="next.config.mjs">
+import createNextIntlPlugin from 'next-intl/plugin';
 
-export const localeNames: Record<Locale, string> = {
-  es: 'Español',
-  en: 'English',
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    unoptimized: true,
+  },
+  // Permitir importar archivos .mdx
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 };
-</file>
 
-<file path="i18n/navigation.ts">
-import { createNavigation } from 'next-intl/navigation';
-import { routing } from './routing';
-
-export const { Link, redirect, usePathname, useRouter, getPathname } =
-  createNavigation(routing);
-</file>
-
-<file path="i18n/request.ts">
-import { getRequestConfig } from 'next-intl/server';
-import { routing } from './routing';
-import { Locale } from './config';
-
-export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
-
-  // Validate that the incoming locale is valid
-  if (!locale || !routing.locales.includes(locale as Locale)) {
-    locale = routing.defaultLocale;
-  }
-
-  return {
-    locale,
-    messages: (await import(`../translations/${locale}.json`)).default,
-  };
-});
-</file>
-
-<file path="i18n/routing.ts">
-import { defineRouting } from 'next-intl/routing';
-import { locales, defaultLocale } from './config';
-
-export const routing = defineRouting({
-  locales,
-  defaultLocale,
-  localePrefix: 'always',
-});
-</file>
-
-<file path="proxy.ts">
-import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
-
-const intlMiddleware = createMiddleware(routing);
-
-export default function proxy(request: Request) {
-  return intlMiddleware(request);
-}
-
-export const config = {
-  matcher: [
-    // Match all pathnames except for
-    // - … if they start with `/api`, `/_next` or `/_vercel`
-    // - … if they contain a dot (e.g. `favicon.ico`)
-    '/((?!api|_next|_vercel|.*\\..*).*)',
-  ],
-};
+export default withNextIntl(nextConfig);
 </file>
 
 <file path="vitest.config.ts">
@@ -4621,98 +4651,6 @@ More text
 });
 </file>
 
-<file path="next.config.mjs">
-import createNextIntlPlugin from 'next-intl/plugin';
-
-const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-  // Permitir importar archivos .mdx
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-};
-
-export default withNextIntl(nextConfig);
-</file>
-
-<file path="app/[locale]/_components/me-section.tsx">
-'use client';
-
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
-
-export function MeSection() {
-  const t = useTranslations();
-
-  return (
-    <section className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always">
-      {/* Líneas decorativas sutiles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-        <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="max-w-4xl mx-auto text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Texto principal minimalista */}
-          <p className="text-2xl md:text-3xl lg:text-4xl text-white/90 leading-relaxed font-light mb-12">
-            {t('me.description')}
-          </p>
-
-          {/* CTA sutil */}
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-3 text-primary hover:text-white transition-colors duration-300 group"
-          >
-            <span className="text-lg font-mono font-bold tracking-wider">
-              {t('me.cta')}
-            </span>
-            <motion.span
-              className="text-2xl"
-              animate={{ x: [0, 5, 0] }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            >
-              →
-            </motion.span>
-          </Link>
-        </motion.div>
-      </div>
-
-      {/* Indicador de scroll */}
-      <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-      >
-        <motion.div
-          className="w-px h-16 bg-gradient-to-b from-primary/50 to-transparent"
-          animate={{ scaleY: [1, 0.6, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      </motion.div>
-    </section>
-  );
-}
-</file>
-
 <file path="app/[locale]/about/_components/about-section.tsx">
 'use client';
 
@@ -4968,6 +4906,139 @@ export default async function BlogPostPage({ params }: Props) {
 }
 </file>
 
+<file path="components/global-cursor.tsx">
+'use client';
+
+import { useEffect, useState, useCallback } from 'react';
+import { CustomCursor } from '@/components/custom-cursor';
+
+type CursorVariant = 'default' | 'hover' | 'text';
+
+export function GlobalCursor() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [cursorVariant, setCursorVariant] = useState<CursorVariant>('default');
+  const [cursorText, setCursorText] = useState<string>('');
+  const [isClient, setIsClient] = useState(false);
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    setMousePosition({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  }, []);
+
+  const handleMouseEnter = useCallback((e: Event) => {
+    const target = e.target as HTMLElement;
+    
+    // Check for data-cursor attribute for text variant
+    const cursorData = target.getAttribute('data-cursor') || 
+                       target.closest('[data-cursor]')?.getAttribute('data-cursor');
+    
+    if (cursorData) {
+      setCursorVariant('text');
+      setCursorText(cursorData);
+      return;
+    }
+
+    // Check for interactive elements
+    const isLink = target.tagName === 'A' || target.closest('a');
+    const isButton = target.tagName === 'BUTTON' || target.closest('button');
+
+    if (isLink || isButton) {
+      setCursorVariant('hover');
+    }
+  }, []);
+
+  const handleMouseLeave = useCallback((e: Event) => {
+    const target = e.target as HTMLElement;
+    
+    const cursorData = target.getAttribute('data-cursor') || 
+                       target.closest('[data-cursor]')?.getAttribute('data-cursor');
+    const isLink = target.tagName === 'A' || target.closest('a');
+    const isButton = target.tagName === 'BUTTON' || target.closest('button');
+
+    if (cursorData || isLink || isButton) {
+      setCursorVariant('default');
+      setCursorText('');
+    }
+  }, []);
+
+  useEffect(() => {
+    setIsClient(true);
+
+    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseover', handleMouseEnter);
+    document.addEventListener('mouseout', handleMouseLeave);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseover', handleMouseEnter);
+      document.removeEventListener('mouseout', handleMouseLeave);
+    };
+  }, [handleMouseMove, handleMouseEnter, handleMouseLeave]);
+
+  if (!isClient) return null;
+
+  return (
+    <CustomCursor
+      mousePosition={mousePosition}
+      cursorVariant={cursorVariant}
+      cursorText={cursorText}
+    />
+  );
+}
+</file>
+
+<file path="content/blog/bienvenida/en.mdx">
+---
+title: 'I had things to say'
+description: 'So I built a place to say them. On why this site exists and what I hope to do with it.'
+date: '2025-12-23'
+author: 'Endika Orube'
+tags: ['Personal', 'Reflections']
+readTime: '3 min'
+featured: true
+---
+
+I'd been going back and forth on having my own space online for a while. Not a LinkedIn profile. Not a PDF resume. Something more... mine.
+
+2025 has been a year of intense professional growth. I've taken on more responsibilities leading teams, given talks at conferences, dug deep into how to integrate AI into real development workflows. And somewhere along the way, I realized I had things to say. Thoughts that kept getting stuck in hallway conversations or scattered notes that never went anywhere.
+
+So here we are.
+
+## Why this website
+
+The motivation is simple: I wanted a **living CV**. A site that evolves with me, that reflects not just what I've done, but how I think. Traditional resumes are static snapshots. This aims to be something more dynamic.
+
+There's also a part about **building a personal brand**. I don't mean textbook _personal branding_ with content strategies and editorial calendars. I mean having a place where, if someone wants to know who I am professionally, they can get the real picture.
+
+But above all, I want to **share knowledge**. I've learned a lot over these years —about teams, product, technology, and yeah, mistakes— and I think some of that can be useful to others.
+
+## On the building process
+
+I built this site in a matter of hours. Yes, hours. Not because it's simple (I think it packs quite a visual punch), but because I wanted to push the limits of AI-assisted development.
+
+It's been a fascinating experiment. The iteration speed you get when you use these tools right is insane. Try an idea, throw it out, try another, refine... all in a very tight loop. This is the kind of development that gets me excited: fast, visual, instant feedback.
+
+I wanted the design to be bold. No generic templates. Something with personality, that shows there's someone behind it who actually cares about the details.
+
+## What you'll find here
+
+Honestly, a bit of everything. Thoughts on:
+
+- **Technical leadership and teams**: What I learn day-to-day managing developers.
+- **Product**: That mindset I try to keep —that code should serve something beyond passing tests.
+- **Technology**: React, architecture, testing, whatever comes up.
+- **AI applied to development**: Context Engineering, tools, workflows.
+- **Software philosophy**: The uncomfortable questions about how we build software and why.
+
+I don't have a publishing schedule. I'm not going to promise you a post every week. I'll publish when I have something worth saying. Hopefully this won't be the first and last, but I'm not going to force content just to fill space either.
+
+---
+
+If you've made it this far, thanks for stopping by. This is just getting started.
+</file>
+
 <file path="app/globals.css">
 @import 'tailwindcss';
 
@@ -5115,6 +5186,32 @@ export default async function BlogPostPage({ params }: Props) {
     @apply bg-background text-foreground;
   }
 
+  /* Estilos de scrollbar personalizados - consistentes en todo el sitio */
+  /* Webkit (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--surface-darker);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a var(--surface-darker);
+  }
+
   /* Custom cursor - hide default cursor on desktop */
   @media (min-width: 768px) {
     * {
@@ -5253,137 +5350,52 @@ export default async function BlogPostPage({ params }: Props) {
 }
 </file>
 
-<file path="components/global-cursor.tsx">
-'use client';
-
-import { useEffect, useState, useCallback } from 'react';
-import { CustomCursor } from '@/components/custom-cursor';
-
-type CursorVariant = 'default' | 'hover' | 'text';
-
-export function GlobalCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorVariant, setCursorVariant] = useState<CursorVariant>('default');
-  const [cursorText, setCursorText] = useState<string>('');
-  const [isClient, setIsClient] = useState(false);
-
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    setMousePosition({
-      x: e.clientX,
-      y: e.clientY,
-    });
-  }, []);
-
-  const handleMouseEnter = useCallback((e: Event) => {
-    const target = e.target as HTMLElement;
-    
-    // Check for data-cursor attribute for text variant
-    const cursorData = target.getAttribute('data-cursor') || 
-                       target.closest('[data-cursor]')?.getAttribute('data-cursor');
-    
-    if (cursorData) {
-      setCursorVariant('text');
-      setCursorText(cursorData);
-      return;
-    }
-
-    // Check for interactive elements
-    const isLink = target.tagName === 'A' || target.closest('a');
-    const isButton = target.tagName === 'BUTTON' || target.closest('button');
-
-    if (isLink || isButton) {
-      setCursorVariant('hover');
-    }
-  }, []);
-
-  const handleMouseLeave = useCallback((e: Event) => {
-    const target = e.target as HTMLElement;
-    
-    const cursorData = target.getAttribute('data-cursor') || 
-                       target.closest('[data-cursor]')?.getAttribute('data-cursor');
-    const isLink = target.tagName === 'A' || target.closest('a');
-    const isButton = target.tagName === 'BUTTON' || target.closest('button');
-
-    if (cursorData || isLink || isButton) {
-      setCursorVariant('default');
-      setCursorText('');
-    }
-  }, []);
-
-  useEffect(() => {
-    setIsClient(true);
-
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseover', handleMouseEnter);
-    document.addEventListener('mouseout', handleMouseLeave);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseover', handleMouseEnter);
-      document.removeEventListener('mouseout', handleMouseLeave);
-    };
-  }, [handleMouseMove, handleMouseEnter, handleMouseLeave]);
-
-  if (!isClient) return null;
-
-  return (
-    <CustomCursor
-      mousePosition={mousePosition}
-      cursorVariant={cursorVariant}
-      cursorText={cursorText}
-    />
-  );
+<file path="package.json">
+{
+  "name": "endikaorve-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "start": "next start",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@vercel/analytics": "1.3.1",
+    "autoprefixer": "^10.4.20",
+    "framer-motion": "12.23.26",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.454.0",
+    "next": "16.0.10",
+    "next-intl": "^4.6.1",
+    "next-mdx-remote": "^5.0.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-icons": "^5.5.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.9",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitest/ui": "^4.0.16",
+    "happy-dom": "^20.0.11",
+    "postcss": "^8.5",
+    "prettier": "^3.7.4",
+    "tailwindcss": "^4.1.9",
+    "typescript": "^5",
+    "vitest": "^4.0.16"
+  }
 }
-</file>
-
-<file path="content/blog/bienvenida/en.mdx">
----
-title: 'I had things to say'
-description: 'So I built a place to say them. On why this site exists and what I hope to do with it.'
-date: '2025-12-23'
-author: 'Endika Orube'
-tags: ['Personal', 'Reflections']
-readTime: '3 min'
-featured: true
----
-
-I'd been going back and forth on having my own space online for a while. Not a LinkedIn profile. Not a PDF resume. Something more... mine.
-
-2025 has been a year of intense professional growth. I've taken on more responsibilities leading teams, given talks at conferences, dug deep into how to integrate AI into real development workflows. And somewhere along the way, I realized I had things to say. Thoughts that kept getting stuck in hallway conversations or scattered notes that never went anywhere.
-
-So here we are.
-
-## Why this website
-
-The motivation is simple: I wanted a **living CV**. A site that evolves with me, that reflects not just what I've done, but how I think. Traditional resumes are static snapshots. This aims to be something more dynamic.
-
-There's also a part about **building a personal brand**. I don't mean textbook _personal branding_ with content strategies and editorial calendars. I mean having a place where, if someone wants to know who I am professionally, they can get the real picture.
-
-But above all, I want to **share knowledge**. I've learned a lot over these years —about teams, product, technology, and yeah, mistakes— and I think some of that can be useful to others.
-
-## On the building process
-
-I built this site in a matter of hours. Yes, hours. Not because it's simple (I think it packs quite a visual punch), but because I wanted to push the limits of AI-assisted development.
-
-It's been a fascinating experiment. The iteration speed you get when you use these tools right is insane. Try an idea, throw it out, try another, refine... all in a very tight loop. This is the kind of development that gets me excited: fast, visual, instant feedback.
-
-I wanted the design to be bold. No generic templates. Something with personality, that shows there's someone behind it who actually cares about the details.
-
-## What you'll find here
-
-Honestly, a bit of everything. Thoughts on:
-
-- **Technical leadership and teams**: What I learn day-to-day managing developers.
-- **Product**: That mindset I try to keep —that code should serve something beyond passing tests.
-- **Technology**: React, architecture, testing, whatever comes up.
-- **AI applied to development**: Context Engineering, tools, workflows.
-- **Software philosophy**: The uncomfortable questions about how we build software and why.
-
-I don't have a publishing schedule. I'm not going to promise you a post every week. I'll publish when I have something worth saying. Hopefully this won't be the first and last, but I'm not going to force content just to fill space either.
-
----
-
-If you've made it this far, thanks for stopping by. This is just getting started.
 </file>
 
 <file path="app/[locale]/_components/contact-section.tsx">
@@ -5394,52 +5406,17 @@ import { useTranslations } from 'next-intl';
 import { ScrambleText } from '@/components/scramble-text';
 import { MagneticWrapper } from '@/components/magnetic-wrapper';
 
+/**
+ * ContactSection - Simplificada
+ *
+ * Eliminada decoración vacía (líneas, círculos, números).
+ * El foco está en el contenido: título impactante + links de contacto.
+ */
 export function ContactSection() {
   const t = useTranslations();
 
   return (
     <section className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always">
-      {/* Background Elements */}
-      {/* Líneas diagonales decorativas */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
-        <div
-          className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: '20%', left: '-50%' }}
-        />
-        <div
-          className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: '40%', left: '-50%' }}
-        />
-        <div
-          className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: '60%', left: '-50%' }}
-        />
-        <div
-          className="absolute w-[200%] h-px bg-white -rotate-45"
-          style={{ top: '80%', left: '-50%' }}
-        />
-      </div>
-
-      {/* Elementos técnicos en esquinas */}
-      <div className="absolute bottom-24 left-8 hidden md:block">
-        <div className="w-16 h-px bg-gradient-to-r from-primary/30 to-transparent" />
-        <div className="w-px h-16 bg-gradient-to-b from-primary/30 to-transparent" />
-      </div>
-      <div className="absolute bottom-24 right-8 hidden md:flex flex-col items-end">
-        <div className="w-16 h-px bg-gradient-to-l from-primary/30 to-transparent" />
-        <div className="w-px h-16 bg-gradient-to-b from-primary/30 to-transparent ml-auto" />
-      </div>
-
-      {/* Círculo decorativo exterior */}
-      <motion.div
-        className="absolute w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] border border-white/[0.02] pointer-events-none"
-        style={{ borderRadius: '50%' }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: 'easeOut' }}
-      />
-
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           className="text-center"
@@ -5447,29 +5424,50 @@ export function ContactSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-[15vw] font-black leading-none mb-12">
-            <span className="text-white">{t('contact.title.line1')}</span>
-            <br />
-            <span
-              className="text-transparent"
+          <h2 className="text-[12vw] md:text-[10vw] font-black leading-none mb-12">
+            <motion.span
+              className="text-white block"
+              initial={{ y: 60, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {t('contact.title.line1')}
+            </motion.span>
+            <motion.span
+              className="text-transparent block"
               style={{
                 WebkitTextStroke: '2px var(--pink)',
               }}
+              initial={{ y: 60, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               {t('contact.title.line2')}
-            </span>
+            </motion.span>
           </h2>
 
-          <div className="flex flex-col md:flex-row gap-8 justify-center items-center mt-20">
+          <motion.div
+            className="flex flex-col md:flex-row gap-8 justify-center items-center mt-16 md:mt-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
             {/* Email con efecto scramble */}
             <MagneticWrapper strength={0.15}>
-              <ScrambleText
-                text="endikaorve@gmail.com"
-                as="a"
-                href="mailto:endikaorve@gmail.com"
-                className="text-white text-xl md:text-2xl hover:text-primary transition-colors relative group block"
-              />
-              <span className="block w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 mt-1" />
+              <a href="mailto:endikaorve@gmail.com" className="group block">
+                <ScrambleText
+                  text="endikaorve@gmail.com"
+                  className="text-white text-xl md:text-2xl group-hover:text-primary transition-colors duration-300"
+                />
+                <span className="block w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 mt-1" />
+              </a>
             </MagneticWrapper>
 
             <span className="text-white/20 text-4xl hidden md:block">/</span>
@@ -5511,7 +5509,7 @@ export function ContactSection() {
                 </motion.a>
               </MagneticWrapper>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -5530,10 +5528,13 @@ export function ContactSection() {
 <file path="app/[locale]/_components/hero-section.tsx">
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { useEffect, useRef } from 'react';
 
-// Componente para animar letras individualmente con rotación
+/**
+ * Componente para animar letras individualmente con rotación 3D
+ */
 function SplitText({
   text,
   className,
@@ -5577,16 +5578,83 @@ function SplitText({
   );
 }
 
+/**
+ * HeroSection con parallax sutil al mouse
+ *
+ * Mejoras implementadas:
+ * - Parallax 3D muy sutil que responde al mouse (solo desktop)
+ * - El texto tiene profundidad con rotación suave
+ * - Movimiento limitado a ±2% para no distraer
+ * - Spring physics para movimiento orgánico
+ */
 export function HeroSection() {
   const t = useTranslations();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Motion values para tracking del mouse
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Springs para movimiento suave
+  const springConfig = { stiffness: 150, damping: 20 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  // Transformaciones muy sutiles (±2 grados rotación, ±10px translate)
+  const rotateX = useTransform(smoothY, [-0.5, 0.5], [2, -2]);
+  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-2, 2]);
+  const translateX = useTransform(smoothX, [-0.5, 0.5], [-10, 10]);
+  const translateY = useTransform(smoothY, [-0.5, 0.5], [-10, 10]);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      // Normalizar posición del mouse a rango -0.5 a 0.5
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    const handleMouseLeave = () => {
+      mouseX.set(0);
+      mouseY.set(0);
+    };
+
+    const section = sectionRef.current;
+    if (section) {
+      section.addEventListener('mousemove', handleMouseMove);
+      section.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      if (section) {
+        section.removeEventListener('mousemove', handleMouseMove);
+        section.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, [mouseX, mouseY]);
 
   return (
     <section
+      ref={sectionRef}
       className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always"
       style={{ perspective: '1000px' }}
     >
-      {/* Capa con el texto principal */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      {/* Capa con el texto principal - con parallax */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        style={{
+          rotateX,
+          rotateY,
+          translateX,
+          translateY,
+          transformStyle: 'preserve-3d',
+        }}
+      >
         <div className="w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
           {/* ENDIKA - Split text reveal con rotación */}
           <div className="overflow-hidden">
@@ -5618,9 +5686,9 @@ export function HeroSection() {
             </motion.h1>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Capa estática - elementos de UI */}
+      {/* Capa estática - elementos de UI (no se mueven con parallax) */}
       <div className="relative z-10 w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
         {/* Placeholder para mantener espacio */}
         <div className="relative" aria-hidden="true">
@@ -5702,7 +5770,7 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator - aparece al final de la secuencia */}
+      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
         initial={{ opacity: 0, y: 20 }}
@@ -5714,8 +5782,8 @@ export function HeroSection() {
         }}
       >
         <motion.div
-          className="w-px h-20 bg-gradient-to-b from-primary to-transparent"
-          animate={{ y: [0, 10, 0] }}
+          className="w-px h-16 bg-gradient-to-b from-primary/60 to-transparent"
+          animate={{ y: [0, 8, 0] }}
           transition={{
             duration: 2,
             repeat: Number.POSITIVE_INFINITY,
@@ -5796,216 +5864,133 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
 }
 </file>
 
-<file path="package.json">
-{
-  "name": "endikaorve-portfolio",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "eslint .",
-    "start": "next start",
-    "test": "vitest run",
-    "test:watch": "vitest"
-  },
-  "dependencies": {
-    "@vercel/analytics": "1.3.1",
-    "autoprefixer": "^10.4.20",
-    "framer-motion": "12.23.26",
-    "gray-matter": "^4.0.3",
-    "lucide-react": "^0.454.0",
-    "next": "16.0.10",
-    "next-intl": "^4.6.1",
-    "next-mdx-remote": "^5.0.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-icons": "^5.5.0",
-    "rehype-highlight": "^7.0.2",
-    "rehype-slug": "^6.0.0",
-    "remark-gfm": "^4.0.1",
-    "server-only": "^0.0.1"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.9",
-    "@types/node": "^22",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@vitest/ui": "^4.0.16",
-    "happy-dom": "^20.0.11",
-    "postcss": "^8.5",
-    "prettier": "^3.7.4",
-    "tailwindcss": "^4.1.9",
-    "typescript": "^5",
-    "vitest": "^4.0.16"
-  }
-}
-</file>
-
-<file path="app/page.tsx">
-import { redirect } from 'next/navigation';
-import { defaultLocale } from '@/i18n/config';
-
-// Redirige la ruta raíz al locale por defecto
-export default function RootPage() {
-  redirect(`/${defaultLocale}`);
-}
-</file>
-
-<file path="components/header.tsx">
+<file path="app/[locale]/_components/me-section.tsx">
 'use client';
 
 import { motion } from 'framer-motion';
-import { Braces } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
-import { useRouter, usePathname, Link } from '@/i18n/navigation';
-import { Locale, locales } from '@/i18n/config';
-import { MagneticWrapper } from '@/components/magnetic-wrapper';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
-export function Header() {
-  const locale = useLocale() as Locale;
-  const router = useRouter();
-  const pathname = usePathname();
+/**
+ * MeSection - Rediseñada con storytelling real
+ *
+ * Justificación del rediseño:
+ * - Las palabras sueltas (SOFTWARE, EQUIPOS, PRODUCTO) no contaban una historia
+ * - Ahora hay una frase de impacto que define quién eres y qué haces
+ * - La composición tipográfica crea tensión visual con palabras clave destacadas
+ * - El CTA es más prominente y accesible
+ * - Sin scroll indicator (estaba duplicado con Hero)
+ */
+export function MeSection() {
   const t = useTranslations();
 
-  const handleLocaleChange = (newLocale: Locale) => {
-    if (newLocale !== locale) {
-      router.replace(pathname, { locale: newLocale });
-    }
-  };
+  // Palabras de la headline para animar individualmente
+  const headlineWords = t('me.headline').split(' ');
 
-  const isHomeActive = pathname === '/';
-  const isAboutActive = pathname === '/about';
-  const isBlogActive = pathname === '/blog' || pathname.startsWith('/blog/');
+  // Palabras clave que queremos destacar en accent color
+  const accentWords = [
+    'LIDERO',
+    'LEAD',
+    'EQUIPOS',
+    'TEAMS',
+    'IMPORTA',
+    'MATTERS',
+  ];
 
   return (
-    <motion.header
-      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        type: 'spring',
-        stiffness: 300,
-        damping: 25,
-      }}
-    >
-      <nav className="flex items-center justify-end">
-        {/* Navegación - gap uniforme entre elementos */}
-        <div className="flex items-center gap-3 md:gap-4">
-          {/* Home Link */}
-          <MagneticWrapper strength={0.2}>
-            <Link
-              href="/"
-              className={`group relative py-2 transition-colors duration-200 block ${
-                isHomeActive
-                  ? 'text-primary'
-                  : 'text-white/60 hover:text-primary'
-              }`}
-            >
-              <Braces size={18} strokeWidth={2} />
-              <span
-                className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
-                  isHomeActive
-                    ? 'scale-x-100'
-                    : 'scale-x-0 group-hover:scale-x-100'
+    <section className="relative h-svh flex items-center overflow-hidden snap-start snap-always">
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 relative">
+        {/* Headline principal - composición tipográfica */}
+        <div className="relative">
+          {/* Headline con palabras animadas individualmente */}
+          <motion.h2
+            className="text-[8vw] md:text-[5.5vw] lg:text-[4.5vw] font-black leading-[1.1] tracking-tight max-w-5xl"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            {headlineWords.map((word, i) => (
+              <motion.span
+                key={i}
+                className={`inline-block mr-[0.3em] ${
+                  accentWords.includes(word.toUpperCase())
+                    ? 'text-primary'
+                    : 'text-white'
                 }`}
-              />
-            </Link>
-          </MagneticWrapper>
-
-          {/* Separador */}
-          <span className="text-white/20 select-none">|</span>
-
-          {/* About Link */}
-          <MagneticWrapper strength={0.2}>
-            <Link
-              href="/about"
-              className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 block ${
-                isAboutActive
-                  ? 'text-primary'
-                  : 'text-white/60 hover:text-primary'
-              }`}
-            >
-              {t('aboutPage.headerLink')}
-              <span
-                className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
-                  isAboutActive
-                    ? 'scale-x-100'
-                    : 'scale-x-0 group-hover:scale-x-100'
-                }`}
-              />
-            </Link>
-          </MagneticWrapper>
-
-          {/* Separador */}
-          <span className="text-white/20 select-none">|</span>
-
-          {/* Blog Link */}
-          <MagneticWrapper strength={0.2}>
-            <Link
-              href="/blog"
-              className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 block ${
-                isBlogActive
-                  ? 'text-primary'
-                  : 'text-white/60 hover:text-primary'
-              }`}
-            >
-              {t('blog.headerLink')}
-              <span
-                className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
-                  isBlogActive
-                    ? 'scale-x-100'
-                    : 'scale-x-0 group-hover:scale-x-100'
-                }`}
-              />
-            </Link>
-          </MagneticWrapper>
-
-          {/* Separador */}
-          <span className="text-white/20 select-none">|</span>
-
-          {/* Language Switcher - elemento con gap interno */}
-          <div className="flex items-center gap-1 font-mono text-sm">
-            {locales.map((loc, index) => (
-              <div key={loc} className="flex items-center gap-1">
-                <MagneticWrapper strength={0.15}>
-                  <motion.button
-                    onClick={() => handleLocaleChange(loc)}
-                    className={`relative py-2 font-bold tracking-wider transition-colors duration-200 ${
-                      locale === loc
-                        ? 'text-primary'
-                        : 'text-white/40 hover:text-white/80'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {loc.toUpperCase()}
-                    {/* Underline indicator for active locale */}
-                    {locale === loc && (
-                      <motion.div
-                        className="absolute bottom-1 left-0 right-0 h-px bg-primary"
-                        layoutId="locale-indicator"
-                        transition={{
-                          type: 'spring',
-                          stiffness: 300,
-                          damping: 25,
-                        }}
-                      />
-                    )}
-                  </motion.button>
-                </MagneticWrapper>
-                {/* Separator between locales */}
-                {index < locales.length - 1 && (
-                  <span className="text-white/20 select-none">/</span>
-                )}
-              </div>
+                initial={{ y: 40, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.1 + i * 0.05,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              >
+                {word}
+              </motion.span>
             ))}
-          </div>
+          </motion.h2>
+
+          {/* Subheadline y contexto */}
+          <motion.div
+            className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Línea decorativa horizontal */}
+            <motion.div
+              className="w-16 h-px bg-primary hidden md:block"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6, duration: 0.4 }}
+            />
+
+            <div className="flex flex-col gap-2">
+              <span className="text-white/80 text-sm md:text-base font-mono tracking-wider">
+                {t('me.subheadline')}
+              </span>
+              <span className="text-white/40 text-xs md:text-sm font-mono tracking-widest">
+                {t('me.context')}
+              </span>
+            </div>
+          </motion.div>
         </div>
-      </nav>
-    </motion.header>
+
+        {/* CTA prominente */}
+        <motion.div
+          className="mt-16 md:mt-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+        >
+          <Link href="/about" className="group inline-flex items-center gap-4">
+            {/* Botón con borde que se rellena en hover */}
+            <span className="relative px-6 py-3 border border-primary text-primary font-mono text-sm tracking-wider overflow-hidden group-hover:text-white transition-colors duration-300">
+              {/* Background fill en hover - CSS puro */}
+              <span className="absolute inset-0 bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+              <span className="relative z-10">{t('me.cta')}</span>
+            </span>
+
+            {/* Flecha animada */}
+            <motion.span
+              className="text-primary text-xl"
+              animate={{ x: [0, 8, 0] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
+              →
+            </motion.span>
+          </Link>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 </file>
@@ -6165,6 +6150,162 @@ export default async function LocaleLayout({ children, params }: Props) {
         <Analytics />
       </body>
     </html>
+  );
+}
+</file>
+
+<file path="components/header.tsx">
+'use client';
+
+import { motion } from 'framer-motion';
+import { Braces } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { useRouter, usePathname, Link } from '@/i18n/navigation';
+import { Locale, locales } from '@/i18n/config';
+import { MagneticWrapper } from '@/components/magnetic-wrapper';
+
+export function Header() {
+  const locale = useLocale() as Locale;
+  const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations();
+
+  const handleLocaleChange = (newLocale: Locale) => {
+    if (newLocale !== locale) {
+      router.replace(pathname, { locale: newLocale });
+    }
+  };
+
+  const isHomeActive = pathname === '/';
+  const isAboutActive = pathname === '/about';
+  const isBlogActive = pathname === '/blog' || pathname.startsWith('/blog/');
+
+  return (
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        type: 'spring',
+        stiffness: 300,
+        damping: 25,
+      }}
+    >
+      <nav className="flex items-center justify-end">
+        {/* Navegación - gap uniforme entre elementos */}
+        <div className="flex items-center gap-3 md:gap-4">
+          {/* Home Link */}
+          <MagneticWrapper strength={0.2}>
+            <Link
+              href="/"
+              className={`group relative py-2 transition-colors duration-200 block ${
+                isHomeActive
+                  ? 'text-primary'
+                  : 'text-white/60 hover:text-primary'
+              }`}
+            >
+              <Braces size={18} strokeWidth={2} />
+              <span
+                className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+                  isHomeActive
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              />
+            </Link>
+          </MagneticWrapper>
+
+          {/* Separador */}
+          <span className="text-white/20 select-none">|</span>
+
+          {/* About Link */}
+          <MagneticWrapper strength={0.2}>
+            <Link
+              href="/about"
+              className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 block ${
+                isAboutActive
+                  ? 'text-primary'
+                  : 'text-white/60 hover:text-primary'
+              }`}
+            >
+              {t('aboutPage.headerLink')}
+              <span
+                className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+                  isAboutActive
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              />
+            </Link>
+          </MagneticWrapper>
+
+          {/* Separador */}
+          <span className="text-white/20 select-none">|</span>
+
+          {/* Blog Link */}
+          <MagneticWrapper strength={0.2}>
+            <Link
+              href="/blog"
+              className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 block ${
+                isBlogActive
+                  ? 'text-primary'
+                  : 'text-white/60 hover:text-primary'
+              }`}
+            >
+              {t('blog.headerLink')}
+              <span
+                className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+                  isBlogActive
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              />
+            </Link>
+          </MagneticWrapper>
+
+          {/* Separador */}
+          <span className="text-white/20 select-none">|</span>
+
+          {/* Language Switcher - elemento con gap interno */}
+          <div className="flex items-center gap-1 font-mono text-sm">
+            {locales.map((loc, index) => (
+              <div key={loc} className="flex items-center gap-1">
+                <MagneticWrapper strength={0.15}>
+                  <motion.button
+                    onClick={() => handleLocaleChange(loc)}
+                    className={`relative py-2 font-bold tracking-wider transition-colors duration-200 ${
+                      locale === loc
+                        ? 'text-primary'
+                        : 'text-white/40 hover:text-white/80'
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {loc.toUpperCase()}
+                    {/* Underline indicator for active locale */}
+                    {locale === loc && (
+                      <motion.div
+                        className="absolute bottom-1 left-0 right-0 h-px bg-primary"
+                        layoutId="locale-indicator"
+                        transition={{
+                          type: 'spring',
+                          stiffness: 300,
+                          damping: 25,
+                        }}
+                      />
+                    )}
+                  </motion.button>
+                </MagneticWrapper>
+                {/* Separator between locales */}
+                {index < locales.length - 1 && (
+                  <span className="text-white/20 select-none">/</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </motion.header>
   );
 }
 </file>
@@ -6432,7 +6573,9 @@ export default async function LocaleLayout({ children, params }: Props) {
     "downloadShort": "CV"
   },
   "me": {
-    "description": "Software. Teams. Product.",
+    "headline": "I LEAD TEAMS THAT BUILD SOFTWARE THAT MATTERS",
+    "subheadline": "Tech Lead & Engineering Manager",
+    "context": "Architecture · Extreme Programming · Product Vision",
     "cta": "DISCOVER MY STORY"
   },
   "aboutPage": {
@@ -6722,7 +6865,9 @@ export default async function LocaleLayout({ children, params }: Props) {
     "downloadShort": "CV"
   },
   "me": {
-    "description": "Software. Equipos. Producto.",
+    "headline": "LIDERO EQUIPOS QUE CONSTRUYEN SOFTWARE QUE IMPORTA",
+    "subheadline": "Tech Lead & Engineering Manager",
+    "context": "Arquitectura · Extreme Programming · Visión de Producto",
     "cta": "CONOCE MI HISTORIA"
   },
   "aboutPage": {
@@ -6752,11 +6897,24 @@ export default async function LocaleLayout({ children, params }: Props) {
 <file path="app/[locale]/page.tsx">
 'use client';
 
+import { useEffect } from 'react';
 import { HeroSection, MeSection, ContactSection } from './_components';
 
 export default function Home() {
+  // Aplicar scroll snap al html solo en la home page
+  useEffect(() => {
+    const html = document.documentElement;
+    html.style.scrollSnapType = 'y mandatory';
+    html.style.overflowY = 'scroll';
+
+    return () => {
+      html.style.scrollSnapType = '';
+      html.style.overflowY = '';
+    };
+  }, []);
+
   return (
-    <main className="relative h-svh overflow-y-scroll snap-y snap-mandatory">
+    <main className="relative">
       <HeroSection />
       <MeSection />
       <ContactSection />
