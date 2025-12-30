@@ -13,7 +13,7 @@ export function AnimatedBackground({
 }: AnimatedBackgroundProps) {
   return (
     <motion.div
-      className="fixed inset-0 opacity-10 pointer-events-none"
+      className="fixed inset-0 opacity-[0.03] pointer-events-none"
       style={{
         backgroundImage: `
           linear-gradient(to right, var(--pink) 1px, transparent 1px),
