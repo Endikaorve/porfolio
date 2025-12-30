@@ -8,36 +8,69 @@ export function MeSection() {
   const t = useTranslations();
 
   return (
-    <section className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always">
-      {/* Líneas decorativas sutiles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-        <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="relative h-svh flex items-center overflow-hidden snap-start snap-always">
+      {/* Composición tipográfica asimétrica */}
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 relative">
+        {/* SOFTWARE - Grande, izquierda */}
         <motion.div
-          className="max-w-4xl mx-auto text-center"
-          initial={{ opacity: 0, y: 30 }}
+          className="relative"
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span
+            className="text-[15vw] md:text-[12vw] font-black leading-none tracking-tighter text-transparent block"
+            style={{ WebkitTextStroke: '1px rgba(255,255,255,0.15)' }}
+          >
+            SOFTWARE
+          </span>
+        </motion.div>
+
+        {/* EQUIPOS - Mediano, derecha, superpuesto */}
+        <motion.div
+          className="relative -mt-[4vw] md:-mt-[3vw] flex justify-end"
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="text-[12vw] md:text-[9vw] font-black leading-none tracking-tighter text-primary">
+            EQUIPOS
+          </span>
+        </motion.div>
+
+        {/* PRODUCTO - Accent color, izquierda */}
+        <motion.div
+          className="relative -mt-[2vw] md:-mt-[1vw]"
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Texto principal minimalista */}
-          <p className="text-2xl md:text-3xl lg:text-4xl text-white/90 leading-relaxed font-light mb-12">
-            {t('me.description')}
-          </p>
+          <span className="text-[10vw] md:text-[7vw] font-black leading-none tracking-tighter text-white">
+            PRODUCTO
+          </span>
+          <span className="inline-block w-[0.8vw] h-[0.8vw] md:w-[0.5vw] md:h-[0.5vw] bg-primary ml-1" />
+        </motion.div>
 
-          {/* CTA sutil */}
+        {/* CTA - Posicionado abajo a la derecha */}
+        <motion.div
+          className="mt-12 md:mt-16 flex justify-end"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
           <Link
             href="/about"
-            className="inline-flex items-center gap-3 text-primary hover:text-white transition-colors duration-300 group"
+            className="inline-flex items-center gap-3 text-white/60 hover:text-primary transition-colors duration-300 group"
           >
-            <span className="text-lg font-mono font-bold tracking-wider">
+            <span className="text-sm md:text-base font-mono tracking-wider">
               {t('me.cta')}
             </span>
             <motion.span
-              className="text-2xl"
+              className="text-lg"
               animate={{ x: [0, 5, 0] }}
               transition={{
                 duration: 1.5,
@@ -51,15 +84,15 @@ export function MeSection() {
         </motion.div>
       </div>
 
-      {/* Indicador de scroll */}
+      {/* Indicador de scroll - esquina inferior izquierda */}
       <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-12 left-8 md:left-12"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
         <motion.div
-          className="w-px h-16 bg-gradient-to-b from-primary/50 to-transparent"
+          className="w-px h-16 bg-gradient-to-b from-white/20 to-transparent"
           animate={{ scaleY: [1, 0.6, 1] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         />
