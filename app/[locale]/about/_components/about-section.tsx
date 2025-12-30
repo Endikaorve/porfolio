@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { Download } from 'lucide-react';
+import { MagneticWrapper } from '@/components/magnetic-wrapper';
 
 export function AboutSection() {
   const t = useTranslations();
@@ -107,25 +108,29 @@ export function AboutSection() {
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2">
                 {/* CTA al Blog */}
-                <Link
-                  href="/blog"
-                  className="group inline-flex items-center gap-2 text-primary hover:text-white transition-colors duration-200 font-bold text-lg"
-                >
-                  {t('blog.ctaFromAbout')}
-                </Link>
+                <MagneticWrapper strength={0.15}>
+                  <Link
+                    href="/blog"
+                    className="group inline-flex items-center gap-2 text-primary hover:text-white transition-colors duration-200 font-bold text-lg"
+                  >
+                    {t('blog.ctaFromAbout')}
+                  </Link>
+                </MagneticWrapper>
 
                 {/* CTA CV */}
-                <motion.a
-                  href="/Endika Orube Vega - CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-bold text-lg"
-                  whileHover={{ x: 3 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                >
-                  <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
-                  {t('cv.download')}
-                </motion.a>
+                <MagneticWrapper strength={0.15}>
+                  <motion.a
+                    href="/Endika Orube Vega - CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-bold text-lg"
+                    whileHover={{ x: 3 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                  >
+                    <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
+                    {t('cv.download')}
+                  </motion.a>
+                </MagneticWrapper>
               </div>
 
               {/* Stats */}

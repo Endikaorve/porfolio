@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { ScrambleText } from '@/components/scramble-text';
+import { MagneticWrapper } from '@/components/magnetic-wrapper';
 
 export function ContactSection() {
   const t = useTranslations();
@@ -70,45 +72,55 @@ export function ContactSection() {
           </h2>
 
           <div className="flex flex-col md:flex-row gap-8 justify-center items-center mt-20">
-            <motion.a
-              href="mailto:endikaorve@gmail.com"
-              className="text-white text-2xl font-mono hover:text-primary transition-colors relative group"
-              whileHover={{ scale: 1.1 }}
-            >
-              endikaorve@gmail.com
-              <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-            </motion.a>
+            {/* Email con efecto scramble */}
+            <MagneticWrapper strength={0.15}>
+              <ScrambleText
+                text="endikaorve@gmail.com"
+                as="a"
+                href="mailto:endikaorve@gmail.com"
+                className="text-white text-xl md:text-2xl hover:text-primary transition-colors relative group block"
+              />
+              <span className="block w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 mt-1" />
+            </MagneticWrapper>
 
             <span className="text-white/20 text-4xl hidden md:block">/</span>
 
             <div className="flex gap-6">
-              <motion.a
-                href="https://www.linkedin.com/in/endikaorube/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-lg font-mono hover:text-primary transition-colors"
-                whileHover={{ y: -5 }}
-              >
-                LINKEDIN
-              </motion.a>
-              <motion.a
-                href="https://github.com/Endikaorve"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-lg font-mono hover:text-primary transition-colors"
-                whileHover={{ y: -5 }}
-              >
-                {t('contact.github')}
-              </motion.a>
-              <motion.a
-                href="/Endika Orube Vega - CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-lg font-mono hover:text-primary transition-colors"
-                whileHover={{ y: -5 }}
-              >
-                {t('cv.downloadShort')}
-              </motion.a>
+              <MagneticWrapper strength={0.2}>
+                <motion.a
+                  href="https://www.linkedin.com/in/endikaorube/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-lg font-mono hover:text-primary transition-colors block"
+                  whileHover={{ y: -5 }}
+                >
+                  LINKEDIN
+                </motion.a>
+              </MagneticWrapper>
+
+              <MagneticWrapper strength={0.2}>
+                <motion.a
+                  href="https://github.com/Endikaorve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-lg font-mono hover:text-primary transition-colors block"
+                  whileHover={{ y: -5 }}
+                >
+                  {t('contact.github')}
+                </motion.a>
+              </MagneticWrapper>
+
+              <MagneticWrapper strength={0.2}>
+                <motion.a
+                  href="/Endika Orube Vega - CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-lg font-mono hover:text-primary transition-colors block"
+                  whileHover={{ y: -5 }}
+                >
+                  {t('cv.downloadShort')}
+                </motion.a>
+              </MagneticWrapper>
             </div>
           </div>
         </motion.div>

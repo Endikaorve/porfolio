@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Github, ExternalLink } from 'lucide-react';
+import { MagneticWrapper } from '@/components/magnetic-wrapper';
 
 export function ProjectsSection() {
   const t = useTranslations();
@@ -25,7 +26,7 @@ export function ProjectsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
           {/* Proyecto 1 - Banking Platform */}
           <motion.div
-            className="col-span-1 lg:col-span-8 aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] relative group cursor-pointer overflow-hidden"
+            className="col-span-1 lg:col-span-8 aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] relative group overflow-hidden"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
             viewport={{ once: true }}
@@ -60,7 +61,7 @@ export function ProjectsSection() {
 
           {/* Proyecto 2 - Hotel Booking Engine */}
           <motion.div
-            className="col-span-1 lg:col-span-4 aspect-[4/3] md:aspect-[16/10] lg:aspect-square relative group cursor-pointer overflow-hidden"
+            className="col-span-1 lg:col-span-4 aspect-[4/3] md:aspect-[16/10] lg:aspect-square relative group overflow-hidden"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{
               opacity: 1,
@@ -95,7 +96,7 @@ export function ProjectsSection() {
 
           {/* Proyecto 3 - SaaS Products */}
           <motion.div
-            className="col-span-1 lg:col-span-5 aspect-[4/3] md:aspect-[16/10] relative group cursor-pointer overflow-hidden"
+            className="col-span-1 lg:col-span-5 aspect-[4/3] md:aspect-[16/10] relative group overflow-hidden"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{
               opacity: 1,
@@ -170,15 +171,18 @@ export function ProjectsSection() {
                     {t('projects.items.labs.subprojects.p1.name')}
                   </h4>
                   <div className="flex gap-2 shrink-0">
-                    <a
-                      href="https://github.com/Endikaorve/porfolio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-primary transition-colors p-1"
-                      aria-label="GitHub Code"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
+                    <MagneticWrapper strength={0.3}>
+                      <a
+                        href="https://github.com/Endikaorve/porfolio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-primary transition-colors p-1 block"
+                        aria-label="GitHub Code"
+                        data-cursor="CODE"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </MagneticWrapper>
                   </div>
                 </div>
                 <p className="text-white/50 text-xs leading-relaxed mt-auto">
@@ -193,24 +197,30 @@ export function ProjectsSection() {
                     {t('projects.items.labs.subprojects.p2.name')}
                   </h4>
                   <div className="flex gap-2 shrink-0">
-                    <a
-                      href="https://github.com/Endikaorve/renderizados-web"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-primary transition-colors p-1"
-                      aria-label="GitHub Code"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                    <a
-                      href="https://dxp-renderizados-web-presentacion.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-primary transition-colors p-1"
-                      aria-label="Live Demo"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
+                    <MagneticWrapper strength={0.3}>
+                      <a
+                        href="https://github.com/Endikaorve/renderizados-web"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-primary transition-colors p-1 block"
+                        aria-label="GitHub Code"
+                        data-cursor="CODE"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </MagneticWrapper>
+                    <MagneticWrapper strength={0.3}>
+                      <a
+                        href="https://dxp-renderizados-web-presentacion.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-primary transition-colors p-1 block"
+                        aria-label="Live Demo"
+                        data-cursor="DEMO"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </MagneticWrapper>
                   </div>
                 </div>
                 <p className="text-white/50 text-xs leading-relaxed mt-auto">
@@ -225,24 +235,30 @@ export function ProjectsSection() {
                     {t('projects.items.labs.subprojects.p3.name')}
                   </h4>
                   <div className="flex gap-2 shrink-0">
-                    <a
-                      href="https://github.com/Endikaorve/pokedex-taller-scpna"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-primary transition-colors p-1"
-                      aria-label="GitHub Code"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                    <a
-                      href="https://pokedex-vite-woad.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-primary transition-colors p-1"
-                      aria-label="Live Demo"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
+                    <MagneticWrapper strength={0.3}>
+                      <a
+                        href="https://github.com/Endikaorve/pokedex-taller-scpna"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-primary transition-colors p-1 block"
+                        aria-label="GitHub Code"
+                        data-cursor="CODE"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </MagneticWrapper>
+                    <MagneticWrapper strength={0.3}>
+                      <a
+                        href="https://pokedex-vite-woad.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-primary transition-colors p-1 block"
+                        aria-label="Live Demo"
+                        data-cursor="DEMO"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </MagneticWrapper>
                   </div>
                 </div>
                 <p className="text-white/50 text-xs leading-relaxed mt-auto">
@@ -257,24 +273,30 @@ export function ProjectsSection() {
                     {t('projects.items.labs.subprojects.p4.name')}
                   </h4>
                   <div className="flex gap-2 shrink-0">
-                    <a
-                      href="https://github.com/Endikaorve/creayarnoz"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-primary transition-colors p-1"
-                      aria-label="GitHub Code"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                    <a
-                      href="https://creayarnoz.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-primary transition-colors p-1"
-                      aria-label="Live Demo"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
+                    <MagneticWrapper strength={0.3}>
+                      <a
+                        href="https://github.com/Endikaorve/creayarnoz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-primary transition-colors p-1 block"
+                        aria-label="GitHub Code"
+                        data-cursor="CODE"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </MagneticWrapper>
+                    <MagneticWrapper strength={0.3}>
+                      <a
+                        href="https://creayarnoz.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/40 hover:text-primary transition-colors p-1 block"
+                        aria-label="Live Demo"
+                        data-cursor="DEMO"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </MagneticWrapper>
                   </div>
                 </div>
                 <p className="text-white/50 text-xs leading-relaxed mt-auto">

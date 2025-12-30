@@ -5,6 +5,7 @@ import { Braces } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname, Link } from '@/i18n/navigation';
 import { Locale, locales } from '@/i18n/config';
+import { MagneticWrapper } from '@/components/magnetic-wrapper';
 
 export function Header() {
   const locale = useLocale() as Locale;
@@ -37,63 +38,73 @@ export function Header() {
         {/* Navegación - gap uniforme entre elementos */}
         <div className="flex items-center gap-3 md:gap-4">
           {/* Home Link */}
-          <Link
-            href="/"
-            className={`group relative py-2 transition-colors duration-200 ${
-              isHomeActive ? 'text-primary' : 'text-white/60 hover:text-primary'
-            }`}
-          >
-            <Braces size={18} strokeWidth={2} />
-            <span
-              className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+          <MagneticWrapper strength={0.2}>
+            <Link
+              href="/"
+              className={`group relative py-2 transition-colors duration-200 block ${
                 isHomeActive
-                  ? 'scale-x-100'
-                  : 'scale-x-0 group-hover:scale-x-100'
+                  ? 'text-primary'
+                  : 'text-white/60 hover:text-primary'
               }`}
-            />
-          </Link>
+            >
+              <Braces size={18} strokeWidth={2} />
+              <span
+                className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+                  isHomeActive
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              />
+            </Link>
+          </MagneticWrapper>
 
           {/* Separador */}
           <span className="text-white/20 select-none">|</span>
 
           {/* About Link */}
-          <Link
-            href="/about"
-            className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
-              isAboutActive
-                ? 'text-primary'
-                : 'text-white/60 hover:text-primary'
-            }`}
-          >
-            {t('aboutPage.headerLink')}
-            <span
-              className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+          <MagneticWrapper strength={0.2}>
+            <Link
+              href="/about"
+              className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 block ${
                 isAboutActive
-                  ? 'scale-x-100'
-                  : 'scale-x-0 group-hover:scale-x-100'
+                  ? 'text-primary'
+                  : 'text-white/60 hover:text-primary'
               }`}
-            />
-          </Link>
+            >
+              {t('aboutPage.headerLink')}
+              <span
+                className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+                  isAboutActive
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              />
+            </Link>
+          </MagneticWrapper>
 
           {/* Separador */}
           <span className="text-white/20 select-none">|</span>
 
           {/* Blog Link */}
-          <Link
-            href="/blog"
-            className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 ${
-              isBlogActive ? 'text-primary' : 'text-white/60 hover:text-primary'
-            }`}
-          >
-            {t('blog.headerLink')}
-            <span
-              className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+          <MagneticWrapper strength={0.2}>
+            <Link
+              href="/blog"
+              className={`group relative py-2 font-mono text-sm font-bold tracking-wider transition-colors duration-200 block ${
                 isBlogActive
-                  ? 'scale-x-100'
-                  : 'scale-x-0 group-hover:scale-x-100'
+                  ? 'text-primary'
+                  : 'text-white/60 hover:text-primary'
               }`}
-            />
-          </Link>
+            >
+              {t('blog.headerLink')}
+              <span
+                className={`absolute bottom-1 left-0 right-0 h-px bg-primary transition-transform duration-200 origin-left ${
+                  isBlogActive
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              />
+            </Link>
+          </MagneticWrapper>
 
           {/* Separador */}
           <span className="text-white/20 select-none">|</span>
@@ -102,30 +113,32 @@ export function Header() {
           <div className="flex items-center gap-1 font-mono text-sm">
             {locales.map((loc, index) => (
               <div key={loc} className="flex items-center gap-1">
-                <motion.button
-                  onClick={() => handleLocaleChange(loc)}
-                  className={`relative py-2 font-bold tracking-wider transition-colors duration-200 ${
-                    locale === loc
-                      ? 'text-primary'
-                      : 'text-white/40 hover:text-white/80'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {loc.toUpperCase()}
-                  {/* Underline indicator for active locale */}
-                  {locale === loc && (
-                    <motion.div
-                      className="absolute bottom-1 left-0 right-0 h-px bg-primary"
-                      layoutId="locale-indicator"
-                      transition={{
-                        type: 'spring',
-                        stiffness: 300,
-                        damping: 25,
-                      }}
-                    />
-                  )}
-                </motion.button>
+                <MagneticWrapper strength={0.15}>
+                  <motion.button
+                    onClick={() => handleLocaleChange(loc)}
+                    className={`relative py-2 font-bold tracking-wider transition-colors duration-200 ${
+                      locale === loc
+                        ? 'text-primary'
+                        : 'text-white/40 hover:text-white/80'
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {loc.toUpperCase()}
+                    {/* Underline indicator for active locale */}
+                    {locale === loc && (
+                      <motion.div
+                        className="absolute bottom-1 left-0 right-0 h-px bg-primary"
+                        layoutId="locale-indicator"
+                        transition={{
+                          type: 'spring',
+                          stiffness: 300,
+                          damping: 25,
+                        }}
+                      />
+                    )}
+                  </motion.button>
+                </MagneticWrapper>
                 {/* Separator between locales */}
                 {index < locales.length - 1 && (
                   <span className="text-white/20 select-none">/</span>

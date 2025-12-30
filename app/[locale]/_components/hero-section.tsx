@@ -1,101 +1,90 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+
+// Componente para animar letras individualmente con rotación
+function SplitText({
+  text,
+  className,
+  style,
+  delay = 0,
+  staggerDelay = 0.03,
+}: {
+  text: string;
+  className?: string;
+  style?: React.CSSProperties;
+  delay?: number;
+  staggerDelay?: number;
+}) {
+  return (
+    <span className={className} style={style}>
+      {text.split('').map((char, i) => (
+        <motion.span
+          key={i}
+          className="inline-block"
+          initial={{
+            y: 120,
+            opacity: 0,
+            rotateX: -80,
+          }}
+          animate={{
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+          }}
+          transition={{
+            duration: 0.8,
+            delay: delay + i * staggerDelay,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          style={{ transformStyle: 'preserve-3d' }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
 
 export function HeroSection() {
   const t = useTranslations();
-  const heroRef = useRef<HTMLElement>(null);
-  const [heroReady, setHeroReady] = useState(false);
-
-  // Hero parallax - scroll horizontal
-  const { scrollYProgress: heroScrollProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const endikaX = useTransform(
-    heroScrollProgress,
-    [0, 0.1, 1],
-    ['0%', '0%', '-120%']
-  );
-  const orubeX = useTransform(
-    heroScrollProgress,
-    [0, 0.1, 1],
-    ['0%', '0%', '120%']
-  );
-
-  // Trigger floating animations after intro sequence
-  useEffect(() => {
-    const timer = setTimeout(() => setHeroReady(true), 800);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section
-      ref={heroRef}
       className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always"
+      style={{ perspective: '1000px' }}
     >
-      {/* Capa animada - texto que se mueve con scroll */}
+      {/* Capa con el texto principal */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
-          {/* ENDIKA - Reveal desde abajo */}
-          <div className={heroReady ? '' : 'overflow-hidden'}>
+          {/* ENDIKA - Split text reveal con rotación */}
+          <div className="overflow-hidden">
             <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter will-change-transform whitespace-nowrap"
+              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter whitespace-nowrap"
               style={{
                 color: 'transparent',
                 WebkitTextStroke: '2px white',
-                x: heroReady ? endikaX : 0,
               }}
-              initial={{ y: '110%' }}
-              animate={heroReady ? { y: [0, -20, 0] } : { y: 0 }}
-              transition={
-                heroReady
-                  ? {
-                      duration: 4,
-                      repeat: Number.POSITIVE_INFINITY,
-                      ease: 'easeInOut',
-                    }
-                  : {
-                      duration: 0.5,
-                      ease: [0.16, 1, 0.3, 1],
-                      delay: 0,
-                    }
-              }
             >
-              ENDIKA
+              <SplitText text="ENDIKA" delay={0.2} staggerDelay={0.04} />
             </motion.h1>
           </div>
 
-          {/* ORUBE - Reveal desde arriba */}
-          <div className={heroReady ? '' : 'overflow-hidden'}>
-            <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white will-change-transform whitespace-nowrap"
-              style={{
-                textShadow:
-                  '0 0 40px color-mix(in srgb, var(--pink) 30%, transparent)',
-                x: heroReady ? orubeX : 0,
-              }}
-              initial={{ y: '-110%' }}
-              animate={heroReady ? { y: [0, 20, 0] } : { y: 0 }}
-              transition={
-                heroReady
-                  ? {
-                      duration: 4,
-                      repeat: Number.POSITIVE_INFINITY,
-                      ease: 'easeInOut',
-                    }
-                  : {
-                      duration: 0.5,
-                      ease: [0.16, 1, 0.3, 1],
-                      delay: 0.1,
-                    }
-              }
-            >
-              ORUBE
-              <span className="inline-block w-[0.12em] h-[0.12em] bg-primary ml-[0.07em]" />
+          {/* ORUBE - Split text reveal con rotación */}
+          <div className="overflow-hidden">
+            <motion.h1 className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white whitespace-nowrap">
+              <SplitText text="ORUBE" delay={0.35} staggerDelay={0.04} />
+              <motion.span
+                className="inline-block w-[0.12em] h-[0.12em] bg-primary ml-[0.07em]"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{
+                  delay: 0.7,
+                  duration: 0.4,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              />
             </motion.h1>
           </div>
         </div>
@@ -120,7 +109,7 @@ export function HeroSection() {
             className="relative"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.4 }}
+            transition={{ duration: 0.3, delay: 0.9 }}
           >
             {/* Línea decorativa que se expande */}
             <motion.div
@@ -130,7 +119,7 @@ export function HeroSection() {
               transition={{
                 duration: 0.3,
                 ease: [0.16, 1, 0.3, 1],
-                delay: 0.35,
+                delay: 0.85,
               }}
             />
             <motion.p
@@ -140,7 +129,7 @@ export function HeroSection() {
               transition={{
                 duration: 0.4,
                 ease: [0.16, 1, 0.3, 1],
-                delay: 0.4,
+                delay: 0.9,
               }}
             >
               {t('hero.role')}
@@ -153,7 +142,7 @@ export function HeroSection() {
           className="md:hidden mt-24 pl-4 relative"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.35 }}
+          transition={{ duration: 0.3, delay: 0.85 }}
         >
           {/* Borde izquierdo animado */}
           <motion.div
@@ -163,7 +152,7 @@ export function HeroSection() {
             transition={{
               duration: 0.3,
               ease: [0.16, 1, 0.3, 1],
-              delay: 0.35,
+              delay: 0.85,
             }}
           />
           <motion.p
@@ -173,7 +162,7 @@ export function HeroSection() {
             transition={{
               duration: 0.4,
               ease: [0.16, 1, 0.3, 1],
-              delay: 0.45,
+              delay: 0.95,
             }}
           >
             TECH LEAD
@@ -191,7 +180,7 @@ export function HeroSection() {
         transition={{
           duration: 0.4,
           ease: [0.16, 1, 0.3, 1],
-          delay: 0.55,
+          delay: 1.1,
         }}
       >
         <motion.div
