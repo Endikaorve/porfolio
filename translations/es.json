@@ -264,7 +264,8 @@
     "cta": "CONOCE MI HISTORIA"
   },
   "aboutPage": {
-    "headerLink": "<EO />"
+    "headerLink": "<EO />",
+    "title": "Sobre Mí"
   },
   "blog": {
     "title": {

@@ -6,6 +6,7 @@ export { CommunitySection } from './community-section';
 export { TechSkillsSection } from './tech-skills-section';
 export { ProjectsSection } from './projects-section';
 export { AnimatedBackground } from './animated-background';
+export { AboutPageClient } from './about-page-client';
 
 // Iconos personalizados
 export { CursorIcon, PlaywrightIcon } from './icons';

@@ -264,7 +264,8 @@
     "cta": "DISCOVER MY STORY"
   },
   "aboutPage": {
-    "headerLink": "<EO />"
+    "headerLink": "<EO />",
+    "title": "About Me"
   },
   "blog": {
     "title": {
