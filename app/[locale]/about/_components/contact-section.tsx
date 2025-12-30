@@ -10,12 +10,54 @@ import { MagneticWrapper } from '@/components/magnetic-wrapper';
  *
  * Diseño minimalista centrado en el contenido:
  * título impactante + links de contacto.
+ * Con patrones de fondo decorativos para dar profundidad.
  */
 export function ContactSection() {
   const t = useTranslations();
 
   return (
     <section className="relative min-h-svh flex items-center justify-center overflow-hidden py-24">
+      {/* Background Elements */}
+      {/* Líneas diagonales decorativas */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
+        <div
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: '20%', left: '-50%' }}
+        />
+        <div
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: '40%', left: '-50%' }}
+        />
+        <div
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: '60%', left: '-50%' }}
+        />
+        <div
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: '80%', left: '-50%' }}
+        />
+      </div>
+
+      {/* Elementos técnicos en esquinas */}
+      <div className="absolute bottom-24 left-8 hidden md:block">
+        <div className="w-16 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+        <div className="w-px h-16 bg-gradient-to-b from-primary/30 to-transparent" />
+      </div>
+      <div className="absolute bottom-24 right-8 hidden md:flex flex-col items-end">
+        <div className="w-16 h-px bg-gradient-to-l from-primary/30 to-transparent" />
+        <div className="w-px h-16 bg-gradient-to-b from-primary/30 to-transparent ml-auto" />
+      </div>
+
+      {/* Círculo decorativo exterior */}
+      <motion.div
+        className="absolute w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] border border-white/[0.02] pointer-events-none"
+        style={{ borderRadius: '50%' }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: 'easeOut' }}
+      />
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           className="text-center"
