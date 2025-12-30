@@ -1,9 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { useEffect, useRef } from 'react';
 
-// Componente para animar letras individualmente con rotación
+/**
+ * Componente para animar letras individualmente con rotación 3D
+ */
 function SplitText({
   text,
   className,
@@ -47,16 +50,83 @@ function SplitText({
   );
 }
 
+/**
+ * HeroSection con parallax sutil al mouse
+ *
+ * Mejoras implementadas:
+ * - Parallax 3D muy sutil que responde al mouse (solo desktop)
+ * - El texto tiene profundidad con rotación suave
+ * - Movimiento limitado a ±2% para no distraer
+ * - Spring physics para movimiento orgánico
+ */
 export function HeroSection() {
   const t = useTranslations();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Motion values para tracking del mouse
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Springs para movimiento suave
+  const springConfig = { stiffness: 150, damping: 20 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  // Transformaciones muy sutiles (±2 grados rotación, ±10px translate)
+  const rotateX = useTransform(smoothY, [-0.5, 0.5], [2, -2]);
+  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-2, 2]);
+  const translateX = useTransform(smoothX, [-0.5, 0.5], [-10, 10]);
+  const translateY = useTransform(smoothY, [-0.5, 0.5], [-10, 10]);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      // Normalizar posición del mouse a rango -0.5 a 0.5
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    const handleMouseLeave = () => {
+      mouseX.set(0);
+      mouseY.set(0);
+    };
+
+    const section = sectionRef.current;
+    if (section) {
+      section.addEventListener('mousemove', handleMouseMove);
+      section.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      if (section) {
+        section.removeEventListener('mousemove', handleMouseMove);
+        section.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, [mouseX, mouseY]);
 
   return (
     <section
+      ref={sectionRef}
       className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always"
       style={{ perspective: '1000px' }}
     >
-      {/* Capa con el texto principal */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      {/* Capa con el texto principal - con parallax */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        style={{
+          rotateX,
+          rotateY,
+          translateX,
+          translateY,
+          transformStyle: 'preserve-3d',
+        }}
+      >
         <div className="w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
           {/* ENDIKA - Split text reveal con rotación */}
           <div className="overflow-hidden">
@@ -88,9 +158,9 @@ export function HeroSection() {
             </motion.h1>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Capa estática - elementos de UI */}
+      {/* Capa estática - elementos de UI (no se mueven con parallax) */}
       <div className="relative z-10 w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
         {/* Placeholder para mantener espacio */}
         <div className="relative" aria-hidden="true">
@@ -172,7 +242,7 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator - aparece al final de la secuencia */}
+      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
         initial={{ opacity: 0, y: 20 }}
@@ -184,8 +254,8 @@ export function HeroSection() {
         }}
       >
         <motion.div
-          className="w-px h-20 bg-gradient-to-b from-primary to-transparent"
-          animate={{ y: [0, 10, 0] }}
+          className="w-px h-16 bg-gradient-to-b from-primary/60 to-transparent"
+          animate={{ y: [0, 8, 0] }}
           transition={{
             duration: 2,
             repeat: Number.POSITIVE_INFINITY,

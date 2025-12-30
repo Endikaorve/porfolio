@@ -260,7 +260,9 @@
     "downloadShort": "CV"
   },
   "me": {
-    "description": "Software. Equipos. Producto.",
+    "headline": "LIDERO EQUIPOS QUE CONSTRUYEN SOFTWARE QUE IMPORTA",
+    "subheadline": "Tech Lead & Engineering Manager",
+    "context": "Arquitectura · Extreme Programming · Visión de Producto",
     "cta": "CONOCE MI HISTORIA"
   },
   "aboutPage": {
