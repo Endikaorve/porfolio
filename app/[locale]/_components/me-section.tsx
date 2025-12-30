@@ -3,125 +3,117 @@
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
 
 /**
- * MeSection - Rediseñada con storytelling real
+ * MeSection - Rediseñada con foto y tono personal
  *
- * Justificación del rediseño:
- * - Las palabras sueltas (SOFTWARE, EQUIPOS, PRODUCTO) no contaban una historia
- * - Ahora hay una frase de impacto que define quién eres y qué haces
- * - La composición tipográfica crea tensión visual con palabras clave destacadas
- * - El CTA es más prominente y accesible
- * - Sin scroll indicator (estaba duplicado con Hero)
+ * Filosofía del diseño:
+ * - Humanizar con la foto, crear conexión inmediata
+ * - Headline reflexivo: mostrar filosofía, no declarar liderazgo
+ * - Estructura horizontal más íntima (foto + texto)
+ * - CTA "Conoce mi historia" invita a explorar sin vender
  */
 export function MeSection() {
   const t = useTranslations();
 
-  // Palabras de la headline para animar individualmente
-  const headlineWords = t('me.headline').split(' ');
-
-  // Palabras clave que queremos destacar en accent color
-  const accentWords = [
-    'LIDERO',
-    'LEAD',
-    'EQUIPOS',
-    'TEAMS',
-    'IMPORTA',
-    'MATTERS',
-  ];
-
   return (
     <section className="relative h-svh flex items-center overflow-hidden snap-start snap-always">
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 relative">
-        {/* Headline principal - composición tipográfica */}
-        <div className="relative">
-          {/* Headline con palabras animadas individualmente */}
-          <motion.h2
-            className="text-[8vw] md:text-[5.5vw] lg:text-[4.5vw] font-black leading-[1.1] tracking-tight max-w-5xl"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24">
+          {/* Foto con tratamiento visual */}
+          <motion.div
+            className="relative flex-shrink-0"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            {headlineWords.map((word, i) => (
-              <motion.span
-                key={i}
-                className={`inline-block mr-[0.3em] ${
-                  accentWords.includes(word.toUpperCase())
-                    ? 'text-primary'
-                    : 'text-white'
-                }`}
-                initial={{ y: 40, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
+            {/* Contenedor de la foto con efecto */}
+            <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
+              {/* Borde decorativo offset */}
+              <motion.div
+                className="absolute -inset-2 border border-primary/30"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              />
+
+              {/* Foto */}
+              <div className="relative w-full h-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                <Image
+                  src="/endika.jpg"
+                  alt="Endika Orube"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+
+              {/* Punto decorativo */}
+              <motion.div
+                className="absolute -bottom-3 -right-3 w-6 h-6 bg-primary"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{
-                  duration: 0.6,
-                  delay: 0.1 + i * 0.05,
+                  delay: 0.5,
+                  duration: 0.3,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.h2>
-
-          {/* Subheadline y contexto */}
-          <motion.div
-            className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {/* Línea decorativa horizontal */}
-            <motion.div
-              className="w-16 h-px bg-primary hidden md:block"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.4 }}
-            />
-
-            <div className="flex flex-col gap-2">
-              <span className="text-white/80 text-sm md:text-base font-mono tracking-wider">
-                {t('me.subheadline')}
-              </span>
-              <span className="text-white/40 text-xs md:text-sm font-mono tracking-widest">
-                {t('me.context')}
-              </span>
+              />
             </div>
           </motion.div>
-        </div>
 
-        {/* CTA prominente */}
-        <motion.div
-          className="mt-16 md:mt-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7, duration: 0.5 }}
-        >
-          <Link href="/about" className="group inline-flex items-center gap-4">
-            {/* Botón con borde que se rellena en hover */}
-            <span className="relative px-6 py-3 border border-primary text-primary font-mono text-sm tracking-wider overflow-hidden group-hover:text-white transition-colors duration-300">
-              {/* Background fill en hover - CSS puro */}
-              <span className="absolute inset-0 bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-              <span className="relative z-10">{t('me.cta')}</span>
-            </span>
-
-            {/* Flecha animada */}
-            <motion.span
-              className="text-primary text-xl"
-              animate={{ x: [0, 8, 0] }}
+          {/* Contenido textual */}
+          <div className="flex-1 text-center md:text-left">
+            {/* Headline - las 3 palabras core */}
+            <motion.h2
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
+                duration: 0.6,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
               }}
             >
-              →
-            </motion.span>
-          </Link>
-        </motion.div>
+              {t('me.headline')}
+            </motion.h2>
+
+            {/* CTA */}
+            <motion.div
+              className="mt-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              <Link
+                href="/about"
+                className="group inline-flex items-center gap-4"
+              >
+                <span className="relative px-6 py-3 border border-primary text-primary font-mono text-sm tracking-wider overflow-hidden group-hover:text-white transition-colors duration-300">
+                  <span className="absolute inset-0 bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  <span className="relative z-10">{t('me.cta')}</span>
+                </span>
+                <motion.span
+                  className="text-primary text-xl"
+                  animate={{ x: [0, 8, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                >
+                  →
+                </motion.span>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
