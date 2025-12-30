@@ -235,7 +235,7 @@ export function HeroSection() {
               delay: 0.95,
             }}
           >
-            TECH LEAD
+            TECH LEAD & MANAGER
             <br />
             PRODUCT ENGINEER
           </motion.p>
