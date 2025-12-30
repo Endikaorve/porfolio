@@ -21,7 +21,7 @@ export function MeSection() {
         >
           <span
             className="text-[15vw] md:text-[12vw] font-black leading-none tracking-tighter text-transparent block"
-            style={{ WebkitTextStroke: '1px rgba(255,255,255,0.15)' }}
+            style={{ WebkitTextStroke: '1px rgba(255,255,255,0.25)' }}
           >
             SOFTWARE
           </span>
@@ -84,16 +84,17 @@ export function MeSection() {
         </motion.div>
       </div>
 
-      {/* Indicador de scroll - esquina inferior izquierda */}
+      {/* Indicador de scroll - centrado como en Hero */}
       <motion.div
-        className="absolute bottom-12 left-8 md:left-12"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.8 }}
       >
         <motion.div
-          className="w-px h-16 bg-gradient-to-b from-white/20 to-transparent"
-          animate={{ scaleY: [1, 0.6, 1] }}
+          className="w-px h-20 bg-gradient-to-b from-primary to-transparent"
+          animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         />
       </motion.div>
