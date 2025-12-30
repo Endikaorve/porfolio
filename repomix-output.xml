@@ -50,7 +50,6 @@ The content is organized as follows:
 app/
   [locale]/
     _components/
-      contact-section.tsx
       hero-section.tsx
       index.ts
       me-section.tsx
@@ -60,6 +59,7 @@ app/
         about-section.tsx
         animated-background.tsx
         community-section.tsx
+        contact-section.tsx
         experience-section.tsx
         expertise-section.tsx
         icons.tsx
@@ -536,43 +536,129 @@ Siempre que trabajes en este proyecto:
 **Recuerda:** Cada línea de código debe reflejar el nivel de excelencia técnica y diseño que caracteriza a este portfolio.
 </file>
 
-<file path="app/[locale]/about/_components/about-page-client.tsx">
+<file path="app/[locale]/about/_components/contact-section.tsx">
 'use client';
 
-import { useRef } from 'react';
-import { useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { ScrambleText } from '@/components/scramble-text';
+import { MagneticWrapper } from '@/components/magnetic-wrapper';
 
-import {
-  AnimatedBackground,
-  AboutSection,
-  ExpertiseSection,
-  ExperienceSection,
-  CommunitySection,
-  TechSkillsSection,
-  ProjectsSection,
-} from './index';
-
-export function AboutPageClient() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll();
-
-  // Background parallax
-  const backgroundX = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+/**
+ * ContactSection - Sección de contacto
+ *
+ * Diseño minimalista centrado en el contenido:
+ * título impactante + links de contacto.
+ */
+export function ContactSection() {
+  const t = useTranslations();
 
   return (
-    <main ref={containerRef} className="relative">
-      {/* Fondo animado con grid distorsionado */}
-      <AnimatedBackground backgroundX={backgroundX} backgroundY={backgroundY} />
+    <section className="relative min-h-svh flex items-center justify-center overflow-hidden py-24">
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-[12vw] md:text-[10vw] font-black leading-none mb-12">
+            <motion.span
+              className="text-white block"
+              initial={{ y: 60, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {t('contact.title.line1')}
+            </motion.span>
+            <motion.span
+              className="text-transparent block"
+              style={{
+                WebkitTextStroke: '2px var(--pink)',
+              }}
+              initial={{ y: 60, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              {t('contact.title.line2')}
+            </motion.span>
+          </h2>
 
-      {/* Secciones */}
-      <AboutSection />
-      <ExpertiseSection />
-      <ExperienceSection />
-      <CommunitySection />
-      <TechSkillsSection />
-      <ProjectsSection />
-    </main>
+          <motion.div
+            className="flex flex-col md:flex-row gap-8 justify-center items-center mt-16 md:mt-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            {/* Email con efecto scramble */}
+            <MagneticWrapper strength={0.15}>
+              <a href="mailto:endikaorve@gmail.com" className="group block">
+                <ScrambleText
+                  text="endikaorve@gmail.com"
+                  className="text-white text-xl md:text-2xl group-hover:text-primary transition-colors duration-300"
+                />
+                <span className="block w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 mt-1" />
+              </a>
+            </MagneticWrapper>
+
+            <span className="text-white/20 text-4xl hidden md:block">/</span>
+
+            <div className="flex gap-6">
+              <MagneticWrapper strength={0.2}>
+                <motion.a
+                  href="https://www.linkedin.com/in/endikaorube/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-lg font-mono hover:text-primary transition-colors block"
+                  whileHover={{ y: -5 }}
+                >
+                  LINKEDIN
+                </motion.a>
+              </MagneticWrapper>
+
+              <MagneticWrapper strength={0.2}>
+                <motion.a
+                  href="https://github.com/Endikaorve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-lg font-mono hover:text-primary transition-colors block"
+                  whileHover={{ y: -5 }}
+                >
+                  {t('contact.github')}
+                </motion.a>
+              </MagneticWrapper>
+
+              <MagneticWrapper strength={0.2}>
+                <motion.a
+                  href="/Endika Orube Vega - CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-lg font-mono hover:text-primary transition-colors block"
+                  whileHover={{ y: -5 }}
+                >
+                  {t('cv.downloadShort')}
+                </motion.a>
+              </MagneticWrapper>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Footer minimalista */}
+      <div className="absolute bottom-8 left-0 right-0">
+        <div className="container mx-auto px-4 flex justify-between items-center text-white/40 text-sm font-mono">
+          <span>{t('contact.copyright')}</span>
+          <span>{t('contact.location')}</span>
+        </div>
+      </div>
+    </section>
   );
 }
 </file>
@@ -983,11 +1069,47 @@ Del mismo modo, soy una persona muy pragmática. Entiendo que hay momentos donde
 También me encanta ir a conferencias de software, especialmente las que cuentan con espacios "open".
 </file>
 
-<file path="app/[locale]/_components/index.ts">
-// Secciones de la Home
-export { HeroSection } from './hero-section';
-export { ContactSection } from './contact-section';
-export { MeSection } from './me-section';
+<file path="app/[locale]/about/_components/about-page-client.tsx">
+'use client';
+
+import { useRef } from 'react';
+import { useScroll, useTransform } from 'framer-motion';
+
+import {
+  AnimatedBackground,
+  AboutSection,
+  ExpertiseSection,
+  ExperienceSection,
+  CommunitySection,
+  TechSkillsSection,
+  ProjectsSection,
+  ContactSection,
+} from './index';
+
+export function AboutPageClient() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+
+  // Background parallax
+  const backgroundX = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+
+  return (
+    <main ref={containerRef} className="relative">
+      {/* Fondo animado con grid distorsionado */}
+      <AnimatedBackground backgroundX={backgroundX} backgroundY={backgroundY} />
+
+      {/* Secciones */}
+      <AboutSection />
+      <ExpertiseSection />
+      <ExperienceSection />
+      <CommunitySection />
+      <TechSkillsSection />
+      <ProjectsSection />
+      <ContactSection />
+    </main>
+  );
+}
 </file>
 
 <file path="app/[locale]/about/_components/animated-background.tsx">
@@ -1017,125 +1139,6 @@ export function AnimatedBackground({
         y: backgroundY,
       }}
     />
-  );
-}
-</file>
-
-<file path="app/[locale]/about/_components/community-section.tsx">
-'use client';
-
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-
-export function CommunitySection() {
-  const t = useTranslations();
-
-  return (
-    <section className="relative py-32">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
-            {t('community.title.line1')}
-            <br />
-            <span className="text-primary">{t('community.title.line2')}</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 overflow-hidden">
-          {/* Profesor */}
-          <motion.div
-            className="relative group overflow-visible"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute -inset-4 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
-            <div className="relative border-l-4 border-primary pl-8 py-4">
-              <span className="text-white/40 font-mono text-sm">
-                {t('community.teaching.period')}
-              </span>
-              <h3 className="text-3xl font-black text-white mt-2 mb-3">
-                {t('community.teaching.title')}
-              </h3>
-              <p className="text-white/70 mb-4">
-                {t('community.teaching.subtitle')}
-              </p>
-              <p className="text-white/60 leading-relaxed mb-6">
-                {t('community.teaching.description')}
-              </p>
-
-              {/* Temas del curso */}
-              <div className="space-y-3 mt-6">
-                <div className="border-l-2 border-primary/40 pl-4 py-1">
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {t('community.teaching.topics.engineering')}
-                  </p>
-                </div>
-                <div className="border-l-2 border-primary/40 pl-4 py-1">
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {t('community.teaching.topics.architecture')}
-                  </p>
-                </div>
-                <div className="border-l-2 border-primary/40 pl-4 py-1">
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {t('community.teaching.topics.culture')}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Charlas */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
-              <div className="relative border-l-4 border-white pl-8 py-4">
-                <span className="text-white/40 font-mono text-sm">
-                  {t('community.talks.vibe.year')}
-                </span>
-                <h3 className="text-2xl font-black text-white mt-2 mb-2">
-                  {t('community.talks.vibe.title')}
-                </h3>
-                <p className="text-white/60 text-sm mb-2">
-                  {t('community.talks.vibe.event')}
-                </p>
-                <p className="text-white/50 leading-relaxed text-sm">
-                  {t('community.talks.vibe.description')}
-                </p>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
-              <div className="relative border-l-4 border-white pl-8 py-4">
-                <span className="text-white/40 font-mono text-sm">
-                  {t('community.talks.rendering.year')}
-                </span>
-                <h3 className="text-2xl font-black text-white mt-2 mb-2">
-                  {t('community.talks.rendering.title')}
-                </h3>
-                <p className="text-white/60 text-sm mb-2">
-                  {t('community.talks.rendering.event')}
-                </p>
-                <p className="text-white/50 leading-relaxed text-sm">
-                  {t('community.talks.rendering.description')}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
   );
 }
 </file>
@@ -3318,22 +3321,130 @@ export default defineConfig({
 });
 </file>
 
-<file path="app/[locale]/about/_components/index.ts">
-// Componentes de la página About
-export { AboutSection } from './about-section';
-export { ExpertiseSection } from './expertise-section';
-export { ExperienceSection } from './experience-section';
-export { CommunitySection } from './community-section';
-export { TechSkillsSection } from './tech-skills-section';
-export { ProjectsSection } from './projects-section';
-export { AnimatedBackground } from './animated-background';
-export { AboutPageClient } from './about-page-client';
+<file path="app/[locale]/_components/index.ts">
+// Secciones de la Home
+export { HeroSection } from './hero-section';
+export { MeSection } from './me-section';
+</file>
 
-// Iconos personalizados
-export { CursorIcon, PlaywrightIcon } from './icons';
+<file path="app/[locale]/about/_components/community-section.tsx">
+'use client';
 
-// Datos de configuración
-export { techStack } from './tech-stack';
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+
+export function CommunitySection() {
+  const t = useTranslations();
+
+  return (
+    <section className="relative py-32">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
+            {t('community.title.line1')}
+            <br />
+            <span className="text-primary">{t('community.title.line2')}</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 overflow-hidden">
+          {/* Profesor */}
+          <motion.div
+            className="relative group overflow-visible"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="absolute -inset-4 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
+            <div className="relative border-l-4 border-primary pl-8 py-4">
+              <span className="text-white/40 font-mono text-sm">
+                {t('community.teaching.period')}
+              </span>
+              <h3 className="text-3xl font-black text-white mt-2 mb-3">
+                {t('community.teaching.title')}
+              </h3>
+              <p className="text-white/70 mb-4">
+                <span className="text-primary">{t('community.teaching.subtitleHighlight')}</span>
+                {t('community.teaching.subtitleRest')}
+              </p>
+              <p className="text-white/60 leading-relaxed mb-6">
+                {t('community.teaching.description')}
+              </p>
+
+              {/* Temas del curso */}
+              <div className="space-y-3 mt-6">
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {t('community.teaching.topics.engineering')}
+                  </p>
+                </div>
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {t('community.teaching.topics.architecture')}
+                  </p>
+                </div>
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {t('community.teaching.topics.culture')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Charlas */}
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
+              <div className="relative border-l-4 border-white pl-8 py-4">
+                <span className="text-white/40 font-mono text-sm">
+                  {t('community.talks.vibe.year')}
+                </span>
+                <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                  {t('community.talks.vibe.title')}
+                </h3>
+                <p className="text-primary text-sm mb-2">
+                  {t('community.talks.vibe.event')}
+                </p>
+                <p className="text-white/50 leading-relaxed text-sm">
+                  {t('community.talks.vibe.description')}
+                </p>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
+              <div className="relative border-l-4 border-white pl-8 py-4">
+                <span className="text-white/40 font-mono text-sm">
+                  {t('community.talks.rendering.year')}
+                </span>
+                <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                  {t('community.talks.rendering.title')}
+                </h3>
+                <p className="text-primary text-sm mb-2">
+                  {t('community.talks.rendering.event')}
+                </p>
+                <p className="text-white/50 leading-relaxed text-sm">
+                  {t('community.talks.rendering.description')}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
 </file>
 
 <file path="app/[locale]/about/_components/projects-section.tsx">
@@ -4651,168 +4762,23 @@ More text
 });
 </file>
 
-<file path="app/[locale]/about/_components/about-section.tsx">
-'use client';
+<file path="app/[locale]/about/_components/index.ts">
+// Componentes de la página About
+export { AboutSection } from './about-section';
+export { ExpertiseSection } from './expertise-section';
+export { ExperienceSection } from './experience-section';
+export { CommunitySection } from './community-section';
+export { TechSkillsSection } from './tech-skills-section';
+export { ProjectsSection } from './projects-section';
+export { ContactSection } from './contact-section';
+export { AnimatedBackground } from './animated-background';
+export { AboutPageClient } from './about-page-client';
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { Link } from '@/i18n/navigation';
-import { Download } from 'lucide-react';
-import { MagneticWrapper } from '@/components/magnetic-wrapper';
+// Iconos personalizados
+export { CursorIcon, PlaywrightIcon } from './icons';
 
-export function AboutSection() {
-  const t = useTranslations();
-
-  return (
-    <section className="relative py-32">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-12 gap-4 md:gap-8 lg:gap-12">
-          {/* Foto - Mobile first, luego reposicionada en desktop */}
-          <motion.div
-            className="col-span-12 md:col-span-5 md:row-span-2 relative order-first md:order-none"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative aspect-square max-w-[280px] md:max-w-none mx-auto md:mx-0">
-              {/* Marco exterior decorativo */}
-              <div className="absolute -inset-3 md:-inset-4 border border-primary/20" />
-
-              {/* Contenedor de imagen con overlay */}
-              <div className="relative w-full h-full overflow-hidden group">
-                {/* Imagen */}
-                <Image
-                  src="/endika.jpg"
-                  alt="Endika Orube - Tech Lead & Product Engineer especializado en React, Next.js y arquitectura frontend en Pamplona, Navarra"
-                  width={500}
-                  height={500}
-                  priority
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
-
-                {/* Overlay gradiente rosa */}
-                <div
-                  className="absolute inset-0 mix-blend-multiply opacity-30 group-hover:opacity-0 transition-opacity duration-500"
-                  style={{
-                    background:
-                      'linear-gradient(135deg, color-mix(in srgb, var(--pink) 40%, transparent) 0%, transparent 60%)',
-                  }}
-                />
-
-                {/* Línea diagonal decorativa */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <div
-                    className="absolute w-[200%] h-px bg-primary/40 -rotate-45"
-                    style={{ top: '20%', left: '-50%' }}
-                  />
-                </div>
-
-                {/* Borde interior */}
-                <div className="absolute inset-0 border border-white/10" />
-              </div>
-
-              {/* Esquinas decorativas */}
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-l-2 border-primary" />
-              <div className="absolute -bottom-3 -right-3 md:-bottom-4 md:-right-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-r-2 border-primary" />
-
-              {/* Indicador de hover - solo desktop */}
-              <div className="hidden md:block absolute -right-12 top-1/2 -translate-y-1/2">
-                <div className="w-8 h-px bg-primary/30" />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Título */}
-          <motion.div
-            className="col-span-12 md:col-span-7 relative mt-8 md:mt-0"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative z-10">
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary mb-8 leading-none">
-                {t('about.title.line1')}
-                <br />
-                {t('about.title.line2')}
-                <br />
-                <span className="text-white">{t('about.title.line3')}</span>
-              </h2>
-            </div>
-          </motion.div>
-
-          {/* Descripción y stats */}
-          <motion.div
-            className="col-span-12 md:col-span-7 flex items-start"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="space-y-6">
-              <p className="text-white text-lg md:text-xl leading-relaxed">
-                {t('about.description1')}
-              </p>
-              <p className="text-white/60 text-base md:text-lg leading-relaxed">
-                {t('about.description2')}
-              </p>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2">
-                {/* CTA al Blog */}
-                <MagneticWrapper strength={0.15}>
-                  <Link
-                    href="/blog"
-                    className="group inline-flex items-center gap-2 text-primary hover:text-white transition-colors duration-200 font-bold text-lg"
-                  >
-                    {t('blog.ctaFromAbout')}
-                  </Link>
-                </MagneticWrapper>
-
-                {/* CTA CV */}
-                <MagneticWrapper strength={0.15}>
-                  <motion.a
-                    href="/Endika Orube Vega - CV.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-bold text-lg"
-                    whileHover={{ x: 3 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                  >
-                    <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
-                    {t('cv.download')}
-                  </motion.a>
-                </MagneticWrapper>
-              </div>
-
-              {/* Stats */}
-              <div className="flex gap-4 pt-4">
-                <div className="border-l-4 border-primary pl-4">
-                  <span className="text-2xl md:text-3xl font-black text-white">
-                    {t('about.stats.techLead')}
-                  </span>
-                  <p className="text-white/60 text-sm">
-                    {t('about.stats.engineers')}
-                  </p>
-                </div>
-                <div className="border-l-4 border-white pl-4">
-                  <span className="text-2xl md:text-3xl font-black text-primary">
-                    {t('about.stats.years')}
-                  </span>
-                  <p className="text-white/60 text-sm">
-                    {t('about.stats.productEng')}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
+// Datos de configuración
+export { techStack } from './tech-stack';
 </file>
 
 <file path="app/[locale]/blog/[slug]/page.tsx">
@@ -5037,6 +5003,178 @@ I don't have a publishing schedule. I'm not going to promise you a post every we
 ---
 
 If you've made it this far, thanks for stopping by. This is just getting started.
+</file>
+
+<file path="app/[locale]/about/_components/about-section.tsx">
+'use client';
+
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
+import { Download } from 'lucide-react';
+import { MagneticWrapper } from '@/components/magnetic-wrapper';
+
+export function AboutSection() {
+  const t = useTranslations();
+
+  return (
+    <section className="relative py-32">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-12 gap-4 md:gap-8 lg:gap-12">
+          {/* Foto - Mobile first, luego reposicionada en desktop */}
+          <motion.div
+            className="col-span-12 md:col-span-5 md:row-span-2 relative order-first md:order-none"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative aspect-square max-w-[280px] md:max-w-none mx-auto md:mx-0">
+              {/* Marco exterior decorativo */}
+              <div className="absolute -inset-3 md:-inset-4 border border-primary/20" />
+
+              {/* Contenedor de imagen con overlay */}
+              <div className="relative w-full h-full overflow-hidden group">
+                {/* Imagen */}
+                <Image
+                  src="/endika.jpg"
+                  alt="Endika Orube - Tech Lead & Product Engineer especializado en React, Next.js y arquitectura frontend en Pamplona, Navarra"
+                  width={500}
+                  height={500}
+                  priority
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+
+                {/* Overlay gradiente rosa */}
+                <div
+                  className="absolute inset-0 mix-blend-multiply opacity-30 group-hover:opacity-0 transition-opacity duration-500"
+                  style={{
+                    background:
+                      'linear-gradient(135deg, color-mix(in srgb, var(--pink) 40%, transparent) 0%, transparent 60%)',
+                  }}
+                />
+
+                {/* Línea diagonal decorativa */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div
+                    className="absolute w-[200%] h-px bg-primary/40 -rotate-45"
+                    style={{ top: '20%', left: '-50%' }}
+                  />
+                </div>
+
+                {/* Borde interior */}
+                <div className="absolute inset-0 border border-white/10" />
+              </div>
+
+              {/* Esquinas decorativas */}
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-l-2 border-primary" />
+              <div className="absolute -bottom-3 -right-3 md:-bottom-4 md:-right-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-r-2 border-primary" />
+
+              {/* Indicador de hover - solo desktop */}
+              <div className="hidden md:block absolute -right-12 top-1/2 -translate-y-1/2">
+                <div className="w-8 h-px bg-primary/30" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Título */}
+          <motion.div
+            className="col-span-12 md:col-span-7 relative mt-8 md:mt-0"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative z-10">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary mb-8 leading-none">
+                {t('about.title.line1')}
+                <br />
+                {t('about.title.line2')}
+                <br />
+                <span className="text-white">{t('about.title.line3')}</span>
+              </h2>
+            </div>
+          </motion.div>
+
+          {/* Descripción y stats */}
+          <motion.div
+            className="col-span-12 md:col-span-7 flex items-start"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="space-y-6">
+              <p className="text-white text-lg md:text-xl leading-relaxed">
+                {t('about.description1')}
+              </p>
+              <p className="text-white/60 text-base md:text-lg leading-relaxed">
+                {t('about.description2')}
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2">
+                {/* CTA al Blog */}
+                <MagneticWrapper strength={0.15}>
+                  <Link
+                    href="/blog"
+                    className="group inline-flex items-center gap-2 text-primary hover:text-white transition-colors duration-200 font-bold text-lg"
+                  >
+                    {t('blog.ctaFromAbout')}
+                  </Link>
+                </MagneticWrapper>
+
+                {/* CTA CV */}
+                <MagneticWrapper strength={0.15}>
+                  <motion.a
+                    href="/Endika Orube Vega - CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-white/60 hover:text-primary transition-colors duration-200 font-bold text-lg"
+                    whileHover={{ x: 3 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                  >
+                    <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
+                    {t('cv.download')}
+                  </motion.a>
+                </MagneticWrapper>
+              </div>
+
+              {/* Stats */}
+              <div className="flex flex-wrap gap-4 pt-4">
+                <div className="border-l-4 border-primary pl-4">
+                  <span className="text-2xl md:text-3xl font-black text-white">
+                    {t('about.stats.techLead')}
+                  </span>
+                  <p className="text-white/60 text-sm">
+                    {t('about.stats.engineers')}
+                  </p>
+                </div>
+                <div className="border-l-4 border-primary pl-4">
+                  <span className="text-2xl md:text-3xl font-black text-white">
+                    {t('about.stats.manager')}
+                  </span>
+                  <p className="text-white/60 text-sm">
+                    {t('about.stats.managerEngineers')}
+                  </p>
+                </div>
+                <div className="border-l-4 border-white pl-4">
+                  <span className="text-2xl md:text-3xl font-black text-primary">
+                    {t('about.stats.years')}
+                  </span>
+                  <p className="text-white/60 text-sm">
+                    {t('about.stats.productEng')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
 </file>
 
 <file path="app/globals.css">
@@ -5398,133 +5536,6 @@ If you've made it this far, thanks for stopping by. This is just getting started
 }
 </file>
 
-<file path="app/[locale]/_components/contact-section.tsx">
-'use client';
-
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { ScrambleText } from '@/components/scramble-text';
-import { MagneticWrapper } from '@/components/magnetic-wrapper';
-
-/**
- * ContactSection - Simplificada
- *
- * Eliminada decoración vacía (líneas, círculos, números).
- * El foco está en el contenido: título impactante + links de contacto.
- */
-export function ContactSection() {
-  const t = useTranslations();
-
-  return (
-    <section className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always">
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-[12vw] md:text-[10vw] font-black leading-none mb-12">
-            <motion.span
-              className="text-white block"
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {t('contact.title.line1')}
-            </motion.span>
-            <motion.span
-              className="text-transparent block"
-              style={{
-                WebkitTextStroke: '2px var(--pink)',
-              }}
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-            >
-              {t('contact.title.line2')}
-            </motion.span>
-          </h2>
-
-          <motion.div
-            className="flex flex-col md:flex-row gap-8 justify-center items-center mt-16 md:mt-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-          >
-            {/* Email con efecto scramble */}
-            <MagneticWrapper strength={0.15}>
-              <a href="mailto:endikaorve@gmail.com" className="group block">
-                <ScrambleText
-                  text="endikaorve@gmail.com"
-                  className="text-white text-xl md:text-2xl group-hover:text-primary transition-colors duration-300"
-                />
-                <span className="block w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 mt-1" />
-              </a>
-            </MagneticWrapper>
-
-            <span className="text-white/20 text-4xl hidden md:block">/</span>
-
-            <div className="flex gap-6">
-              <MagneticWrapper strength={0.2}>
-                <motion.a
-                  href="https://www.linkedin.com/in/endikaorube/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-lg font-mono hover:text-primary transition-colors block"
-                  whileHover={{ y: -5 }}
-                >
-                  LINKEDIN
-                </motion.a>
-              </MagneticWrapper>
-
-              <MagneticWrapper strength={0.2}>
-                <motion.a
-                  href="https://github.com/Endikaorve"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-lg font-mono hover:text-primary transition-colors block"
-                  whileHover={{ y: -5 }}
-                >
-                  {t('contact.github')}
-                </motion.a>
-              </MagneticWrapper>
-
-              <MagneticWrapper strength={0.2}>
-                <motion.a
-                  href="/Endika Orube Vega - CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-lg font-mono hover:text-primary transition-colors block"
-                  whileHover={{ y: -5 }}
-                >
-                  {t('cv.downloadShort')}
-                </motion.a>
-              </MagneticWrapper>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Footer minimalista */}
-      <div className="absolute bottom-8 left-0 right-0">
-        <div className="container mx-auto px-4 flex justify-between items-center text-white/40 text-sm font-mono">
-          <span>{t('contact.copyright')}</span>
-          <span>{t('contact.location')}</span>
-        </div>
-      </div>
-    </section>
-  );
-}
-</file>
-
 <file path="app/[locale]/_components/hero-section.tsx">
 'use client';
 
@@ -5864,137 +5875,6 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
 }
 </file>
 
-<file path="app/[locale]/_components/me-section.tsx">
-'use client';
-
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
-
-/**
- * MeSection - Rediseñada con storytelling real
- *
- * Justificación del rediseño:
- * - Las palabras sueltas (SOFTWARE, EQUIPOS, PRODUCTO) no contaban una historia
- * - Ahora hay una frase de impacto que define quién eres y qué haces
- * - La composición tipográfica crea tensión visual con palabras clave destacadas
- * - El CTA es más prominente y accesible
- * - Sin scroll indicator (estaba duplicado con Hero)
- */
-export function MeSection() {
-  const t = useTranslations();
-
-  // Palabras de la headline para animar individualmente
-  const headlineWords = t('me.headline').split(' ');
-
-  // Palabras clave que queremos destacar en accent color
-  const accentWords = [
-    'LIDERO',
-    'LEAD',
-    'EQUIPOS',
-    'TEAMS',
-    'IMPORTA',
-    'MATTERS',
-  ];
-
-  return (
-    <section className="relative h-svh flex items-center overflow-hidden snap-start snap-always">
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 relative">
-        {/* Headline principal - composición tipográfica */}
-        <div className="relative">
-          {/* Headline con palabras animadas individualmente */}
-          <motion.h2
-            className="text-[8vw] md:text-[5.5vw] lg:text-[4.5vw] font-black leading-[1.1] tracking-tight max-w-5xl"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            {headlineWords.map((word, i) => (
-              <motion.span
-                key={i}
-                className={`inline-block mr-[0.3em] ${
-                  accentWords.includes(word.toUpperCase())
-                    ? 'text-primary'
-                    : 'text-white'
-                }`}
-                initial={{ y: 40, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.1 + i * 0.05,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.h2>
-
-          {/* Subheadline y contexto */}
-          <motion.div
-            className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {/* Línea decorativa horizontal */}
-            <motion.div
-              className="w-16 h-px bg-primary hidden md:block"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.4 }}
-            />
-
-            <div className="flex flex-col gap-2">
-              <span className="text-white/80 text-sm md:text-base font-mono tracking-wider">
-                {t('me.subheadline')}
-              </span>
-              <span className="text-white/40 text-xs md:text-sm font-mono tracking-widest">
-                {t('me.context')}
-              </span>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* CTA prominente */}
-        <motion.div
-          className="mt-16 md:mt-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7, duration: 0.5 }}
-        >
-          <Link href="/about" className="group inline-flex items-center gap-4">
-            {/* Botón con borde que se rellena en hover */}
-            <span className="relative px-6 py-3 border border-primary text-primary font-mono text-sm tracking-wider overflow-hidden group-hover:text-white transition-colors duration-300">
-              {/* Background fill en hover - CSS puro */}
-              <span className="absolute inset-0 bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-              <span className="relative z-10">{t('me.cta')}</span>
-            </span>
-
-            {/* Flecha animada */}
-            <motion.span
-              className="text-primary text-xl"
-              animate={{ x: [0, 8, 0] }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            >
-              →
-            </motion.span>
-          </Link>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-</file>
-
 <file path="app/[locale]/layout.tsx">
 import type React from 'react';
 import type { Metadata } from 'next';
@@ -6310,6 +6190,197 @@ export function Header() {
 }
 </file>
 
+<file path="app/[locale]/_components/me-section.tsx">
+'use client';
+
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
+import { MagneticWrapper } from '@/components/magnetic-wrapper';
+
+/**
+ * MeSection - Rediseñada con foto y tono personal
+ *
+ * Filosofía del diseño:
+ * - Humanizar con la foto, crear conexión inmediata
+ * - Headline reflexivo: mostrar filosofía, no declarar liderazgo
+ * - Estructura horizontal más íntima (foto + texto)
+ * - CTA "Conoce mi historia" invita a explorar sin vender
+ * - Links de contacto sutiles para acceso directo
+ */
+
+const contactLinks = [
+  {
+    label: 'Email',
+    href: 'mailto:endikaorve@gmail.com',
+    external: false,
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/endikaorube/',
+    external: true,
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/Endikaorve',
+    external: true,
+  },
+];
+
+export function MeSection() {
+  const t = useTranslations();
+
+  return (
+    <section className="relative h-svh flex items-center overflow-hidden snap-start snap-always">
+      <div className="w-full max-w-7xl min-[2000px]:max-w-[100rem] mx-auto px-4 md:px-8 min-[2000px]:px-16 relative">
+        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24 xl:gap-32 min-[2000px]:gap-48">
+          {/* Foto con tratamiento visual */}
+          <motion.div
+            className="relative flex-shrink-0"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Contenedor de la foto con efecto */}
+            <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-80 xl:h-80 min-[2000px]:w-[26rem] min-[2000px]:h-[26rem]">
+              {/* Borde decorativo offset */}
+              <motion.div
+                className="absolute -inset-2 min-[2000px]:-inset-4 border border-primary/30"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              />
+
+              {/* Foto */}
+              <div className="relative w-full h-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                <Image
+                  src="/endika.jpg"
+                  alt="Endika Orube"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+
+              {/* Punto decorativo */}
+              <motion.div
+                className="absolute -bottom-3 -right-3 min-[2000px]:-bottom-4 min-[2000px]:-right-4 w-6 h-6 min-[2000px]:w-10 min-[2000px]:h-10 bg-primary"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: 0.5,
+                  duration: 0.3,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              />
+            </div>
+          </motion.div>
+
+          {/* Contenido textual */}
+          <div className="flex-1 text-center md:text-left">
+            {/* Headline - las 3 palabras core */}
+            <motion.h2
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl min-[2000px]:text-7xl font-bold leading-tight tracking-tight text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              {t('me.headline')}
+            </motion.h2>
+
+            {/* CTA + Contact Links */}
+            <motion.div
+              className="mt-12 xl:mt-16 min-[2000px]:mt-20 space-y-8 min-[2000px]:space-y-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              {/* CTA Principal */}
+              <Link
+                href="/about"
+                className="group inline-flex items-center gap-4 min-[2000px]:gap-6"
+              >
+                <span className="relative px-6 py-3 min-[2000px]:px-10 min-[2000px]:py-5 border border-primary text-primary font-mono text-sm min-[2000px]:text-lg tracking-wider overflow-hidden group-hover:text-white transition-colors duration-300">
+                  <span className="absolute inset-0 bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  <span className="relative z-10">{t('me.cta')}</span>
+                </span>
+                <motion.span
+                  className="text-primary text-xl min-[2000px]:text-3xl"
+                  animate={{ x: [0, 8, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                >
+                  →
+                </motion.span>
+              </Link>
+
+              {/* Links de contacto - sutiles */}
+              <motion.div
+                className="flex items-center gap-2 min-[2000px]:gap-4 justify-center md:justify-start"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6, duration: 0.4 }}
+              >
+                <span className="text-white/30 text-xs min-[2000px]:text-base font-mono tracking-wider">
+                  {t('me.orConnect')}
+                </span>
+                <span className="w-4 min-[2000px]:w-6 h-px bg-white/20" />
+                <div className="flex items-center gap-2 min-[2000px]:gap-4">
+                  {contactLinks.map((link, index) => (
+                    <div
+                      key={link.label}
+                      className="flex items-center gap-2 min-[2000px]:gap-4"
+                    >
+                      <MagneticWrapper strength={0.15}>
+                        <motion.a
+                          href={link.href}
+                          target={link.external ? '_blank' : undefined}
+                          rel={
+                            link.external ? 'noopener noreferrer' : undefined
+                          }
+                          className="text-white/40 text-xs min-[2000px]:text-base font-mono tracking-wider hover:text-primary transition-colors duration-200"
+                          whileHover={{ y: -2 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay: 0.7 + index * 0.1,
+                            duration: 0.3,
+                          }}
+                        >
+                          {link.label}
+                        </motion.a>
+                      </MagneticWrapper>
+                      {index < contactLinks.length - 1 && (
+                        <span className="text-white/20 text-[6px]">●</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
 <file path="translations/en.json">
 {
   "nav": {
@@ -6328,11 +6399,13 @@ export function Header() {
       "line2": "WITH",
       "line3": "PURPOSE"
     },
-    "description1": "7+ years building software that matters. Tech Lead & Engineering Manager of a team of 20+ developers on a critical banking project (+1M users).",
+    "description1": "7+ years building software that matters. Currently, Tech Lead & Engineering Manager of a team of 20+ developers on a critical banking project (+1M users).",
     "description2": "Combining deep technical expertise -architecture, testing, XP- with strategic product vision. Leading from solution definition to delivery, ensuring every line of code adds real business value.",
     "stats": {
       "techLead": "TECH LEAD",
       "engineers": "+20 ENGINEERS",
+      "manager": "MANAGER",
+      "managerEngineers": "8 ENGINEERS",
       "years": "7+ YEARS",
       "productEng": "PRODUCT ENG."
     }
@@ -6360,8 +6433,8 @@ export function Header() {
         "description": "Designing the team's Context Engineering strategy. Standardizing best practices and integrating generative AI into the development cycle, multiplying velocity without losing control or quality."
       },
       "leadership": {
-        "title": "LEADERSHIP & MENTORING",
-        "description": "Direct manager of 8 engineers. 1-on-1s, career plans and continuous training. Fostering autonomy and a high-performance culture."
+        "title": "LEADERSHIP & TEACHING",
+        "description": "Direct manager of 8 engineers: 1-on-1s, career plans and professional growth. Instructor of an XP and Software Engineering course, training developers in agile methodologies and clean code."
       },
       "culture": {
         "title": "CULTURAL TRANSFORMATION",
@@ -6532,7 +6605,8 @@ export function Header() {
     "teaching": {
       "period": "2023 — PRESENT",
       "title": "XP & SOFTWARE ENGINEERING COURSE",
-      "subtitle": "Lead instructor at Biko2/Jakala",
+      "subtitleHighlight": "Lead instructor",
+      "subtitleRest": " at Biko2/Jakala",
       "description": "Training that goes beyond code: learning to develop valuable software in a professional, sustainable, and agile manner.",
       "topics": {
         "engineering": "Engineering & Quality: TDD, Testing Strategies, Refactoring, Simple Design and Clean Code.",
@@ -6573,10 +6647,9 @@ export function Header() {
     "downloadShort": "CV"
   },
   "me": {
-    "headline": "I LEAD TEAMS THAT BUILD SOFTWARE THAT MATTERS",
-    "subheadline": "Tech Lead & Engineering Manager",
-    "context": "Architecture · Extreme Programming · Product Vision",
-    "cta": "DISCOVER MY STORY"
+    "headline": "Software. Teams. Product.",
+    "cta": "DISCOVER MY STORY",
+    "orConnect": "Or connect"
   },
   "aboutPage": {
     "headerLink": "<EO />",
@@ -6620,11 +6693,13 @@ export function Header() {
       "line2": "CON",
       "line3": "PROPÓSITO"
     },
-    "description1": "+7 años desarrollando software que importa. Tech Lead & Engineering Manager de un equipo de +20 desarrolladores en un proyecto bancario crítico (+1M usuarios).",
+    "description1": "+7 años desarrollando software que importa. Actualmente, Tech Lead & Engineering Manager de un equipo de +20 desarrolladores en un proyecto bancario crítico (+1M usuarios).",
     "description2": "Combino expertise técnica profunda -arquitectura, testing, XP- con visión estratégica de producto. Lidero desde la definición de la solución hasta la entrega, asegurando que cada línea de código aporte valor real al negocio.",
     "stats": {
       "techLead": "TECH LEAD",
       "engineers": "+20 ENGINEERS",
+      "manager": "MANAGER",
+      "managerEngineers": "8 ENGINEERS",
       "years": "+7 AÑOS",
       "productEng": "PRODUCT ENG."
     }
@@ -6652,8 +6727,8 @@ export function Header() {
         "description": "Diseño la estrategia de Context Engineering del equipo. Estandarizo buenas prácticas e integro IA generativa en el ciclo de desarrollo, multiplicando velocidad sin perder control ni calidad."
       },
       "leadership": {
-        "title": "LIDERAZGO Y MENTORÍA",
-        "description": "Manager directo de 8 engineers. 1-on-1s, planes de carrera y formación continua. Fomento autonomía y cultura de alto rendimiento."
+        "title": "LIDERAZGO & FORMACIÓN",
+        "description": "Manager directo de 8 engineers: 1-on-1s, planes de carrera y desarrollo profesional. Profesor de un curso de XP y Software Engineering, formando en metodologías ágiles y código limpio."
       },
       "culture": {
         "title": "TRANSFORMACIÓN CULTURAL",
@@ -6824,7 +6899,8 @@ export function Header() {
     "teaching": {
       "period": "2023 — PRESENTE",
       "title": "CURSO XP & SOFTWARE ENGINEERING",
-      "subtitle": "Profesor principal en Biko2/Jakala",
+      "subtitleHighlight": "Profesor principal",
+      "subtitleRest": " en Biko2/Jakala",
       "description": "Formación que va más allá del código: aprender a desarrollar software de valor de manera profesional, sostenible y ágil.",
       "topics": {
         "engineering": "Ingeniería & Calidad: TDD, Estrategias de Testing, Refactoring, Diseño Simple y Código Limpio.",
@@ -6865,10 +6941,9 @@ export function Header() {
     "downloadShort": "CV"
   },
   "me": {
-    "headline": "LIDERO EQUIPOS QUE CONSTRUYEN SOFTWARE QUE IMPORTA",
-    "subheadline": "Tech Lead & Engineering Manager",
-    "context": "Arquitectura · Extreme Programming · Visión de Producto",
-    "cta": "CONOCE MI HISTORIA"
+    "headline": "Software. Equipos. Producto.",
+    "cta": "CONOCE MI HISTORIA",
+    "orConnect": "O escríbeme"
   },
   "aboutPage": {
     "headerLink": "<EO />",
@@ -6898,7 +6973,7 @@ export function Header() {
 'use client';
 
 import { useEffect } from 'react';
-import { HeroSection, MeSection, ContactSection } from './_components';
+import { HeroSection, MeSection } from './_components';
 
 export default function Home() {
   // Aplicar scroll snap al html solo en la home page
@@ -6917,7 +6992,6 @@ export default function Home() {
     <main className="relative">
       <HeroSection />
       <MeSection />
-      <ContactSection />
     </main>
   );
 }
