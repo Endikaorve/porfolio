@@ -144,6 +144,32 @@
     @apply bg-background text-foreground;
   }
 
+  /* Estilos de scrollbar personalizados - consistentes en todo el sitio */
+  /* Webkit (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--surface-darker);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a var(--surface-darker);
+  }
+
   /* Custom cursor - hide default cursor on desktop */
   @media (min-width: 768px) {
     * {
