@@ -18,14 +18,28 @@ import { MagneticWrapper } from '@/components/magnetic-wrapper';
  * - Fondo sutil con elementos geométricos para dar profundidad
  */
 
-// Partículas decorativas minimalistas
-const particles = [
-  { type: 'square', x: '8%', y: '15%', size: 8, opacity: 0.08 },
-  { type: 'square-filled', x: '5%', y: '45%', size: 6, opacity: 0.06 },
-  { type: 'square', x: '12%', y: '75%', size: 10, opacity: 0.1 },
-  { type: 'square-filled', x: '88%', y: '20%', size: 8, opacity: 0.07 },
-  { type: 'square', x: '92%', y: '55%', size: 12, opacity: 0.09 },
-  { type: 'square-filled', x: '85%', y: '80%', size: 6, opacity: 0.06 },
+// Partículas decorativas - desktop (más densas)
+const particlesDesktop = [
+  // Lateral izquierdo
+  { type: 'square', x: '6%', y: '12%', size: 10, opacity: 0.12 },
+  { type: 'square-filled', x: '10%', y: '28%', size: 6, opacity: 0.08 },
+  { type: 'square', x: '4%', y: '45%', size: 8, opacity: 0.1 },
+  { type: 'square-filled', x: '8%', y: '62%', size: 5, opacity: 0.07 },
+  { type: 'square', x: '11%', y: '78%', size: 12, opacity: 0.14 },
+  // Lateral derecho
+  { type: 'square-filled', x: '90%', y: '18%', size: 8, opacity: 0.1 },
+  { type: 'square', x: '86%', y: '35%', size: 6, opacity: 0.08 },
+  { type: 'square-filled', x: '93%', y: '52%', size: 10, opacity: 0.12 },
+  { type: 'square', x: '88%', y: '68%', size: 5, opacity: 0.07 },
+  { type: 'square-filled', x: '91%', y: '85%', size: 8, opacity: 0.1 },
+];
+
+// Partículas decorativas - mobile (más simples, en esquinas)
+const particlesMobile = [
+  { type: 'square', x: '5%', y: '8%', size: 8, opacity: 0.1 },
+  { type: 'square-filled', x: '92%', y: '12%', size: 6, opacity: 0.08 },
+  { type: 'square-filled', x: '8%', y: '88%', size: 6, opacity: 0.08 },
+  { type: 'square', x: '90%', y: '85%', size: 8, opacity: 0.1 },
 ];
 
 const contactLinks = [
@@ -52,23 +66,33 @@ export function MeSection() {
   return (
     <section className="relative h-svh flex items-center overflow-hidden snap-start snap-always">
       {/* Background Elements */}
-      {/* Líneas horizontales decorativas */}
+      {/* Líneas diagonales decorativas */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.025]">
         <div
-          className="absolute w-full h-px bg-gradient-to-r from-transparent via-white to-transparent"
-          style={{ top: '20%' }}
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: '30%', left: '-50%' }}
         />
         <div
-          className="absolute w-full h-px bg-gradient-to-r from-transparent via-white to-transparent"
-          style={{ top: '80%' }}
+          className="absolute w-[200%] h-px bg-white -rotate-45"
+          style={{ top: '70%', left: '-50%' }}
         />
       </div>
 
-      {/* Partículas geométricas sutiles */}
-      <div className="absolute inset-0 pointer-events-none hidden md:block">
-        {particles.map((particle, i) => (
+      {/* Círculo decorativo - posicionado hacia la derecha */}
+      <motion.div
+        className="absolute right-[-20%] top-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[700px] max-h-[700px] border border-primary/[0.04] pointer-events-none hidden md:block"
+        style={{ borderRadius: '50%' }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: 'easeOut' }}
+      />
+
+      {/* Partículas geométricas - Mobile (simplificadas) */}
+      <div className="absolute inset-0 pointer-events-none md:hidden">
+        {particlesMobile.map((particle, i) => (
           <motion.div
-            key={`particle-${i}`}
+            key={`particle-mobile-${i}`}
             className={
               particle.type === 'square-filled'
                 ? 'absolute bg-primary'
@@ -85,7 +109,7 @@ export function MeSection() {
             whileInView={{ opacity: particle.opacity, scale: 1 }}
             viewport={{ once: true }}
             transition={{
-              delay: 0.5 + i * 0.1,
+              delay: 0.4 + i * 0.1,
               duration: 0.4,
               ease: [0.16, 1, 0.3, 1],
             }}
@@ -93,40 +117,69 @@ export function MeSection() {
         ))}
       </div>
 
-      {/* Elementos técnicos en esquinas inferiores */}
+      {/* Partículas geométricas - Desktop (más densas) */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
+        {particlesDesktop.map((particle, i) => (
+          <motion.div
+            key={`particle-desktop-${i}`}
+            className={
+              particle.type === 'square-filled'
+                ? 'absolute bg-primary'
+                : 'absolute border border-primary'
+            }
+            style={{
+              left: particle.x,
+              top: particle.y,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+            }}
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: particle.opacity, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              delay: 0.3 + i * 0.05,
+              duration: 0.4,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Elementos técnicos en esquinas */}
       <div className="absolute bottom-8 left-8 hidden md:block">
         <motion.div
-          className="w-16 h-px bg-gradient-to-r from-white/10 to-transparent"
+          className="w-12 h-px bg-gradient-to-r from-primary/20 to-transparent"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.4 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
           style={{ transformOrigin: 'left' }}
         />
         <motion.div
-          className="w-px h-16 bg-gradient-to-b from-white/10 to-transparent"
+          className="w-px h-12 bg-gradient-to-b from-primary/20 to-transparent"
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.7, duration: 0.4 }}
+          transition={{ delay: 0.6, duration: 0.4 }}
           style={{ transformOrigin: 'top' }}
         />
       </div>
       <div className="absolute bottom-8 right-8 hidden md:flex flex-col items-end">
         <motion.div
-          className="w-16 h-px bg-gradient-to-l from-white/10 to-transparent"
+          className="w-12 h-px bg-gradient-to-l from-primary/20 to-transparent"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.4 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
           style={{ transformOrigin: 'right' }}
         />
         <motion.div
-          className="w-px h-16 bg-gradient-to-b from-white/10 to-transparent ml-auto"
+          className="w-px h-12 bg-gradient-to-b from-primary/20 to-transparent ml-auto"
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.7, duration: 0.4 }}
+          transition={{ delay: 0.6, duration: 0.4 }}
           style={{ transformOrigin: 'top' }}
         />
       </div>
