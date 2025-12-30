@@ -102,18 +102,10 @@ export function MeSection() {
         >
           <Link href="/about" className="group inline-flex items-center gap-4">
             {/* Botón con borde que se rellena en hover */}
-            <span className="relative px-6 py-3 border border-primary/60 text-primary font-mono text-sm tracking-wider overflow-hidden transition-colors duration-300 group-hover:text-surface-dark">
-              {/* Background fill en hover */}
-              <motion.span
-                className="absolute inset-0 bg-primary origin-left"
-                initial={{ scaleX: 0 }}
-                whileHover={{ scaleX: 1 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                style={{ scaleX: 0 }}
-              />
-              <span className="relative z-10 group-hover:text-surface-dark transition-colors duration-300">
-                {t('me.cta')}
-              </span>
+            <span className="relative px-6 py-3 border border-primary text-primary font-mono text-sm tracking-wider overflow-hidden group-hover:text-white transition-colors duration-300">
+              {/* Background fill en hover - CSS puro */}
+              <span className="absolute inset-0 bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+              <span className="relative z-10">{t('me.cta')}</span>
             </span>
 
             {/* Flecha animada */}
