@@ -134,13 +134,21 @@ export function AboutSection() {
               </div>
 
               {/* Stats */}
-              <div className="flex gap-4 pt-4">
+              <div className="flex flex-wrap gap-4 pt-4">
                 <div className="border-l-4 border-primary pl-4">
                   <span className="text-2xl md:text-3xl font-black text-white">
                     {t('about.stats.techLead')}
                   </span>
                   <p className="text-white/60 text-sm">
                     {t('about.stats.engineers')}
+                  </p>
+                </div>
+                <div className="border-l-4 border-primary pl-4">
+                  <span className="text-2xl md:text-3xl font-black text-white">
+                    {t('about.stats.manager')}
+                  </span>
+                  <p className="text-white/60 text-sm">
+                    {t('about.stats.managerEngineers')}
                   </p>
                 </div>
                 <div className="border-l-4 border-white pl-4">

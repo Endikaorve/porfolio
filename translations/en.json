@@ -20,6 +20,8 @@
     "stats": {
       "techLead": "TECH LEAD",
       "engineers": "+20 ENGINEERS",
+      "manager": "MANAGER",
+      "managerEngineers": "8 ENGINEERS",
       "years": "7+ YEARS",
       "productEng": "PRODUCT ENG."
     }
@@ -47,8 +49,8 @@
         "description": "Designing the team's Context Engineering strategy. Standardizing best practices and integrating generative AI into the development cycle, multiplying velocity without losing control or quality."
       },
       "leadership": {
-        "title": "LEADERSHIP & MENTORING",
-        "description": "Direct manager of 8 engineers. 1-on-1s, career plans and continuous training. Fostering autonomy and a high-performance culture."
+        "title": "LEADERSHIP & TEACHING",
+        "description": "Direct manager of 8 engineers: 1-on-1s, career plans and professional growth. Instructor of an XP and Software Engineering course, training developers in agile methodologies and clean code."
       },
       "culture": {
         "title": "CULTURAL TRANSFORMATION",

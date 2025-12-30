@@ -20,6 +20,8 @@
     "stats": {
       "techLead": "TECH LEAD",
       "engineers": "+20 ENGINEERS",
+      "manager": "MANAGER",
+      "managerEngineers": "8 ENGINEERS",
       "years": "+7 AÑOS",
       "productEng": "PRODUCT ENG."
     }
@@ -47,8 +49,8 @@
         "description": "Diseño la estrategia de Context Engineering del equipo. Estandarizo buenas prácticas e integro IA generativa en el ciclo de desarrollo, multiplicando velocidad sin perder control ni calidad."
       },
       "leadership": {
-        "title": "LIDERAZGO Y MENTORÍA",
-        "description": "Manager directo de 8 engineers. 1-on-1s, planes de carrera y formación continua. Fomento autonomía y cultura de alto rendimiento."
+        "title": "LIDERAZGO & FORMACIÓN",
+        "description": "Manager directo de 8 engineers: 1-on-1s, planes de carrera y desarrollo profesional. Profesor de un curso de XP y Software Engineering, formando en metodologías ágiles y código limpio."
       },
       "culture": {
         "title": "TRANSFORMACIÓN CULTURAL",
