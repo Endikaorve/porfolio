@@ -269,7 +269,8 @@
   },
   "aboutPage": {
     "headerLink": "<EO />",
-    "title": "About Me"
+    "title": "About Me",
+    "metaDescription": "Endika Orube: Tech Lead & Manager of 20+ devs in digital banking. Specialist in XP, hexagonal architecture and Context Engineering with AI. Teacher and speaker in the tech community."
   },
   "blog": {
     "title": {

@@ -14,10 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const currentUrl = `${siteConfig.url}/${locale}/about`;
   const isSpanish = locale === 'es';
 
-  const title = `${t('title')} | Endika Orube`;
-  const description = isSpanish
-    ? 'Endika Orube: Tech Lead & Manager de +20 devs en banca digital. Especialista en XP, arquitectura hexagonal y Context Engineering con IA. Profesor y speaker en la comunidad tech.'
-    : 'Endika Orube: Tech Lead & Manager of 20+ devs in digital banking. Specialist in XP, hexagonal architecture and Context Engineering with AI. Teacher and speaker in the tech community.';
+  const title = `${t('title')} | ${siteConfig.author.name}`;
+  const description = t('metaDescription');
 
   return {
     title,
