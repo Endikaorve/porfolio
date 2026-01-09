@@ -13,71 +13,57 @@ interface BlogCardProps {
 
 export function BlogCard({ post, index, locale }: BlogCardProps) {
   const formattedDate = formatBlogPostDate(post, locale);
-  const number = String(index + 1).padStart(2, '0');
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.5,
-        delay: index * 0.1,
-        type: 'spring',
-        stiffness: 300,
-        damping: 25,
+        delay: index * 0.05,
       }}
       viewport={{ once: true }}
-      className="group relative"
+      className="group"
     >
-      <Link href={`/blog/${post.slug}`} className="block">
-        {/* Número de sección grande */}
-        <span className="absolute -left-2 md:-left-8 top-0 text-6xl md:text-8xl font-black text-white/5 select-none pointer-events-none">
-          {number}
-        </span>
+      <Link 
+        href={`/blog/${post.slug}`} 
+        className="block py-6 border-t border-white/5 group-hover:border-primary/20 transition-colors duration-300"
+      >
+        {/* Fecha y tiempo de lectura */}
+        <div className="flex items-center gap-3 mb-3 text-sm font-mono">
+          <time 
+            dateTime={post.date}
+            className="text-primary/70 group-hover:text-primary transition-colors duration-200"
+          >
+            {formattedDate}
+          </time>
+          <span className="text-white/20">·</span>
+          <span className="text-white/40">{post.readTime}</span>
+        </div>
 
-        <div className="relative border-t border-white/10 pt-8 pb-12 pl-8 md:pl-16 transition-all duration-300 group-hover:border-primary/50">
-          {/* Línea decorativa izquierda */}
-          <div className="absolute left-0 top-8 bottom-12 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Título */}
+        <h2 className="text-xl md:text-2xl font-semibold text-white mb-2 leading-tight group-hover:text-primary transition-colors duration-200">
+          {post.title}
+        </h2>
 
-          {/* Header: Fecha y tiempo de lectura */}
-          <div className="flex items-center gap-4 mb-4 text-sm font-mono text-white/40">
-            <time dateTime={post.date}>{formattedDate}</time>
-            <span className="w-1 h-1 bg-primary/50" />
-            <span>{post.readTime}</span>
-          </div>
+        {/* Descripción */}
+        <p className="text-white/50 text-base leading-relaxed mb-3">
+          {post.description}
+        </p>
 
-          {/* Título */}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 leading-tight group-hover:text-primary transition-colors duration-300">
-            {post.title}
-          </h2>
-
-          {/* Descripción */}
-          <p className="text-white/60 text-base md:text-lg leading-relaxed mb-6 max-w-3xl">
-            {post.description}
-          </p>
-
-          {/* Tags */}
+        {/* Tags minimalistas */}
+        {post.tags.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs font-mono uppercase tracking-wider text-primary/80 border border-primary/20 bg-primary/5 group-hover:border-primary/40 transition-colors duration-300"
+                className="text-xs font-mono text-white/40 group-hover:text-primary/60 transition-colors duration-200"
               >
-                {tag}
+                #{tag}
               </span>
             ))}
           </div>
-
-          {/* Flecha de navegación */}
-          <motion.div
-            className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100"
-            initial={{ x: -10, opacity: 0 }}
-            whileHover={{ x: 0, opacity: 1 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-          >
-            <span className="text-2xl text-primary">→</span>
-          </motion.div>
-        </div>
+        )}
       </Link>
     </motion.article>
   );
