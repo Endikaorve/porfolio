@@ -24,17 +24,10 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
-            <span className="text-white">
-              {t('title.line1')}
-            </span>{' '}
-            <span
-              className="text-transparent"
-              style={{ WebkitTextStroke: '2px var(--pink)' }}
-            >
-              {t('title.line2')}
-            </span>
+            <span className="text-white">{t('title.line1')}</span>{' '}
+            <span className="text-[var(--pink)]">{t('title.line2')}</span>
           </h1>
-          
+
           <p className="text-white/60 text-base md:text-lg leading-relaxed">
             {t('subtitle')}
           </p>
