@@ -14,7 +14,7 @@ export const siteConfig = {
   author: {
     name: 'Endika Orube',
     email: 'endikaorve@gmail.com',
-    role: 'Tech Lead & Product Engineer',
+    role: 'Tech Lead & Manager | Product Engineer',
   },
 
   /** Redes sociales */
@@ -27,6 +27,6 @@ export const siteConfig = {
   ogImage: {
     width: 1200,
     height: 630,
-    alt: 'Endika Orube - Tech Lead & Product Engineer',
+    alt: 'Endika Orube - Tech Lead & Manager | Product Engineer',
   },
 } as const;

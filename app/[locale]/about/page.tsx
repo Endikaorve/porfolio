@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = `${t('title')} | Endika Orube`;
   const description = isSpanish
-    ? 'Conoce la trayectoria profesional de Endika Orube: +7 años de experiencia como Tech Lead, liderando equipos de +20 desarrolladores en proyectos críticos. Arquitectura, TDD, Product Engineering.'
-    : "Discover Endika Orube's professional journey: 7+ years of experience as Tech Lead, leading teams of 20+ developers on critical projects. Architecture, TDD, Product Engineering.";
+    ? 'Endika Orube: Tech Lead & Manager de +20 devs en banca digital. Especialista en XP, arquitectura hexagonal y Context Engineering con IA. Profesor y speaker en la comunidad tech.'
+    : 'Endika Orube: Tech Lead & Manager of 20+ devs in digital banking. Specialist in XP, hexagonal architecture and Context Engineering with AI. Teacher and speaker in the tech community.';
 
   return {
     title,
@@ -27,12 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'Engineering Manager',
       'Product Engineer',
       'Software Architecture',
+      'Hexagonal Architecture',
       'TDD',
       'Extreme Programming',
+      'XP',
+      'Context Engineering',
+      'AI Development',
       'React',
       'Next.js',
       'TypeScript',
       'Team Leadership',
+      'Tech Speaker',
+      'Banking Software',
       'Endika Orube',
       'Pamplona',
       'Navarra',
