@@ -79,12 +79,22 @@ export function AboutSection() {
             viewport={{ once: true }}
           >
             <div className="relative z-10">
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary mb-8 leading-none">
-                {t('about.title.line1')}
-                <br />
-                {t('about.title.line2')}
-                <br />
-                <span className="text-white">{t('about.title.line3')}</span>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-none">
+                <span
+                  className="block"
+                  style={{
+                    color: 'transparent',
+                    WebkitTextStroke: '2px white',
+                  }}
+                >
+                  {t('about.title.line1')}
+                </span>
+                <span className="block text-white">
+                  {t('about.title.line2')}
+                </span>
+                <span className="block text-primary">
+                  {t('about.title.line3')}
+                </span>
               </h2>
             </div>
           </motion.div>
