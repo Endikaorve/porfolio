@@ -69,6 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.description,
       siteName: `${siteConfig.author.name} Blog`,
       publishedTime: post.date,
+      modifiedTime: post.modifiedDate || post.date,
       authors: [post.author],
       tags: post.tags,
       images: [
@@ -114,18 +115,50 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    image: `${siteConfig.url}/og-image.jpg`,
+    datePublished: post.date,
+    dateModified: post.modifiedDate || post.date,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+      url: siteConfig.url,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: siteConfig.author.name,
+      url: siteConfig.url,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.url}/${locale}/blog/${slug}`,
+    },
+    keywords: post.tags.join(', '),
+    inLanguage: locale === 'es' ? 'es-ES' : 'en-US',
+  };
+
   return (
-    <BlogPostLayout post={post} locale={locale}>
-      <MDXRemote
-        source={post.content}
-        components={mdxComponents}
-        options={{
-          mdxOptions: {
-            remarkPlugins: [remarkGfm],
-            rehypePlugins: [rehypeSlug, rehypeHighlight],
-          },
-        }}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-    </BlogPostLayout>
+      <BlogPostLayout post={post} locale={locale}>
+        <MDXRemote
+          source={post.content}
+          components={mdxComponents}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              rehypePlugins: [rehypeSlug, rehypeHighlight],
+            },
+          }}
+        />
+      </BlogPostLayout>
+    </>
   );
 }

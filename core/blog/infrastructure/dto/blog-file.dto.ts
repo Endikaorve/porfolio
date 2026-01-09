@@ -5,6 +5,8 @@
 export interface BlogMetadata {
   /** Fecha de publicación del post */
   date: string;
+  /** Fecha de última modificación del post */
+  modifiedDate?: string;
   /** Autor del post */
   author: string;
   /** Etiquetas del post (en inglés, consistentes) */

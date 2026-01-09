@@ -15,6 +15,7 @@ export function buildBlogPostDetail(dto: BlogFileDTO): BlogPostDetail {
     description: dto.frontmatter.description || '',
     // Datos estáticos de metadata.json
     date: dto.metadata.date,
+    modifiedDate: dto.metadata.modifiedDate,
     author: dto.metadata.author,
     tags: dto.metadata.tags,
     readTime: dto.metadata.readTime,
@@ -38,6 +39,7 @@ export function buildBlogPost(dto: BlogFileDTO): BlogPost {
     description: dto.frontmatter.description || '',
     // Datos estáticos de metadata.json
     date: dto.metadata.date,
+    modifiedDate: dto.metadata.modifiedDate,
     author: dto.metadata.author,
     tags: dto.metadata.tags,
     readTime: dto.metadata.readTime,
