@@ -4,10 +4,33 @@ import path from 'path';
 import matter from 'gray-matter';
 import type { BlogRepository } from '../domain/blog-repository';
 import type { BlogPost, BlogPostDetail } from '../domain/blog';
-import type { BlogFileDTO } from './dto/blog-file.dto';
+import type { BlogFileDTO, BlogMetadata } from './dto/blog-file.dto';
 import { buildBlogPost, buildBlogPostDetail } from './mappers/blog-file.mapper';
 
 const BLOG_DIR = path.join(process.cwd(), 'content/blog');
+
+/**
+ * Lee el archivo metadata.json de un post
+ * @param slug - Slug del post
+ * @returns Metadata estática del post
+ */
+function readMetadata(slug: string): BlogMetadata {
+  const metadataPath = path.join(BLOG_DIR, slug, 'metadata.json');
+  
+  if (!fs.existsSync(metadataPath)) {
+    // Fallback si no existe metadata.json (para compatibilidad)
+    return {
+      date: '',
+      author: 'Endika Orube',
+      tags: [],
+      readTime: '5 min',
+      featured: false,
+    };
+  }
+
+  const metadataContent = fs.readFileSync(metadataPath, 'utf-8');
+  return JSON.parse(metadataContent) as BlogMetadata;
+}
 
 /**
  * Implementación del repositorio de blog basada en filesystem
@@ -30,6 +53,7 @@ export const blogFileRepository: BlogRepository = {
 
   /**
    * Obtiene un post completo por slug e idioma
+   * Lee metadata.json (estático) y el archivo .mdx del idioma (traducible)
    */
   getBlogPostDetailBySlug: async (
     slug: string,
@@ -41,11 +65,16 @@ export const blogFileRepository: BlogRepository = {
       return null;
     }
 
+    // Leer metadata estática
+    const metadata = readMetadata(slug);
+
+    // Leer contenido traducible
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(fileContent);
 
     const dto: BlogFileDTO = {
       slug,
+      metadata,
       frontmatter: data,
       content,
     };
@@ -55,6 +84,7 @@ export const blogFileRepository: BlogRepository = {
 
   /**
    * Lista todos los posts (metadata) para un idioma
+   * Lee metadata.json (estático) y el archivo .mdx del idioma (traducible)
    * Ordenados por fecha descendente
    */
   listBlogPosts: async (locale: string): Promise<BlogPost[]> => {
@@ -73,12 +103,18 @@ export const blogFileRepository: BlogRepository = {
     for (const slug of slugs) {
       const filePath = path.join(BLOG_DIR, slug, `${locale}.mdx`);
 
+      // Solo procesar si existe el archivo del idioma
       if (fs.existsSync(filePath)) {
+        // Leer contenido traducible
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const { data, content } = matter(fileContent);
 
+        // Leer metadata estática (después de verificar que el .mdx existe)
+        const metadata = readMetadata(slug);
+
         const dto: BlogFileDTO = {
           slug,
+          metadata,
           frontmatter: data,
           content,
         };

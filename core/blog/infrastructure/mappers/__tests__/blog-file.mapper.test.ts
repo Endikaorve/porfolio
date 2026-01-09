@@ -6,14 +6,16 @@ describe('buildBlogPost', () => {
   it('should build BlogPost from complete DTO', () => {
     const dto: BlogFileDTO = {
       slug: 'test-post',
-      frontmatter: {
-        title: 'Test Post',
-        description: 'Test description',
+      metadata: {
         date: '2024-01-15',
         author: 'John Doe',
         tags: ['test', 'typescript'],
         readTime: '8 min',
         featured: true,
+      },
+      frontmatter: {
+        title: 'Test Post',
+        description: 'Test description',
       },
       content: 'Test content',
     };
@@ -35,6 +37,13 @@ describe('buildBlogPost', () => {
   it('should apply default values for missing frontmatter fields', () => {
     const dto: BlogFileDTO = {
       slug: 'minimal-post',
+      metadata: {
+        date: '',
+        author: 'Endika Orube',
+        tags: [],
+        readTime: '5 min',
+        featured: false,
+      },
       frontmatter: {},
       content: 'Content',
     };
@@ -44,16 +53,22 @@ describe('buildBlogPost', () => {
     expect(result.slug).toBe('minimal-post');
     expect(result.title).toBe('minimal-post'); // Default: slug
     expect(result.description).toBe(''); // Default: empty
-    expect(result.date).toBe(''); // Default: empty
-    expect(result.author).toBe('Endika Orube'); // Default author
-    expect(result.tags).toEqual([]); // Default: empty array
-    expect(result.readTime).toBe('5 min'); // Default: 5 min
-    expect(result.featured).toBe(false); // Default: false
+    expect(result.date).toBe(''); // From metadata
+    expect(result.author).toBe('Endika Orube'); // From metadata
+    expect(result.tags).toEqual([]); // From metadata
+    expect(result.readTime).toBe('5 min'); // From metadata
+    expect(result.featured).toBe(false); // From metadata
   });
 
   it('should use slug as title when title is missing', () => {
     const dto: BlogFileDTO = {
       slug: 'my-awesome-post',
+      metadata: {
+        date: '2024-01-01',
+        author: 'Endika Orube',
+        tags: [],
+        readTime: '5 min',
+      },
       frontmatter: {
         description: 'Description here',
       },
@@ -68,9 +83,14 @@ describe('buildBlogPost', () => {
   it('should handle partial frontmatter data', () => {
     const dto: BlogFileDTO = {
       slug: 'partial-post',
+      metadata: {
+        date: '2024-01-01',
+        author: 'Endika Orube',
+        tags: ['tag1'],
+        readTime: '5 min',
+      },
       frontmatter: {
         title: 'Only Title',
-        tags: ['tag1'],
       },
       content: 'Content',
     };
@@ -87,6 +107,12 @@ describe('buildBlogPost', () => {
   it('should not include content in BlogPost', () => {
     const dto: BlogFileDTO = {
       slug: 'test',
+      metadata: {
+        date: '2024-01-01',
+        author: 'Endika Orube',
+        tags: [],
+        readTime: '5 min',
+      },
       frontmatter: { title: 'Test' },
       content: 'This should not be in BlogPost',
     };
@@ -101,14 +127,16 @@ describe('buildBlogPostDetail', () => {
   it('should build BlogPostDetail from complete DTO', () => {
     const dto: BlogFileDTO = {
       slug: 'detailed-post',
-      frontmatter: {
-        title: 'Detailed Post',
-        description: 'Full description',
+      metadata: {
         date: '2024-01-15',
         author: 'Jane Doe',
         tags: ['vitest', 'testing'],
         readTime: '12 min',
         featured: false,
+      },
+      frontmatter: {
+        title: 'Detailed Post',
+        description: 'Full description',
       },
       content: '# Markdown Title\n\nContent here.',
     };
@@ -131,6 +159,12 @@ describe('buildBlogPostDetail', () => {
   it('should include content field in BlogPostDetail', () => {
     const dto: BlogFileDTO = {
       slug: 'test',
+      metadata: {
+        date: '2024-01-01',
+        author: 'Endika Orube',
+        tags: [],
+        readTime: '5 min',
+      },
       frontmatter: {},
       content: 'This is the post content',
     };
@@ -143,6 +177,12 @@ describe('buildBlogPostDetail', () => {
   it('should apply default values for missing frontmatter fields', () => {
     const dto: BlogFileDTO = {
       slug: 'minimal-detail',
+      metadata: {
+        date: '',
+        author: 'Endika Orube',
+        tags: [],
+        readTime: '5 min',
+      },
       frontmatter: {},
       content: 'Minimal content',
     };
@@ -171,6 +211,12 @@ More text
 
     const dto: BlogFileDTO = {
       slug: 'code-post',
+      metadata: {
+        date: '2024-01-01',
+        author: 'Endika Orube',
+        tags: [],
+        readTime: '5 min',
+      },
       frontmatter: { title: 'Code Post' },
       content,
     };
@@ -184,9 +230,14 @@ More text
   it('should extend BlogPost properties', () => {
     const dto: BlogFileDTO = {
       slug: 'inheritance-test',
+      metadata: {
+        date: '2024-01-01',
+        author: 'Endika Orube',
+        tags: ['test'],
+        readTime: '5 min',
+      },
       frontmatter: {
         title: 'Inheritance Test',
-        tags: ['test'],
       },
       content: 'Content',
     };

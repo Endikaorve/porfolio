@@ -100,19 +100,28 @@ describe('blogFileRepository', () => {
 
     it('should return BlogPostDetail when file exists', async () => {
       const mockContent = 'Post content here';
-      const mockFrontmatter = {
-        title: 'Test Post',
-        description: 'Test description',
+      const mockMetadata = {
         date: '2024-01-15',
         author: 'John Doe',
         tags: ['test'],
         readTime: '5 min',
         featured: true,
       };
+      const mockFrontmatter = {
+        title: 'Test Post',
+        description: 'Test description',
+      };
 
-      (path.join as any).mockReturnValue('/fake/path/test-post/es.mdx');
+      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
       (fs.existsSync as any).mockReturnValue(true);
-      (fs.readFileSync as any).mockReturnValue('frontmatter + content' as any);
+      
+      // Mock para metadata.json
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify(mockMetadata) as any
+      );
+      
+      // Mock para el archivo .mdx
+      (fs.readFileSync as any).mockReturnValueOnce('frontmatter + content' as any);
       (matter as any).mockReturnValue({
         data: mockFrontmatter,
         content: mockContent,
@@ -137,9 +146,24 @@ describe('blogFileRepository', () => {
     });
 
     it('should apply default values for missing frontmatter fields', async () => {
-      (path.join as any).mockReturnValue('/fake/path/minimal/en.mdx');
+      const mockMetadata = {
+        date: '',
+        author: 'Endika Orube',
+        tags: [],
+        readTime: '5 min',
+        featured: false,
+      };
+
+      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
       (fs.existsSync as any).mockReturnValue(true);
-      (fs.readFileSync as any).mockReturnValue('content' as any);
+      
+      // Mock para metadata.json
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify(mockMetadata) as any
+      );
+      
+      // Mock para el archivo .mdx
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
       (matter as any).mockReturnValue({
         data: {},
         content: 'Minimal content',
@@ -164,9 +188,23 @@ describe('blogFileRepository', () => {
     });
 
     it('should handle different locales', async () => {
+      const mockMetadata = {
+        date: '2024-01-01',
+        author: 'Endika Orube',
+        tags: [],
+        readTime: '5 min',
+      };
+
       (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
       (fs.existsSync as any).mockReturnValue(true);
-      (fs.readFileSync as any).mockReturnValue('content' as any);
+      
+      // Mock para metadata.json
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify(mockMetadata) as any
+      );
+      
+      // Mock para el archivo .mdx
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
       (matter as any).mockReturnValue({
         data: { title: 'English Post' },
         content: 'Content',
@@ -199,25 +237,41 @@ describe('blogFileRepository', () => {
       } as any);
       (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
 
-      // Mock para post-1
+      // Mock para post-1 .mdx (PRIMERO)
       (fs.readFileSync as any).mockReturnValueOnce('content1' as any);
       (matter as any).mockReturnValueOnce({
         data: {
           title: 'Post 1',
-          date: '2024-01-15',
         },
         content: 'Content 1',
       } as any);
+      // Mock para post-1 metadata.json (DESPUÉS)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-15',
+          author: 'Endika Orube',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
 
-      // Mock para post-2
+      // Mock para post-2 .mdx (PRIMERO)
       (fs.readFileSync as any).mockReturnValueOnce('content2' as any);
       (matter as any).mockReturnValueOnce({
         data: {
           title: 'Post 2',
-          date: '2024-01-10',
         },
         content: 'Content 2',
       } as any);
+      // Mock para post-2 metadata.json (DESPUÉS)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-10',
+          author: 'Endika Orube',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
 
       const result = await blogFileRepository.listBlogPosts('es');
 
@@ -236,19 +290,37 @@ describe('blogFileRepository', () => {
       } as any);
       (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
 
-      // old-post (fecha más antigua)
+      // old-post .mdx (PRIMERO)
       (fs.readFileSync as any).mockReturnValueOnce('content' as any);
       (matter as any).mockReturnValueOnce({
-        data: { title: 'Old Post', date: '2024-01-01' },
+        data: { title: 'Old Post' },
         content: 'Content',
       } as any);
+      // old-post metadata.json (DESPUÉS) (fecha más antigua)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-01',
+          author: 'Endika Orube',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
 
-      // new-post (fecha más reciente)
+      // new-post .mdx (PRIMERO)
       (fs.readFileSync as any).mockReturnValueOnce('content' as any);
       (matter as any).mockReturnValueOnce({
-        data: { title: 'New Post', date: '2024-12-31' },
+        data: { title: 'New Post' },
         content: 'Content',
       } as any);
+      // new-post metadata.json (DESPUÉS) (fecha más reciente)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-12-31',
+          author: 'Endika Orube',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
 
       const result = await blogFileRepository.listBlogPosts('es');
 
@@ -261,17 +333,29 @@ describe('blogFileRepository', () => {
       existsSyncMock
         .mockReturnValueOnce(true) // Directory exists
         .mockReturnValueOnce(true) // post-1/es.mdx exists
+        .mockReturnValueOnce(true) // post-1/metadata.json exists
         .mockReturnValueOnce(false); // post-2/es.mdx does NOT exist
       (fs.readdirSync as any).mockReturnValue(['post-1', 'post-2'] as any);
       (fs.statSync as any).mockReturnValue({
         isDirectory: () => true,
       } as any);
       (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
-      (fs.readFileSync as any).mockReturnValue('content' as any);
+      
+      // Mock para post-1 .mdx (PRIMERO)
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
       (matter as any).mockReturnValue({
         data: { title: 'Post 1' },
         content: 'Content',
       } as any);
+      // Mock para post-1 metadata.json (DESPUÉS)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-01',
+          author: 'Endika Orube',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
 
       const result = await blogFileRepository.listBlogPosts('es');
 
@@ -286,11 +370,22 @@ describe('blogFileRepository', () => {
         isDirectory: () => true,
       } as any);
       (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
-      (fs.readFileSync as any).mockReturnValue('content' as any);
+      
+      // Mock para .mdx (PRIMERO)
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
       (matter as any).mockReturnValue({
         data: {},
         content: '',
       } as any);
+      // Mock para metadata.json (DESPUÉS)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-01',
+          author: 'Endika Orube',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
 
       await blogFileRepository.listBlogPosts('en');
 
