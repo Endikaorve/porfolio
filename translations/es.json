@@ -270,7 +270,11 @@
   "aboutPage": {
     "headerLink": "<EO />",
     "title": "Sobre Mí",
-    "metaDescription": "Endika Orube: Tech Lead & Manager de +20 devs en banca digital. Especialista en XP, arquitectura hexagonal y Context Engineering con IA. Profesor y speaker en la comunidad tech."
+    "description": "Endika Orube: Tech Lead & Manager de +20 devs en banca digital. Especialista en XP, arquitectura hexagonal y Context Engineering con IA. Profesor y speaker en la comunidad tech."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Artículos sobre liderazgo técnico, arquitectura de software, TDD, Context Engineering y desarrollo profesional."
   },
   "blog": {
     "title": {
@@ -278,8 +282,6 @@
       "line2": "BLOG"
     },
     "subtitle": "Lo que voy aprendiendo. Sobre equipos, producto, código y todo lo que hay entre medias.",
-    "metaTitle": "Blog",
-    "metaDescription": "Artículos sobre liderazgo técnico, arquitectura de software, TDD, Context Engineering y desarrollo profesional.",
     "readMore": "LEER ARTÍCULO",
     "readTime": "MIN LECTURA",
     "backToBlog": "VOLVER AL BLOG",

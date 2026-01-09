@@ -270,7 +270,11 @@
   "aboutPage": {
     "headerLink": "<EO />",
     "title": "About Me",
-    "metaDescription": "Endika Orube: Tech Lead & Manager of 20+ devs in digital banking. Specialist in XP, hexagonal architecture and Context Engineering with AI. Teacher and speaker in the tech community."
+    "description": "Endika Orube: Tech Lead & Manager of 20+ devs in digital banking. Specialist in XP, hexagonal architecture and Context Engineering with AI. Teacher and speaker in the tech community."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Articles on technical leadership, software architecture, TDD, Context Engineering and professional development."
   },
   "blog": {
     "title": {
@@ -278,8 +282,6 @@
       "line2": "BLOG"
     },
     "subtitle": "What I keep learning. About teams, product, code, and everything in between.",
-    "metaTitle": "Blog",
-    "metaDescription": "Articles on technical leadership, software architecture, TDD, Context Engineering and professional development.",
     "readMore": "READ ARTICLE",
     "readTime": "MIN READ",
     "backToBlog": "BACK TO BLOG",

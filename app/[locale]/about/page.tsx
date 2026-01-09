@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const isSpanish = locale === 'es';
 
   const title = `${t('title')} | ${siteConfig.author.name}`;
-  const description = t('metaDescription');
+  const description = t('description');
 
   return {
     title,
