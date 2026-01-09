@@ -12,14 +12,19 @@ export function ProjectsSection() {
     <section className="relative py-32">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black text-white mb-20 leading-none"
+          className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black leading-none mb-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          {t('projects.title.line1')}
+          <span className="text-white">{t('projects.title.line1')}</span>
           <br />
-          <span className="text-primary">{t('projects.title.line2')}</span>
+          <span
+            className="text-transparent"
+            style={{ WebkitTextStroke: '2px var(--pink)' }}
+          >
+            {t('projects.title.line2')}
+          </span>
         </motion.h2>
 
         {/* Mobile: Stack uniforme | Desktop: Grid asimétrico */}

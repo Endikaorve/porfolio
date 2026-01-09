@@ -32,10 +32,9 @@ export function AboutPageClient() {
       <ExpertiseSection />
       <ExperienceSection />
       <CommunitySection />
-      <TechSkillsSection />
       <ProjectsSection />
+      <TechSkillsSection />
       <ContactSection />
     </main>
   );
 }
-

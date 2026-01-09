@@ -51,12 +51,7 @@ export function TechSkillsSection() {
             <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[6vw] font-black leading-none">
               <span className="text-white">{t('tech.title.line1')}</span>
               <br />
-              <span
-                className="text-transparent"
-                style={{ WebkitTextStroke: '2px var(--pink)' }}
-              >
-                {t('tech.title.line2')}
-              </span>
+              <span className="text-primary">{t('tech.title.line2')}</span>
             </h2>
           </div>
         </div>
