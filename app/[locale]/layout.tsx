@@ -7,6 +7,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Locale } from '@/i18n/config';
+import { siteConfig } from '@/config/site';
 import '../globals.css';
 import { Header } from '@/components/header';
 import { GlobalCursor } from '@/components/global-cursor';
@@ -31,14 +32,12 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const BASE_URL = 'https://endikaorube.com';
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const messages = await import(`../../translations/${locale}.json`);
   const t = messages.default;
 
-  const currentUrl = `${BASE_URL}/${locale}`;
+  const currentUrl = `${siteConfig.url}/${locale}`;
 
   return {
     title: t.metadata.title,
@@ -56,16 +55,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'Spain',
       'Navarra',
     ],
-    authors: [{ name: 'Endika Orube', url: BASE_URL }],
-    creator: 'Endika Orube',
-    metadataBase: new URL(BASE_URL),
+    authors: [{ name: siteConfig.author.name, url: siteConfig.url }],
+    creator: siteConfig.author.name,
+    metadataBase: new URL(siteConfig.url),
 
     // Alternates & hreflang
     alternates: {
       canonical: currentUrl,
       languages: {
-        es: `${BASE_URL}/es`,
-        en: `${BASE_URL}/en`,
+        es: `${siteConfig.url}/es`,
+        en: `${siteConfig.url}/en`,
       },
     },
 
@@ -77,13 +76,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: currentUrl,
       title: t.metadata.title,
       description: t.metadata.description,
-      siteName: 'Endika Orube Portfolio',
+      siteName: siteConfig.name,
       images: [
         {
-          url: `${BASE_URL}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Endika Orube - Tech Lead & Product Engineer',
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
+          alt: siteConfig.ogImage.alt,
         },
       ],
     },
@@ -93,7 +92,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: t.metadata.title,
       description: t.metadata.description,
-      images: [`${BASE_URL}/og-image.jpg`],
+      images: [`${siteConfig.url}/og-image.jpg`],
     },
 
     // Robots

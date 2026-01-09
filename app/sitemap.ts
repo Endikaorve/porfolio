@@ -1,9 +1,8 @@
 import { MetadataRoute } from 'next';
 import { blogService } from '@/core/blog/services/blog.service';
 import { routing } from '@/i18n/routing';
+import { siteConfig } from '@/config/site';
 import '@/di';
-
-const BASE_URL = 'https://endikaorube.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
@@ -15,42 +14,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of routing.locales) {
     // Home
     staticRoutes.push({
-      url: `${BASE_URL}/${locale}`,
+      url: `${siteConfig.url}/${locale}`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 1,
       alternates: {
         languages: {
-          es: `${BASE_URL}/es`,
-          en: `${BASE_URL}/en`,
+          es: `${siteConfig.url}/es`,
+          en: `${siteConfig.url}/en`,
         },
       },
     });
 
     // About
     staticRoutes.push({
-      url: `${BASE_URL}/${locale}/about`,
+      url: `${siteConfig.url}/${locale}/about`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.9,
       alternates: {
         languages: {
-          es: `${BASE_URL}/es/about`,
-          en: `${BASE_URL}/en/about`,
+          es: `${siteConfig.url}/es/about`,
+          en: `${siteConfig.url}/en/about`,
         },
       },
     });
 
     // Blog listing
     staticRoutes.push({
-      url: `${BASE_URL}/${locale}/blog`,
+      url: `${siteConfig.url}/${locale}/blog`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 0.8,
       alternates: {
         languages: {
-          es: `${BASE_URL}/es/blog`,
-          en: `${BASE_URL}/en/blog`,
+          es: `${siteConfig.url}/es/blog`,
+          en: `${siteConfig.url}/en/blog`,
         },
       },
     });
@@ -70,14 +69,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const postDate = post?.date ? new Date(post.date) : lastModified;
 
         blogRoutes.push({
-          url: `${BASE_URL}/${locale}/blog/${slug}`,
+          url: `${siteConfig.url}/${locale}/blog/${slug}`,
           lastModified: postDate,
           changeFrequency: 'monthly',
           priority: 0.7,
           alternates: {
             languages: {
-              es: `${BASE_URL}/es/blog/${slug}`,
-              en: `${BASE_URL}/en/blog/${slug}`,
+              es: `${siteConfig.url}/es/blog/${slug}`,
+              en: `${siteConfig.url}/en/blog/${slug}`,
             },
           },
         });

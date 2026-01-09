@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { siteConfig } from '@/config/site';
 import { AboutPageClient } from './_components';
-
-const BASE_URL = 'https://endikaorube.com';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -12,13 +11,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'aboutPage' });
 
-  const currentUrl = `${BASE_URL}/${locale}/about`;
+  const currentUrl = `${siteConfig.url}/${locale}/about`;
   const isSpanish = locale === 'es';
 
   const title = `${t('title')} | Endika Orube`;
   const description = isSpanish
     ? 'Conoce la trayectoria profesional de Endika Orube: +7 años de experiencia como Tech Lead, liderando equipos de +20 desarrolladores en proyectos críticos. Arquitectura, TDD, Product Engineering.'
-    : 'Discover Endika Orube\'s professional journey: 7+ years of experience as Tech Lead, leading teams of 20+ developers on critical projects. Architecture, TDD, Product Engineering.';
+    : "Discover Endika Orube's professional journey: 7+ years of experience as Tech Lead, leading teams of 20+ developers on critical projects. Architecture, TDD, Product Engineering.";
 
   return {
     title,
@@ -43,8 +42,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: currentUrl,
       languages: {
-        es: `${BASE_URL}/es/about`,
-        en: `${BASE_URL}/en/about`,
+        es: `${siteConfig.url}/es/about`,
+        en: `${siteConfig.url}/en/about`,
       },
     },
 
@@ -56,16 +55,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: currentUrl,
       title,
       description,
-      siteName: 'Endika Orube Portfolio',
+      siteName: siteConfig.name,
       firstName: 'Endika',
       lastName: 'Orube',
       username: 'endikaorube',
       images: [
         {
-          url: `${BASE_URL}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Endika Orube - Tech Lead & Product Engineer',
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
+          alt: siteConfig.ogImage.alt,
         },
       ],
     },
@@ -75,7 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: [`${BASE_URL}/og-image.jpg`],
+      images: [`${siteConfig.url}/og-image.jpg`],
     },
 
     // Robots

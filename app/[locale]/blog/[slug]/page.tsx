@@ -8,6 +8,7 @@ import rehypeHighlight from 'rehype-highlight';
 
 import { blogService } from '@/core/blog/services/blog.service';
 import { routing } from '@/i18n/routing';
+import { siteConfig } from '@/config/site';
 import { BlogPostLayout } from '../_components/blog-post-layout';
 import { mdxComponents } from '../_components/mdx-components';
 import '@/di';
@@ -40,23 +41,65 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const currentUrl = `${siteConfig.url}/${locale}/blog/${slug}`;
+  const isSpanish = locale === 'es';
+
   return {
-    title: `${post.title} | Endika Orube`,
+    title: `${post.title} | ${siteConfig.author.name}`,
     description: post.description,
     keywords: post.tags,
     authors: [{ name: post.author }],
+
+    // Canonical y alternates
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        es: `${siteConfig.url}/es/blog/${slug}`,
+        en: `${siteConfig.url}/en/blog/${slug}`,
+      },
+    },
+
+    // Open Graph
     openGraph: {
+      type: 'article',
+      locale: isSpanish ? 'es_ES' : 'en_US',
+      alternateLocale: isSpanish ? 'en_US' : 'es_ES',
+      url: currentUrl,
       title: post.title,
       description: post.description,
-      type: 'article',
+      siteName: `${siteConfig.author.name} Blog`,
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
+      images: [
+        {
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
+          alt: post.title,
+        },
+      ],
     },
+
+    // Twitter Cards
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
+      images: [`${siteConfig.url}/og-image.jpg`],
+    },
+
+    // Robots
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }

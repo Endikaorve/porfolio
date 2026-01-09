@@ -1,9 +1,9 @@
 # Robots.txt for Endika Orube Portfolio
-# https://endikaorube.com
+# https://endikaorube.dev
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://endikaorube.com/sitemap.xml
+Sitemap: https://endikaorube.dev/sitemap.xml
 

@@ -1,4 +1,4 @@
-const BASE_URL = 'https://endikaorube.com';
+import { siteConfig } from '@/config/site';
 
 export function JsonLdSchema({ locale }: { locale: string }) {
   const isSpanish = locale === 'es';
@@ -6,21 +6,18 @@ export function JsonLdSchema({ locale }: { locale: string }) {
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    '@id': `${BASE_URL}/#person`,
-    name: 'Endika Orube',
+    '@id': `${siteConfig.url}/#person`,
+    name: siteConfig.author.name,
     givenName: 'Endika',
     familyName: 'Orube',
-    jobTitle: 'Tech Lead & Product Engineer',
+    jobTitle: siteConfig.author.role,
     description: isSpanish
       ? 'Tech Lead & Product Engineer con +7 años de experiencia en desarrollo de software, liderando equipos y construyendo productos digitales.'
       : 'Tech Lead & Product Engineer with 7+ years of experience in software development, leading teams and building digital products.',
-    url: BASE_URL,
-    email: 'endikaorve@gmail.com',
-    image: `${BASE_URL}/endika.jpg`,
-    sameAs: [
-      'https://www.linkedin.com/in/endikaorube/',
-      'https://github.com/Endikaorve',
-    ],
+    url: siteConfig.url,
+    email: siteConfig.author.email,
+    image: `${siteConfig.url}/endika.jpg`,
+    sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
     knowsAbout: [
       'React',
       'Next.js',
@@ -53,32 +50,32 @@ export function JsonLdSchema({ locale }: { locale: string }) {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': `${BASE_URL}/#website`,
-    url: BASE_URL,
-    name: 'Endika Orube Portfolio',
+    '@id': `${siteConfig.url}/#website`,
+    url: siteConfig.url,
+    name: siteConfig.name,
     description: isSpanish
-      ? 'Portfolio profesional de Endika Orube - Tech Lead & Product Engineer'
-      : 'Professional portfolio of Endika Orube - Tech Lead & Product Engineer',
+      ? `Portfolio profesional de ${siteConfig.author.name} - ${siteConfig.author.role}`
+      : `Professional portfolio of ${siteConfig.author.name} - ${siteConfig.author.role}`,
     inLanguage: [locale === 'es' ? 'es-ES' : 'en-US'],
     author: {
-      '@id': `${BASE_URL}/#person`,
+      '@id': `${siteConfig.url}/#person`,
     },
   };
 
   const profilePageSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
-    '@id': `${BASE_URL}/${locale}/#webpage`,
-    url: `${BASE_URL}/${locale}`,
-    name: 'Endika Orube | Tech Lead & Product Engineer',
+    '@id': `${siteConfig.url}/${locale}/#webpage`,
+    url: `${siteConfig.url}/${locale}`,
+    name: `${siteConfig.author.name} | ${siteConfig.author.role}`,
     isPartOf: {
-      '@id': `${BASE_URL}/#website`,
+      '@id': `${siteConfig.url}/#website`,
     },
     about: {
-      '@id': `${BASE_URL}/#person`,
+      '@id': `${siteConfig.url}/#person`,
     },
     mainEntity: {
-      '@id': `${BASE_URL}/#person`,
+      '@id': `${siteConfig.url}/#person`,
     },
     inLanguage: locale === 'es' ? 'es-ES' : 'en-US',
   };
