@@ -8,10 +8,8 @@ describe('buildBlogPost', () => {
       slug: 'test-post',
       metadata: {
         date: '2024-01-15',
-        author: 'John Doe',
         tags: ['test', 'typescript'],
         readTime: '8 min',
-        featured: true,
       },
       frontmatter: {
         title: 'Test Post',
@@ -27,10 +25,8 @@ describe('buildBlogPost', () => {
       title: 'Test Post',
       description: 'Test description',
       date: '2024-01-15',
-      author: 'John Doe',
       tags: ['test', 'typescript'],
       readTime: '8 min',
-      featured: true,
     });
   });
 
@@ -39,10 +35,8 @@ describe('buildBlogPost', () => {
       slug: 'minimal-post',
       metadata: {
         date: '',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
-        featured: false,
       },
       frontmatter: {},
       content: 'Content',
@@ -54,10 +48,8 @@ describe('buildBlogPost', () => {
     expect(result.title).toBe('minimal-post'); // Default: slug
     expect(result.description).toBe(''); // Default: empty
     expect(result.date).toBe(''); // From metadata
-    expect(result.author).toBe('Endika Orube'); // From metadata
     expect(result.tags).toEqual([]); // From metadata
     expect(result.readTime).toBe('5 min'); // From metadata
-    expect(result.featured).toBe(false); // From metadata
   });
 
   it('should use slug as title when title is missing', () => {
@@ -65,7 +57,6 @@ describe('buildBlogPost', () => {
       slug: 'my-awesome-post',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -85,7 +76,6 @@ describe('buildBlogPost', () => {
       slug: 'partial-post',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: ['tag1'],
         readTime: '5 min',
       },
@@ -100,7 +90,6 @@ describe('buildBlogPost', () => {
     expect(result.title).toBe('Only Title');
     expect(result.tags).toEqual(['tag1']);
     expect(result.description).toBe('');
-    expect(result.author).toBe('Endika Orube');
     expect(result.readTime).toBe('5 min');
   });
 
@@ -109,7 +98,6 @@ describe('buildBlogPost', () => {
       slug: 'test',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -129,10 +117,8 @@ describe('buildBlogPostDetail', () => {
       slug: 'detailed-post',
       metadata: {
         date: '2024-01-15',
-        author: 'Jane Doe',
         tags: ['vitest', 'testing'],
         readTime: '12 min',
-        featured: false,
       },
       frontmatter: {
         title: 'Detailed Post',
@@ -148,10 +134,8 @@ describe('buildBlogPostDetail', () => {
       title: 'Detailed Post',
       description: 'Full description',
       date: '2024-01-15',
-      author: 'Jane Doe',
       tags: ['vitest', 'testing'],
       readTime: '12 min',
-      featured: false,
       content: '# Markdown Title\n\nContent here.',
     });
   });
@@ -161,7 +145,6 @@ describe('buildBlogPostDetail', () => {
       slug: 'test',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -179,7 +162,6 @@ describe('buildBlogPostDetail', () => {
       slug: 'minimal-detail',
       metadata: {
         date: '',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -191,7 +173,6 @@ describe('buildBlogPostDetail', () => {
 
     expect(result.slug).toBe('minimal-detail');
     expect(result.title).toBe('minimal-detail');
-    expect(result.author).toBe('Endika Orube');
     expect(result.readTime).toBe('5 min');
     expect(result.content).toBe('Minimal content');
   });
@@ -213,7 +194,6 @@ More text
       slug: 'code-post',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -232,7 +212,6 @@ More text
       slug: 'inheritance-test',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: ['test'],
         readTime: '5 min',
       },
@@ -249,7 +228,6 @@ More text
     expect(result.title).toBeDefined();
     expect(result.description).toBeDefined();
     expect(result.date).toBeDefined();
-    expect(result.author).toBeDefined();
     expect(result.tags).toBeDefined();
     expect(result.readTime).toBeDefined();
 

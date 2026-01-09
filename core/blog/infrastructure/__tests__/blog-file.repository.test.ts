@@ -102,10 +102,8 @@ describe('blogFileRepository', () => {
       const mockContent = 'Post content here';
       const mockMetadata = {
         date: '2024-01-15',
-        author: 'John Doe',
         tags: ['test'],
         readTime: '5 min',
-        featured: true,
       };
       const mockFrontmatter = {
         title: 'Test Post',
@@ -137,10 +135,8 @@ describe('blogFileRepository', () => {
         title: 'Test Post',
         description: 'Test description',
         date: '2024-01-15',
-        author: 'John Doe',
         tags: ['test'],
         readTime: '5 min',
-        featured: true,
         content: mockContent,
       });
     });
@@ -148,10 +144,8 @@ describe('blogFileRepository', () => {
     it('should apply default values for missing frontmatter fields', async () => {
       const mockMetadata = {
         date: '',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
-        featured: false,
       };
 
       (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
@@ -179,10 +173,8 @@ describe('blogFileRepository', () => {
         title: 'minimal', // Default: slug
         description: '',
         date: '',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
-        featured: false,
         content: 'Minimal content',
       });
     });
@@ -190,7 +182,6 @@ describe('blogFileRepository', () => {
     it('should handle different locales', async () => {
       const mockMetadata = {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       };
@@ -249,7 +240,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-15',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -267,7 +257,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-10',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -300,7 +289,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-01',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -316,7 +304,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-12-31',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -351,7 +338,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-01',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -381,7 +367,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-01',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any

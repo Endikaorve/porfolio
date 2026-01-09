@@ -7,14 +7,10 @@ export interface BlogMetadata {
   date: string;
   /** Fecha de última modificación del post */
   modifiedDate?: string;
-  /** Autor del post */
-  author: string;
   /** Etiquetas del post (en inglés, consistentes) */
   tags: string[];
   /** Tiempo estimado de lectura */
   readTime: string;
-  /** Si el post es destacado o no */
-  featured?: boolean;
 }
 
 /**

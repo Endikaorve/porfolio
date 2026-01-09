@@ -9,7 +9,6 @@ describe('BlogPost interface', () => {
       .withTitle('My Post Title')
       .withDescription('Post description')
       .withDate('2024-01-15')
-      .withAuthor('John Doe')
       .withTags(['typescript', 'testing'])
       .withReadTime('10 min')
       .build();
@@ -18,16 +17,8 @@ describe('BlogPost interface', () => {
     expect(blogPost.title).toBe('My Post Title');
     expect(blogPost.description).toBe('Post description');
     expect(blogPost.date).toBe('2024-01-15');
-    expect(blogPost.author).toBe('John Doe');
     expect(blogPost.tags).toEqual(['typescript', 'testing']);
     expect(blogPost.readTime).toBe('10 min');
-    expect(blogPost.featured).toBe(false);
-  });
-
-  it('should create a BlogPost with optional featured field', () => {
-    const featuredPost = aBlogPost().withFeatured(true).build();
-
-    expect(featuredPost.featured).toBe(true);
   });
 
   it('should create a BlogPost with default values from builder', () => {
@@ -37,7 +28,6 @@ describe('BlogPost interface', () => {
     expect(blogPost.title).toBeDefined();
     expect(blogPost.description).toBeDefined();
     expect(blogPost.date).toBeDefined();
-    expect(blogPost.author).toBeDefined();
     expect(blogPost.tags).toBeInstanceOf(Array);
     expect(blogPost.readTime).toBeDefined();
   });
@@ -56,7 +46,6 @@ describe('BlogPostDetail interface', () => {
     expect(blogPostDetail.title).toBe('Detailed Post');
     expect(blogPostDetail.description).toBeDefined();
     expect(blogPostDetail.date).toBeDefined();
-    expect(blogPostDetail.author).toBeDefined();
     expect(blogPostDetail.tags).toBeInstanceOf(Array);
     expect(blogPostDetail.readTime).toBeDefined();
 

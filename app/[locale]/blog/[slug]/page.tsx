@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${post.title} | ${siteConfig.author.name}`,
     description: post.description,
     keywords: post.tags,
-    authors: [{ name: post.author }],
+    authors: [{ name: siteConfig.author.name }],
 
     // Canonical y alternates
     alternates: {
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: `${siteConfig.author.name} Blog`,
       publishedTime: post.date,
       modifiedTime: post.modifiedDate || post.date,
-      authors: [post.author],
+      authors: [siteConfig.author.name],
       tags: post.tags,
       images: [
         {
@@ -125,7 +125,7 @@ export default async function BlogPostPage({ params }: Props) {
     dateModified: post.modifiedDate || post.date,
     author: {
       '@type': 'Person',
-      name: post.author,
+      name: siteConfig.author.name,
       url: siteConfig.url,
     },
     publisher: {

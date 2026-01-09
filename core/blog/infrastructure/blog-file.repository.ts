@@ -21,10 +21,8 @@ function readMetadata(slug: string): BlogMetadata {
     // Fallback si no existe metadata.json (para compatibilidad)
     return {
       date: '',
-      author: 'Endika Orube',
       tags: [],
       readTime: '5 min',
-      featured: false,
     };
   }
 

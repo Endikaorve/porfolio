@@ -16,10 +16,8 @@ export function buildBlogPostDetail(dto: BlogFileDTO): BlogPostDetail {
     // Datos estáticos de metadata.json
     date: dto.metadata.date,
     modifiedDate: dto.metadata.modifiedDate,
-    author: dto.metadata.author,
     tags: dto.metadata.tags,
     readTime: dto.metadata.readTime,
-    featured: dto.metadata.featured || false,
     // Contenido traducible
     content: dto.content,
   };
@@ -40,9 +38,7 @@ export function buildBlogPost(dto: BlogFileDTO): BlogPost {
     // Datos estáticos de metadata.json
     date: dto.metadata.date,
     modifiedDate: dto.metadata.modifiedDate,
-    author: dto.metadata.author,
     tags: dto.metadata.tags,
     readTime: dto.metadata.readTime,
-    featured: dto.metadata.featured || false,
   };
 }

@@ -10,10 +10,8 @@ export class BlogPostBuilder {
     title: 'Test Blog Post',
     description: 'This is a test blog post description',
     date: '2024-01-01',
-    author: 'Test Author',
     tags: ['test', 'vitest'],
     readTime: '5 min',
-    featured: false,
   };
 
   withSlug(slug: string): this {
@@ -36,11 +34,6 @@ export class BlogPostBuilder {
     return this;
   }
 
-  withAuthor(author: string): this {
-    this.blogPost.author = author;
-    return this;
-  }
-
   withTags(tags: string[]): this {
     this.blogPost.tags = tags;
     return this;
@@ -48,11 +41,6 @@ export class BlogPostBuilder {
 
   withReadTime(readTime: string): this {
     this.blogPost.readTime = readTime;
-    return this;
-  }
-
-  withFeatured(featured: boolean): this {
-    this.blogPost.featured = featured;
     return this;
   }
 

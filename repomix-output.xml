@@ -80,7 +80,6 @@ app/
       blog-list-client.tsx
       page.tsx
     layout.tsx
-    not-found.tsx
     page.tsx
   globals.css
   layout.tsx
@@ -95,6 +94,8 @@ components/
   magnetic-wrapper.tsx
   scramble-text.tsx
   scroll-to-top.tsx
+config/
+  site.ts
 content/
   blog/
     bienvenida/
@@ -208,166 +209,6 @@ alwaysApply: true
 ---
 
 Este proyecto siempre usa yarn.
-</file>
-
-<file path="app/[locale]/not-found.tsx">
-'use client';
-
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { useParams, usePathname } from 'next/navigation';
-import { Link } from '@/i18n/navigation';
-import { locales } from '@/i18n/config';
-
-type NotFoundProps = {
-  forcedLocale?: string;
-};
-
-export default function NotFound(
-  { forcedLocale }: NotFoundProps = {} as NotFoundProps
-) {
-  const t = useTranslations('notFound');
-  const params = useParams();
-  const pathname = usePathname();
-
-  // Intentar detectar el locale de múltiples fuentes
-  let detectedLocale = forcedLocale || (params?.locale as string);
-
-  // Si no tenemos locale de params, intentar extraerlo del pathname
-  if (!detectedLocale && pathname) {
-    const pathSegments = pathname.split('/').filter(Boolean);
-    if (pathSegments.length > 0 && locales.includes(pathSegments[0] as any)) {
-      detectedLocale = pathSegments[0];
-    }
-  }
-
-  const locale = detectedLocale || 'es';
-
-  return (
-    <main className="relative min-h-screen bg-surface-darkest overflow-hidden flex items-center justify-center px-6">
-      {/* Grid distorsionado de fondo */}
-      <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(222, 94, 145, 0.5) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(222, 94, 145, 0.5) 1px, transparent 1px)
-            `,
-            backgroundSize: '80px 80px',
-            transform: 'perspective(1000px) rotateX(60deg) scale(2)',
-            transformOrigin: 'center top',
-          }}
-        />
-      </div>
-
-      {/* Gradiente radial sutil */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(circle at 50% 50%, rgba(222, 94, 145, 0.08) 0%, transparent 50%)',
-        }}
-      />
-
-      {/* Contenido principal */}
-      <div className="relative z-10 max-w-7xl mx-auto text-center">
-        {/* Código de error - Extra grande */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: 0.6,
-            type: 'spring',
-            stiffness: 200,
-            damping: 20,
-          }}
-          className="mb-8"
-        >
-          <h1
-            className="font-mono font-bold text-white leading-none"
-            style={{
-              fontSize: 'clamp(8rem, 25vw, 20rem)',
-              WebkitTextStroke: '2px rgba(222, 94, 145, 0.3)',
-              WebkitTextFillColor: 'transparent',
-              textShadow: '0 0 80px rgba(222, 94, 145, 0.2)',
-            }}
-          >
-            {t('code')}
-          </h1>
-        </motion.div>
-
-        {/* Título dividido en líneas */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            delay: 0.2,
-            type: 'spring',
-            stiffness: 150,
-            damping: 20,
-          }}
-          className="mb-12 space-y-2"
-        >
-          <div className="font-bold text-white tracking-tight leading-none text-6xl md:text-8xl lg:text-9xl">
-            {t('title.line1')}
-          </div>
-          <div className="font-bold text-white tracking-tight leading-none text-6xl md:text-8xl lg:text-9xl">
-            {t('title.line2')}
-          </div>
-          <div className="font-bold text-white tracking-tight leading-none text-6xl md:text-8xl lg:text-9xl">
-            {t('title.line3')}
-          </div>
-        </motion.div>
-
-        {/* Descripción */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-12"
-        >
-          {t('description')}
-        </motion.p>
-
-        {/* Botón de acción */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            delay: 0.5,
-            type: 'spring',
-            stiffness: 200,
-            damping: 20,
-          }}
-        >
-          <Link
-            href={`/${locale}`}
-            className="inline-block group relative px-8 py-4 bg-white text-surface-darkest font-mono font-bold text-sm tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            {/* Efecto de brillo en hover */}
-            <span className="absolute inset-0 bg-gradient-to-r from-pink via-pink-light to-pink opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-              {t('backHome')}
-            </span>
-          </Link>
-        </motion.div>
-
-        {/* Coordenadas técnicas decorativas */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="mt-16 font-mono text-xs text-white/20 tracking-widest"
-        >
-          {t('coordinates')} · 404 · {new Date().getFullYear()}
-        </motion.div>
-      </div>
-    </main>
-  );
-}
 </file>
 
 <file path=".gitignore">
@@ -849,16 +690,6 @@ export function ScrollToTop() {
 }
 </file>
 
-<file path="content/blog/bienvenida/metadata.json">
-{
-  "date": "2025-01-05",
-  "author": "Endika Orube",
-  "tags": ["personal", "reflections"],
-  "readTime": "3 min",
-  "featured": true
-}
-</file>
-
 <file path="hooks/use-scramble-text.ts">
 'use client';
 
@@ -982,17 +813,6 @@ export const routing = defineRouting({
   defaultLocale,
   localePrefix: 'always',
 });
-</file>
-
-<file path="public/robots.txt">
-# Robots.txt for Endika Orube Portfolio
-# https://endikaorube.com
-
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://endikaorube.com/sitemap.xml
 </file>
 
 <file path=".prettierrc.json">
@@ -2191,108 +2011,46 @@ export function useMDXComponents(
 export const mdxComponents = useMDXComponents();
 </file>
 
-<file path="components/json-ld.tsx">
-const BASE_URL = 'https://endikaorube.com';
+<file path="config/site.ts">
+/**
+ * Configuración centralizada del sitio
+ * Todas las constantes globales del portfolio deben ir aquí
+ */
 
-export function JsonLdSchema({ locale }: { locale: string }) {
-  const isSpanish = locale === 'es';
+export const siteConfig = {
+  /** URL base del sitio (sin trailing slash) */
+  url: 'https://endikaorube.dev',
 
-  const personSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    '@id': `${BASE_URL}/#person`,
+  /** Nombre del sitio */
+  name: 'Endika Orube Portfolio',
+
+  /** Autor del sitio */
+  author: {
     name: 'Endika Orube',
-    givenName: 'Endika',
-    familyName: 'Orube',
-    jobTitle: 'Tech Lead & Product Engineer',
-    description: isSpanish
-      ? 'Tech Lead & Product Engineer con +7 años de experiencia en desarrollo de software, liderando equipos y construyendo productos digitales.'
-      : 'Tech Lead & Product Engineer with 7+ years of experience in software development, leading teams and building digital products.',
-    url: BASE_URL,
     email: 'endikaorve@gmail.com',
-    image: `${BASE_URL}/endika.jpg`,
-    sameAs: [
-      'https://www.linkedin.com/in/endikaorube/',
-      'https://github.com/Endikaorve',
-    ],
-    knowsAbout: [
-      'React',
-      'Next.js',
-      'TypeScript',
-      'JavaScript',
-      'TDD',
-      'Software Architecture',
-      'Hexagonal Architecture',
-      'Frontend Development',
-      'Team Leadership',
-      'Extreme Programming',
-      'CI/CD',
-    ],
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Biko2 / Jakala',
-      url: 'https://www.jakala.com/',
-    },
-    alumniOf: {
-      '@type': 'EducationalOrganization',
-      name: 'Universidad de Navarra',
-    },
-    address: {
-      '@type': 'PostalAddress',
-      addressRegion: 'Navarra',
-      addressCountry: 'ES',
-    },
-  };
+    role: 'Tech Lead & Manager | Product Engineer',
+  },
 
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': `${BASE_URL}/#website`,
-    url: BASE_URL,
-    name: 'Endika Orube Portfolio',
-    description: isSpanish
-      ? 'Portfolio profesional de Endika Orube - Tech Lead & Product Engineer'
-      : 'Professional portfolio of Endika Orube - Tech Lead & Product Engineer',
-    inLanguage: [locale === 'es' ? 'es-ES' : 'en-US'],
-    author: {
-      '@id': `${BASE_URL}/#person`,
-    },
-  };
+  /** Redes sociales */
+  social: {
+    linkedin: 'https://www.linkedin.com/in/endikaorube/',
+    github: 'https://github.com/Endikaorve',
+  },
 
-  const profilePageSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ProfilePage',
-    '@id': `${BASE_URL}/${locale}/#webpage`,
-    url: `${BASE_URL}/${locale}`,
-    name: 'Endika Orube | Tech Lead & Product Engineer',
-    isPartOf: {
-      '@id': `${BASE_URL}/#website`,
-    },
-    about: {
-      '@id': `${BASE_URL}/#person`,
-    },
-    mainEntity: {
-      '@id': `${BASE_URL}/#person`,
-    },
-    inLanguage: locale === 'es' ? 'es-ES' : 'en-US',
-  };
+  /** Configuración de imágenes OG */
+  ogImage: {
+    width: 1200,
+    height: 630,
+    alt: 'Endika Orube - Tech Lead & Manager | Product Engineer',
+  },
+} as const;
+</file>
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
-      />
-    </>
-  );
+<file path="content/blog/bienvenida/metadata.json">
+{
+  "date": "2026-01-10",
+  "tags": ["personal", "reflections"],
+  "readTime": "3 min"
 }
 </file>
 
@@ -2322,10 +2080,8 @@ export class BlogPostBuilder {
     title: 'Test Blog Post',
     description: 'This is a test blog post description',
     date: '2024-01-01',
-    author: 'Test Author',
     tags: ['test', 'vitest'],
     readTime: '5 min',
-    featured: false,
   };
 
   withSlug(slug: string): this {
@@ -2348,11 +2104,6 @@ export class BlogPostBuilder {
     return this;
   }
 
-  withAuthor(author: string): this {
-    this.blogPost.author = author;
-    return this;
-  }
-
   withTags(tags: string[]): this {
     this.blogPost.tags = tags;
     return this;
@@ -2360,11 +2111,6 @@ export class BlogPostBuilder {
 
   withReadTime(readTime: string): this {
     this.blogPost.readTime = readTime;
-    return this;
-  }
-
-  withFeatured(featured: boolean): this {
-    this.blogPost.featured = featured;
     return this;
   }
 
@@ -2471,7 +2217,6 @@ describe('BlogPost interface', () => {
       .withTitle('My Post Title')
       .withDescription('Post description')
       .withDate('2024-01-15')
-      .withAuthor('John Doe')
       .withTags(['typescript', 'testing'])
       .withReadTime('10 min')
       .build();
@@ -2480,16 +2225,8 @@ describe('BlogPost interface', () => {
     expect(blogPost.title).toBe('My Post Title');
     expect(blogPost.description).toBe('Post description');
     expect(blogPost.date).toBe('2024-01-15');
-    expect(blogPost.author).toBe('John Doe');
     expect(blogPost.tags).toEqual(['typescript', 'testing']);
     expect(blogPost.readTime).toBe('10 min');
-    expect(blogPost.featured).toBe(false);
-  });
-
-  it('should create a BlogPost with optional featured field', () => {
-    const featuredPost = aBlogPost().withFeatured(true).build();
-
-    expect(featuredPost.featured).toBe(true);
   });
 
   it('should create a BlogPost with default values from builder', () => {
@@ -2499,7 +2236,6 @@ describe('BlogPost interface', () => {
     expect(blogPost.title).toBeDefined();
     expect(blogPost.description).toBeDefined();
     expect(blogPost.date).toBeDefined();
-    expect(blogPost.author).toBeDefined();
     expect(blogPost.tags).toBeInstanceOf(Array);
     expect(blogPost.readTime).toBeDefined();
   });
@@ -2518,7 +2254,6 @@ describe('BlogPostDetail interface', () => {
     expect(blogPostDetail.title).toBe('Detailed Post');
     expect(blogPostDetail.description).toBeDefined();
     expect(blogPostDetail.date).toBeDefined();
-    expect(blogPostDetail.author).toBeDefined();
     expect(blogPostDetail.tags).toBeInstanceOf(Array);
     expect(blogPostDetail.readTime).toBeDefined();
 
@@ -2608,31 +2343,6 @@ export function formatBlogPostDate(blog: BlogPost, locale: string): string {
     month: 'short',
     day: 'numeric',
   });
-}
-</file>
-
-<file path="core/blog/domain/blog.ts">
-/**
- * Representa la metadata de un post del blog (sin contenido completo)
- * Usado en listados, previews y feeds
- */
-export interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  author: string;
-  tags: string[];
-  readTime: string;
-  featured?: boolean;
-}
-
-/**
- * Representa un post del blog con su contenido completo
- * Extiende BlogPost añadiendo el campo content
- */
-export interface BlogPostDetail extends BlogPost {
-  content: string;
 }
 </file>
 
@@ -2913,6 +2623,17 @@ import { injectBlogDependencies } from '@/core/blog/_di';
  * Se ejecuta al iniciar la aplicación para configurar todos los módulos
  */
 injectBlogDependencies();
+</file>
+
+<file path="public/robots.txt">
+# Robots.txt for Endika Orube Portfolio
+# https://endikaorube.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://endikaorube.dev/sitemap.xml
 </file>
 
 <file path="next.config.mjs">
@@ -3310,236 +3031,6 @@ export function CommunitySection() {
 }
 </file>
 
-<file path="app/[locale]/about/page.tsx">
-import { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { AboutPageClient } from './_components';
-
-const BASE_URL = 'https://endikaorube.com';
-
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'aboutPage' });
-
-  const currentUrl = `${BASE_URL}/${locale}/about`;
-  const isSpanish = locale === 'es';
-
-  const title = `${t('title')} | Endika Orube`;
-  const description = isSpanish
-    ? 'Conoce la trayectoria profesional de Endika Orube: +7 años de experiencia como Tech Lead, liderando equipos de +20 desarrolladores en proyectos críticos. Arquitectura, TDD, Product Engineering.'
-    : 'Discover Endika Orube\'s professional journey: 7+ years of experience as Tech Lead, leading teams of 20+ developers on critical projects. Architecture, TDD, Product Engineering.';
-
-  return {
-    title,
-    description,
-    keywords: [
-      'Tech Lead',
-      'Engineering Manager',
-      'Product Engineer',
-      'Software Architecture',
-      'TDD',
-      'Extreme Programming',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Team Leadership',
-      'Endika Orube',
-      'Pamplona',
-      'Navarra',
-    ],
-
-    // Alternates & canonical
-    alternates: {
-      canonical: currentUrl,
-      languages: {
-        es: `${BASE_URL}/es/about`,
-        en: `${BASE_URL}/en/about`,
-      },
-    },
-
-    // Open Graph
-    openGraph: {
-      type: 'profile',
-      locale: isSpanish ? 'es_ES' : 'en_US',
-      alternateLocale: isSpanish ? 'en_US' : 'es_ES',
-      url: currentUrl,
-      title,
-      description,
-      siteName: 'Endika Orube Portfolio',
-      firstName: 'Endika',
-      lastName: 'Orube',
-      username: 'endikaorube',
-      images: [
-        {
-          url: `${BASE_URL}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Endika Orube - Tech Lead & Product Engineer',
-        },
-      ],
-    },
-
-    // Twitter Cards
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [`${BASE_URL}/og-image.jpg`],
-    },
-
-    // Robots
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-  };
-}
-
-export default async function AboutPage({ params }: Props) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-
-  return <AboutPageClient />;
-}
-</file>
-
-<file path="app/[locale]/blog/page.tsx">
-import { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { blogService } from '@/core/blog/services/blog.service';
-import { BlogListClient } from './blog-list-client';
-import '@/di';
-
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'blog' });
-
-  return {
-    title: `${t('metaTitle')} | Endika Orube`,
-    description: t('metaDescription'),
-  };
-}
-
-export default async function BlogPage({ params }: Props) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-
-  const posts = await blogService.listBlogPosts(locale);
-
-  return <BlogListClient posts={posts} locale={locale} />;
-}
-</file>
-
-<file path="app/sitemap.ts">
-import { MetadataRoute } from 'next';
-import { blogService } from '@/core/blog/services/blog.service';
-import { routing } from '@/i18n/routing';
-import '@/di';
-
-const BASE_URL = 'https://endikaorube.com';
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const lastModified = new Date();
-
-  // Rutas estáticas base
-  const staticRoutes: MetadataRoute.Sitemap = [];
-
-  // Páginas principales para cada idioma
-  for (const locale of routing.locales) {
-    // Home
-    staticRoutes.push({
-      url: `${BASE_URL}/${locale}`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 1,
-      alternates: {
-        languages: {
-          es: `${BASE_URL}/es`,
-          en: `${BASE_URL}/en`,
-        },
-      },
-    });
-
-    // About
-    staticRoutes.push({
-      url: `${BASE_URL}/${locale}/about`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-      alternates: {
-        languages: {
-          es: `${BASE_URL}/es/about`,
-          en: `${BASE_URL}/en/about`,
-        },
-      },
-    });
-
-    // Blog listing
-    staticRoutes.push({
-      url: `${BASE_URL}/${locale}/blog`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-      alternates: {
-        languages: {
-          es: `${BASE_URL}/es/blog`,
-          en: `${BASE_URL}/en/blog`,
-        },
-      },
-    });
-  }
-
-  // Rutas dinámicas del blog
-  const blogRoutes: MetadataRoute.Sitemap = [];
-
-  try {
-    const slugs = await blogService.listSlugs();
-
-    for (const slug of slugs) {
-      // Añadir entrada para cada idioma
-      for (const locale of routing.locales) {
-        // Obtener la fecha del post si existe
-        const post = await blogService.getBlogPostDetailBySlug(slug, locale);
-        const postDate = post?.date ? new Date(post.date) : lastModified;
-
-        blogRoutes.push({
-          url: `${BASE_URL}/${locale}/blog/${slug}`,
-          lastModified: postDate,
-          changeFrequency: 'monthly',
-          priority: 0.7,
-          alternates: {
-            languages: {
-              es: `${BASE_URL}/es/blog/${slug}`,
-              en: `${BASE_URL}/en/blog/${slug}`,
-            },
-          },
-        });
-      }
-    }
-  } catch (error) {
-    // En caso de error, continuar sin las rutas del blog
-    console.error('Error generating blog sitemap entries:', error);
-  }
-
-  return [...staticRoutes, ...blogRoutes];
-}
-</file>
-
 <file path="components/custom-cursor.tsx">
 'use client';
 
@@ -3686,6 +3177,132 @@ export function CustomCursor({
 }
 </file>
 
+<file path="components/json-ld.tsx">
+import { siteConfig } from '@/config/site';
+
+export function JsonLdSchema({ locale }: { locale: string }) {
+  const isSpanish = locale === 'es';
+
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${siteConfig.url}/#person`,
+    name: siteConfig.author.name,
+    givenName: 'Endika',
+    familyName: 'Orube',
+    jobTitle: siteConfig.author.role,
+    description: isSpanish
+      ? 'Tech Lead & Product Engineer con +7 años de experiencia en desarrollo de software, liderando equipos y construyendo productos digitales.'
+      : 'Tech Lead & Product Engineer with 7+ years of experience in software development, leading teams and building digital products.',
+    url: siteConfig.url,
+    email: siteConfig.author.email,
+    image: `${siteConfig.url}/endika.jpg`,
+    sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
+    knowsAbout: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'JavaScript',
+      'TDD',
+      'Software Architecture',
+      'Hexagonal Architecture',
+      'Frontend Development',
+      'Team Leadership',
+      'Extreme Programming',
+      'CI/CD',
+    ],
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Biko2 / Jakala',
+      url: 'https://www.jakala.com/',
+    },
+    alumniOf: {
+      '@type': 'EducationalOrganization',
+      name: 'Universidad de Navarra',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: 'Navarra',
+      addressCountry: 'ES',
+    },
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteConfig.url}/#website`,
+    url: siteConfig.url,
+    name: siteConfig.name,
+    description: isSpanish
+      ? `Portfolio profesional de ${siteConfig.author.name} - ${siteConfig.author.role}`
+      : `Professional portfolio of ${siteConfig.author.name} - ${siteConfig.author.role}`,
+    inLanguage: [locale === 'es' ? 'es-ES' : 'en-US'],
+    author: {
+      '@id': `${siteConfig.url}/#person`,
+    },
+  };
+
+  const profilePageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${siteConfig.url}/${locale}/#webpage`,
+    url: `${siteConfig.url}/${locale}`,
+    name: `${siteConfig.author.name} | ${siteConfig.author.role}`,
+    isPartOf: {
+      '@id': `${siteConfig.url}/#website`,
+    },
+    about: {
+      '@id': `${siteConfig.url}/#person`,
+    },
+    mainEntity: {
+      '@id': `${siteConfig.url}/#person`,
+    },
+    inLanguage: locale === 'es' ? 'es-ES' : 'en-US',
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
+      />
+    </>
+  );
+}
+</file>
+
+<file path="core/blog/domain/blog.ts">
+/**
+ * Representa la metadata de un post del blog (sin contenido completo)
+ * Usado en listados, previews y feeds
+ */
+export interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  modifiedDate?: string;
+  tags: string[];
+  readTime: string;
+}
+
+/**
+ * Representa un post del blog con su contenido completo
+ * Extiende BlogPost añadiendo el campo content
+ */
+export interface BlogPostDetail extends BlogPost {
+  content: string;
+}
+</file>
+
 <file path="core/blog/infrastructure/__tests__/blog-file.repository.test.ts">
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
@@ -3791,10 +3408,8 @@ describe('blogFileRepository', () => {
       const mockContent = 'Post content here';
       const mockMetadata = {
         date: '2024-01-15',
-        author: 'John Doe',
         tags: ['test'],
         readTime: '5 min',
-        featured: true,
       };
       const mockFrontmatter = {
         title: 'Test Post',
@@ -3826,10 +3441,8 @@ describe('blogFileRepository', () => {
         title: 'Test Post',
         description: 'Test description',
         date: '2024-01-15',
-        author: 'John Doe',
         tags: ['test'],
         readTime: '5 min',
-        featured: true,
         content: mockContent,
       });
     });
@@ -3837,10 +3450,8 @@ describe('blogFileRepository', () => {
     it('should apply default values for missing frontmatter fields', async () => {
       const mockMetadata = {
         date: '',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
-        featured: false,
       };
 
       (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
@@ -3868,10 +3479,8 @@ describe('blogFileRepository', () => {
         title: 'minimal', // Default: slug
         description: '',
         date: '',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
-        featured: false,
         content: 'Minimal content',
       });
     });
@@ -3879,7 +3488,6 @@ describe('blogFileRepository', () => {
     it('should handle different locales', async () => {
       const mockMetadata = {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       };
@@ -3938,7 +3546,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-15',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -3956,7 +3563,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-10',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -3989,7 +3595,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-01',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -4005,7 +3610,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-12-31',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -4040,7 +3644,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-01',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -4070,7 +3673,6 @@ describe('blogFileRepository', () => {
       (fs.readFileSync as any).mockReturnValueOnce(
         JSON.stringify({
           date: '2024-01-01',
-          author: 'Endika Orube',
           tags: [],
           readTime: '5 min',
         }) as any
@@ -4086,92 +3688,6 @@ describe('blogFileRepository', () => {
     });
   });
 });
-</file>
-
-<file path="core/blog/infrastructure/dto/blog-file.dto.ts">
-/**
- * Metadata estática del post (centralizada, no depende del idioma)
- * Se guarda en metadata.json en la carpeta del post
- */
-export interface BlogMetadata {
-  /** Fecha de publicación del post */
-  date: string;
-  /** Autor del post */
-  author: string;
-  /** Etiquetas del post (en inglés, consistentes) */
-  tags: string[];
-  /** Tiempo estimado de lectura */
-  readTime: string;
-  /** Si el post es destacado o no */
-  featured?: boolean;
-}
-
-/**
- * DTO que representa la estructura del archivo MDX con su frontmatter
- * Este es el formato raw que viene del filesystem antes de mapearlo al dominio
- */
-export interface BlogFileDTO {
-  /** Slug del post (nombre de la carpeta) */
-  slug: string;
-  /** Metadata estática compartida entre idiomas */
-  metadata: BlogMetadata;
-  /** Frontmatter extraído del archivo MDX con gray-matter (solo datos traducibles) */
-  frontmatter: {
-    title?: string;
-    description?: string;
-  };
-  /** Contenido markdown/MDX del post */
-  content: string;
-}
-</file>
-
-<file path="core/blog/infrastructure/mappers/blog-file.mapper.ts">
-import type { BlogPost, BlogPostDetail } from '../../domain/blog';
-import type { BlogFileDTO } from '../dto/blog-file.dto';
-
-/**
- * Construye una entidad BlogPostDetail (con contenido) desde un DTO del filesystem
- * Combina metadata estática (metadata.json) con datos traducibles (frontmatter del .mdx)
- * @param dto - DTO del archivo MDX con metadata centralizada
- * @returns Entidad del dominio con contenido completo
- */
-export function buildBlogPostDetail(dto: BlogFileDTO): BlogPostDetail {
-  return {
-    slug: dto.slug,
-    // Datos traducibles del frontmatter
-    title: dto.frontmatter.title || dto.slug,
-    description: dto.frontmatter.description || '',
-    // Datos estáticos de metadata.json
-    date: dto.metadata.date,
-    author: dto.metadata.author,
-    tags: dto.metadata.tags,
-    readTime: dto.metadata.readTime,
-    featured: dto.metadata.featured || false,
-    // Contenido traducible
-    content: dto.content,
-  };
-}
-
-/**
- * Construye una entidad BlogPost (solo metadata) desde un DTO del filesystem
- * Combina metadata estática (metadata.json) con datos traducibles (frontmatter del .mdx)
- * @param dto - DTO del archivo MDX con metadata centralizada
- * @returns Entidad del dominio solo con metadata
- */
-export function buildBlogPost(dto: BlogFileDTO): BlogPost {
-  return {
-    slug: dto.slug,
-    // Datos traducibles del frontmatter
-    title: dto.frontmatter.title || dto.slug,
-    description: dto.frontmatter.description || '',
-    // Datos estáticos de metadata.json
-    date: dto.metadata.date,
-    author: dto.metadata.author,
-    tags: dto.metadata.tags,
-    readTime: dto.metadata.readTime,
-    featured: dto.metadata.featured || false,
-  };
-}
 </file>
 
 <file path="core/blog/infrastructure/blog-file.repository.ts">
@@ -4198,10 +3714,8 @@ function readMetadata(slug: string): BlogMetadata {
     // Fallback si no existe metadata.json (para compatibilidad)
     return {
       date: '',
-      author: 'Endika Orube',
       tags: [],
       readTime: '5 min',
-      featured: false,
     };
   }
 
@@ -4965,94 +4479,132 @@ export function BlogPostLayout({
 }
 </file>
 
-<file path="app/[locale]/blog/[slug]/page.tsx">
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
-import rehypeHighlight from 'rehype-highlight';
-
+<file path="app/sitemap.ts">
+import { MetadataRoute } from 'next';
 import { blogService } from '@/core/blog/services/blog.service';
 import { routing } from '@/i18n/routing';
-import { BlogPostLayout } from '../_components/blog-post-layout';
-import { mdxComponents } from '../_components/mdx-components';
+import { siteConfig } from '@/config/site';
 import '@/di';
 
-type Props = {
-  params: Promise<{ locale: string; slug: string }>;
-};
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const lastModified = new Date();
 
-// Generar rutas estáticas para todos los posts en todos los idiomas
-export async function generateStaticParams() {
-  const slugs = await blogService.listSlugs();
-  const params: { locale: string; slug: string }[] = [];
+  // Rutas estáticas base
+  const staticRoutes: MetadataRoute.Sitemap = [];
 
+  // Páginas principales para cada idioma
   for (const locale of routing.locales) {
+    // Home
+    staticRoutes.push({
+      url: `${siteConfig.url}/${locale}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 1,
+      alternates: {
+        languages: {
+          es: `${siteConfig.url}/es`,
+          en: `${siteConfig.url}/en`,
+        },
+      },
+    });
+
+    // About
+    staticRoutes.push({
+      url: `${siteConfig.url}/${locale}/about`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          es: `${siteConfig.url}/es/about`,
+          en: `${siteConfig.url}/en/about`,
+        },
+      },
+    });
+
+    // Blog listing
+    staticRoutes.push({
+      url: `${siteConfig.url}/${locale}/blog`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          es: `${siteConfig.url}/es/blog`,
+          en: `${siteConfig.url}/en/blog`,
+        },
+      },
+    });
+  }
+
+  // Rutas dinámicas del blog
+  const blogRoutes: MetadataRoute.Sitemap = [];
+
+  try {
+    const slugs = await blogService.listSlugs();
+
     for (const slug of slugs) {
-      params.push({ locale, slug });
-    }
-  }
+      // Añadir entrada para cada idioma
+      for (const locale of routing.locales) {
+        // Obtener la fecha del post si existe
+        const post = await blogService.getBlogPostDetailBySlug(slug, locale);
+        const postDate = post?.date ? new Date(post.date) : lastModified;
 
-  return params;
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, slug } = await params;
-  const post = await blogService.getBlogPostDetailBySlug(slug, locale);
-
-  if (!post) {
-    return {
-      title: 'Post not found',
-    };
-  }
-
-  return {
-    title: `${post.title} | Endika Orube`,
-    description: post.description,
-    keywords: post.tags,
-    authors: [{ name: post.author }],
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
-      tags: post.tags,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.description,
-    },
-  };
-}
-
-export default async function BlogPostPage({ params }: Props) {
-  const { locale, slug } = await params;
-  setRequestLocale(locale);
-
-  const post = await blogService.getBlogPostDetailBySlug(slug, locale);
-
-  if (!post) {
-    notFound();
-  }
-
-  return (
-    <BlogPostLayout post={post} locale={locale}>
-      <MDXRemote
-        source={post.content}
-        components={mdxComponents}
-        options={{
-          mdxOptions: {
-            remarkPlugins: [remarkGfm],
-            rehypePlugins: [rehypeSlug, rehypeHighlight],
+        blogRoutes.push({
+          url: `${siteConfig.url}/${locale}/blog/${slug}`,
+          lastModified: postDate,
+          changeFrequency: 'monthly',
+          priority: 0.7,
+          alternates: {
+            languages: {
+              es: `${siteConfig.url}/es/blog/${slug}`,
+              en: `${siteConfig.url}/en/blog/${slug}`,
+            },
           },
-        }}
-      />
-    </BlogPostLayout>
-  );
+        });
+      }
+    }
+  } catch (error) {
+    // En caso de error, continuar sin las rutas del blog
+    console.error('Error generating blog sitemap entries:', error);
+  }
+
+  return [...staticRoutes, ...blogRoutes];
+}
+</file>
+
+<file path="core/blog/infrastructure/dto/blog-file.dto.ts">
+/**
+ * Metadata estática del post (centralizada, no depende del idioma)
+ * Se guarda en metadata.json en la carpeta del post
+ */
+export interface BlogMetadata {
+  /** Fecha de publicación del post */
+  date: string;
+  /** Fecha de última modificación del post */
+  modifiedDate?: string;
+  /** Etiquetas del post (en inglés, consistentes) */
+  tags: string[];
+  /** Tiempo estimado de lectura */
+  readTime: string;
+}
+
+/**
+ * DTO que representa la estructura del archivo MDX con su frontmatter
+ * Este es el formato raw que viene del filesystem antes de mapearlo al dominio
+ */
+export interface BlogFileDTO {
+  /** Slug del post (nombre de la carpeta) */
+  slug: string;
+  /** Metadata estática compartida entre idiomas */
+  metadata: BlogMetadata;
+  /** Frontmatter extraído del archivo MDX con gray-matter (solo datos traducibles) */
+  frontmatter: {
+    title?: string;
+    description?: string;
+  };
+  /** Contenido markdown/MDX del post */
+  content: string;
 }
 </file>
 
@@ -5067,10 +4619,8 @@ describe('buildBlogPost', () => {
       slug: 'test-post',
       metadata: {
         date: '2024-01-15',
-        author: 'John Doe',
         tags: ['test', 'typescript'],
         readTime: '8 min',
-        featured: true,
       },
       frontmatter: {
         title: 'Test Post',
@@ -5086,10 +4636,8 @@ describe('buildBlogPost', () => {
       title: 'Test Post',
       description: 'Test description',
       date: '2024-01-15',
-      author: 'John Doe',
       tags: ['test', 'typescript'],
       readTime: '8 min',
-      featured: true,
     });
   });
 
@@ -5098,10 +4646,8 @@ describe('buildBlogPost', () => {
       slug: 'minimal-post',
       metadata: {
         date: '',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
-        featured: false,
       },
       frontmatter: {},
       content: 'Content',
@@ -5113,10 +4659,8 @@ describe('buildBlogPost', () => {
     expect(result.title).toBe('minimal-post'); // Default: slug
     expect(result.description).toBe(''); // Default: empty
     expect(result.date).toBe(''); // From metadata
-    expect(result.author).toBe('Endika Orube'); // From metadata
     expect(result.tags).toEqual([]); // From metadata
     expect(result.readTime).toBe('5 min'); // From metadata
-    expect(result.featured).toBe(false); // From metadata
   });
 
   it('should use slug as title when title is missing', () => {
@@ -5124,7 +4668,6 @@ describe('buildBlogPost', () => {
       slug: 'my-awesome-post',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -5144,7 +4687,6 @@ describe('buildBlogPost', () => {
       slug: 'partial-post',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: ['tag1'],
         readTime: '5 min',
       },
@@ -5159,7 +4701,6 @@ describe('buildBlogPost', () => {
     expect(result.title).toBe('Only Title');
     expect(result.tags).toEqual(['tag1']);
     expect(result.description).toBe('');
-    expect(result.author).toBe('Endika Orube');
     expect(result.readTime).toBe('5 min');
   });
 
@@ -5168,7 +4709,6 @@ describe('buildBlogPost', () => {
       slug: 'test',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -5188,10 +4728,8 @@ describe('buildBlogPostDetail', () => {
       slug: 'detailed-post',
       metadata: {
         date: '2024-01-15',
-        author: 'Jane Doe',
         tags: ['vitest', 'testing'],
         readTime: '12 min',
-        featured: false,
       },
       frontmatter: {
         title: 'Detailed Post',
@@ -5207,10 +4745,8 @@ describe('buildBlogPostDetail', () => {
       title: 'Detailed Post',
       description: 'Full description',
       date: '2024-01-15',
-      author: 'Jane Doe',
       tags: ['vitest', 'testing'],
       readTime: '12 min',
-      featured: false,
       content: '# Markdown Title\n\nContent here.',
     });
   });
@@ -5220,7 +4756,6 @@ describe('buildBlogPostDetail', () => {
       slug: 'test',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -5238,7 +4773,6 @@ describe('buildBlogPostDetail', () => {
       slug: 'minimal-detail',
       metadata: {
         date: '',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -5250,7 +4784,6 @@ describe('buildBlogPostDetail', () => {
 
     expect(result.slug).toBe('minimal-detail');
     expect(result.title).toBe('minimal-detail');
-    expect(result.author).toBe('Endika Orube');
     expect(result.readTime).toBe('5 min');
     expect(result.content).toBe('Minimal content');
   });
@@ -5272,7 +4805,6 @@ More text
       slug: 'code-post',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: [],
         readTime: '5 min',
       },
@@ -5291,7 +4823,6 @@ More text
       slug: 'inheritance-test',
       metadata: {
         date: '2024-01-01',
-        author: 'Endika Orube',
         tags: ['test'],
         readTime: '5 min',
       },
@@ -5308,7 +4839,6 @@ More text
     expect(result.title).toBeDefined();
     expect(result.description).toBeDefined();
     expect(result.date).toBeDefined();
-    expect(result.author).toBeDefined();
     expect(result.tags).toBeDefined();
     expect(result.readTime).toBeDefined();
 
@@ -5316,6 +4846,53 @@ More text
     expect(result.content).toBeDefined();
   });
 });
+</file>
+
+<file path="core/blog/infrastructure/mappers/blog-file.mapper.ts">
+import type { BlogPost, BlogPostDetail } from '../../domain/blog';
+import type { BlogFileDTO } from '../dto/blog-file.dto';
+
+/**
+ * Construye una entidad BlogPostDetail (con contenido) desde un DTO del filesystem
+ * Combina metadata estática (metadata.json) con datos traducibles (frontmatter del .mdx)
+ * @param dto - DTO del archivo MDX con metadata centralizada
+ * @returns Entidad del dominio con contenido completo
+ */
+export function buildBlogPostDetail(dto: BlogFileDTO): BlogPostDetail {
+  return {
+    slug: dto.slug,
+    // Datos traducibles del frontmatter
+    title: dto.frontmatter.title || dto.slug,
+    description: dto.frontmatter.description || '',
+    // Datos estáticos de metadata.json
+    date: dto.metadata.date,
+    modifiedDate: dto.metadata.modifiedDate,
+    tags: dto.metadata.tags,
+    readTime: dto.metadata.readTime,
+    // Contenido traducible
+    content: dto.content,
+  };
+}
+
+/**
+ * Construye una entidad BlogPost (solo metadata) desde un DTO del filesystem
+ * Combina metadata estática (metadata.json) con datos traducibles (frontmatter del .mdx)
+ * @param dto - DTO del archivo MDX con metadata centralizada
+ * @returns Entidad del dominio solo con metadata
+ */
+export function buildBlogPost(dto: BlogFileDTO): BlogPost {
+  return {
+    slug: dto.slug,
+    // Datos traducibles del frontmatter
+    title: dto.frontmatter.title || dto.slug,
+    description: dto.frontmatter.description || '',
+    // Datos estáticos de metadata.json
+    date: dto.metadata.date,
+    modifiedDate: dto.metadata.modifiedDate,
+    tags: dto.metadata.tags,
+    readTime: dto.metadata.readTime,
+  };
+}
 </file>
 
 <file path="package.json">
@@ -5363,6 +4940,93 @@ More text
     "typescript": "^5",
     "vitest": "^4.0.16"
   }
+}
+</file>
+
+<file path="app/[locale]/blog/page.tsx">
+import { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { blogService } from '@/core/blog/services/blog.service';
+import { siteConfig } from '@/config/site';
+import { BlogListClient } from './blog-list-client';
+import '@/di';
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'blogPage' });
+
+  const currentUrl = `${siteConfig.url}/${locale}/blog`;
+  const isSpanish = locale === 'es';
+
+  const title = `${t('title')} | ${siteConfig.author.name}`;
+  const description = t('description');
+
+  return {
+    title,
+    description,
+
+    // Canonical y alternates
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        es: `${siteConfig.url}/es/blog`,
+        en: `${siteConfig.url}/en/blog`,
+      },
+    },
+
+    // Open Graph
+    openGraph: {
+      type: 'website',
+      locale: isSpanish ? 'es_ES' : 'en_US',
+      alternateLocale: isSpanish ? 'en_US' : 'es_ES',
+      url: currentUrl,
+      title,
+      description,
+      siteName: `${siteConfig.author.name} Blog`,
+      images: [
+        {
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
+          alt: `${siteConfig.author.name} - Blog`,
+        },
+      ],
+    },
+
+    // Twitter Cards
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${siteConfig.url}/og-image.jpg`],
+    },
+
+    // Robots
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
+}
+
+export default async function BlogPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const posts = await blogService.listBlogPosts(locale);
+
+  return <BlogListClient posts={posts} locale={locale} />;
 }
 </file>
 
@@ -5989,6 +5653,173 @@ export function AboutSection() {
 }
 </file>
 
+<file path="app/[locale]/blog/[slug]/page.tsx">
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeHighlight from 'rehype-highlight';
+
+import { blogService } from '@/core/blog/services/blog.service';
+import { routing } from '@/i18n/routing';
+import { siteConfig } from '@/config/site';
+import { BlogPostLayout } from '../_components/blog-post-layout';
+import { mdxComponents } from '../_components/mdx-components';
+import '@/di';
+
+type Props = {
+  params: Promise<{ locale: string; slug: string }>;
+};
+
+// Generar rutas estáticas para todos los posts en todos los idiomas
+export async function generateStaticParams() {
+  const slugs = await blogService.listSlugs();
+  const params: { locale: string; slug: string }[] = [];
+
+  for (const locale of routing.locales) {
+    for (const slug of slugs) {
+      params.push({ locale, slug });
+    }
+  }
+
+  return params;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const post = await blogService.getBlogPostDetailBySlug(slug, locale);
+
+  if (!post) {
+    return {
+      title: 'Post not found',
+    };
+  }
+
+  const currentUrl = `${siteConfig.url}/${locale}/blog/${slug}`;
+  const isSpanish = locale === 'es';
+
+  return {
+    title: `${post.title} | ${siteConfig.author.name}`,
+    description: post.description,
+    keywords: post.tags,
+    authors: [{ name: siteConfig.author.name }],
+
+    // Canonical y alternates
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        es: `${siteConfig.url}/es/blog/${slug}`,
+        en: `${siteConfig.url}/en/blog/${slug}`,
+      },
+    },
+
+    // Open Graph
+    openGraph: {
+      type: 'article',
+      locale: isSpanish ? 'es_ES' : 'en_US',
+      alternateLocale: isSpanish ? 'en_US' : 'es_ES',
+      url: currentUrl,
+      title: post.title,
+      description: post.description,
+      siteName: `${siteConfig.author.name} Blog`,
+      publishedTime: post.date,
+      modifiedTime: post.modifiedDate || post.date,
+      authors: [siteConfig.author.name],
+      tags: post.tags,
+      images: [
+        {
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
+          alt: post.title,
+        },
+      ],
+    },
+
+    // Twitter Cards
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: [`${siteConfig.url}/og-image.jpg`],
+    },
+
+    // Robots
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+
+  const post = await blogService.getBlogPostDetailBySlug(slug, locale);
+
+  if (!post) {
+    notFound();
+  }
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    image: `${siteConfig.url}/og-image.jpg`,
+    datePublished: post.date,
+    dateModified: post.modifiedDate || post.date,
+    author: {
+      '@type': 'Person',
+      name: siteConfig.author.name,
+      url: siteConfig.url,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: siteConfig.author.name,
+      url: siteConfig.url,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.url}/${locale}/blog/${slug}`,
+    },
+    keywords: post.tags.join(', '),
+    inLanguage: locale === 'es' ? 'es-ES' : 'en-US',
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <BlogPostLayout post={post} locale={locale}>
+        <MDXRemote
+          source={post.content}
+          components={mdxComponents}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              rehypePlugins: [rehypeSlug, rehypeHighlight],
+            },
+          }}
+        />
+      </BlogPostLayout>
+    </>
+  );
+}
+</file>
+
 <file path="content/blog/bienvenida/es.mdx">
 ---
 title: 'Tenía cosas que contar'
@@ -6036,76 +5867,110 @@ No tengo un calendario de publicación. No voy a prometerte un post cada semana.
 Si has llegado hasta aquí, gracias por pasarte. Esto acaba de empezar.
 </file>
 
-<file path="app/[locale]/blog/blog-list-client.tsx">
-'use client';
+<file path="app/[locale]/about/page.tsx">
+import { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { siteConfig } from '@/config/site';
+import { AboutPageClient } from './_components';
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { BlogCard } from './_components/blog-card';
-import type { BlogPost } from '@/core/blog/domain/blog';
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
-interface BlogListClientProps {
-  posts: BlogPost[];
-  locale: string;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'aboutPage' });
+
+  const currentUrl = `${siteConfig.url}/${locale}/about`;
+  const isSpanish = locale === 'es';
+
+  const title = `${t('title')} | ${siteConfig.author.name}`;
+  const description = t('description');
+
+  return {
+    title,
+    description,
+    keywords: [
+      'Tech Lead',
+      'Engineering Manager',
+      'Product Engineer',
+      'Software Architecture',
+      'Hexagonal Architecture',
+      'TDD',
+      'Extreme Programming',
+      'XP',
+      'Context Engineering',
+      'AI Development',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Team Leadership',
+      'Tech Speaker',
+      'Banking Software',
+      'Endika Orube',
+      'Pamplona',
+      'Navarra',
+    ],
+
+    // Alternates & canonical
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        es: `${siteConfig.url}/es/about`,
+        en: `${siteConfig.url}/en/about`,
+      },
+    },
+
+    // Open Graph
+    openGraph: {
+      type: 'profile',
+      locale: isSpanish ? 'es_ES' : 'en_US',
+      alternateLocale: isSpanish ? 'en_US' : 'es_ES',
+      url: currentUrl,
+      title,
+      description,
+      siteName: siteConfig.name,
+      firstName: 'Endika',
+      lastName: 'Orube',
+      username: 'endikaorube',
+      images: [
+        {
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
+          alt: siteConfig.ogImage.alt,
+        },
+      ],
+    },
+
+    // Twitter Cards
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${siteConfig.url}/og-image.jpg`],
+    },
+
+    // Robots
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
 }
 
-export function BlogListClient({ posts, locale }: BlogListClientProps) {
-  const t = useTranslations('blog');
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
-  return (
-    <main className="relative min-h-screen">
-      <div className="container mx-auto px-4 max-w-3xl">
-        {/* Hero minimalista con toque sutil */}
-        <motion.section
-          className="pt-24 md:pt-32 pb-12 md:pb-16"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
-            <span className="text-white">
-              {t('title.line1')}
-            </span>{' '}
-            <span
-              className="text-transparent"
-              style={{ WebkitTextStroke: '2px var(--pink)' }}
-            >
-              {t('title.line2')}
-            </span>
-          </h1>
-          
-          <p className="text-white/60 text-base md:text-lg leading-relaxed">
-            {t('subtitle')}
-          </p>
-        </motion.section>
-
-        {/* Lista de posts */}
-        <section className="pb-32">
-          {posts.length > 0 ? (
-            <div className="space-y-12">
-              {posts.map((post, index) => (
-                <BlogCard
-                  key={post.slug}
-                  post={post}
-                  index={index}
-                  locale={locale}
-                />
-              ))}
-            </div>
-          ) : (
-            <motion.div
-              className="py-24 text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <p className="text-white/40 text-base">{t('noPosts')}</p>
-            </motion.div>
-          )}
-        </section>
-      </div>
-    </main>
-  );
+  return <AboutPageClient />;
 }
 </file>
 
@@ -6156,163 +6021,68 @@ I don't have a publishing schedule. I'm not going to promise you a post every we
 If you've made it this far, thanks for stopping by. This is just getting started.
 </file>
 
-<file path="app/[locale]/layout.tsx">
-import type React from 'react';
-import type { Metadata } from 'next';
-import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
-import { Locale } from '@/i18n/config';
-import '../globals.css';
-import { Header } from '@/components/header';
-import { GlobalCursor } from '@/components/global-cursor';
-import { JsonLdSchema } from '@/components/json-ld';
-import { ScrollToTop } from '@/components/scroll-to-top';
+<file path="app/[locale]/blog/blog-list-client.tsx">
+'use client';
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-sans',
-});
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-});
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { BlogCard } from './_components/blog-card';
+import type { BlogPost } from '@/core/blog/domain/blog';
 
-type Props = {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-};
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+interface BlogListClientProps {
+  posts: BlogPost[];
+  locale: string;
 }
 
-const BASE_URL = 'https://endikaorube.com';
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  const messages = await import(`../../translations/${locale}.json`);
-  const t = messages.default;
-
-  const currentUrl = `${BASE_URL}/${locale}`;
-
-  return {
-    title: t.metadata.title,
-    description: t.metadata.description,
-    keywords: [
-      'Tech Lead',
-      'Product Engineer',
-      'Frontend Developer',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Software Architecture',
-      'TDD',
-      'Pamplona',
-      'Spain',
-      'Navarra',
-    ],
-    authors: [{ name: 'Endika Orube', url: BASE_URL }],
-    creator: 'Endika Orube',
-    metadataBase: new URL(BASE_URL),
-
-    // Alternates & hreflang
-    alternates: {
-      canonical: currentUrl,
-      languages: {
-        es: `${BASE_URL}/es`,
-        en: `${BASE_URL}/en`,
-      },
-    },
-
-    // Open Graph
-    openGraph: {
-      type: 'website',
-      locale: locale === 'es' ? 'es_ES' : 'en_US',
-      alternateLocale: locale === 'es' ? 'en_US' : 'es_ES',
-      url: currentUrl,
-      title: t.metadata.title,
-      description: t.metadata.description,
-      siteName: 'Endika Orube Portfolio',
-      images: [
-        {
-          url: `${BASE_URL}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Endika Orube - Tech Lead & Product Engineer',
-        },
-      ],
-    },
-
-    // Twitter Cards
-    twitter: {
-      card: 'summary_large_image',
-      title: t.metadata.title,
-      description: t.metadata.description,
-      images: [`${BASE_URL}/og-image.jpg`],
-    },
-
-    // Robots
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-
-    // Icons
-    icons: {
-      icon: [
-        { url: '/favicon.ico', sizes: 'any' },
-        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      ],
-      apple: [
-        { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-      ],
-    },
-  };
-}
-
-export default async function LocaleLayout({ children, params }: Props) {
-  const { locale } = await params;
-
-  // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as Locale)) {
-    notFound();
-  }
-
-  // Enable static rendering
-  setRequestLocale(locale);
-
-  // Get messages for the client provider
-  const messages = await getMessages();
+export function BlogListClient({ posts, locale }: BlogListClientProps) {
+  const t = useTranslations('blog');
 
   return (
-    <html lang={locale}>
-      <head>
-        <JsonLdSchema locale={locale} />
-      </head>
-      <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-surface-dark`}
-      >
-        <NextIntlClientProvider messages={messages}>
-          <ScrollToTop />
-          <GlobalCursor />
-          <Header />
-          {children}
-        </NextIntlClientProvider>
-        <Analytics />
-      </body>
-    </html>
+    <main className="relative min-h-screen">
+      <div className="container mx-auto px-4 max-w-3xl">
+        {/* Hero minimalista con toque sutil */}
+        <motion.section
+          className="pt-24 md:pt-32 pb-12 md:pb-16"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
+            <span className="text-white">{t('title.line1')}</span>{' '}
+            <span className="text-[var(--pink)]">{t('title.line2')}</span>
+          </h1>
+
+          <p className="text-white/60 text-base md:text-lg leading-relaxed">
+            {t('subtitle')}
+          </p>
+        </motion.section>
+
+        {/* Lista de posts */}
+        <section className="pb-32">
+          {posts.length > 0 ? (
+            <div className="space-y-12">
+              {posts.map((post, index) => (
+                <BlogCard
+                  key={post.slug}
+                  post={post}
+                  index={index}
+                  locale={locale}
+                />
+              ))}
+            </div>
+          ) : (
+            <motion.div
+              className="py-24 text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              <p className="text-white/40 text-base">{t('noPosts')}</p>
+            </motion.div>
+          )}
+        </section>
+      </div>
+    </main>
   );
 }
 </file>
@@ -6607,6 +6377,175 @@ export function HeroSection() {
         />
       </motion.div>
     </section>
+  );
+}
+</file>
+
+<file path="app/[locale]/layout.tsx">
+import type React from 'react';
+import type { Metadata } from 'next';
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+import { Locale } from '@/i18n/config';
+import { siteConfig } from '@/config/site';
+import '../globals.css';
+import { Header } from '@/components/header';
+import { GlobalCursor } from '@/components/global-cursor';
+import { JsonLdSchema } from '@/components/json-ld';
+import { ScrollToTop } from '@/components/scroll-to-top';
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+});
+
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const messages = await import(`../../translations/${locale}.json`);
+  const t = messages.default;
+
+  const currentUrl = `${siteConfig.url}/${locale}`;
+
+  return {
+    title: t.metadata.title,
+    description: t.metadata.description,
+    keywords: [
+      'Tech Lead',
+      'Engineering Manager',
+      'Product Engineer',
+      'Frontend Developer',
+      'Extreme Programming',
+      'XP',
+      'TDD',
+      'Software Architecture',
+      'Hexagonal Architecture',
+      'Context Engineering',
+      'AI Development',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Tech Speaker',
+      'Banking Software',
+      'Fintech',
+      'Pamplona',
+      'Navarra',
+      'Spain',
+    ],
+    authors: [{ name: siteConfig.author.name, url: siteConfig.url }],
+    creator: siteConfig.author.name,
+    metadataBase: new URL(siteConfig.url),
+
+    // Alternates & hreflang
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        es: `${siteConfig.url}/es`,
+        en: `${siteConfig.url}/en`,
+      },
+    },
+
+    // Open Graph
+    openGraph: {
+      type: 'website',
+      locale: locale === 'es' ? 'es_ES' : 'en_US',
+      alternateLocale: locale === 'es' ? 'en_US' : 'es_ES',
+      url: currentUrl,
+      title: t.metadata.title,
+      description: t.metadata.description,
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
+          alt: siteConfig.ogImage.alt,
+        },
+      ],
+    },
+
+    // Twitter Cards
+    twitter: {
+      card: 'summary_large_image',
+      title: t.metadata.title,
+      description: t.metadata.description,
+      images: [`${siteConfig.url}/og-image.jpg`],
+    },
+
+    // Robots
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+
+    // Icons
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      ],
+    },
+  };
+}
+
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = await params;
+
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale as Locale)) {
+    notFound();
+  }
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  // Get messages for the client provider
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale}>
+      <head>
+        <JsonLdSchema locale={locale} />
+      </head>
+      <body
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-surface-dark`}
+      >
+        <NextIntlClientProvider messages={messages}>
+          <ScrollToTop />
+          <GlobalCursor />
+          <Header />
+          {children}
+        </NextIntlClientProvider>
+        <Analytics />
+      </body>
+    </html>
   );
 }
 </file>
@@ -7129,8 +7068,8 @@ export default function Home() {
     "home": "·"
   },
   "metadata": {
-    "title": "Endika Orube | Tech Lead & Product Engineer",
-    "description": "Portfolio de Endika Orube. Tech Lead & Product Engineer con +7 años de experiencia en desarrollo de software, liderando equipos y construyendo productos digitales."
+    "title": "Endika Orube | Tech Lead & Manager · Product Engineer",
+    "description": "Portfolio de Endika Orube. Tech Lead & Manager en banca digital (+1M usuarios). +7 años liderando equipos, arquitectura, XP y Context Engineering con IA."
   },
   "hero": {
     "role": "TECH LEAD & MANAGER · PRODUCT ENGINEER"
@@ -7395,7 +7334,12 @@ export default function Home() {
   },
   "aboutPage": {
     "headerLink": "<EO />",
-    "title": "Sobre Mí"
+    "title": "Sobre Mí",
+    "description": "Endika Orube: Tech Lead & Manager de +20 devs en banca digital. Especialista en XP, arquitectura hexagonal y Context Engineering con IA. Profesor y speaker en la comunidad tech."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Artículos sobre liderazgo técnico, arquitectura de software, TDD, Context Engineering y desarrollo profesional."
   },
   "blog": {
     "title": {
@@ -7403,8 +7347,6 @@ export default function Home() {
       "line2": "BLOG"
     },
     "subtitle": "Lo que voy aprendiendo. Sobre equipos, producto, código y todo lo que hay entre medias.",
-    "metaTitle": "Blog",
-    "metaDescription": "Artículos sobre liderazgo técnico, arquitectura de software, TDD, Context Engineering y desarrollo profesional.",
     "readMore": "LEER ARTÍCULO",
     "readTime": "MIN LECTURA",
     "backToBlog": "VOLVER AL BLOG",
@@ -7423,8 +7365,8 @@ export default function Home() {
     "home": "·"
   },
   "metadata": {
-    "title": "Endika Orube | Tech Lead & Product Engineer",
-    "description": "Endika Orube's portfolio. Tech Lead & Product Engineer with 7+ years of experience in software development, leading teams and building digital products."
+    "title": "Endika Orube | Tech Lead & Manager · Product Engineer",
+    "description": "Endika Orube's portfolio. Tech Lead & Manager in digital banking (+1M users). 7+ years leading teams, architecture, XP and Context Engineering with AI."
   },
   "hero": {
     "role": "TECH LEAD & MANAGER · PRODUCT ENGINEER"
@@ -7689,7 +7631,12 @@ export default function Home() {
   },
   "aboutPage": {
     "headerLink": "<EO />",
-    "title": "About Me"
+    "title": "About Me",
+    "description": "Endika Orube: Tech Lead & Manager of 20+ devs in digital banking. Specialist in XP, hexagonal architecture and Context Engineering with AI. Teacher and speaker in the tech community."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Articles on technical leadership, software architecture, TDD, Context Engineering and professional development."
   },
   "blog": {
     "title": {
@@ -7697,8 +7644,6 @@ export default function Home() {
       "line2": "BLOG"
     },
     "subtitle": "What I keep learning. About teams, product, code, and everything in between.",
-    "metaTitle": "Blog",
-    "metaDescription": "Articles on technical leadership, software architecture, TDD, Context Engineering and professional development.",
     "readMore": "READ ARTICLE",
     "readTime": "MIN READ",
     "backToBlog": "BACK TO BLOG",

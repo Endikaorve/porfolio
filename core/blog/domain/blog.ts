@@ -8,10 +8,8 @@ export interface BlogPost {
   description: string;
   date: string;
   modifiedDate?: string;
-  author: string;
   tags: string[];
   readTime: string;
-  featured?: boolean;
 }
 
 /**
