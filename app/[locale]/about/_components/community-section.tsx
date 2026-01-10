@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export function CommunitySection() {
@@ -38,10 +39,23 @@ export function CommunitySection() {
               <h3 className="text-3xl font-black text-white mt-2 mb-3">
                 {t('community.teaching.title')}
               </h3>
-              <p className="text-white/70 mb-4">
-                <span className="text-primary">{t('community.teaching.subtitleHighlight')}</span>
-                {t('community.teaching.subtitleRest')}
-              </p>
+              <div className="flex items-center gap-2 text-white/70 mb-4">
+                <p>
+                  <span className="text-primary">
+                    {t('community.teaching.subtitleHighlight')}
+                  </span>
+                  {t('community.teaching.subtitleRest')}
+                </p>
+                <a
+                  href="https://jxpert-dxp.jakala.es/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/50 hover:text-primary transition-colors flex-shrink-0"
+                  aria-label="Visitar web de Biko2/Jakala"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
               <p className="text-white/60 leading-relaxed mb-6">
                 {t('community.teaching.description')}
               </p>
@@ -83,9 +97,20 @@ export function CommunitySection() {
                 <h3 className="text-2xl font-black text-white mt-2 mb-2">
                   {t('community.talks.vibe.title')}
                 </h3>
-                <p className="text-primary text-sm mb-2">
-                  {t('community.talks.vibe.event')}
-                </p>
+                <div className="flex items-center gap-2 mb-2">
+                  <p className="text-primary text-sm">
+                    {t('community.talks.vibe.event')}
+                  </p>
+                  <a
+                    href="https://pamplonaswcraft.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/50 hover:text-primary transition-colors flex-shrink-0"
+                    aria-label="Visitar web de Pamplona Software Crafters"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
                 <p className="text-white/50 leading-relaxed text-sm">
                   {t('community.talks.vibe.description')}
                 </p>
