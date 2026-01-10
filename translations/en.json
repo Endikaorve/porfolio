@@ -38,11 +38,11 @@
       },
       "architecture": {
         "title": "CODE THAT SCALES",
-        "description": "TDD, Pair Programming, Refactoring, CI/CD. Not as dogma—as tools. Hexagonal Architecture when it makes sense. The goal: code the team can actually maintain down the road."
+        "description": "TDD, Pair Programming, Refactoring, CI/CD. Not as dogma—as tools. Hexagonal Architecture when it makes sense. Code you're not afraid to touch six months from now."
       },
       "xp": {
         "title": "PRAGMATISM",
-        "description": "Pragmatic, not dogmatic. Adapting best practices to real-world context: deadlines, team maturity, business constraints. Balancing quality and needs."
+        "description": "Pragmatic, not dogmatic. Best practices are here to serve the team, not the other way around. I adapt to real context: deadlines, team experience, business constraints. Perfect theory doesn't survive production."
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
@@ -50,11 +50,11 @@
       },
       "leadership": {
         "title": "TEAMS THAT GROW",
-        "description": "Direct manager of 8 engineers. 1-on-1s, career plans, ongoing feedback. Also an XP course instructor where we teach what matters: clean code, testing, teamwork."
+        "description": "Direct manager of 8 engineers. 1-on-1s, career plans, honest conversations. Also an XP course instructor: clean code, testing, teamwork. The stuff that actually matters."
       },
       "culture": {
         "title": "CULTURE OF GROWTH",
-        "description": "Responsible for technical training of 80+ people. Leading the knowledge strategy: tech talks, learning paths, spaces to grow. Knowledge multiplies when shared."
+        "description": "Responsible for technical training of 80+ people. I organize tech talks, define learning paths, create spaces for people to learn. Knowledge multiplies when shared."
       }
     }
   },

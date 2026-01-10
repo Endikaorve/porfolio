@@ -38,11 +38,11 @@
       },
       "architecture": {
         "title": "CÓDIGO QUE ESCALA",
-        "description": "TDD, Pair Programming, Refactoring, CI/CD. No como dogma, como herramientas. Arquitectura Hexagonal cuando tiene sentido. El objetivo: código que el equipo pueda mantener en el futuro."
+        "description": "TDD, Pair Programming, Refactoring, CI/CD. No como dogma, como herramientas. Arquitectura Hexagonal cuando tiene sentido. Código que no dé miedo tocar dentro de seis meses."
       },
       "xp": {
         "title": "PRAGMATISMO",
-        "description": "Pragmático, no dogmático. Adapto las buenas prácticas al contexto real: deadlines, madurez del equipo, restricciones del negocio. Equilibrio entre calidad y necesidades."
+        "description": "Pragmático, no dogmático. Las buenas prácticas están para servir al equipo, no al revés. Adapto al contexto real: deadlines, experiencia del equipo, restricciones de negocio. La teoría perfecta no existe en producción."
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
@@ -50,11 +50,11 @@
       },
       "leadership": {
         "title": "EQUIPOS QUE CRECEN",
-        "description": "Manager directo de 8 engineers. 1-on-1s, planes de carrera, feedback continuo. También profesor de un curso de XP donde formamos en lo que importa: código limpio, testing, trabajo en equipo."
+        "description": "Manager directo de 8 engineers. 1-on-1s, planes de carrera, conversaciones honestas. También profesor de un curso de XP: código limpio, testing, trabajo en equipo. Lo que de verdad importa."
       },
       "culture": {
         "title": "CULTURA DE MEJORA",
-        "description": "Responsable de formación técnica de +80 personas. Lidero la estrategia de conocimiento: sesiones de divulgación, learning paths, espacios para crecer. El conocimiento se multiplica cuando se comparte."
+        "description": "Responsable de formación técnica de +80 personas. Organizo sesiones de divulgación, defino learning paths, creo espacios para que la gente aprenda. El conocimiento se multiplica cuando se comparte."
       }
     }
   },
