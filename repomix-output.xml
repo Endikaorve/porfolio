@@ -6741,6 +6741,34 @@ export function HeroSection() {
 }
 </file>
 
+<file path="app/[locale]/page.tsx">
+'use client';
+
+import { useEffect } from 'react';
+import { HeroSection, MeSection } from './_components';
+
+export default function Home() {
+  // Aplicar scroll snap al html solo en la home page
+  useEffect(() => {
+    const html = document.documentElement;
+    html.style.scrollSnapType = 'y mandatory';
+    html.style.overflowY = 'scroll';
+
+    return () => {
+      html.style.scrollSnapType = '';
+      html.style.overflowY = '';
+    };
+  }, []);
+
+  return (
+    <main className="relative">
+      <HeroSection />
+      <MeSection />
+    </main>
+  );
+}
+</file>
+
 <file path="components/header.tsx">
 'use client';
 
@@ -6886,34 +6914,6 @@ export function Header() {
         </div>
       </nav>
     </motion.header>
-  );
-}
-</file>
-
-<file path="app/[locale]/page.tsx">
-'use client';
-
-import { useEffect } from 'react';
-import { HeroSection, MeSection } from './_components';
-
-export default function Home() {
-  // Aplicar scroll snap al html solo en la home page
-  useEffect(() => {
-    const html = document.documentElement;
-    html.style.scrollSnapType = 'y mandatory';
-    html.style.overflowY = 'scroll';
-
-    return () => {
-      html.style.scrollSnapType = '';
-      html.style.overflowY = '';
-    };
-  }, []);
-
-  return (
-    <main className="relative">
-      <HeroSection />
-      <MeSection />
-    </main>
   );
 }
 </file>
@@ -7286,7 +7286,7 @@ export function MeSection() {
       "line2": "CON",
       "line3": "PROPÓSITO"
     },
-    "description1": "+7 años desarrollando software que importa. Empecé tocando de todo y ahora lidero un equipo de +20 desarrolladores en un proyecto de banca digital crítico (+1M usuarios). Tech Lead y Engineering Manager.",
+    "description1": "Más de 7 años desarrollando software que importa. Actualmente lidero un equipo de +20 desarrolladores como Tech Lead & Engineering Manager en un proyecto bancario crítico (+1M usuarios).",
     "description2": "Arquitectura, testing, XP. Lo técnico me apasiona. Pero lo que de verdad me importa es que lo que construimos sirva para algo. Desde la definición hasta la entrega.",
     "stats": {
       "techLead": "TECH LEAD",
@@ -7309,11 +7309,11 @@ export function MeSection() {
       },
       "architecture": {
         "title": "CÓDIGO QUE ESCALA",
-        "description": "TDD, Pair Programming, Refactoring, CI/CD. No como dogma, como herramientas. Arquitectura Hexagonal cuando tiene sentido. El objetivo: código que el equipo pueda mantener en el futuro."
+        "description": "TDD, Pair Programming, Refactoring, CI/CD. No como dogma, como herramientas. Arquitectura Hexagonal cuando tiene sentido. Código que no dé miedo tocar dentro de seis meses."
       },
       "xp": {
         "title": "PRAGMATISMO",
-        "description": "Pragmático, no dogmático. Adapto las buenas prácticas al contexto real: deadlines, madurez del equipo, restricciones del negocio. Equilibrio entre calidad y necesidades."
+        "description": "Pragmático, no dogmático. Las buenas prácticas están para servir al equipo, no al revés. Adapto al contexto real: deadlines, experiencia del equipo, restricciones de negocio. La teoría perfecta no existe en producción."
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
@@ -7321,11 +7321,11 @@ export function MeSection() {
       },
       "leadership": {
         "title": "EQUIPOS QUE CRECEN",
-        "description": "Manager directo de 8 engineers. 1-on-1s, planes de carrera, feedback continuo. También profesor de un curso de XP donde formamos en lo que importa: código limpio, testing, trabajo en equipo."
+        "description": "Manager directo de 8 engineers. 1-on-1s, planes de carrera, conversaciones honestas. También profesor de un curso de XP: código limpio, testing, trabajo en equipo. Lo que de verdad importa."
       },
       "culture": {
         "title": "CULTURA DE MEJORA",
-        "description": "Responsable de formación técnica de +80 personas. Lidero la estrategia de conocimiento: sesiones de divulgación, learning paths, espacios para crecer. El conocimiento se multiplica cuando se comparte."
+        "description": "Responsable de formación técnica de +80 personas. Organizo sesiones de divulgación, defino learning paths, creo espacios para que la gente aprenda. El conocimiento se multiplica cuando se comparte."
       }
     }
   },
@@ -7584,7 +7584,7 @@ export function MeSection() {
       "line2": "WITH",
       "line3": "PURPOSE"
     },
-    "description1": "7+ years building software that matters. Started doing a bit of everything and now I lead a team of 20+ developers on a critical digital banking project (+1M users). Tech Lead and Engineering Manager.",
+    "description1": "More than 7 years building software that matters. Currently leading a team of +20 developers as Tech Lead & Engineering Manager on a critical banking project (+1M users).",
     "description2": "Architecture, testing, XP. I love the technical side. But what really matters to me is that what we build actually serves a purpose. From definition to delivery.",
     "stats": {
       "techLead": "TECH LEAD",
@@ -7607,11 +7607,11 @@ export function MeSection() {
       },
       "architecture": {
         "title": "CODE THAT SCALES",
-        "description": "TDD, Pair Programming, Refactoring, CI/CD. Not as dogma—as tools. Hexagonal Architecture when it makes sense. The goal: code the team can actually maintain down the road."
+        "description": "TDD, Pair Programming, Refactoring, CI/CD. Not as dogma—as tools. Hexagonal Architecture when it makes sense. Code you're not afraid to touch six months from now."
       },
       "xp": {
         "title": "PRAGMATISM",
-        "description": "Pragmatic, not dogmatic. Adapting best practices to real-world context: deadlines, team maturity, business constraints. Balancing quality and needs."
+        "description": "Pragmatic, not dogmatic. Best practices are here to serve the team, not the other way around. I adapt to real context: deadlines, team experience, business constraints. Perfect theory doesn't survive production."
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
@@ -7619,11 +7619,11 @@ export function MeSection() {
       },
       "leadership": {
         "title": "TEAMS THAT GROW",
-        "description": "Direct manager of 8 engineers. 1-on-1s, career plans, ongoing feedback. Also an XP course instructor where we teach what matters: clean code, testing, teamwork."
+        "description": "Direct manager of 8 engineers. 1-on-1s, career plans, honest conversations. Also an XP course instructor: clean code, testing, teamwork. The stuff that actually matters."
       },
       "culture": {
         "title": "CULTURE OF GROWTH",
-        "description": "Responsible for technical training of 80+ people. Leading the knowledge strategy: tech talks, learning paths, spaces to grow. Knowledge multiplies when shared."
+        "description": "Responsible for technical training of 80+ people. I organize tech talks, define learning paths, create spaces for people to learn. Knowledge multiplies when shared."
       }
     }
   },
