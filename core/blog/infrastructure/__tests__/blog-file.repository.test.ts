@@ -104,6 +104,7 @@ describe('blogFileRepository', () => {
         date: '2024-01-15',
         tags: ['test'],
         readTime: '5 min',
+        published: true,
       };
       const mockFrontmatter = {
         title: 'Test Post',
@@ -137,6 +138,7 @@ describe('blogFileRepository', () => {
         date: '2024-01-15',
         tags: ['test'],
         readTime: '5 min',
+        published: true,
         content: mockContent,
       });
     });
@@ -175,6 +177,7 @@ describe('blogFileRepository', () => {
         date: '',
         tags: [],
         readTime: '5 min',
+        published: false, // Default: false (debe ser explícito)
         content: 'Minimal content',
       });
     });

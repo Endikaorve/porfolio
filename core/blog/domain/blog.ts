@@ -10,6 +10,7 @@ export interface BlogPost {
   modifiedDate?: string;
   tags: string[];
   readTime: string;
+  published: boolean;
 }
 
 /**

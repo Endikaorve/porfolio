@@ -18,6 +18,8 @@ export function buildBlogPostDetail(dto: BlogFileDTO): BlogPostDetail {
     modifiedDate: dto.metadata.modifiedDate,
     tags: dto.metadata.tags,
     readTime: dto.metadata.readTime,
+    // Si no está explícitamente a true, se considera no publicado
+    published: dto.metadata.published === true,
     // Contenido traducible
     content: dto.content,
   };
@@ -40,5 +42,7 @@ export function buildBlogPost(dto: BlogFileDTO): BlogPost {
     modifiedDate: dto.metadata.modifiedDate,
     tags: dto.metadata.tags,
     readTime: dto.metadata.readTime,
+    // Si no está explícitamente a true, se considera no publicado
+    published: dto.metadata.published === true,
   };
 }

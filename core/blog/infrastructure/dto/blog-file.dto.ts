@@ -11,6 +11,8 @@ export interface BlogMetadata {
   tags: string[];
   /** Tiempo estimado de lectura */
   readTime: string;
+  /** Indica si el post está publicado */
+  published?: boolean;
 }
 
 /**

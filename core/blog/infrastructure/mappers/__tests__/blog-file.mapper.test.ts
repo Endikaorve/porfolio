@@ -10,6 +10,7 @@ describe('buildBlogPost', () => {
         date: '2024-01-15',
         tags: ['test', 'typescript'],
         readTime: '8 min',
+        published: true,
       },
       frontmatter: {
         title: 'Test Post',
@@ -27,7 +28,47 @@ describe('buildBlogPost', () => {
       date: '2024-01-15',
       tags: ['test', 'typescript'],
       readTime: '8 min',
+      published: true,
     });
+  });
+
+  it('should default published to false when not specified', () => {
+    const dto: BlogFileDTO = {
+      slug: 'test-post',
+      metadata: {
+        date: '2024-01-15',
+        tags: [],
+        readTime: '5 min',
+      },
+      frontmatter: {
+        title: 'Test Post',
+      },
+      content: 'Test content',
+    };
+
+    const result = buildBlogPost(dto);
+
+    expect(result.published).toBe(false);
+  });
+
+  it('should respect published: false in metadata', () => {
+    const dto: BlogFileDTO = {
+      slug: 'draft-post',
+      metadata: {
+        date: '2024-01-15',
+        tags: [],
+        readTime: '5 min',
+        published: false,
+      },
+      frontmatter: {
+        title: 'Draft Post',
+      },
+      content: 'Draft content',
+    };
+
+    const result = buildBlogPost(dto);
+
+    expect(result.published).toBe(false);
   });
 
   it('should apply default values for missing frontmatter fields', () => {
@@ -50,6 +91,7 @@ describe('buildBlogPost', () => {
     expect(result.date).toBe(''); // From metadata
     expect(result.tags).toEqual([]); // From metadata
     expect(result.readTime).toBe('5 min'); // From metadata
+    expect(result.published).toBe(false); // Default: false (debe ser explícito)
   });
 
   it('should use slug as title when title is missing', () => {
@@ -119,6 +161,7 @@ describe('buildBlogPostDetail', () => {
         date: '2024-01-15',
         tags: ['vitest', 'testing'],
         readTime: '12 min',
+        published: true,
       },
       frontmatter: {
         title: 'Detailed Post',
@@ -136,8 +179,44 @@ describe('buildBlogPostDetail', () => {
       date: '2024-01-15',
       tags: ['vitest', 'testing'],
       readTime: '12 min',
+      published: true,
       content: '# Markdown Title\n\nContent here.',
     });
+  });
+
+  it('should default published to false when not specified in detail', () => {
+    const dto: BlogFileDTO = {
+      slug: 'test',
+      metadata: {
+        date: '2024-01-01',
+        tags: [],
+        readTime: '5 min',
+      },
+      frontmatter: {},
+      content: 'Content',
+    };
+
+    const result = buildBlogPostDetail(dto);
+
+    expect(result.published).toBe(false);
+  });
+
+  it('should respect published: false in detail', () => {
+    const dto: BlogFileDTO = {
+      slug: 'draft',
+      metadata: {
+        date: '2024-01-01',
+        tags: [],
+        readTime: '5 min',
+        published: false,
+      },
+      frontmatter: {},
+      content: 'Draft content',
+    };
+
+    const result = buildBlogPostDetail(dto);
+
+    expect(result.published).toBe(false);
   });
 
   it('should include content field in BlogPostDetail', () => {

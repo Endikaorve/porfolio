@@ -22,10 +22,10 @@ describe('blogService', () => {
   });
 
   describe('listBlogPosts', () => {
-    it('should delegate to repository.listBlogPosts', async () => {
+    it('should delegate to repository.listBlogPosts and filter published', async () => {
       const mockPosts = [
-        aBlogPost().withSlug('post-1').build(),
-        aBlogPost().withSlug('post-2').build(),
+        aBlogPost().withSlug('post-1').withPublished(true).build(),
+        aBlogPost().withSlug('post-2').withPublished(true).build(),
       ];
 
       vi.mocked(mockRepository.listBlogPosts).mockResolvedValue(mockPosts);
@@ -56,10 +56,12 @@ describe('blogService', () => {
       const post1 = aBlogPost()
         .withSlug('first')
         .withDate('2024-01-15')
+        .withPublished(true)
         .build();
       const post2 = aBlogPost()
         .withSlug('second')
         .withDate('2024-01-10')
+        .withPublished(true)
         .build();
 
       vi.mocked(mockRepository.listBlogPosts).mockResolvedValue([post1, post2]);
@@ -69,11 +71,48 @@ describe('blogService', () => {
       expect(result[0].slug).toBe('first');
       expect(result[1].slug).toBe('second');
     });
+
+    it('should filter out unpublished posts', async () => {
+      const publishedPost = aBlogPost()
+        .withSlug('published')
+        .withPublished(true)
+        .build();
+      const unpublishedPost = aBlogPost()
+        .withSlug('unpublished')
+        .withPublished(false)
+        .build();
+
+      vi.mocked(mockRepository.listBlogPosts).mockResolvedValue([
+        publishedPost,
+        unpublishedPost,
+      ]);
+
+      const result = await blogService.listBlogPosts('es');
+
+      expect(result).toHaveLength(1);
+      expect(result[0].slug).toBe('published');
+    });
+
+    it('should return empty array when all posts are unpublished', async () => {
+      const unpublishedPosts = [
+        aBlogPost().withSlug('draft-1').withPublished(false).build(),
+        aBlogPost().withSlug('draft-2').withPublished(false).build(),
+      ];
+
+      vi.mocked(mockRepository.listBlogPosts).mockResolvedValue(unpublishedPosts);
+
+      const result = await blogService.listBlogPosts('es');
+
+      expect(result).toEqual([]);
+    });
   });
 
   describe('getBlogPostDetailBySlug', () => {
     it('should delegate to repository.getBlogPostDetailBySlug', async () => {
-      const mockPost = aBlogPostDetail().withSlug('test-post').build();
+      const mockPost = aBlogPostDetail()
+        .withSlug('test-post')
+        .withPublished(true)
+        .build();
 
       vi.mocked(mockRepository.getBlogPostDetailBySlug).mockResolvedValue(
         mockPost
@@ -113,10 +152,11 @@ describe('blogService', () => {
       );
     });
 
-    it('should return BlogPostDetail with content', async () => {
+    it('should return BlogPostDetail with content when published', async () => {
       const mockPost = aBlogPostDetail()
         .withSlug('detailed')
         .withContent('# Full Content')
+        .withPublished(true)
         .build();
 
       vi.mocked(mockRepository.getBlogPostDetailBySlug).mockResolvedValue(
@@ -131,18 +171,46 @@ describe('blogService', () => {
       expect(result?.content).toBe('# Full Content');
       expect(result?.slug).toBe('detailed');
     });
+
+    it('should return null when post exists but is not published', async () => {
+      const unpublishedPost = aBlogPostDetail()
+        .withSlug('draft-post')
+        .withPublished(false)
+        .build();
+
+      vi.mocked(mockRepository.getBlogPostDetailBySlug).mockResolvedValue(
+        unpublishedPost
+      );
+
+      const result = await blogService.getBlogPostDetailBySlug(
+        'draft-post',
+        'es'
+      );
+
+      expect(result).toBeNull();
+    });
   });
 
   describe('listSlugs', () => {
-    it('should delegate to repository.listSlugs', async () => {
-      const mockSlugs = ['slug-1', 'slug-2', 'slug-3'];
+    it('should return only slugs of published posts', async () => {
+      const mockSlugs = ['published-post', 'draft-post'];
+      const publishedPost = aBlogPostDetail()
+        .withSlug('published-post')
+        .withPublished(true)
+        .build();
+      const draftPost = aBlogPostDetail()
+        .withSlug('draft-post')
+        .withPublished(false)
+        .build();
 
       vi.mocked(mockRepository.listSlugs).mockResolvedValue(mockSlugs);
+      vi.mocked(mockRepository.getBlogPostDetailBySlug)
+        .mockResolvedValueOnce(publishedPost)
+        .mockResolvedValueOnce(draftPost);
 
       const result = await blogService.listSlugs();
 
-      expect(mockRepository.listSlugs).toHaveBeenCalled();
-      expect(result).toEqual(mockSlugs);
+      expect(result).toEqual(['published-post']);
     });
 
     it('should return empty array when no slugs exist', async () => {
@@ -153,29 +221,81 @@ describe('blogService', () => {
       expect(result).toEqual([]);
     });
 
-    it('should call repository without parameters', async () => {
-      vi.mocked(mockRepository.listSlugs).mockResolvedValue([]);
+    it('should use default locale es when not specified', async () => {
+      const mockSlugs = ['post'];
+      const post = aBlogPostDetail()
+        .withSlug('post')
+        .withPublished(true)
+        .build();
+
+      vi.mocked(mockRepository.listSlugs).mockResolvedValue(mockSlugs);
+      vi.mocked(mockRepository.getBlogPostDetailBySlug).mockResolvedValue(post);
 
       await blogService.listSlugs();
 
-      expect(mockRepository.listSlugs).toHaveBeenCalledWith();
+      expect(mockRepository.getBlogPostDetailBySlug).toHaveBeenCalledWith(
+        'post',
+        'es'
+      );
     });
 
-    it('should return slugs in the order from repository', async () => {
-      const mockSlugs = ['post-a', 'post-b', 'post-c'];
+    it('should use provided locale parameter', async () => {
+      const mockSlugs = ['post'];
+      const post = aBlogPostDetail()
+        .withSlug('post')
+        .withPublished(true)
+        .build();
+
       vi.mocked(mockRepository.listSlugs).mockResolvedValue(mockSlugs);
+      vi.mocked(mockRepository.getBlogPostDetailBySlug).mockResolvedValue(post);
+
+      await blogService.listSlugs('en');
+
+      expect(mockRepository.getBlogPostDetailBySlug).toHaveBeenCalledWith(
+        'post',
+        'en'
+      );
+    });
+
+    it('should return all slugs when all posts are published', async () => {
+      const mockSlugs = ['post-a', 'post-b', 'post-c'];
+      
+      vi.mocked(mockRepository.listSlugs).mockResolvedValue(mockSlugs);
+      vi.mocked(mockRepository.getBlogPostDetailBySlug).mockImplementation(
+        async (slug) =>
+          aBlogPostDetail().withSlug(slug).withPublished(true).build()
+      );
 
       const result = await blogService.listSlugs();
 
       expect(result).toEqual(['post-a', 'post-b', 'post-c']);
     });
+
+    it('should return empty array when all posts are unpublished', async () => {
+      const mockSlugs = ['draft-1', 'draft-2'];
+
+      vi.mocked(mockRepository.listSlugs).mockResolvedValue(mockSlugs);
+      vi.mocked(mockRepository.getBlogPostDetailBySlug).mockImplementation(
+        async (slug) =>
+          aBlogPostDetail().withSlug(slug).withPublished(false).build()
+      );
+
+      const result = await blogService.listSlugs();
+
+      expect(result).toEqual([]);
+    });
   });
 
   describe('setBlogRepository', () => {
     it('should inject repository dependency', async () => {
+      const publishedPost = aBlogPostDetail()
+        .withSlug('new-slug')
+        .withPublished(true)
+        .build();
+
       const newMockRepository: BlogRepository = {
         listSlugs: vi.fn().mockResolvedValue(['new-slug']),
-        getBlogPostDetailBySlug: vi.fn(),
+        getBlogPostDetailBySlug: vi.fn().mockResolvedValue(publishedPost),
         listBlogPosts: vi.fn(),
       };
 
@@ -188,6 +308,11 @@ describe('blogService', () => {
     });
 
     it('should replace previous repository', async () => {
+      const publishedPost = aBlogPostDetail()
+        .withSlug('second')
+        .withPublished(true)
+        .build();
+
       const firstRepo: BlogRepository = {
         listSlugs: vi.fn().mockResolvedValue(['first']),
         getBlogPostDetailBySlug: vi.fn(),
@@ -196,7 +321,7 @@ describe('blogService', () => {
 
       const secondRepo: BlogRepository = {
         listSlugs: vi.fn().mockResolvedValue(['second']),
-        getBlogPostDetailBySlug: vi.fn(),
+        getBlogPostDetailBySlug: vi.fn().mockResolvedValue(publishedPost),
         listBlogPosts: vi.fn(),
       };
 

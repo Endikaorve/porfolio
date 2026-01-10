@@ -12,6 +12,7 @@ export class BlogPostBuilder {
     date: '2024-01-01',
     tags: ['test', 'vitest'],
     readTime: '5 min',
+    published: true,
   };
 
   withSlug(slug: string): this {
@@ -41,6 +42,11 @@ export class BlogPostBuilder {
 
   withReadTime(readTime: string): this {
     this.blogPost.readTime = readTime;
+    return this;
+  }
+
+  withPublished(published: boolean): this {
+    this.blogPost.published = published;
     return this;
   }
 

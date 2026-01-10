@@ -11,6 +11,7 @@ describe('BlogPost interface', () => {
       .withDate('2024-01-15')
       .withTags(['typescript', 'testing'])
       .withReadTime('10 min')
+      .withPublished(true)
       .build();
 
     expect(blogPost.slug).toBe('my-post');
@@ -19,6 +20,7 @@ describe('BlogPost interface', () => {
     expect(blogPost.date).toBe('2024-01-15');
     expect(blogPost.tags).toEqual(['typescript', 'testing']);
     expect(blogPost.readTime).toBe('10 min');
+    expect(blogPost.published).toBe(true);
   });
 
   it('should create a BlogPost with default values from builder', () => {
@@ -30,6 +32,13 @@ describe('BlogPost interface', () => {
     expect(blogPost.date).toBeDefined();
     expect(blogPost.tags).toBeInstanceOf(Array);
     expect(blogPost.readTime).toBeDefined();
+    expect(blogPost.published).toBe(true);
+  });
+
+  it('should create an unpublished BlogPost', () => {
+    const blogPost = aBlogPost().withPublished(false).build();
+
+    expect(blogPost.published).toBe(false);
   });
 });
 

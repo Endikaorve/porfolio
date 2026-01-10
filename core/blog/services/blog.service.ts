@@ -9,34 +9,53 @@ let blogRepository: BlogRepository;
  */
 export const blogService = {
   /**
-   * Lista todos los posts del blog (solo metadata) para un idioma
+   * Lista todos los posts publicados del blog (solo metadata) para un idioma
+   * Filtra los posts que no están publicados (lógica de negocio)
    * @param locale - Idioma de los posts
-   * @returns Array de posts ordenados por fecha descendente
+   * @returns Array de posts publicados ordenados por fecha descendente
    */
-  listBlogPosts: (locale: string): Promise<BlogPost[]> => {
-    return blogRepository.listBlogPosts(locale);
+  listBlogPosts: async (locale: string): Promise<BlogPost[]> => {
+    const allPosts = await blogRepository.listBlogPosts(locale);
+    // Lógica de negocio: solo mostrar posts publicados
+    return allPosts.filter((post) => post.published);
   },
 
   /**
-   * Obtiene un post completo por slug
+   * Obtiene un post publicado completo por slug
+   * Retorna null si el post no existe o no está publicado
    * @param slug - Identificador único del post
    * @param locale - Idioma del post
-   * @returns Post completo con contenido o null si no existe
+   * @returns Post completo con contenido o null si no existe/no publicado
    */
-  getBlogPostDetailBySlug: (
+  getBlogPostDetailBySlug: async (
     slug: string,
     locale: string
   ): Promise<BlogPostDetail | null> => {
-    return blogRepository.getBlogPostDetailBySlug(slug, locale);
+    const post = await blogRepository.getBlogPostDetailBySlug(slug, locale);
+    // Lógica de negocio: solo mostrar si está publicado
+    if (!post || !post.published) {
+      return null;
+    }
+    return post;
   },
 
   /**
-   * Lista todos los slugs disponibles
+   * Lista todos los slugs de posts publicados
    * Útil para generateStaticParams en Next.js
-   * @returns Array de slugs
+   * @param locale - Idioma para verificar publicación (default: 'es')
+   * @returns Array de slugs de posts publicados
    */
-  listSlugs: (): Promise<string[]> => {
-    return blogRepository.listSlugs();
+  listSlugs: async (locale: string = 'es'): Promise<string[]> => {
+    const allSlugs = await blogRepository.listSlugs();
+    // Para cada slug, verificar si el post está publicado
+    const publishedSlugs: string[] = [];
+    for (const slug of allSlugs) {
+      const post = await blogRepository.getBlogPostDetailBySlug(slug, locale);
+      if (post && post.published) {
+        publishedSlugs.push(slug);
+      }
+    }
+    return publishedSlugs;
   },
 };
 
