@@ -42,6 +42,7 @@ The content is organized as follows:
 <directory_structure>
 .cursor/
   commands/
+    me.md
     post.md
   rules/
     cv.mdc
@@ -239,6 +240,173 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+</file>
+
+<file path=".cursor/commands/me.md">
+# Entender a Endika
+
+> Este documento no es una descripción. Es un manual para que me entiendas. Cuando me cites, cuando escribas por mí, cuando propongas algo: esto es lo que necesitas saber para que suene a mí.
+
+---
+
+## CÓMO PIENSO
+
+**Soy exigente con lo que acepto.**
+No me vale "correcto". Me tiene que resonar. Si algo suena artificial, formulaico, o "de portfolio genérico", lo rechazo. Puedo rechazar 10 opciones hasta dar con la que encaja. No es capricho: es que sé distinguir lo que suena a mí de lo que podría ser de cualquiera.
+
+**Sé lo que NO quiero antes de saber lo que quiero.**
+Cuando algo no me gusta, lo digo claro: "No me gusta", "No me resuena", "Esto no lo diría yo". Ese feedback es información útil. Úsala para iterar.
+
+**Pienso iterando.**
+No espero que la primera propuesta sea la buena. Espero opciones. Espero que me preguntes. Espero refinar juntos. El proceso creativo es colaborativo: tú propones, yo descarto o ajusto, tú refinas.
+
+**Busco lo atemporal.**
+No me gustan los números específicos ni los proyectos concretos en textos que deberían durar. Si algo tiene que servir dentro de 5 años, no puede mencionar "+20 devs" ni "banca digital". Eso va en el /about, no en todas partes.
+
+**El storytelling importa.**
+Las cosas tienen que conectar. Si hay un headline filosófico ("Código. Equipos. Producto."), el párrafo siguiente no puede ser otro headline. Tiene que haber contraste de tono pero cohesión narrativa. Todo debe sentirse parte del mismo relato.
+
+---
+
+## CÓMO ME COMUNICO
+
+**Directo. Sin rodeos.**
+Mis mensajes son cortos. Voy al grano. Si algo no me gusta, digo "no me gusta", no "quizás podríamos explorar otras direcciones".
+
+**Doy feedback honesto.**
+No endulzo. Si algo es artificial, lo digo. Si algo me gusta, también. El feedback específico es más útil que el diplomático.
+
+**Pido más cuando no encuentro.**
+"Más opciones", "se te ocurre algo más?", "con todo lo que sabemos, qué más hay?". Esto significa: vamos bien, pero no hemos llegado. Sigue.
+
+**Colaboro, no delego.**
+No quiero que me des la solución final. Quiero que me des opciones y las trabajemos juntos. El resultado tiene que ser mío, no tuyo adaptado a mí.
+
+---
+
+## QUIÉN SOY
+
+**La persona:**
+
+- Navarro, de Pamplona
+- Salsero, cañero, visto streetwear
+- Me gustan las Magic, los videojuegos, quedar con amigos, salir de fiesta
+- Hago deporte, entreno
+- Tengo pareja
+- Curioso por naturaleza
+- No soy el típico Tech Lead solemne de LinkedIn
+
+**El profesional:**
+
+- Entré de casualidad, recomendado por un amigo. Fue amor a primera vista
+- He sido hombre orquesta: backend, frontend, mobile, de todo
+- Ahora lidero equipos y resuelvo problemas con software
+- Me encanta enseñar (me realiza, me ayuda a aprender, y me gusta que me vean como referente)
+- Soy profesor de un curso de XP, speaker en conferencias
+- Pragmático de convicción, no dogmático
+
+**Mi filosofía (los tres pilares):**
+
+- **Código**: Me enganchó. Es el medio, no el fin.
+- **Equipos**: Las personas me hicieron quedarme. Que funcionen y crezcan.
+- **Producto**: Lo que da sentido a todo. Que aporte valor real.
+
+---
+
+## MI VOZ
+
+**Lo que soy:**
+
+- Directo: voy al grano, no uso tres frases donde cabe una
+- Desenfadado: cercano, como hablando con un colega
+- Confiado sin ser arrogante: sé de lo que hablo, pero no lo demuestro en cada frase
+- Personal sin ser confesional: comparto reflexiones, no mi diario
+
+**Lo que NO soy:**
+
+- Corporativo
+- Vendedor
+- Pretencioso
+- "Influencer"
+- Falso-humilde
+
+**Frases que suenan a mí:**
+
+- _"Curioso por naturaleza, pragmático de convicción."_
+- _"No un perfil de LinkedIn. No un CV en PDF. Algo más... mío."_
+- _"El código es el medio, no el fin."_
+- _"Publicaré cuando tenga algo que merezca la pena contar."_
+- _"Lidero equipos y resuelvo problemas con software."_
+
+**Frases que NO suenan a mí:**
+
+- _"Apasionado por la innovación y el liderazgo transformacional"_
+- _"Comprometido con la excelencia y los resultados"_
+- _"Este humilde servidor..."_
+- _"En mi humilde opinión..."_
+- Cualquier cosa con "sinergia", "disruptivo", "propuesta de valor"
+
+**Estructura y ritmo:**
+
+- Frases cortas. Con punch.
+- Pero NO telegráficas. No "pam-pam-pam" sin desarrollo.
+- Los párrafos respiran. Cada uno aporta algo.
+- Transiciones naturales: "Así que aquí estamos", no "Por consiguiente".
+
+---
+
+## ESTE PROYECTO
+
+**Qué quiero que sea:**
+
+- Algo mío. No un CV. No LinkedIn.
+- Que se note que hay alguien detrás
+- Impacto visual + profesionalismo técnico
+- Personalidad, no plantilla genérica
+
+**Qué NO quiero:**
+
+- Que parezca stock o genérico
+- Sonar corporativo o vendedor
+- Que sea pretencioso o "influencer"
+- Que repita información entre secciones
+- Que sea solo un escaparate vacío
+
+**El equilibrio:**
+
+> "¿Un Tech Lead mostraría esto en una conferencia técnica sintiéndose orgulloso?"
+
+Impresiona sin distraer. Tiene personalidad sin ser pretencioso. Es técnico sin ser frío.
+
+---
+
+## EL TEST
+
+Antes de proponerme algo, pregúntate:
+
+1. **¿Suena a mí?** — Si pudiera ser de cualquiera, no vale.
+2. **¿Lo diría en voz alta?** — Si suena raro hablado, reescribir.
+3. **¿Es artificial o formulaico?** — Si parece "frase de portfolio", fuera.
+4. **¿Es atemporal?** — Si tiene números o proyectos específicos donde no debería, ajustar.
+5. **¿Conecta con el resto?** — Si rompe el storytelling, replantear.
+
+---
+
+## CÓMO TRABAJAR CONMIGO
+
+1. **Dame opciones**, no una sola propuesta.
+2. **Espera iteraciones**. La primera rara vez es la buena.
+3. **Cuando digo "no me gusta"**, pregunta qué específicamente.
+4. **Cuando digo "más opciones"**, significa que vamos en buena dirección pero no hemos llegado.
+5. **Cuando acepto algo**, es porque resuena. Toma nota de por qué funcionó.
+
+---
+
+## REFERENCIAS
+
+- Para guía de escritura detallada (posts, traducciones): ver `/post`
+- Para mi CV y datos profesionales: ver `@.cursor/rules/cv.mdc`
+- Para filosofía de diseño del portfolio: ver `@.cursor/rules/design-philosophy.mdc`
 </file>
 
 <file path=".cursor/commands/post.md">
@@ -813,6 +981,17 @@ export const routing = defineRouting({
   defaultLocale,
   localePrefix: 'always',
 });
+</file>
+
+<file path="public/robots.txt">
+# Robots.txt for Endika Orube Portfolio
+# https://endikaorube.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://endikaorube.dev/sitemap.xml
 </file>
 
 <file path=".prettierrc.json">
@@ -2011,6 +2190,108 @@ export function useMDXComponents(
 export const mdxComponents = useMDXComponents();
 </file>
 
+<file path="components/json-ld.tsx">
+import { siteConfig } from '@/config/site';
+
+export function JsonLdSchema({ locale }: { locale: string }) {
+  const isSpanish = locale === 'es';
+
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${siteConfig.url}/#person`,
+    name: siteConfig.author.name,
+    givenName: 'Endika',
+    familyName: 'Orube',
+    jobTitle: siteConfig.author.role,
+    description: isSpanish
+      ? 'Tech Lead & Product Engineer con +7 años de experiencia en desarrollo de software, liderando equipos y construyendo productos digitales.'
+      : 'Tech Lead & Product Engineer with 7+ years of experience in software development, leading teams and building digital products.',
+    url: siteConfig.url,
+    email: siteConfig.author.email,
+    image: `${siteConfig.url}/endika.jpg`,
+    sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
+    knowsAbout: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'JavaScript',
+      'TDD',
+      'Software Architecture',
+      'Hexagonal Architecture',
+      'Frontend Development',
+      'Team Leadership',
+      'Extreme Programming',
+      'CI/CD',
+    ],
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Biko2 / Jakala',
+      url: 'https://www.jakala.com/',
+    },
+    alumniOf: {
+      '@type': 'EducationalOrganization',
+      name: 'Universidad de Navarra',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: 'Navarra',
+      addressCountry: 'ES',
+    },
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteConfig.url}/#website`,
+    url: siteConfig.url,
+    name: siteConfig.name,
+    description: isSpanish
+      ? `Portfolio profesional de ${siteConfig.author.name} - ${siteConfig.author.role}`
+      : `Professional portfolio of ${siteConfig.author.name} - ${siteConfig.author.role}`,
+    inLanguage: [locale === 'es' ? 'es-ES' : 'en-US'],
+    author: {
+      '@id': `${siteConfig.url}/#person`,
+    },
+  };
+
+  const profilePageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${siteConfig.url}/${locale}/#webpage`,
+    url: `${siteConfig.url}/${locale}`,
+    name: `${siteConfig.author.name} | ${siteConfig.author.role}`,
+    isPartOf: {
+      '@id': `${siteConfig.url}/#website`,
+    },
+    about: {
+      '@id': `${siteConfig.url}/#person`,
+    },
+    mainEntity: {
+      '@id': `${siteConfig.url}/#person`,
+    },
+    inLanguage: locale === 'es' ? 'es-ES' : 'en-US',
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
+      />
+    </>
+  );
+}
+</file>
+
 <file path="config/site.ts">
 /**
  * Configuración centralizada del sitio
@@ -2046,14 +2327,6 @@ export const siteConfig = {
 } as const;
 </file>
 
-<file path="content/blog/bienvenida/metadata.json">
-{
-  "date": "2026-01-10",
-  "tags": ["personal", "reflections"],
-  "readTime": "3 min"
-}
-</file>
-
 <file path="core/blog/_di/index.ts">
 import { setBlogRepository } from '../services/blog.service';
 import { blogFileRepository } from '../infrastructure/blog-file.repository';
@@ -2065,90 +2338,6 @@ import { blogFileRepository } from '../infrastructure/blog-file.repository';
 export const injectBlogDependencies = () => {
   setBlogRepository(blogFileRepository);
 };
-</file>
-
-<file path="core/blog/domain/__builders__/blog-post.builder.ts">
-import type { BlogPost, BlogPostDetail } from '../blog';
-
-/**
- * Builder para crear objetos BlogPost en tests
- * Proporciona valores por defecto sensatos que pueden ser sobreescritos
- */
-export class BlogPostBuilder {
-  private blogPost: BlogPost = {
-    slug: 'test-post',
-    title: 'Test Blog Post',
-    description: 'This is a test blog post description',
-    date: '2024-01-01',
-    tags: ['test', 'vitest'],
-    readTime: '5 min',
-  };
-
-  withSlug(slug: string): this {
-    this.blogPost.slug = slug;
-    return this;
-  }
-
-  withTitle(title: string): this {
-    this.blogPost.title = title;
-    return this;
-  }
-
-  withDescription(description: string): this {
-    this.blogPost.description = description;
-    return this;
-  }
-
-  withDate(date: string): this {
-    this.blogPost.date = date;
-    return this;
-  }
-
-  withTags(tags: string[]): this {
-    this.blogPost.tags = tags;
-    return this;
-  }
-
-  withReadTime(readTime: string): this {
-    this.blogPost.readTime = readTime;
-    return this;
-  }
-
-  build(): BlogPost {
-    return { ...this.blogPost };
-  }
-}
-
-/**
- * Builder para crear objetos BlogPostDetail en tests
- * Extiende BlogPostBuilder añadiendo el campo content
- */
-export class BlogPostDetailBuilder extends BlogPostBuilder {
-  private content: string = '# Test Content\n\nThis is test markdown content.';
-
-  withContent(content: string): this {
-    this.content = content;
-    return this;
-  }
-
-  build(): BlogPostDetail {
-    const blogPost = super.build();
-    return {
-      ...blogPost,
-      content: this.content,
-    };
-  }
-}
-
-/**
- * Función helper para crear un BlogPost con valores por defecto
- */
-export const aBlogPost = () => new BlogPostBuilder();
-
-/**
- * Función helper para crear un BlogPostDetail con valores por defecto
- */
-export const aBlogPostDetail = () => new BlogPostDetailBuilder();
 </file>
 
 <file path="core/blog/domain/__tests__/blog-utils.test.ts">
@@ -2201,92 +2390,6 @@ describe('formatBlogPostDate', () => {
     const result = formatBlogPostDate(blogPost, 'en');
 
     expect(result).toBe('Jun 15, 2024');
-  });
-});
-</file>
-
-<file path="core/blog/domain/__tests__/blog.test.ts">
-import { describe, it, expect } from 'vitest';
-import type { BlogPost, BlogPostDetail } from '../blog';
-import { aBlogPost, aBlogPostDetail } from '../__builders__/blog-post.builder';
-
-describe('BlogPost interface', () => {
-  it('should create a valid BlogPost with all required fields', () => {
-    const blogPost: BlogPost = aBlogPost()
-      .withSlug('my-post')
-      .withTitle('My Post Title')
-      .withDescription('Post description')
-      .withDate('2024-01-15')
-      .withTags(['typescript', 'testing'])
-      .withReadTime('10 min')
-      .build();
-
-    expect(blogPost.slug).toBe('my-post');
-    expect(blogPost.title).toBe('My Post Title');
-    expect(blogPost.description).toBe('Post description');
-    expect(blogPost.date).toBe('2024-01-15');
-    expect(blogPost.tags).toEqual(['typescript', 'testing']);
-    expect(blogPost.readTime).toBe('10 min');
-  });
-
-  it('should create a BlogPost with default values from builder', () => {
-    const blogPost = aBlogPost().build();
-
-    expect(blogPost.slug).toBeDefined();
-    expect(blogPost.title).toBeDefined();
-    expect(blogPost.description).toBeDefined();
-    expect(blogPost.date).toBeDefined();
-    expect(blogPost.tags).toBeInstanceOf(Array);
-    expect(blogPost.readTime).toBeDefined();
-  });
-});
-
-describe('BlogPostDetail interface', () => {
-  it('should extend BlogPost with content field', () => {
-    const blogPostDetail: BlogPostDetail = aBlogPostDetail()
-      .withSlug('detailed-post')
-      .withTitle('Detailed Post')
-      .withContent('# Markdown Content\n\nThis is the content.')
-      .build();
-
-    // Should have all BlogPost fields
-    expect(blogPostDetail.slug).toBe('detailed-post');
-    expect(blogPostDetail.title).toBe('Detailed Post');
-    expect(blogPostDetail.description).toBeDefined();
-    expect(blogPostDetail.date).toBeDefined();
-    expect(blogPostDetail.tags).toBeInstanceOf(Array);
-    expect(blogPostDetail.readTime).toBeDefined();
-
-    // Should have content field
-    expect(blogPostDetail.content).toBe(
-      '# Markdown Content\n\nThis is the content.'
-    );
-  });
-
-  it('should be assignable to BlogPost (inheritance)', () => {
-    const blogPostDetail: BlogPostDetail = aBlogPostDetail().build();
-    const blogPost: BlogPost = blogPostDetail; // Should not cause type error
-
-    expect(blogPost.slug).toBe(blogPostDetail.slug);
-    expect(blogPost.title).toBe(blogPostDetail.title);
-  });
-
-  it('should create BlogPostDetail with markdown content', () => {
-    const content = `
-# Title
-## Subtitle
-- List item 1
-- List item 2
-
-\`\`\`typescript
-const test = 'code block';
-\`\`\`
-    `.trim();
-
-    const blogPostDetail = aBlogPostDetail().withContent(content).build();
-
-    expect(blogPostDetail.content).toContain('# Title');
-    expect(blogPostDetail.content).toContain('```typescript');
   });
 });
 </file>
@@ -2625,17 +2728,6 @@ import { injectBlogDependencies } from '@/core/blog/_di';
 injectBlogDependencies();
 </file>
 
-<file path="public/robots.txt">
-# Robots.txt for Endika Orube Portfolio
-# https://endikaorube.dev
-
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://endikaorube.dev/sitemap.xml
-</file>
-
 <file path="next.config.mjs">
 import createNextIntlPlugin from 'next-intl/plugin';
 
@@ -2672,163 +2764,6 @@ export default defineConfig({
     },
   },
 });
-</file>
-
-<file path=".cursor/rules/design-philosophy.mdc">
----
-alwaysApply: false
----
-
-## ✨ ANIMACIONES Y EFECTOS
-
-### Principios de Movimiento
-
-- **Framer Motion con spring physics:** `stiffness: 150-500`, `damping: 15-28`
-- **Movimientos orgánicos pero precisos:** NUNCA lentos o con delay excesivo
-- **Respuesta inmediata:** Las interacciones del usuario deben ser instantáneas
-- **Performance primero:** Solo animaciones que aporten valor
-
-### Efectos Visuales Permitidos
-
-- `backdrop-blur-sm`: Para capas con profundidad
-- `mix-blend-difference` o `mix-blend-mode`: Para efectos de fusión
-- Gradientes radiales sutiles: `rgba(222, 94, 145, 0.15)`
-- Opacidades entre 0.05 y 0.8 para capas de fondo
-- `text-stroke` para efectos tipográficos
-
-### Estados de Interacción
-
-- **Hover:** Scale (1.02-1.1), opacity, color transitions
-- **Active/Focus:** Feedback visual inmediato
-- **Transitions:** 300ms estándar, spring para movimientos complejos
-
----
-
-## 🎯 FILOSOFÍA UX
-
-### Principio Cardinal: NO INTRUSIVO
-
-Los efectos visuales **NUNCA** deben interferir con el contenido o la navegación del usuario.
-
-### Reglas de Experiencia
-
-1. **Respuesta inmediata:** Sin delays en interacciones básicas (click, hover, scroll)
-2. **Progressive enhancement:** Efectos avanzados solo en desktop (min-width: 768px)
-3. **Feedback visual claro:** El usuario siempre sabe dónde está y qué puede hacer
-4. **Accesibilidad integrada:** Considerada desde el diseño, no como afterthought
-5. **Performance monitoring:** Usar Vercel Analytics, optimizar Core Web Vitals
-
-### Cursor Personalizado
-
-- Solo en desktop (`hidden md:block`)
-- Movimiento instantáneo, sin delay
-- Tres capas: punto preciso + círculo principal + halo
-- Estados reactivos: default y hover
-- `cursor: none` en desktop para ocultar cursor nativo
-
----
-
-## 🏆 ESTILO AWWWARDS
-
-### Elementos Característicos
-
-- **Tipografía gigante estratégica:** Usar tamaños viewport (vw) para impacto
-- **Grid distorsionado:** Background animado que responde al scroll
-- **Elementos superpuestos:** Con propósito y jerarquía clara
-- **Espaciado generoso:** py-32, gap-8, breathing room
-- **Detalles técnicos visibles:** Coordenadas, números, timestamps con font-mono
-
-### Composición
-
-- **Asimetría intencional:** No centrar todo, crear tensión visual
-- **Profundidad con capas:** Usar z-index, absolute positioning, overlays
-- **Scroll storytelling:** Elementos que aparecen con `whileInView`
-- **Hero impactante:** Primera impresión memorable
-- **Whitespace (o blackspace):** Dejar respirar el contenido
-
----
-
-## ⛔ LO QUE SE DEBE EVITAR
-
-### Prohibido
-
-- ❌ Delays o lags en interacciones del usuario
-- ❌ Efectos excesivos que distraigan del contenido
-- ❌ Animaciones "cute", infantiles o poco profesionales
-- ❌ Diseños genéricos o predecibles
-- ❌ Elementos decorativos sin propósito
-- ❌ Border-radius (mantener diseño angular)
-- ❌ Gradientes coloridos tipo arcoíris
-- ❌ Carousels automáticos que el usuario no controla
-- ❌ Parallax excesivo que marea
-
-### Usar con Precaución
-
-- ⚠️ Animaciones infinitas (solo para elementos no críticos)
-- ⚠️ Mix-blend-mode (puede afectar legibilidad)
-- ⚠️ Efectos 3D (sutiles y con propósito)
-- ⚠️ Scroll-jacking (nunca interferir con scroll nativo)
-
----
-
-## 🔧 STACK TÉCNICO
-
-### Tecnologías Core
-
-- **Framework:** Next.js 16 (App Router)
-- **Animaciones:** Framer Motion
-- **Estilos:** Tailwind CSS v4
-- **Componentes:** Shadcn/ui + Radix UI
-- **Tipado:** TypeScript estricto
-
-### Convenciones de Código
-
-- Componentes funcionales con hooks
-- `"use client"` solo cuando sea necesario
-- Preferir Tailwind classes sobre CSS custom
-- Usar `motion.div` de Framer Motion para animaciones
-- Variables CSS para colores consistentes
-
----
-
-## 📐 CRITERIO DE EVALUACIÓN
-
-### Cuando se solicite un cambio, preguntar:
-
-1. **¿Esto estaría en un sitio premiado en Awwwards?**
-2. **¿Es intrusivo o distrae del contenido?**
-3. **¿Aporta valor real a la experiencia?**
-4. **¿Es performante en mobile y desktop?**
-5. **¿Mantiene la coherencia visual?**
-
-Si alguna respuesta es negativa, **replantear el enfoque**.
-
----
-
-## 🎨 EJEMPLOS DE REFERENCIA
-
-Este portfolio se inspira en:
-
-- Sitios premiados en Awwwards con categorías: Experimental, Developer, Agency
-- Portfolio de design studios de élite
-- Web experimental pero funcional
-- Equilibrio entre arte y usabilidad
-
-**Nivel aspiracional:** Portfolio que un Tech Lead/Engineering Manager mostraría con orgullo a un cliente enterprise o en una conferencia técnica.
-
----
-
-## 🚀 IMPLEMENTACIÓN
-
-Siempre que trabajes en este proyecto:
-
-1. Lee esta regla antes de proponer cambios
-2. Evalúa si tu propuesta cumple los estándares
-3. Implementa con atención al detalle
-4. Prueba en diferentes dispositivos
-5. Optimiza performance
-
-**Recuerda:** Cada línea de código debe reflejar el nivel de excelencia técnica y diseño que caracteriza a este portfolio.
 </file>
 
 <file path="app/[locale]/_components/index.ts">
@@ -2911,123 +2846,97 @@ export function AnimatedBackground({
 }
 </file>
 
-<file path="app/[locale]/about/_components/community-section.tsx">
-'use client';
+<file path="app/sitemap.ts">
+import { MetadataRoute } from 'next';
+import { blogService } from '@/core/blog/services/blog.service';
+import { routing } from '@/i18n/routing';
+import { siteConfig } from '@/config/site';
+import '@/di';
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const lastModified = new Date();
 
-export function CommunitySection() {
-  const t = useTranslations();
+  // Rutas estáticas base
+  const staticRoutes: MetadataRoute.Sitemap = [];
 
-  return (
-    <section className="relative py-32">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
-            {t('community.title.line1')}
-            <br />
-            <span className="text-primary">{t('community.title.line2')}</span>
-          </h2>
-        </motion.div>
+  // Páginas principales para cada idioma
+  for (const locale of routing.locales) {
+    // Home
+    staticRoutes.push({
+      url: `${siteConfig.url}/${locale}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 1,
+      alternates: {
+        languages: {
+          es: `${siteConfig.url}/es`,
+          en: `${siteConfig.url}/en`,
+        },
+      },
+    });
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 overflow-hidden">
-          {/* Profesor */}
-          <motion.div
-            className="relative group overflow-visible"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute -inset-4 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
-            <div className="relative border-l-4 border-primary pl-8 py-4">
-              <span className="text-white/40 font-mono text-sm">
-                {t('community.teaching.period')}
-              </span>
-              <h3 className="text-3xl font-black text-white mt-2 mb-3">
-                {t('community.teaching.title')}
-              </h3>
-              <p className="text-white/70 mb-4">
-                <span className="text-primary">{t('community.teaching.subtitleHighlight')}</span>
-                {t('community.teaching.subtitleRest')}
-              </p>
-              <p className="text-white/60 leading-relaxed mb-6">
-                {t('community.teaching.description')}
-              </p>
+    // About
+    staticRoutes.push({
+      url: `${siteConfig.url}/${locale}/about`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          es: `${siteConfig.url}/es/about`,
+          en: `${siteConfig.url}/en/about`,
+        },
+      },
+    });
 
-              {/* Temas del curso */}
-              <div className="space-y-3 mt-6">
-                <div className="border-l-2 border-primary/40 pl-4 py-1">
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {t('community.teaching.topics.engineering')}
-                  </p>
-                </div>
-                <div className="border-l-2 border-primary/40 pl-4 py-1">
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {t('community.teaching.topics.architecture')}
-                  </p>
-                </div>
-                <div className="border-l-2 border-primary/40 pl-4 py-1">
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    {t('community.teaching.topics.culture')}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+    // Blog listing
+    staticRoutes.push({
+      url: `${siteConfig.url}/${locale}/blog`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          es: `${siteConfig.url}/es/blog`,
+          en: `${siteConfig.url}/en/blog`,
+        },
+      },
+    });
+  }
 
-          {/* Charlas */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
-              <div className="relative border-l-4 border-white pl-8 py-4">
-                <span className="text-white/40 font-mono text-sm">
-                  {t('community.talks.vibe.year')}
-                </span>
-                <h3 className="text-2xl font-black text-white mt-2 mb-2">
-                  {t('community.talks.vibe.title')}
-                </h3>
-                <p className="text-primary text-sm mb-2">
-                  {t('community.talks.vibe.event')}
-                </p>
-                <p className="text-white/50 leading-relaxed text-sm">
-                  {t('community.talks.vibe.description')}
-                </p>
-              </div>
-            </div>
+  // Rutas dinámicas del blog
+  const blogRoutes: MetadataRoute.Sitemap = [];
 
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
-              <div className="relative border-l-4 border-white pl-8 py-4">
-                <span className="text-white/40 font-mono text-sm">
-                  {t('community.talks.rendering.year')}
-                </span>
-                <h3 className="text-2xl font-black text-white mt-2 mb-2">
-                  {t('community.talks.rendering.title')}
-                </h3>
-                <p className="text-primary text-sm mb-2">
-                  {t('community.talks.rendering.event')}
-                </p>
-                <p className="text-white/50 leading-relaxed text-sm">
-                  {t('community.talks.rendering.description')}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
+  try {
+    const slugs = await blogService.listSlugs();
+
+    for (const slug of slugs) {
+      // Añadir entrada para cada idioma
+      for (const locale of routing.locales) {
+        // Obtener la fecha del post si existe
+        const post = await blogService.getBlogPostDetailBySlug(slug, locale);
+        const postDate = post?.date ? new Date(post.date) : lastModified;
+
+        blogRoutes.push({
+          url: `${siteConfig.url}/${locale}/blog/${slug}`,
+          lastModified: postDate,
+          changeFrequency: 'monthly',
+          priority: 0.7,
+          alternates: {
+            languages: {
+              es: `${siteConfig.url}/es/blog/${slug}`,
+              en: `${siteConfig.url}/en/blog/${slug}`,
+            },
+          },
+        });
+      }
+    }
+  } catch (error) {
+    // En caso de error, continuar sin las rutas del blog
+    console.error('Error generating blog sitemap entries:', error);
+  }
+
+  return [...staticRoutes, ...blogRoutes];
 }
 </file>
 
@@ -3177,649 +3086,482 @@ export function CustomCursor({
 }
 </file>
 
-<file path="components/json-ld.tsx">
-import { siteConfig } from '@/config/site';
-
-export function JsonLdSchema({ locale }: { locale: string }) {
-  const isSpanish = locale === 'es';
-
-  const personSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    '@id': `${siteConfig.url}/#person`,
-    name: siteConfig.author.name,
-    givenName: 'Endika',
-    familyName: 'Orube',
-    jobTitle: siteConfig.author.role,
-    description: isSpanish
-      ? 'Tech Lead & Product Engineer con +7 años de experiencia en desarrollo de software, liderando equipos y construyendo productos digitales.'
-      : 'Tech Lead & Product Engineer with 7+ years of experience in software development, leading teams and building digital products.',
-    url: siteConfig.url,
-    email: siteConfig.author.email,
-    image: `${siteConfig.url}/endika.jpg`,
-    sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
-    knowsAbout: [
-      'React',
-      'Next.js',
-      'TypeScript',
-      'JavaScript',
-      'TDD',
-      'Software Architecture',
-      'Hexagonal Architecture',
-      'Frontend Development',
-      'Team Leadership',
-      'Extreme Programming',
-      'CI/CD',
-    ],
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Biko2 / Jakala',
-      url: 'https://www.jakala.com/',
-    },
-    alumniOf: {
-      '@type': 'EducationalOrganization',
-      name: 'Universidad de Navarra',
-    },
-    address: {
-      '@type': 'PostalAddress',
-      addressRegion: 'Navarra',
-      addressCountry: 'ES',
-    },
-  };
-
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': `${siteConfig.url}/#website`,
-    url: siteConfig.url,
-    name: siteConfig.name,
-    description: isSpanish
-      ? `Portfolio profesional de ${siteConfig.author.name} - ${siteConfig.author.role}`
-      : `Professional portfolio of ${siteConfig.author.name} - ${siteConfig.author.role}`,
-    inLanguage: [locale === 'es' ? 'es-ES' : 'en-US'],
-    author: {
-      '@id': `${siteConfig.url}/#person`,
-    },
-  };
-
-  const profilePageSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ProfilePage',
-    '@id': `${siteConfig.url}/${locale}/#webpage`,
-    url: `${siteConfig.url}/${locale}`,
-    name: `${siteConfig.author.name} | ${siteConfig.author.role}`,
-    isPartOf: {
-      '@id': `${siteConfig.url}/#website`,
-    },
-    about: {
-      '@id': `${siteConfig.url}/#person`,
-    },
-    mainEntity: {
-      '@id': `${siteConfig.url}/#person`,
-    },
-    inLanguage: locale === 'es' ? 'es-ES' : 'en-US',
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
-      />
-    </>
-  );
+<file path="content/blog/bienvenida/metadata.json">
+{
+  "date": "2026-01-10",
+  "tags": ["personal", "reflections"],
+  "readTime": "3 min"
 }
 </file>
 
-<file path="core/blog/domain/blog.ts">
+<file path="core/blog/domain/__builders__/blog-post.builder.ts">
+import type { BlogPost, BlogPostDetail } from '../blog';
+
 /**
- * Representa la metadata de un post del blog (sin contenido completo)
- * Usado en listados, previews y feeds
+ * Builder para crear objetos BlogPost en tests
+ * Proporciona valores por defecto sensatos que pueden ser sobreescritos
  */
-export interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  modifiedDate?: string;
-  tags: string[];
-  readTime: string;
+export class BlogPostBuilder {
+  private blogPost: BlogPost = {
+    slug: 'test-post',
+    title: 'Test Blog Post',
+    description: 'This is a test blog post description',
+    date: '2024-01-01',
+    tags: ['test', 'vitest'],
+    readTime: '5 min',
+  };
+
+  withSlug(slug: string): this {
+    this.blogPost.slug = slug;
+    return this;
+  }
+
+  withTitle(title: string): this {
+    this.blogPost.title = title;
+    return this;
+  }
+
+  withDescription(description: string): this {
+    this.blogPost.description = description;
+    return this;
+  }
+
+  withDate(date: string): this {
+    this.blogPost.date = date;
+    return this;
+  }
+
+  withTags(tags: string[]): this {
+    this.blogPost.tags = tags;
+    return this;
+  }
+
+  withReadTime(readTime: string): this {
+    this.blogPost.readTime = readTime;
+    return this;
+  }
+
+  build(): BlogPost {
+    return { ...this.blogPost };
+  }
 }
 
 /**
- * Representa un post del blog con su contenido completo
- * Extiende BlogPost añadiendo el campo content
+ * Builder para crear objetos BlogPostDetail en tests
+ * Extiende BlogPostBuilder añadiendo el campo content
  */
-export interface BlogPostDetail extends BlogPost {
-  content: string;
+export class BlogPostDetailBuilder extends BlogPostBuilder {
+  private content: string = '# Test Content\n\nThis is test markdown content.';
+
+  withContent(content: string): this {
+    this.content = content;
+    return this;
+  }
+
+  build(): BlogPostDetail {
+    const blogPost = super.build();
+    return {
+      ...blogPost,
+      content: this.content,
+    };
+  }
 }
+
+/**
+ * Función helper para crear un BlogPost con valores por defecto
+ */
+export const aBlogPost = () => new BlogPostBuilder();
+
+/**
+ * Función helper para crear un BlogPostDetail con valores por defecto
+ */
+export const aBlogPostDetail = () => new BlogPostDetailBuilder();
 </file>
 
-<file path="core/blog/infrastructure/__tests__/blog-file.repository.test.ts">
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+<file path="core/blog/domain/__tests__/blog.test.ts">
+import { describe, it, expect } from 'vitest';
+import type { BlogPost, BlogPostDetail } from '../blog';
+import { aBlogPost, aBlogPostDetail } from '../__builders__/blog-post.builder';
 
-// Mock de los módulos nativos y server-only
-vi.mock('server-only', () => ({}));
-vi.mock('fs', () => ({
-  default: {
-    existsSync: vi.fn(),
-    readdirSync: vi.fn(),
-    statSync: vi.fn(),
-    readFileSync: vi.fn(),
-  },
-}));
-vi.mock('path', () => ({
-  default: {
-    join: vi.fn((...args) => args.join('/')),
-  },
-}));
-vi.mock('gray-matter', () => ({
-  default: vi.fn(),
-}));
+describe('BlogPost interface', () => {
+  it('should create a valid BlogPost with all required fields', () => {
+    const blogPost: BlogPost = aBlogPost()
+      .withSlug('my-post')
+      .withTitle('My Post Title')
+      .withDescription('Post description')
+      .withDate('2024-01-15')
+      .withTags(['typescript', 'testing'])
+      .withReadTime('10 min')
+      .build();
 
-// Importamos el repositorio después de mockear
-import { blogFileRepository } from '../blog-file.repository';
-
-// Importamos después de mockear para acceder a los mocks
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-
-describe('blogFileRepository', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
+    expect(blogPost.slug).toBe('my-post');
+    expect(blogPost.title).toBe('My Post Title');
+    expect(blogPost.description).toBe('Post description');
+    expect(blogPost.date).toBe('2024-01-15');
+    expect(blogPost.tags).toEqual(['typescript', 'testing']);
+    expect(blogPost.readTime).toBe('10 min');
   });
 
-  describe('listSlugs', () => {
-    it('should return empty array when blog directory does not exist', async () => {
-      (fs.existsSync as any).mockReturnValue(false);
+  it('should create a BlogPost with default values from builder', () => {
+    const blogPost = aBlogPost().build();
 
-      const result = await blogFileRepository.listSlugs();
+    expect(blogPost.slug).toBeDefined();
+    expect(blogPost.title).toBeDefined();
+    expect(blogPost.description).toBeDefined();
+    expect(blogPost.date).toBeDefined();
+    expect(blogPost.tags).toBeInstanceOf(Array);
+    expect(blogPost.readTime).toBeDefined();
+  });
+});
 
-      expect(result).toEqual([]);
-      expect(fs.existsSync).toHaveBeenCalled();
-    });
+describe('BlogPostDetail interface', () => {
+  it('should extend BlogPost with content field', () => {
+    const blogPostDetail: BlogPostDetail = aBlogPostDetail()
+      .withSlug('detailed-post')
+      .withTitle('Detailed Post')
+      .withContent('# Markdown Content\n\nThis is the content.')
+      .build();
 
-    it('should return list of directory names (slugs)', async () => {
-      (fs.existsSync as any).mockReturnValue(true);
-      (fs.readdirSync as any).mockReturnValue([
-        'post-1',
-        'post-2',
-        'file.txt', // Should be filtered out (not a directory)
-      ] as any);
-      (fs.statSync as any).mockImplementation((path: any) => {
-        const pathStr = path.toString();
-        return {
-          isDirectory: () =>
-            pathStr.includes('post-1') || pathStr.includes('post-2'),
-        } as any;
-      });
+    // Should have all BlogPost fields
+    expect(blogPostDetail.slug).toBe('detailed-post');
+    expect(blogPostDetail.title).toBe('Detailed Post');
+    expect(blogPostDetail.description).toBeDefined();
+    expect(blogPostDetail.date).toBeDefined();
+    expect(blogPostDetail.tags).toBeInstanceOf(Array);
+    expect(blogPostDetail.readTime).toBeDefined();
 
-      const result = await blogFileRepository.listSlugs();
-
-      expect(result).toEqual(['post-1', 'post-2']);
-      expect(fs.readdirSync).toHaveBeenCalled();
-    });
-
-    it('should filter out files and only return directories', async () => {
-      (fs.existsSync as any).mockReturnValue(true);
-      (fs.readdirSync as any).mockReturnValue([
-        'valid-post',
-        '.DS_Store',
-        'another-post',
-      ] as any);
-      (fs.statSync as any).mockImplementation((path: any) => {
-        const pathStr = path.toString();
-        return {
-          isDirectory: () =>
-            pathStr.includes('valid-post') || pathStr.includes('another-post'),
-        } as any;
-      });
-
-      const result = await blogFileRepository.listSlugs();
-
-      expect(result).toEqual(['valid-post', 'another-post']);
-    });
+    // Should have content field
+    expect(blogPostDetail.content).toBe(
+      '# Markdown Content\n\nThis is the content.'
+    );
   });
 
-  describe('getBlogPostDetailBySlug', () => {
-    it('should return null when file does not exist', async () => {
-      (path.join as any).mockReturnValue('/fake/path/post/es.mdx');
-      (fs.existsSync as any).mockReturnValue(false);
+  it('should be assignable to BlogPost (inheritance)', () => {
+    const blogPostDetail: BlogPostDetail = aBlogPostDetail().build();
+    const blogPost: BlogPost = blogPostDetail; // Should not cause type error
 
-      const result = await blogFileRepository.getBlogPostDetailBySlug(
-        'post',
-        'es'
-      );
-
-      expect(result).toBeNull();
-      expect(fs.existsSync).toHaveBeenCalledWith('/fake/path/post/es.mdx');
-    });
-
-    it('should return BlogPostDetail when file exists', async () => {
-      const mockContent = 'Post content here';
-      const mockMetadata = {
-        date: '2024-01-15',
-        tags: ['test'],
-        readTime: '5 min',
-      };
-      const mockFrontmatter = {
-        title: 'Test Post',
-        description: 'Test description',
-      };
-
-      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
-      (fs.existsSync as any).mockReturnValue(true);
-      
-      // Mock para metadata.json
-      (fs.readFileSync as any).mockReturnValueOnce(
-        JSON.stringify(mockMetadata) as any
-      );
-      
-      // Mock para el archivo .mdx
-      (fs.readFileSync as any).mockReturnValueOnce('frontmatter + content' as any);
-      (matter as any).mockReturnValue({
-        data: mockFrontmatter,
-        content: mockContent,
-      } as any);
-
-      const result = await blogFileRepository.getBlogPostDetailBySlug(
-        'test-post',
-        'es'
-      );
-
-      expect(result).toEqual({
-        slug: 'test-post',
-        title: 'Test Post',
-        description: 'Test description',
-        date: '2024-01-15',
-        tags: ['test'],
-        readTime: '5 min',
-        content: mockContent,
-      });
-    });
-
-    it('should apply default values for missing frontmatter fields', async () => {
-      const mockMetadata = {
-        date: '',
-        tags: [],
-        readTime: '5 min',
-      };
-
-      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
-      (fs.existsSync as any).mockReturnValue(true);
-      
-      // Mock para metadata.json
-      (fs.readFileSync as any).mockReturnValueOnce(
-        JSON.stringify(mockMetadata) as any
-      );
-      
-      // Mock para el archivo .mdx
-      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
-      (matter as any).mockReturnValue({
-        data: {},
-        content: 'Minimal content',
-      } as any);
-
-      const result = await blogFileRepository.getBlogPostDetailBySlug(
-        'minimal',
-        'en'
-      );
-
-      expect(result).toEqual({
-        slug: 'minimal',
-        title: 'minimal', // Default: slug
-        description: '',
-        date: '',
-        tags: [],
-        readTime: '5 min',
-        content: 'Minimal content',
-      });
-    });
-
-    it('should handle different locales', async () => {
-      const mockMetadata = {
-        date: '2024-01-01',
-        tags: [],
-        readTime: '5 min',
-      };
-
-      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
-      (fs.existsSync as any).mockReturnValue(true);
-      
-      // Mock para metadata.json
-      (fs.readFileSync as any).mockReturnValueOnce(
-        JSON.stringify(mockMetadata) as any
-      );
-      
-      // Mock para el archivo .mdx
-      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
-      (matter as any).mockReturnValue({
-        data: { title: 'English Post' },
-        content: 'Content',
-      } as any);
-
-      await blogFileRepository.getBlogPostDetailBySlug('post', 'en');
-
-      expect(path.join).toHaveBeenCalledWith(
-        expect.anything(),
-        'post',
-        'en.mdx'
-      );
-    });
+    expect(blogPost.slug).toBe(blogPostDetail.slug);
+    expect(blogPost.title).toBe(blogPostDetail.title);
   });
 
-  describe('listBlogPosts', () => {
-    it('should return empty array when blog directory does not exist', async () => {
-      (fs.existsSync as any).mockReturnValue(false);
+  it('should create BlogPostDetail with markdown content', () => {
+    const content = `
+# Title
+## Subtitle
+- List item 1
+- List item 2
 
-      const result = await blogFileRepository.listBlogPosts('es');
+\`\`\`typescript
+const test = 'code block';
+\`\`\`
+    `.trim();
 
-      expect(result).toEqual([]);
-    });
+    const blogPostDetail = aBlogPostDetail().withContent(content).build();
 
-    it('should return list of BlogPost (without content)', async () => {
-      (fs.existsSync as any).mockReturnValue(true);
-      (fs.readdirSync as any).mockReturnValue(['post-1', 'post-2'] as any);
-      (fs.statSync as any).mockReturnValue({
-        isDirectory: () => true,
-      } as any);
-      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
-
-      // Mock para post-1 .mdx (PRIMERO)
-      (fs.readFileSync as any).mockReturnValueOnce('content1' as any);
-      (matter as any).mockReturnValueOnce({
-        data: {
-          title: 'Post 1',
-        },
-        content: 'Content 1',
-      } as any);
-      // Mock para post-1 metadata.json (DESPUÉS)
-      (fs.readFileSync as any).mockReturnValueOnce(
-        JSON.stringify({
-          date: '2024-01-15',
-          tags: [],
-          readTime: '5 min',
-        }) as any
-      );
-
-      // Mock para post-2 .mdx (PRIMERO)
-      (fs.readFileSync as any).mockReturnValueOnce('content2' as any);
-      (matter as any).mockReturnValueOnce({
-        data: {
-          title: 'Post 2',
-        },
-        content: 'Content 2',
-      } as any);
-      // Mock para post-2 metadata.json (DESPUÉS)
-      (fs.readFileSync as any).mockReturnValueOnce(
-        JSON.stringify({
-          date: '2024-01-10',
-          tags: [],
-          readTime: '5 min',
-        }) as any
-      );
-
-      const result = await blogFileRepository.listBlogPosts('es');
-
-      expect(result).toHaveLength(2);
-      expect(result[0].slug).toBe('post-1');
-      expect(result[0].title).toBe('Post 1');
-      expect(result[0]).not.toHaveProperty('content'); // BlogPost no tiene content
-      expect(result[1].slug).toBe('post-2');
-    });
-
-    it('should sort posts by date descending (newest first)', async () => {
-      (fs.existsSync as any).mockReturnValue(true);
-      (fs.readdirSync as any).mockReturnValue(['old-post', 'new-post'] as any);
-      (fs.statSync as any).mockReturnValue({
-        isDirectory: () => true,
-      } as any);
-      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
-
-      // old-post .mdx (PRIMERO)
-      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
-      (matter as any).mockReturnValueOnce({
-        data: { title: 'Old Post' },
-        content: 'Content',
-      } as any);
-      // old-post metadata.json (DESPUÉS) (fecha más antigua)
-      (fs.readFileSync as any).mockReturnValueOnce(
-        JSON.stringify({
-          date: '2024-01-01',
-          tags: [],
-          readTime: '5 min',
-        }) as any
-      );
-
-      // new-post .mdx (PRIMERO)
-      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
-      (matter as any).mockReturnValueOnce({
-        data: { title: 'New Post' },
-        content: 'Content',
-      } as any);
-      // new-post metadata.json (DESPUÉS) (fecha más reciente)
-      (fs.readFileSync as any).mockReturnValueOnce(
-        JSON.stringify({
-          date: '2024-12-31',
-          tags: [],
-          readTime: '5 min',
-        }) as any
-      );
-
-      const result = await blogFileRepository.listBlogPosts('es');
-
-      expect(result[0].slug).toBe('new-post'); // Más reciente primero
-      expect(result[1].slug).toBe('old-post');
-    });
-
-    it('should skip posts without MDX file for specified locale', async () => {
-      const existsSyncMock = fs.existsSync as any;
-      existsSyncMock
-        .mockReturnValueOnce(true) // Directory exists
-        .mockReturnValueOnce(true) // post-1/es.mdx exists
-        .mockReturnValueOnce(true) // post-1/metadata.json exists
-        .mockReturnValueOnce(false); // post-2/es.mdx does NOT exist
-      (fs.readdirSync as any).mockReturnValue(['post-1', 'post-2'] as any);
-      (fs.statSync as any).mockReturnValue({
-        isDirectory: () => true,
-      } as any);
-      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
-      
-      // Mock para post-1 .mdx (PRIMERO)
-      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
-      (matter as any).mockReturnValue({
-        data: { title: 'Post 1' },
-        content: 'Content',
-      } as any);
-      // Mock para post-1 metadata.json (DESPUÉS)
-      (fs.readFileSync as any).mockReturnValueOnce(
-        JSON.stringify({
-          date: '2024-01-01',
-          tags: [],
-          readTime: '5 min',
-        }) as any
-      );
-
-      const result = await blogFileRepository.listBlogPosts('es');
-
-      expect(result).toHaveLength(1);
-      expect(result[0].slug).toBe('post-1');
-    });
-
-    it('should handle locale parameter correctly', async () => {
-      (fs.existsSync as any).mockReturnValue(true);
-      (fs.readdirSync as any).mockReturnValue(['post'] as any);
-      (fs.statSync as any).mockReturnValue({
-        isDirectory: () => true,
-      } as any);
-      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
-      
-      // Mock para .mdx (PRIMERO)
-      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
-      (matter as any).mockReturnValue({
-        data: {},
-        content: '',
-      } as any);
-      // Mock para metadata.json (DESPUÉS)
-      (fs.readFileSync as any).mockReturnValueOnce(
-        JSON.stringify({
-          date: '2024-01-01',
-          tags: [],
-          readTime: '5 min',
-        }) as any
-      );
-
-      await blogFileRepository.listBlogPosts('en');
-
-      expect(path.join).toHaveBeenCalledWith(
-        expect.anything(),
-        'post',
-        'en.mdx'
-      );
-    });
+    expect(blogPostDetail.content).toContain('# Title');
+    expect(blogPostDetail.content).toContain('```typescript');
   });
 });
 </file>
 
-<file path="core/blog/infrastructure/blog-file.repository.ts">
-import 'server-only';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import type { BlogRepository } from '../domain/blog-repository';
-import type { BlogPost, BlogPostDetail } from '../domain/blog';
-import type { BlogFileDTO, BlogMetadata } from './dto/blog-file.dto';
-import { buildBlogPost, buildBlogPostDetail } from './mappers/blog-file.mapper';
+<file path=".cursor/rules/design-philosophy.mdc">
+---
+alwaysApply: false
+---
 
-const BLOG_DIR = path.join(process.cwd(), 'content/blog');
+# Filosofía de Diseño
 
-/**
- * Lee el archivo metadata.json de un post
- * @param slug - Slug del post
- * @returns Metadata estática del post
- */
-function readMetadata(slug: string): BlogMetadata {
-  const metadataPath = path.join(BLOG_DIR, slug, 'metadata.json');
-  
-  if (!fs.existsSync(metadataPath)) {
-    // Fallback si no existe metadata.json (para compatibilidad)
-    return {
-      date: '',
-      tags: [],
-      readTime: '5 min',
-    };
-  }
+## La Esencia
 
-  const metadataContent = fs.readFileSync(metadataPath, 'utf-8');
-  return JSON.parse(metadataContent) as BlogMetadata;
+Este portfolio existe en la intersección entre **impacto visual** y **profesionalismo técnico**. No es un experimento artístico puro ni una web corporativa genérica. Es la expresión visual de un Tech Lead: preciso, con criterio, pero con personalidad.
+
+---
+
+## Principios Fundamentales
+
+### 1. Angular es Identidad
+
+Todo es recto, sin border-radius. Los elementos son cuadrados, las líneas son rectas, las esquinas son precisas. Esta decisión no es estética casual: transmite **precisión técnica** y **criterio**. Lo curvo es decorativo; lo angular es intencional.
+
+Cuando propongas algo nuevo, debe ser angular. El único elemento curvo permitido son círculos decorativos de fondo a muy baja opacidad.
+
+### 2. Densidad Visual Variable
+
+No todas las páginas tienen el mismo nivel de complejidad visual:
+
+- **Home**: Máximo impacto. Tipografía gigante, parallax, elementos decorativos. Es el escaparate.
+- **About**: Alta densidad. Partículas, fondos animados, cards con personalidad. Es la demostración.
+- **Blog**: Mínimo ruido. El contenido manda. Es el espacio de lectura.
+
+Cuando crees algo nuevo, pregunta: ¿Esto es escaparate, demostración, o espacio funcional?
+
+### 3. Decoración con Propósito
+
+Los elementos decorativos (líneas diagonales, partículas, círculos de fondo) no son adorno vacío:
+
+- **Crean profundidad**: Capas a diferentes opacidades (0.01-0.03) dan dimensión
+- **Enmarcan el contenido**: Partículas en laterales guían la mirada al centro
+- **Generan atmósfera**: Sin ser el protagonista, establecen el tono
+
+Si un elemento decorativo no cumple una de estas funciones, sobra.
+
+### 4. El Movimiento Cuenta Historias
+
+Las animaciones no son "efectos bonitos". Son **narrativa**:
+
+- La entrada escalonada de letras crea **anticipación**
+- El parallax sutil dice "esto es interactivo, esto está vivo"
+- Los elementos que aparecen con scroll crean **ritmo de lectura**
+
+Las animaciones deben tener **intención**. No animar por animar. Cada movimiento debe reforzar la jerarquía o guiar la atención.
+
+### 5. El Rosa es Acento, No Tema
+
+El color primary (#de5e91) se usa para:
+- Destacar lo importante (CTAs, estados activos)
+- Crear puntos de atención visual (puntos decorativos, bordes)
+- Indicar interactividad
+
+Nunca debe dominar. El fondo oscuro (#212121) es el lienzo; el blanco es el contenido; el rosa es el acento que da personalidad.
+
+---
+
+## Marco de Decisión
+
+Cuando propongas algo nuevo, evalúa:
+
+### ¿Dónde vive esto?
+
+| Contexto | Densidad Visual | Decoración | Animaciones |
+|----------|-----------------|------------|-------------|
+| Hero/Landing | Alta | Abundante | Cinematográficas |
+| Sección informativa | Media | Moderada | Sutiles |
+| Lectura/Contenido | Baja | Mínima | Solo transiciones |
+| Interactivo/Modal | Media | Con propósito | Feedback inmediato |
+
+### ¿Qué aporta?
+
+Antes de añadir cualquier elemento, debe responder SÍ a al menos una:
+- ¿Refuerza la identidad angular?
+- ¿Crea profundidad o enmarca contenido?
+- ¿Guía la atención del usuario?
+- ¿Cuenta algo sobre la interactividad?
+
+### ¿Cómo escala?
+
+Todo elemento debe tener versión desktop y mobile pensadas:
+- Desktop: Experiencia completa, cursor personalizado activo, efectos avanzados
+- Mobile: Esencia mantenida, complejidad reducida, performance primero
+
+---
+
+## Patrones Recurrentes
+
+### Tipografía de Impacto
+Usar tamaños viewport (`text-[Xvw]`) para títulos principales. El outline (`WebkitTextStroke`) crea contraste y sofisticación. Reservar para momentos clave, no para todo.
+
+### Elementos Técnicos
+Font-mono para fechas, números, etiquetas. Padding con ceros (`01`, `02`). Esto refuerza la identidad técnica sin ser pretencioso.
+
+### Bordes Parciales
+Esquinas con `border-t-2 border-l-2` (o variantes) en lugar de borders completos. Sugiere forma sin cerrar, crea tensión visual.
+
+### Gradientes de Desvanecimiento
+Para líneas y elementos que "desaparecen", usar gradientes `from-X to-transparent`. Evita bordes duros donde no se necesitan.
+
+### Scroll Controlado
+En contextos donde las secciones son unidades completas (como Home), el scroll snap es válido. En contenido continuo (como Blog), el scroll es libre.
+
+---
+
+## Animaciones: Guía de Uso
+
+### Springs, No Durations
+
+Para movimientos interactivos, usar springs:
+```
+stiffness: 150-300 (más alto = más rápido)
+damping: 15-25 (más alto = menos rebote)
+```
+
+### Entradas Escalonadas
+
+Cuando varios elementos aparecen juntos, escalonar con delays pequeños (0.03-0.05s entre elementos). Crea ritmo, no espera.
+
+### whileInView Siempre con once: true
+
+Las animaciones de entrada solo deben ejecutarse una vez. Repetirlas en cada scroll es distractivo.
+
+### El Hover es Inmediato
+
+Las animaciones de estado (hover, active) deben ser instantáneas. El delay es para entradas, no para feedback.
+
+---
+
+## Lo Que No Hacemos
+
+- **Redondear esquinas**: Es la antítesis de la identidad
+- **Gradientes multicolor**: Un color de acento, no un arcoíris
+- **Animaciones "divertidas"**: El tono es profesional, no juguetón
+- **Decoración genérica**: Si parece stock, no va
+- **Competir con el contenido**: Los efectos apoyan, nunca eclipsan
+
+---
+
+## El Test Final
+
+Antes de proponer cualquier cambio, pregunta:
+
+> "¿Un Tech Lead mostraría esto en una conferencia técnica sintiéndose orgulloso?"
+
+Si la respuesta es no, replantear. Si la respuesta es "depende de la audiencia", probablemente es demasiado conservador. Si la respuesta es "es demasiado", probablemente se pasó de experimental.
+
+El punto dulce está en: **impresiona sin distraer, tiene personalidad sin ser pretencioso, es técnico sin ser frío**.
+</file>
+
+<file path="app/[locale]/about/_components/community-section.tsx">
+'use client';
+
+import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+
+export function CommunitySection() {
+  const t = useTranslations();
+
+  return (
+    <section className="relative py-32">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <h2 className="text-[12vw] sm:text-[10vw] md:text-8xl font-black text-white leading-none">
+            {t('community.title.line1')}
+            <br />
+            <span className="text-primary">{t('community.title.line2')}</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 overflow-hidden">
+          {/* Profesor */}
+          <motion.div
+            className="relative group overflow-visible"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="absolute -inset-4 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl" />
+            <div className="relative border-l-4 border-primary pl-8 py-4">
+              <span className="text-white/40 font-mono text-sm">
+                {t('community.teaching.period')}
+              </span>
+              <h3 className="text-3xl font-black text-white mt-2 mb-3">
+                {t('community.teaching.title')}
+              </h3>
+              <div className="flex items-center gap-2 text-white/70 mb-4">
+                <p>
+                  <span className="text-primary">
+                    {t('community.teaching.subtitleHighlight')}
+                  </span>
+                  {t('community.teaching.subtitleRest')}
+                </p>
+                <a
+                  href="https://jxpert-dxp.jakala.es/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/50 hover:text-primary transition-colors flex-shrink-0"
+                  aria-label="Visitar web de Biko2/Jakala"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+              <p className="text-white/60 leading-relaxed mb-6">
+                {t('community.teaching.description')}
+              </p>
+
+              {/* Temas del curso */}
+              <div className="space-y-3 mt-6">
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {t('community.teaching.topics.engineering')}
+                  </p>
+                </div>
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {t('community.teaching.topics.architecture')}
+                  </p>
+                </div>
+                <div className="border-l-2 border-primary/40 pl-4 py-1">
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {t('community.teaching.topics.culture')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Charlas */}
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
+              <div className="relative border-l-4 border-white pl-8 py-4">
+                <span className="text-white/40 font-mono text-sm">
+                  {t('community.talks.vibe.year')}
+                </span>
+                <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                  {t('community.talks.vibe.title')}
+                </h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <p className="text-primary text-sm">
+                    {t('community.talks.vibe.event')}
+                  </p>
+                  <a
+                    href="https://pamplonaswcraft.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/50 hover:text-primary transition-colors flex-shrink-0"
+                    aria-label="Visitar web de Pamplona Software Crafters"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+                <p className="text-white/50 leading-relaxed text-sm">
+                  {t('community.talks.vibe.description')}
+                </p>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 blur-xl" />
+              <div className="relative border-l-4 border-white pl-8 py-4">
+                <span className="text-white/40 font-mono text-sm">
+                  {t('community.talks.rendering.year')}
+                </span>
+                <h3 className="text-2xl font-black text-white mt-2 mb-2">
+                  {t('community.talks.rendering.title')}
+                </h3>
+                <p className="text-primary text-sm mb-2">
+                  {t('community.talks.rendering.event')}
+                </p>
+                <p className="text-white/50 leading-relaxed text-sm">
+                  {t('community.talks.rendering.description')}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
 }
-
-/**
- * Implementación del repositorio de blog basada en filesystem
- * Lee archivos MDX de la carpeta content/blog
- */
-export const blogFileRepository: BlogRepository = {
-  /**
-   * Lista todos los slugs disponibles (carpetas en content/blog)
-   */
-  listSlugs: async (): Promise<string[]> => {
-    if (!fs.existsSync(BLOG_DIR)) {
-      return [];
-    }
-
-    return fs.readdirSync(BLOG_DIR).filter((name) => {
-      const fullPath = path.join(BLOG_DIR, name);
-      return fs.statSync(fullPath).isDirectory();
-    });
-  },
-
-  /**
-   * Obtiene un post completo por slug e idioma
-   * Lee metadata.json (estático) y el archivo .mdx del idioma (traducible)
-   */
-  getBlogPostDetailBySlug: async (
-    slug: string,
-    locale: string
-  ): Promise<BlogPostDetail | null> => {
-    const filePath = path.join(BLOG_DIR, slug, `${locale}.mdx`);
-
-    if (!fs.existsSync(filePath)) {
-      return null;
-    }
-
-    // Leer metadata estática
-    const metadata = readMetadata(slug);
-
-    // Leer contenido traducible
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(fileContent);
-
-    const dto: BlogFileDTO = {
-      slug,
-      metadata,
-      frontmatter: data,
-      content,
-    };
-
-    return buildBlogPostDetail(dto);
-  },
-
-  /**
-   * Lista todos los posts (metadata) para un idioma
-   * Lee metadata.json (estático) y el archivo .mdx del idioma (traducible)
-   * Ordenados por fecha descendente
-   */
-  listBlogPosts: async (locale: string): Promise<BlogPost[]> => {
-    // Verificar que el directorio existe
-    if (!fs.existsSync(BLOG_DIR)) {
-      return [];
-    }
-
-    const slugs = fs.readdirSync(BLOG_DIR).filter((name) => {
-      const fullPath = path.join(BLOG_DIR, name);
-      return fs.statSync(fullPath).isDirectory();
-    });
-
-    const posts: BlogPost[] = [];
-
-    for (const slug of slugs) {
-      const filePath = path.join(BLOG_DIR, slug, `${locale}.mdx`);
-
-      // Solo procesar si existe el archivo del idioma
-      if (fs.existsSync(filePath)) {
-        // Leer contenido traducible
-        const fileContent = fs.readFileSync(filePath, 'utf-8');
-        const { data, content } = matter(fileContent);
-
-        // Leer metadata estática (después de verificar que el .mdx existe)
-        const metadata = readMetadata(slug);
-
-        const dto: BlogFileDTO = {
-          slug,
-          metadata,
-          frontmatter: data,
-          content,
-        };
-
-        posts.push(buildBlogPost(dto));
-      }
-    }
-
-    // Ordenar por fecha descendente (más recientes primero)
-    return posts.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
-  },
-};
 </file>
 
 <file path="app/[locale]/about/_components/index.ts">
@@ -4479,420 +4221,547 @@ export function BlogPostLayout({
 }
 </file>
 
-<file path="app/sitemap.ts">
-import { MetadataRoute } from 'next';
-import { blogService } from '@/core/blog/services/blog.service';
-import { routing } from '@/i18n/routing';
-import { siteConfig } from '@/config/site';
-import '@/di';
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const lastModified = new Date();
-
-  // Rutas estáticas base
-  const staticRoutes: MetadataRoute.Sitemap = [];
-
-  // Páginas principales para cada idioma
-  for (const locale of routing.locales) {
-    // Home
-    staticRoutes.push({
-      url: `${siteConfig.url}/${locale}`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 1,
-      alternates: {
-        languages: {
-          es: `${siteConfig.url}/es`,
-          en: `${siteConfig.url}/en`,
-        },
-      },
-    });
-
-    // About
-    staticRoutes.push({
-      url: `${siteConfig.url}/${locale}/about`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-      alternates: {
-        languages: {
-          es: `${siteConfig.url}/es/about`,
-          en: `${siteConfig.url}/en/about`,
-        },
-      },
-    });
-
-    // Blog listing
-    staticRoutes.push({
-      url: `${siteConfig.url}/${locale}/blog`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-      alternates: {
-        languages: {
-          es: `${siteConfig.url}/es/blog`,
-          en: `${siteConfig.url}/en/blog`,
-        },
-      },
-    });
-  }
-
-  // Rutas dinámicas del blog
-  const blogRoutes: MetadataRoute.Sitemap = [];
-
-  try {
-    const slugs = await blogService.listSlugs();
-
-    for (const slug of slugs) {
-      // Añadir entrada para cada idioma
-      for (const locale of routing.locales) {
-        // Obtener la fecha del post si existe
-        const post = await blogService.getBlogPostDetailBySlug(slug, locale);
-        const postDate = post?.date ? new Date(post.date) : lastModified;
-
-        blogRoutes.push({
-          url: `${siteConfig.url}/${locale}/blog/${slug}`,
-          lastModified: postDate,
-          changeFrequency: 'monthly',
-          priority: 0.7,
-          alternates: {
-            languages: {
-              es: `${siteConfig.url}/es/blog/${slug}`,
-              en: `${siteConfig.url}/en/blog/${slug}`,
-            },
-          },
-        });
-      }
-    }
-  } catch (error) {
-    // En caso de error, continuar sin las rutas del blog
-    console.error('Error generating blog sitemap entries:', error);
-  }
-
-  return [...staticRoutes, ...blogRoutes];
-}
-</file>
-
-<file path="core/blog/infrastructure/dto/blog-file.dto.ts">
+<file path="core/blog/domain/blog.ts">
 /**
- * Metadata estática del post (centralizada, no depende del idioma)
- * Se guarda en metadata.json en la carpeta del post
+ * Representa la metadata de un post del blog (sin contenido completo)
+ * Usado en listados, previews y feeds
  */
-export interface BlogMetadata {
-  /** Fecha de publicación del post */
+export interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
   date: string;
-  /** Fecha de última modificación del post */
   modifiedDate?: string;
-  /** Etiquetas del post (en inglés, consistentes) */
   tags: string[];
-  /** Tiempo estimado de lectura */
   readTime: string;
 }
 
 /**
- * DTO que representa la estructura del archivo MDX con su frontmatter
- * Este es el formato raw que viene del filesystem antes de mapearlo al dominio
+ * Representa un post del blog con su contenido completo
+ * Extiende BlogPost añadiendo el campo content
  */
-export interface BlogFileDTO {
-  /** Slug del post (nombre de la carpeta) */
-  slug: string;
-  /** Metadata estática compartida entre idiomas */
-  metadata: BlogMetadata;
-  /** Frontmatter extraído del archivo MDX con gray-matter (solo datos traducibles) */
-  frontmatter: {
-    title?: string;
-    description?: string;
-  };
-  /** Contenido markdown/MDX del post */
+export interface BlogPostDetail extends BlogPost {
   content: string;
 }
 </file>
 
-<file path="core/blog/infrastructure/mappers/__tests__/blog-file.mapper.test.ts">
-import { describe, it, expect } from 'vitest';
-import { buildBlogPost, buildBlogPostDetail } from '../blog-file.mapper';
-import type { BlogFileDTO } from '../../dto/blog-file.dto';
+<file path="core/blog/infrastructure/__tests__/blog-file.repository.test.ts">
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-describe('buildBlogPost', () => {
-  it('should build BlogPost from complete DTO', () => {
-    const dto: BlogFileDTO = {
-      slug: 'test-post',
-      metadata: {
-        date: '2024-01-15',
-        tags: ['test', 'typescript'],
-        readTime: '8 min',
-      },
-      frontmatter: {
-        title: 'Test Post',
-        description: 'Test description',
-      },
-      content: 'Test content',
-    };
+// Mock de los módulos nativos y server-only
+vi.mock('server-only', () => ({}));
+vi.mock('fs', () => ({
+  default: {
+    existsSync: vi.fn(),
+    readdirSync: vi.fn(),
+    statSync: vi.fn(),
+    readFileSync: vi.fn(),
+  },
+}));
+vi.mock('path', () => ({
+  default: {
+    join: vi.fn((...args) => args.join('/')),
+  },
+}));
+vi.mock('gray-matter', () => ({
+  default: vi.fn(),
+}));
 
-    const result = buildBlogPost(dto);
+// Importamos el repositorio después de mockear
+import { blogFileRepository } from '../blog-file.repository';
 
-    expect(result).toEqual({
-      slug: 'test-post',
-      title: 'Test Post',
-      description: 'Test description',
-      date: '2024-01-15',
-      tags: ['test', 'typescript'],
-      readTime: '8 min',
+// Importamos después de mockear para acceder a los mocks
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+
+describe('blogFileRepository', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  describe('listSlugs', () => {
+    it('should return empty array when blog directory does not exist', async () => {
+      (fs.existsSync as any).mockReturnValue(false);
+
+      const result = await blogFileRepository.listSlugs();
+
+      expect(result).toEqual([]);
+      expect(fs.existsSync).toHaveBeenCalled();
+    });
+
+    it('should return list of directory names (slugs)', async () => {
+      (fs.existsSync as any).mockReturnValue(true);
+      (fs.readdirSync as any).mockReturnValue([
+        'post-1',
+        'post-2',
+        'file.txt', // Should be filtered out (not a directory)
+      ] as any);
+      (fs.statSync as any).mockImplementation((path: any) => {
+        const pathStr = path.toString();
+        return {
+          isDirectory: () =>
+            pathStr.includes('post-1') || pathStr.includes('post-2'),
+        } as any;
+      });
+
+      const result = await blogFileRepository.listSlugs();
+
+      expect(result).toEqual(['post-1', 'post-2']);
+      expect(fs.readdirSync).toHaveBeenCalled();
+    });
+
+    it('should filter out files and only return directories', async () => {
+      (fs.existsSync as any).mockReturnValue(true);
+      (fs.readdirSync as any).mockReturnValue([
+        'valid-post',
+        '.DS_Store',
+        'another-post',
+      ] as any);
+      (fs.statSync as any).mockImplementation((path: any) => {
+        const pathStr = path.toString();
+        return {
+          isDirectory: () =>
+            pathStr.includes('valid-post') || pathStr.includes('another-post'),
+        } as any;
+      });
+
+      const result = await blogFileRepository.listSlugs();
+
+      expect(result).toEqual(['valid-post', 'another-post']);
     });
   });
 
-  it('should apply default values for missing frontmatter fields', () => {
-    const dto: BlogFileDTO = {
-      slug: 'minimal-post',
-      metadata: {
-        date: '',
-        tags: [],
-        readTime: '5 min',
-      },
-      frontmatter: {},
-      content: 'Content',
-    };
+  describe('getBlogPostDetailBySlug', () => {
+    it('should return null when file does not exist', async () => {
+      (path.join as any).mockReturnValue('/fake/path/post/es.mdx');
+      (fs.existsSync as any).mockReturnValue(false);
 
-    const result = buildBlogPost(dto);
+      const result = await blogFileRepository.getBlogPostDetailBySlug(
+        'post',
+        'es'
+      );
 
-    expect(result.slug).toBe('minimal-post');
-    expect(result.title).toBe('minimal-post'); // Default: slug
-    expect(result.description).toBe(''); // Default: empty
-    expect(result.date).toBe(''); // From metadata
-    expect(result.tags).toEqual([]); // From metadata
-    expect(result.readTime).toBe('5 min'); // From metadata
-  });
-
-  it('should use slug as title when title is missing', () => {
-    const dto: BlogFileDTO = {
-      slug: 'my-awesome-post',
-      metadata: {
-        date: '2024-01-01',
-        tags: [],
-        readTime: '5 min',
-      },
-      frontmatter: {
-        description: 'Description here',
-      },
-      content: 'Content',
-    };
-
-    const result = buildBlogPost(dto);
-
-    expect(result.title).toBe('my-awesome-post');
-  });
-
-  it('should handle partial frontmatter data', () => {
-    const dto: BlogFileDTO = {
-      slug: 'partial-post',
-      metadata: {
-        date: '2024-01-01',
-        tags: ['tag1'],
-        readTime: '5 min',
-      },
-      frontmatter: {
-        title: 'Only Title',
-      },
-      content: 'Content',
-    };
-
-    const result = buildBlogPost(dto);
-
-    expect(result.title).toBe('Only Title');
-    expect(result.tags).toEqual(['tag1']);
-    expect(result.description).toBe('');
-    expect(result.readTime).toBe('5 min');
-  });
-
-  it('should not include content in BlogPost', () => {
-    const dto: BlogFileDTO = {
-      slug: 'test',
-      metadata: {
-        date: '2024-01-01',
-        tags: [],
-        readTime: '5 min',
-      },
-      frontmatter: { title: 'Test' },
-      content: 'This should not be in BlogPost',
-    };
-
-    const result = buildBlogPost(dto);
-
-    expect(result).not.toHaveProperty('content');
-  });
-});
-
-describe('buildBlogPostDetail', () => {
-  it('should build BlogPostDetail from complete DTO', () => {
-    const dto: BlogFileDTO = {
-      slug: 'detailed-post',
-      metadata: {
-        date: '2024-01-15',
-        tags: ['vitest', 'testing'],
-        readTime: '12 min',
-      },
-      frontmatter: {
-        title: 'Detailed Post',
-        description: 'Full description',
-      },
-      content: '# Markdown Title\n\nContent here.',
-    };
-
-    const result = buildBlogPostDetail(dto);
-
-    expect(result).toEqual({
-      slug: 'detailed-post',
-      title: 'Detailed Post',
-      description: 'Full description',
-      date: '2024-01-15',
-      tags: ['vitest', 'testing'],
-      readTime: '12 min',
-      content: '# Markdown Title\n\nContent here.',
+      expect(result).toBeNull();
+      expect(fs.existsSync).toHaveBeenCalledWith('/fake/path/post/es.mdx');
     });
-  });
 
-  it('should include content field in BlogPostDetail', () => {
-    const dto: BlogFileDTO = {
-      slug: 'test',
-      metadata: {
-        date: '2024-01-01',
-        tags: [],
-        readTime: '5 min',
-      },
-      frontmatter: {},
-      content: 'This is the post content',
-    };
-
-    const result = buildBlogPostDetail(dto);
-
-    expect(result.content).toBe('This is the post content');
-  });
-
-  it('should apply default values for missing frontmatter fields', () => {
-    const dto: BlogFileDTO = {
-      slug: 'minimal-detail',
-      metadata: {
-        date: '',
-        tags: [],
-        readTime: '5 min',
-      },
-      frontmatter: {},
-      content: 'Minimal content',
-    };
-
-    const result = buildBlogPostDetail(dto);
-
-    expect(result.slug).toBe('minimal-detail');
-    expect(result.title).toBe('minimal-detail');
-    expect(result.readTime).toBe('5 min');
-    expect(result.content).toBe('Minimal content');
-  });
-
-  it('should handle markdown content with code blocks', () => {
-    const content = `
-# Title
-
-Some text
-
-\`\`\`typescript
-const test = 'value';
-\`\`\`
-
-More text
-    `.trim();
-
-    const dto: BlogFileDTO = {
-      slug: 'code-post',
-      metadata: {
-        date: '2024-01-01',
-        tags: [],
-        readTime: '5 min',
-      },
-      frontmatter: { title: 'Code Post' },
-      content,
-    };
-
-    const result = buildBlogPostDetail(dto);
-
-    expect(result.content).toContain('```typescript');
-    expect(result.content).toContain("const test = 'value';");
-  });
-
-  it('should extend BlogPost properties', () => {
-    const dto: BlogFileDTO = {
-      slug: 'inheritance-test',
-      metadata: {
-        date: '2024-01-01',
+    it('should return BlogPostDetail when file exists', async () => {
+      const mockContent = 'Post content here';
+      const mockMetadata = {
+        date: '2024-01-15',
         tags: ['test'],
         readTime: '5 min',
-      },
-      frontmatter: {
-        title: 'Inheritance Test',
-      },
-      content: 'Content',
-    };
+      };
+      const mockFrontmatter = {
+        title: 'Test Post',
+        description: 'Test description',
+      };
 
-    const result = buildBlogPostDetail(dto);
+      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
+      (fs.existsSync as any).mockReturnValue(true);
+      
+      // Mock para metadata.json
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify(mockMetadata) as any
+      );
+      
+      // Mock para el archivo .mdx
+      (fs.readFileSync as any).mockReturnValueOnce('frontmatter + content' as any);
+      (matter as any).mockReturnValue({
+        data: mockFrontmatter,
+        content: mockContent,
+      } as any);
 
-    // Should have all BlogPost properties
-    expect(result.slug).toBeDefined();
-    expect(result.title).toBeDefined();
-    expect(result.description).toBeDefined();
-    expect(result.date).toBeDefined();
-    expect(result.tags).toBeDefined();
-    expect(result.readTime).toBeDefined();
+      const result = await blogFileRepository.getBlogPostDetailBySlug(
+        'test-post',
+        'es'
+      );
 
-    // Plus content
-    expect(result.content).toBeDefined();
+      expect(result).toEqual({
+        slug: 'test-post',
+        title: 'Test Post',
+        description: 'Test description',
+        date: '2024-01-15',
+        tags: ['test'],
+        readTime: '5 min',
+        content: mockContent,
+      });
+    });
+
+    it('should apply default values for missing frontmatter fields', async () => {
+      const mockMetadata = {
+        date: '',
+        tags: [],
+        readTime: '5 min',
+      };
+
+      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
+      (fs.existsSync as any).mockReturnValue(true);
+      
+      // Mock para metadata.json
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify(mockMetadata) as any
+      );
+      
+      // Mock para el archivo .mdx
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
+      (matter as any).mockReturnValue({
+        data: {},
+        content: 'Minimal content',
+      } as any);
+
+      const result = await blogFileRepository.getBlogPostDetailBySlug(
+        'minimal',
+        'en'
+      );
+
+      expect(result).toEqual({
+        slug: 'minimal',
+        title: 'minimal', // Default: slug
+        description: '',
+        date: '',
+        tags: [],
+        readTime: '5 min',
+        content: 'Minimal content',
+      });
+    });
+
+    it('should handle different locales', async () => {
+      const mockMetadata = {
+        date: '2024-01-01',
+        tags: [],
+        readTime: '5 min',
+      };
+
+      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
+      (fs.existsSync as any).mockReturnValue(true);
+      
+      // Mock para metadata.json
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify(mockMetadata) as any
+      );
+      
+      // Mock para el archivo .mdx
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
+      (matter as any).mockReturnValue({
+        data: { title: 'English Post' },
+        content: 'Content',
+      } as any);
+
+      await blogFileRepository.getBlogPostDetailBySlug('post', 'en');
+
+      expect(path.join).toHaveBeenCalledWith(
+        expect.anything(),
+        'post',
+        'en.mdx'
+      );
+    });
+  });
+
+  describe('listBlogPosts', () => {
+    it('should return empty array when blog directory does not exist', async () => {
+      (fs.existsSync as any).mockReturnValue(false);
+
+      const result = await blogFileRepository.listBlogPosts('es');
+
+      expect(result).toEqual([]);
+    });
+
+    it('should return list of BlogPost (without content)', async () => {
+      (fs.existsSync as any).mockReturnValue(true);
+      (fs.readdirSync as any).mockReturnValue(['post-1', 'post-2'] as any);
+      (fs.statSync as any).mockReturnValue({
+        isDirectory: () => true,
+      } as any);
+      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
+
+      // Mock para post-1 .mdx (PRIMERO)
+      (fs.readFileSync as any).mockReturnValueOnce('content1' as any);
+      (matter as any).mockReturnValueOnce({
+        data: {
+          title: 'Post 1',
+        },
+        content: 'Content 1',
+      } as any);
+      // Mock para post-1 metadata.json (DESPUÉS)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-15',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
+
+      // Mock para post-2 .mdx (PRIMERO)
+      (fs.readFileSync as any).mockReturnValueOnce('content2' as any);
+      (matter as any).mockReturnValueOnce({
+        data: {
+          title: 'Post 2',
+        },
+        content: 'Content 2',
+      } as any);
+      // Mock para post-2 metadata.json (DESPUÉS)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-10',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
+
+      const result = await blogFileRepository.listBlogPosts('es');
+
+      expect(result).toHaveLength(2);
+      expect(result[0].slug).toBe('post-1');
+      expect(result[0].title).toBe('Post 1');
+      expect(result[0]).not.toHaveProperty('content'); // BlogPost no tiene content
+      expect(result[1].slug).toBe('post-2');
+    });
+
+    it('should sort posts by date descending (newest first)', async () => {
+      (fs.existsSync as any).mockReturnValue(true);
+      (fs.readdirSync as any).mockReturnValue(['old-post', 'new-post'] as any);
+      (fs.statSync as any).mockReturnValue({
+        isDirectory: () => true,
+      } as any);
+      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
+
+      // old-post .mdx (PRIMERO)
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
+      (matter as any).mockReturnValueOnce({
+        data: { title: 'Old Post' },
+        content: 'Content',
+      } as any);
+      // old-post metadata.json (DESPUÉS) (fecha más antigua)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-01',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
+
+      // new-post .mdx (PRIMERO)
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
+      (matter as any).mockReturnValueOnce({
+        data: { title: 'New Post' },
+        content: 'Content',
+      } as any);
+      // new-post metadata.json (DESPUÉS) (fecha más reciente)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-12-31',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
+
+      const result = await blogFileRepository.listBlogPosts('es');
+
+      expect(result[0].slug).toBe('new-post'); // Más reciente primero
+      expect(result[1].slug).toBe('old-post');
+    });
+
+    it('should skip posts without MDX file for specified locale', async () => {
+      const existsSyncMock = fs.existsSync as any;
+      existsSyncMock
+        .mockReturnValueOnce(true) // Directory exists
+        .mockReturnValueOnce(true) // post-1/es.mdx exists
+        .mockReturnValueOnce(true) // post-1/metadata.json exists
+        .mockReturnValueOnce(false); // post-2/es.mdx does NOT exist
+      (fs.readdirSync as any).mockReturnValue(['post-1', 'post-2'] as any);
+      (fs.statSync as any).mockReturnValue({
+        isDirectory: () => true,
+      } as any);
+      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
+      
+      // Mock para post-1 .mdx (PRIMERO)
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
+      (matter as any).mockReturnValue({
+        data: { title: 'Post 1' },
+        content: 'Content',
+      } as any);
+      // Mock para post-1 metadata.json (DESPUÉS)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-01',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
+
+      const result = await blogFileRepository.listBlogPosts('es');
+
+      expect(result).toHaveLength(1);
+      expect(result[0].slug).toBe('post-1');
+    });
+
+    it('should handle locale parameter correctly', async () => {
+      (fs.existsSync as any).mockReturnValue(true);
+      (fs.readdirSync as any).mockReturnValue(['post'] as any);
+      (fs.statSync as any).mockReturnValue({
+        isDirectory: () => true,
+      } as any);
+      (path.join as any).mockImplementation((...args: any[]) => args.join('/'));
+      
+      // Mock para .mdx (PRIMERO)
+      (fs.readFileSync as any).mockReturnValueOnce('content' as any);
+      (matter as any).mockReturnValue({
+        data: {},
+        content: '',
+      } as any);
+      // Mock para metadata.json (DESPUÉS)
+      (fs.readFileSync as any).mockReturnValueOnce(
+        JSON.stringify({
+          date: '2024-01-01',
+          tags: [],
+          readTime: '5 min',
+        }) as any
+      );
+
+      await blogFileRepository.listBlogPosts('en');
+
+      expect(path.join).toHaveBeenCalledWith(
+        expect.anything(),
+        'post',
+        'en.mdx'
+      );
+    });
   });
 });
 </file>
 
-<file path="core/blog/infrastructure/mappers/blog-file.mapper.ts">
-import type { BlogPost, BlogPostDetail } from '../../domain/blog';
-import type { BlogFileDTO } from '../dto/blog-file.dto';
+<file path="core/blog/infrastructure/blog-file.repository.ts">
+import 'server-only';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import type { BlogRepository } from '../domain/blog-repository';
+import type { BlogPost, BlogPostDetail } from '../domain/blog';
+import type { BlogFileDTO, BlogMetadata } from './dto/blog-file.dto';
+import { buildBlogPost, buildBlogPostDetail } from './mappers/blog-file.mapper';
+
+const BLOG_DIR = path.join(process.cwd(), 'content/blog');
 
 /**
- * Construye una entidad BlogPostDetail (con contenido) desde un DTO del filesystem
- * Combina metadata estática (metadata.json) con datos traducibles (frontmatter del .mdx)
- * @param dto - DTO del archivo MDX con metadata centralizada
- * @returns Entidad del dominio con contenido completo
+ * Lee el archivo metadata.json de un post
+ * @param slug - Slug del post
+ * @returns Metadata estática del post
  */
-export function buildBlogPostDetail(dto: BlogFileDTO): BlogPostDetail {
-  return {
-    slug: dto.slug,
-    // Datos traducibles del frontmatter
-    title: dto.frontmatter.title || dto.slug,
-    description: dto.frontmatter.description || '',
-    // Datos estáticos de metadata.json
-    date: dto.metadata.date,
-    modifiedDate: dto.metadata.modifiedDate,
-    tags: dto.metadata.tags,
-    readTime: dto.metadata.readTime,
-    // Contenido traducible
-    content: dto.content,
-  };
+function readMetadata(slug: string): BlogMetadata {
+  const metadataPath = path.join(BLOG_DIR, slug, 'metadata.json');
+  
+  if (!fs.existsSync(metadataPath)) {
+    // Fallback si no existe metadata.json (para compatibilidad)
+    return {
+      date: '',
+      tags: [],
+      readTime: '5 min',
+    };
+  }
+
+  const metadataContent = fs.readFileSync(metadataPath, 'utf-8');
+  return JSON.parse(metadataContent) as BlogMetadata;
 }
 
 /**
- * Construye una entidad BlogPost (solo metadata) desde un DTO del filesystem
- * Combina metadata estática (metadata.json) con datos traducibles (frontmatter del .mdx)
- * @param dto - DTO del archivo MDX con metadata centralizada
- * @returns Entidad del dominio solo con metadata
+ * Implementación del repositorio de blog basada en filesystem
+ * Lee archivos MDX de la carpeta content/blog
  */
-export function buildBlogPost(dto: BlogFileDTO): BlogPost {
-  return {
-    slug: dto.slug,
-    // Datos traducibles del frontmatter
-    title: dto.frontmatter.title || dto.slug,
-    description: dto.frontmatter.description || '',
-    // Datos estáticos de metadata.json
-    date: dto.metadata.date,
-    modifiedDate: dto.metadata.modifiedDate,
-    tags: dto.metadata.tags,
-    readTime: dto.metadata.readTime,
-  };
-}
+export const blogFileRepository: BlogRepository = {
+  /**
+   * Lista todos los slugs disponibles (carpetas en content/blog)
+   */
+  listSlugs: async (): Promise<string[]> => {
+    if (!fs.existsSync(BLOG_DIR)) {
+      return [];
+    }
+
+    return fs.readdirSync(BLOG_DIR).filter((name) => {
+      const fullPath = path.join(BLOG_DIR, name);
+      return fs.statSync(fullPath).isDirectory();
+    });
+  },
+
+  /**
+   * Obtiene un post completo por slug e idioma
+   * Lee metadata.json (estático) y el archivo .mdx del idioma (traducible)
+   */
+  getBlogPostDetailBySlug: async (
+    slug: string,
+    locale: string
+  ): Promise<BlogPostDetail | null> => {
+    const filePath = path.join(BLOG_DIR, slug, `${locale}.mdx`);
+
+    if (!fs.existsSync(filePath)) {
+      return null;
+    }
+
+    // Leer metadata estática
+    const metadata = readMetadata(slug);
+
+    // Leer contenido traducible
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { data, content } = matter(fileContent);
+
+    const dto: BlogFileDTO = {
+      slug,
+      metadata,
+      frontmatter: data,
+      content,
+    };
+
+    return buildBlogPostDetail(dto);
+  },
+
+  /**
+   * Lista todos los posts (metadata) para un idioma
+   * Lee metadata.json (estático) y el archivo .mdx del idioma (traducible)
+   * Ordenados por fecha descendente
+   */
+  listBlogPosts: async (locale: string): Promise<BlogPost[]> => {
+    // Verificar que el directorio existe
+    if (!fs.existsSync(BLOG_DIR)) {
+      return [];
+    }
+
+    const slugs = fs.readdirSync(BLOG_DIR).filter((name) => {
+      const fullPath = path.join(BLOG_DIR, name);
+      return fs.statSync(fullPath).isDirectory();
+    });
+
+    const posts: BlogPost[] = [];
+
+    for (const slug of slugs) {
+      const filePath = path.join(BLOG_DIR, slug, `${locale}.mdx`);
+
+      // Solo procesar si existe el archivo del idioma
+      if (fs.existsSync(filePath)) {
+        // Leer contenido traducible
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        const { data, content } = matter(fileContent);
+
+        // Leer metadata estática (después de verificar que el .mdx existe)
+        const metadata = readMetadata(slug);
+
+        const dto: BlogFileDTO = {
+          slug,
+          metadata,
+          frontmatter: data,
+          content,
+        };
+
+        posts.push(buildBlogPost(dto));
+      }
+    }
+
+    // Ordenar por fecha descendente (más recientes primero)
+    return posts.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+  },
+};
 </file>
 
 <file path="package.json">
@@ -5471,6 +5340,328 @@ export function GlobalCursor() {
 }
 </file>
 
+<file path="core/blog/infrastructure/dto/blog-file.dto.ts">
+/**
+ * Metadata estática del post (centralizada, no depende del idioma)
+ * Se guarda en metadata.json en la carpeta del post
+ */
+export interface BlogMetadata {
+  /** Fecha de publicación del post */
+  date: string;
+  /** Fecha de última modificación del post */
+  modifiedDate?: string;
+  /** Etiquetas del post (en inglés, consistentes) */
+  tags: string[];
+  /** Tiempo estimado de lectura */
+  readTime: string;
+}
+
+/**
+ * DTO que representa la estructura del archivo MDX con su frontmatter
+ * Este es el formato raw que viene del filesystem antes de mapearlo al dominio
+ */
+export interface BlogFileDTO {
+  /** Slug del post (nombre de la carpeta) */
+  slug: string;
+  /** Metadata estática compartida entre idiomas */
+  metadata: BlogMetadata;
+  /** Frontmatter extraído del archivo MDX con gray-matter (solo datos traducibles) */
+  frontmatter: {
+    title?: string;
+    description?: string;
+  };
+  /** Contenido markdown/MDX del post */
+  content: string;
+}
+</file>
+
+<file path="core/blog/infrastructure/mappers/__tests__/blog-file.mapper.test.ts">
+import { describe, it, expect } from 'vitest';
+import { buildBlogPost, buildBlogPostDetail } from '../blog-file.mapper';
+import type { BlogFileDTO } from '../../dto/blog-file.dto';
+
+describe('buildBlogPost', () => {
+  it('should build BlogPost from complete DTO', () => {
+    const dto: BlogFileDTO = {
+      slug: 'test-post',
+      metadata: {
+        date: '2024-01-15',
+        tags: ['test', 'typescript'],
+        readTime: '8 min',
+      },
+      frontmatter: {
+        title: 'Test Post',
+        description: 'Test description',
+      },
+      content: 'Test content',
+    };
+
+    const result = buildBlogPost(dto);
+
+    expect(result).toEqual({
+      slug: 'test-post',
+      title: 'Test Post',
+      description: 'Test description',
+      date: '2024-01-15',
+      tags: ['test', 'typescript'],
+      readTime: '8 min',
+    });
+  });
+
+  it('should apply default values for missing frontmatter fields', () => {
+    const dto: BlogFileDTO = {
+      slug: 'minimal-post',
+      metadata: {
+        date: '',
+        tags: [],
+        readTime: '5 min',
+      },
+      frontmatter: {},
+      content: 'Content',
+    };
+
+    const result = buildBlogPost(dto);
+
+    expect(result.slug).toBe('minimal-post');
+    expect(result.title).toBe('minimal-post'); // Default: slug
+    expect(result.description).toBe(''); // Default: empty
+    expect(result.date).toBe(''); // From metadata
+    expect(result.tags).toEqual([]); // From metadata
+    expect(result.readTime).toBe('5 min'); // From metadata
+  });
+
+  it('should use slug as title when title is missing', () => {
+    const dto: BlogFileDTO = {
+      slug: 'my-awesome-post',
+      metadata: {
+        date: '2024-01-01',
+        tags: [],
+        readTime: '5 min',
+      },
+      frontmatter: {
+        description: 'Description here',
+      },
+      content: 'Content',
+    };
+
+    const result = buildBlogPost(dto);
+
+    expect(result.title).toBe('my-awesome-post');
+  });
+
+  it('should handle partial frontmatter data', () => {
+    const dto: BlogFileDTO = {
+      slug: 'partial-post',
+      metadata: {
+        date: '2024-01-01',
+        tags: ['tag1'],
+        readTime: '5 min',
+      },
+      frontmatter: {
+        title: 'Only Title',
+      },
+      content: 'Content',
+    };
+
+    const result = buildBlogPost(dto);
+
+    expect(result.title).toBe('Only Title');
+    expect(result.tags).toEqual(['tag1']);
+    expect(result.description).toBe('');
+    expect(result.readTime).toBe('5 min');
+  });
+
+  it('should not include content in BlogPost', () => {
+    const dto: BlogFileDTO = {
+      slug: 'test',
+      metadata: {
+        date: '2024-01-01',
+        tags: [],
+        readTime: '5 min',
+      },
+      frontmatter: { title: 'Test' },
+      content: 'This should not be in BlogPost',
+    };
+
+    const result = buildBlogPost(dto);
+
+    expect(result).not.toHaveProperty('content');
+  });
+});
+
+describe('buildBlogPostDetail', () => {
+  it('should build BlogPostDetail from complete DTO', () => {
+    const dto: BlogFileDTO = {
+      slug: 'detailed-post',
+      metadata: {
+        date: '2024-01-15',
+        tags: ['vitest', 'testing'],
+        readTime: '12 min',
+      },
+      frontmatter: {
+        title: 'Detailed Post',
+        description: 'Full description',
+      },
+      content: '# Markdown Title\n\nContent here.',
+    };
+
+    const result = buildBlogPostDetail(dto);
+
+    expect(result).toEqual({
+      slug: 'detailed-post',
+      title: 'Detailed Post',
+      description: 'Full description',
+      date: '2024-01-15',
+      tags: ['vitest', 'testing'],
+      readTime: '12 min',
+      content: '# Markdown Title\n\nContent here.',
+    });
+  });
+
+  it('should include content field in BlogPostDetail', () => {
+    const dto: BlogFileDTO = {
+      slug: 'test',
+      metadata: {
+        date: '2024-01-01',
+        tags: [],
+        readTime: '5 min',
+      },
+      frontmatter: {},
+      content: 'This is the post content',
+    };
+
+    const result = buildBlogPostDetail(dto);
+
+    expect(result.content).toBe('This is the post content');
+  });
+
+  it('should apply default values for missing frontmatter fields', () => {
+    const dto: BlogFileDTO = {
+      slug: 'minimal-detail',
+      metadata: {
+        date: '',
+        tags: [],
+        readTime: '5 min',
+      },
+      frontmatter: {},
+      content: 'Minimal content',
+    };
+
+    const result = buildBlogPostDetail(dto);
+
+    expect(result.slug).toBe('minimal-detail');
+    expect(result.title).toBe('minimal-detail');
+    expect(result.readTime).toBe('5 min');
+    expect(result.content).toBe('Minimal content');
+  });
+
+  it('should handle markdown content with code blocks', () => {
+    const content = `
+# Title
+
+Some text
+
+\`\`\`typescript
+const test = 'value';
+\`\`\`
+
+More text
+    `.trim();
+
+    const dto: BlogFileDTO = {
+      slug: 'code-post',
+      metadata: {
+        date: '2024-01-01',
+        tags: [],
+        readTime: '5 min',
+      },
+      frontmatter: { title: 'Code Post' },
+      content,
+    };
+
+    const result = buildBlogPostDetail(dto);
+
+    expect(result.content).toContain('```typescript');
+    expect(result.content).toContain("const test = 'value';");
+  });
+
+  it('should extend BlogPost properties', () => {
+    const dto: BlogFileDTO = {
+      slug: 'inheritance-test',
+      metadata: {
+        date: '2024-01-01',
+        tags: ['test'],
+        readTime: '5 min',
+      },
+      frontmatter: {
+        title: 'Inheritance Test',
+      },
+      content: 'Content',
+    };
+
+    const result = buildBlogPostDetail(dto);
+
+    // Should have all BlogPost properties
+    expect(result.slug).toBeDefined();
+    expect(result.title).toBeDefined();
+    expect(result.description).toBeDefined();
+    expect(result.date).toBeDefined();
+    expect(result.tags).toBeDefined();
+    expect(result.readTime).toBeDefined();
+
+    // Plus content
+    expect(result.content).toBeDefined();
+  });
+});
+</file>
+
+<file path="core/blog/infrastructure/mappers/blog-file.mapper.ts">
+import type { BlogPost, BlogPostDetail } from '../../domain/blog';
+import type { BlogFileDTO } from '../dto/blog-file.dto';
+
+/**
+ * Construye una entidad BlogPostDetail (con contenido) desde un DTO del filesystem
+ * Combina metadata estática (metadata.json) con datos traducibles (frontmatter del .mdx)
+ * @param dto - DTO del archivo MDX con metadata centralizada
+ * @returns Entidad del dominio con contenido completo
+ */
+export function buildBlogPostDetail(dto: BlogFileDTO): BlogPostDetail {
+  return {
+    slug: dto.slug,
+    // Datos traducibles del frontmatter
+    title: dto.frontmatter.title || dto.slug,
+    description: dto.frontmatter.description || '',
+    // Datos estáticos de metadata.json
+    date: dto.metadata.date,
+    modifiedDate: dto.metadata.modifiedDate,
+    tags: dto.metadata.tags,
+    readTime: dto.metadata.readTime,
+    // Contenido traducible
+    content: dto.content,
+  };
+}
+
+/**
+ * Construye una entidad BlogPost (solo metadata) desde un DTO del filesystem
+ * Combina metadata estática (metadata.json) con datos traducibles (frontmatter del .mdx)
+ * @param dto - DTO del archivo MDX con metadata centralizada
+ * @returns Entidad del dominio solo con metadata
+ */
+export function buildBlogPost(dto: BlogFileDTO): BlogPost {
+  return {
+    slug: dto.slug,
+    // Datos traducibles del frontmatter
+    title: dto.frontmatter.title || dto.slug,
+    description: dto.frontmatter.description || '',
+    // Datos estáticos de metadata.json
+    date: dto.metadata.date,
+    modifiedDate: dto.metadata.modifiedDate,
+    tags: dto.metadata.tags,
+    readTime: dto.metadata.readTime,
+  };
+}
+</file>
+
 <file path="app/[locale]/about/_components/about-section.tsx">
 'use client';
 
@@ -5653,6 +5844,160 @@ export function AboutSection() {
 }
 </file>
 
+<file path="content/blog/bienvenida/es.mdx">
+---
+title: 'Tenía cosas que contar'
+description: 'Así que me creé un sitio donde hacerlo. Sobre por qué existe esta web y qué espero hacer con ella.'
+---
+
+Llevaba tiempo dándole vueltas a tener un espacio propio en internet. No un perfil de LinkedIn. No un CV en PDF. Algo más... mío.
+
+2025 ha sido un año de crecimiento profesional intenso. Me ha servido para seguir aprendiendo sobre tecnología, equipos, producto y —especialmente— IA. Y en algún momento del camino me di cuenta de que tenía cosas que contar. Reflexiones que se quedaban en conversaciones de pasillo o en notas sueltas que nunca llegaban a ningún sitio.
+
+Así que aquí estamos.
+
+## Por qué esta web
+
+La motivación es simple: quería un espacio donde las ideas no se quedaran en notas sueltas. Un sitio que evolucione, que refleje no solo lo que he hecho, sino cómo pienso sobre las cosas. Las notas privadas acumulan polvo. Escribir en público —o preparar una charla— te obliga a estructurar, a defender, a mejorar.
+
+También hay una parte práctica: tener un lugar donde, si alguien quiere saber cómo pienso profesionalmente, pueda hacerse una idea real. No un _personal branding_ de manual con estrategia de contenidos y calendario editorial. Algo más orgánico.
+
+Pero sobre todo, quiero **compartir lo que aprendo**. Estos años he acumulado reflexiones sobre equipos, producto, tecnología, y sí, errores. Si algo de eso te sirve para ahorrarte un tropiezo o para ver un problema desde otro ángulo, el post habrá merecido la pena.
+
+## Sobre el proceso de construirla
+
+Esta web la he construido en unas horas. Sí, horas. Y no porque sea un sitio simple (creo que visualmente tiene bastante fuerza), sino porque quería poner a prueba todo el potencial del desarrollo asistido con IA.
+
+Ha sido un experimento fascinante. La velocidad de iteración que consigues cuando usas bien estas herramientas es brutal. Puedes probar ideas, descartarlas, probar otras, refinar... todo en un ciclo muy corto. Es el tipo de desarrollo que me emociona: rápido, visual, con feedback inmediato.
+
+El diseño lo quería potente. Nada de plantillas genéricas. Algo con personalidad, que transmitiera que detrás hay alguien que se preocupa por los detalles.
+
+## Qué vas a encontrar aquí
+
+Honestamente, un poco de todo. Reflexiones sobre:
+
+- **Liderazgo técnico y equipos**: Lo que aprendo en el día a día gestionando desarrolladores.
+- **Producto**: Esa visión que intento mantener de que el código sirve para algo más que pasar tests.
+- **Tecnología**: React, arquitectura, testing, lo que toque.
+- **IA aplicada al desarrollo**: Context Engineering, herramientas, flujos de trabajo.
+- **Filosofía del software**: Las preguntas incómodas sobre cómo construimos software y por qué.
+
+Si te interesa cómo hacer que un equipo técnico funcione mejor, o cómo la IA puede cambiar tu forma de desarrollar, probablemente encuentres algo útil por aquí.
+
+No tengo un calendario de publicación. No voy a prometerte un post cada semana. Publicaré cuando tenga algo que merezca la pena contar. Espero que esto no sea el primero y el último, pero tampoco voy a forzar contenido por rellenar.
+
+---
+
+Si has llegado hasta aquí, gracias por pasarte. Esto acaba de empezar.
+</file>
+
+<file path="app/[locale]/about/page.tsx">
+import { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { siteConfig } from '@/config/site';
+import { AboutPageClient } from './_components';
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'aboutPage' });
+
+  const currentUrl = `${siteConfig.url}/${locale}/about`;
+  const isSpanish = locale === 'es';
+
+  const title = `${t('title')} | ${siteConfig.author.name}`;
+  const description = t('description');
+
+  return {
+    title,
+    description,
+    keywords: [
+      'Tech Lead',
+      'Engineering Manager',
+      'Product Engineer',
+      'Software Architecture',
+      'Hexagonal Architecture',
+      'TDD',
+      'Extreme Programming',
+      'XP',
+      'Context Engineering',
+      'AI Development',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Team Leadership',
+      'Tech Speaker',
+      'Banking Software',
+      'Endika Orube',
+      'Pamplona',
+      'Navarra',
+    ],
+
+    // Alternates & canonical
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        es: `${siteConfig.url}/es/about`,
+        en: `${siteConfig.url}/en/about`,
+      },
+    },
+
+    // Open Graph
+    openGraph: {
+      type: 'profile',
+      locale: isSpanish ? 'es_ES' : 'en_US',
+      alternateLocale: isSpanish ? 'en_US' : 'es_ES',
+      url: currentUrl,
+      title,
+      description,
+      siteName: siteConfig.name,
+      firstName: 'Endika',
+      lastName: 'Orube',
+      username: 'endikaorube',
+      images: [
+        {
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
+          alt: siteConfig.ogImage.alt,
+        },
+      ],
+    },
+
+    // Twitter Cards
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${siteConfig.url}/og-image.jpg`],
+    },
+
+    // Robots
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
+}
+
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  return <AboutPageClient />;
+}
+</file>
+
 <file path="app/[locale]/blog/[slug]/page.tsx">
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -5820,160 +6165,6 @@ export default async function BlogPostPage({ params }: Props) {
 }
 </file>
 
-<file path="content/blog/bienvenida/es.mdx">
----
-title: 'Tenía cosas que contar'
-description: 'Así que me creé un sitio donde hacerlo. Sobre por qué existe esta web y qué espero hacer con ella.'
----
-
-Llevaba tiempo dándole vueltas a tener un espacio propio en internet. No un perfil de LinkedIn. No un CV en PDF. Algo más... mío.
-
-2025 ha sido un año de crecimiento profesional intenso. Me ha servido para seguir aprendiendo sobre tecnología, equipos, producto y —especialmente— IA. Y en algún momento del camino me di cuenta de que tenía cosas que contar. Reflexiones que se quedaban en conversaciones de pasillo o en notas sueltas que nunca llegaban a ningún sitio.
-
-Así que aquí estamos.
-
-## Por qué esta web
-
-La motivación es simple: quería un espacio donde las ideas no se quedaran en notas sueltas. Un sitio que evolucione, que refleje no solo lo que he hecho, sino cómo pienso sobre las cosas. Las notas privadas acumulan polvo. Escribir en público —o preparar una charla— te obliga a estructurar, a defender, a mejorar.
-
-También hay una parte práctica: tener un lugar donde, si alguien quiere saber cómo pienso profesionalmente, pueda hacerse una idea real. No un _personal branding_ de manual con estrategia de contenidos y calendario editorial. Algo más orgánico.
-
-Pero sobre todo, quiero **compartir lo que aprendo**. Estos años he acumulado reflexiones sobre equipos, producto, tecnología, y sí, errores. Si algo de eso te sirve para ahorrarte un tropiezo o para ver un problema desde otro ángulo, el post habrá merecido la pena.
-
-## Sobre el proceso de construirla
-
-Esta web la he construido en unas horas. Sí, horas. Y no porque sea un sitio simple (creo que visualmente tiene bastante fuerza), sino porque quería poner a prueba todo el potencial del desarrollo asistido con IA.
-
-Ha sido un experimento fascinante. La velocidad de iteración que consigues cuando usas bien estas herramientas es brutal. Puedes probar ideas, descartarlas, probar otras, refinar... todo en un ciclo muy corto. Es el tipo de desarrollo que me emociona: rápido, visual, con feedback inmediato.
-
-El diseño lo quería potente. Nada de plantillas genéricas. Algo con personalidad, que transmitiera que detrás hay alguien que se preocupa por los detalles.
-
-## Qué vas a encontrar aquí
-
-Honestamente, un poco de todo. Reflexiones sobre:
-
-- **Liderazgo técnico y equipos**: Lo que aprendo en el día a día gestionando desarrolladores.
-- **Producto**: Esa visión que intento mantener de que el código sirve para algo más que pasar tests.
-- **Tecnología**: React, arquitectura, testing, lo que toque.
-- **IA aplicada al desarrollo**: Context Engineering, herramientas, flujos de trabajo.
-- **Filosofía del software**: Las preguntas incómodas sobre cómo construimos software y por qué.
-
-Si te interesa cómo hacer que un equipo técnico funcione mejor, o cómo la IA puede cambiar tu forma de desarrollar, probablemente encuentres algo útil por aquí.
-
-No tengo un calendario de publicación. No voy a prometerte un post cada semana. Publicaré cuando tenga algo que merezca la pena contar. Espero que esto no sea el primero y el último, pero tampoco voy a forzar contenido por rellenar.
-
----
-
-Si has llegado hasta aquí, gracias por pasarte. Esto acaba de empezar.
-</file>
-
-<file path="app/[locale]/about/page.tsx">
-import { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { siteConfig } from '@/config/site';
-import { AboutPageClient } from './_components';
-
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'aboutPage' });
-
-  const currentUrl = `${siteConfig.url}/${locale}/about`;
-  const isSpanish = locale === 'es';
-
-  const title = `${t('title')} | ${siteConfig.author.name}`;
-  const description = t('description');
-
-  return {
-    title,
-    description,
-    keywords: [
-      'Tech Lead',
-      'Engineering Manager',
-      'Product Engineer',
-      'Software Architecture',
-      'Hexagonal Architecture',
-      'TDD',
-      'Extreme Programming',
-      'XP',
-      'Context Engineering',
-      'AI Development',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Team Leadership',
-      'Tech Speaker',
-      'Banking Software',
-      'Endika Orube',
-      'Pamplona',
-      'Navarra',
-    ],
-
-    // Alternates & canonical
-    alternates: {
-      canonical: currentUrl,
-      languages: {
-        es: `${siteConfig.url}/es/about`,
-        en: `${siteConfig.url}/en/about`,
-      },
-    },
-
-    // Open Graph
-    openGraph: {
-      type: 'profile',
-      locale: isSpanish ? 'es_ES' : 'en_US',
-      alternateLocale: isSpanish ? 'en_US' : 'es_ES',
-      url: currentUrl,
-      title,
-      description,
-      siteName: siteConfig.name,
-      firstName: 'Endika',
-      lastName: 'Orube',
-      username: 'endikaorube',
-      images: [
-        {
-          url: `${siteConfig.url}/og-image.jpg`,
-          width: siteConfig.ogImage.width,
-          height: siteConfig.ogImage.height,
-          alt: siteConfig.ogImage.alt,
-        },
-      ],
-    },
-
-    // Twitter Cards
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [`${siteConfig.url}/og-image.jpg`],
-    },
-
-    // Robots
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-  };
-}
-
-export default async function AboutPage({ params }: Props) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-
-  return <AboutPageClient />;
-}
-</file>
-
 <file path="content/blog/bienvenida/en.mdx">
 ---
 title: 'I had things to say'
@@ -6083,6 +6274,175 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
         </section>
       </div>
     </main>
+  );
+}
+</file>
+
+<file path="app/[locale]/layout.tsx">
+import type React from 'react';
+import type { Metadata } from 'next';
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+import { Locale } from '@/i18n/config';
+import { siteConfig } from '@/config/site';
+import '../globals.css';
+import { Header } from '@/components/header';
+import { GlobalCursor } from '@/components/global-cursor';
+import { JsonLdSchema } from '@/components/json-ld';
+import { ScrollToTop } from '@/components/scroll-to-top';
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+});
+
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const messages = await import(`../../translations/${locale}.json`);
+  const t = messages.default;
+
+  const currentUrl = `${siteConfig.url}/${locale}`;
+
+  return {
+    title: t.metadata.title,
+    description: t.metadata.description,
+    keywords: [
+      'Tech Lead',
+      'Engineering Manager',
+      'Product Engineer',
+      'Frontend Developer',
+      'Extreme Programming',
+      'XP',
+      'TDD',
+      'Software Architecture',
+      'Hexagonal Architecture',
+      'Context Engineering',
+      'AI Development',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Tech Speaker',
+      'Banking Software',
+      'Fintech',
+      'Pamplona',
+      'Navarra',
+      'Spain',
+    ],
+    authors: [{ name: siteConfig.author.name, url: siteConfig.url }],
+    creator: siteConfig.author.name,
+    metadataBase: new URL(siteConfig.url),
+
+    // Alternates & hreflang
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        es: `${siteConfig.url}/es`,
+        en: `${siteConfig.url}/en`,
+      },
+    },
+
+    // Open Graph
+    openGraph: {
+      type: 'website',
+      locale: locale === 'es' ? 'es_ES' : 'en_US',
+      alternateLocale: locale === 'es' ? 'en_US' : 'es_ES',
+      url: currentUrl,
+      title: t.metadata.title,
+      description: t.metadata.description,
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: `${siteConfig.url}/og-image.jpg`,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
+          alt: siteConfig.ogImage.alt,
+        },
+      ],
+    },
+
+    // Twitter Cards
+    twitter: {
+      card: 'summary_large_image',
+      title: t.metadata.title,
+      description: t.metadata.description,
+      images: [`${siteConfig.url}/og-image.jpg`],
+    },
+
+    // Robots
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+
+    // Icons
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      ],
+    },
+  };
+}
+
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = await params;
+
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale as Locale)) {
+    notFound();
+  }
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  // Get messages for the client provider
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale}>
+      <head>
+        <JsonLdSchema locale={locale} />
+      </head>
+      <body
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-surface-dark`}
+      >
+        <NextIntlClientProvider messages={messages}>
+          <ScrollToTop />
+          <GlobalCursor />
+          <Header />
+          {children}
+        </NextIntlClientProvider>
+        <Analytics />
+      </body>
+    </html>
   );
 }
 </file>
@@ -6381,175 +6741,6 @@ export function HeroSection() {
 }
 </file>
 
-<file path="app/[locale]/layout.tsx">
-import type React from 'react';
-import type { Metadata } from 'next';
-import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
-import { Locale } from '@/i18n/config';
-import { siteConfig } from '@/config/site';
-import '../globals.css';
-import { Header } from '@/components/header';
-import { GlobalCursor } from '@/components/global-cursor';
-import { JsonLdSchema } from '@/components/json-ld';
-import { ScrollToTop } from '@/components/scroll-to-top';
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-sans',
-});
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-});
-
-type Props = {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-};
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  const messages = await import(`../../translations/${locale}.json`);
-  const t = messages.default;
-
-  const currentUrl = `${siteConfig.url}/${locale}`;
-
-  return {
-    title: t.metadata.title,
-    description: t.metadata.description,
-    keywords: [
-      'Tech Lead',
-      'Engineering Manager',
-      'Product Engineer',
-      'Frontend Developer',
-      'Extreme Programming',
-      'XP',
-      'TDD',
-      'Software Architecture',
-      'Hexagonal Architecture',
-      'Context Engineering',
-      'AI Development',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Tech Speaker',
-      'Banking Software',
-      'Fintech',
-      'Pamplona',
-      'Navarra',
-      'Spain',
-    ],
-    authors: [{ name: siteConfig.author.name, url: siteConfig.url }],
-    creator: siteConfig.author.name,
-    metadataBase: new URL(siteConfig.url),
-
-    // Alternates & hreflang
-    alternates: {
-      canonical: currentUrl,
-      languages: {
-        es: `${siteConfig.url}/es`,
-        en: `${siteConfig.url}/en`,
-      },
-    },
-
-    // Open Graph
-    openGraph: {
-      type: 'website',
-      locale: locale === 'es' ? 'es_ES' : 'en_US',
-      alternateLocale: locale === 'es' ? 'en_US' : 'es_ES',
-      url: currentUrl,
-      title: t.metadata.title,
-      description: t.metadata.description,
-      siteName: siteConfig.name,
-      images: [
-        {
-          url: `${siteConfig.url}/og-image.jpg`,
-          width: siteConfig.ogImage.width,
-          height: siteConfig.ogImage.height,
-          alt: siteConfig.ogImage.alt,
-        },
-      ],
-    },
-
-    // Twitter Cards
-    twitter: {
-      card: 'summary_large_image',
-      title: t.metadata.title,
-      description: t.metadata.description,
-      images: [`${siteConfig.url}/og-image.jpg`],
-    },
-
-    // Robots
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-
-    // Icons
-    icons: {
-      icon: [
-        { url: '/favicon.ico', sizes: 'any' },
-        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      ],
-      apple: [
-        { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-      ],
-    },
-  };
-}
-
-export default async function LocaleLayout({ children, params }: Props) {
-  const { locale } = await params;
-
-  // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as Locale)) {
-    notFound();
-  }
-
-  // Enable static rendering
-  setRequestLocale(locale);
-
-  // Get messages for the client provider
-  const messages = await getMessages();
-
-  return (
-    <html lang={locale}>
-      <head>
-        <JsonLdSchema locale={locale} />
-      </head>
-      <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-surface-dark`}
-      >
-        <NextIntlClientProvider messages={messages}>
-          <ScrollToTop />
-          <GlobalCursor />
-          <Header />
-          {children}
-        </NextIntlClientProvider>
-        <Analytics />
-      </body>
-    </html>
-  );
-}
-</file>
-
 <file path="components/header.tsx">
 'use client';
 
@@ -6695,6 +6886,34 @@ export function Header() {
         </div>
       </nav>
     </motion.header>
+  );
+}
+</file>
+
+<file path="app/[locale]/page.tsx">
+'use client';
+
+import { useEffect } from 'react';
+import { HeroSection, MeSection } from './_components';
+
+export default function Home() {
+  // Aplicar scroll snap al html solo en la home page
+  useEffect(() => {
+    const html = document.documentElement;
+    html.style.scrollSnapType = 'y mandatory';
+    html.style.overflowY = 'scroll';
+
+    return () => {
+      html.style.scrollSnapType = '';
+      html.style.overflowY = '';
+    };
+  }, []);
+
+  return (
+    <main className="relative">
+      <HeroSection />
+      <MeSection />
+    </main>
   );
 }
 </file>
@@ -6950,6 +7169,21 @@ export function MeSection() {
               {t('me.headline')}
             </motion.h2>
 
+            {/* Descripción - quién soy */}
+            <motion.p
+              className="mt-6 md:mt-8 text-white/60 text-base md:text-lg lg:text-xl min-[2000px]:text-2xl max-w-xl leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: 0.35,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              {t('me.description')}
+            </motion.p>
+
             {/* CTA + Contact Links */}
             <motion.div
               className="mt-12 xl:mt-16 min-[2000px]:mt-20 space-y-8 min-[2000px]:space-y-12"
@@ -7034,34 +7268,6 @@ export function MeSection() {
 }
 </file>
 
-<file path="app/[locale]/page.tsx">
-'use client';
-
-import { useEffect } from 'react';
-import { HeroSection, MeSection } from './_components';
-
-export default function Home() {
-  // Aplicar scroll snap al html solo en la home page
-  useEffect(() => {
-    const html = document.documentElement;
-    html.style.scrollSnapType = 'y mandatory';
-    html.style.overflowY = 'scroll';
-
-    return () => {
-      html.style.scrollSnapType = '';
-      html.style.overflowY = '';
-    };
-  }, []);
-
-  return (
-    <main className="relative">
-      <HeroSection />
-      <MeSection />
-    </main>
-  );
-}
-</file>
-
 <file path="translations/es.json">
 {
   "nav": {
@@ -7080,8 +7286,8 @@ export default function Home() {
       "line2": "CON",
       "line3": "PROPÓSITO"
     },
-    "description1": "+7 años desarrollando software que importa. Actualmente, Tech Lead & Engineering Manager de un equipo de +20 desarrolladores en un proyecto bancario crítico (+1M usuarios).",
-    "description2": "Combino expertise técnica profunda -arquitectura, testing, XP- con visión estratégica de producto. Lidero desde la definición de la solución hasta la entrega, asegurando que cada línea de código aporte valor real al negocio.",
+    "description1": "+7 años desarrollando software que importa. Empecé tocando de todo y ahora lidero un equipo de +20 desarrolladores en un proyecto de banca digital crítico (+1M usuarios). Tech Lead y Engineering Manager.",
+    "description2": "Arquitectura, testing, XP. Lo técnico me apasiona. Pero lo que de verdad me importa es que lo que construimos sirva para algo. Desde la definición hasta la entrega.",
     "stats": {
       "techLead": "TECH LEAD",
       "engineers": "+20 ENGINEERS",
@@ -7098,12 +7304,12 @@ export default function Home() {
     },
     "items": {
       "product": {
-        "title": "VISIÓN DE PRODUCTO",
-        "description": "Mentalidad de producto aplicada al desarrollo. Colaboro en la definición de soluciones que maximicen el valor al usuario. Del problema a la entrega."
+        "title": "PRODUCTO PRIMERO",
+        "description": "No escribo código por escribir. Colaboro con negocio y diseño para entender el problema real antes de tocar una línea. Del problema a la entrega, con el usuario en la cabeza."
       },
       "architecture": {
-        "title": "EXCELENCIA TÉCNICA",
-        "description": "Metodologías XP a escala: TDD, Pair Programming, CI/CD. Arquitectura Hexagonal, código limpio y sistemas que escalan sin deuda técnica."
+        "title": "CÓDIGO QUE ESCALA",
+        "description": "TDD, Pair Programming, Refactoring, CI/CD. No como dogma, como herramientas. Arquitectura Hexagonal cuando tiene sentido. El objetivo: código que el equipo pueda mantener en el futuro."
       },
       "xp": {
         "title": "PRAGMATISMO",
@@ -7111,15 +7317,15 @@ export default function Home() {
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
-        "description": "Diseño la estrategia de Context Engineering del equipo. Estandarizo buenas prácticas e integro IA generativa en el ciclo de desarrollo, multiplicando velocidad sin perder control ni calidad."
+        "description": "Diseño la estrategia de Context Engineering del equipo. Estandarizo buenas prácticas e integro IA generativa en el ciclo de desarrollo. Más rápido, sin perder el control."
       },
       "leadership": {
-        "title": "LIDERAZGO & FORMACIÓN",
-        "description": "Manager directo de 8 engineers: 1-on-1s, planes de carrera y desarrollo profesional. Profesor de un curso de XP y Software Engineering, formando en metodologías ágiles y código limpio."
+        "title": "EQUIPOS QUE CRECEN",
+        "description": "Manager directo de 8 engineers. 1-on-1s, planes de carrera, feedback continuo. También profesor de un curso de XP donde formamos en lo que importa: código limpio, testing, trabajo en equipo."
       },
       "culture": {
-        "title": "TRANSFORMACIÓN CULTURAL",
-        "description": "Lidero la estrategia de conocimiento técnico para +80 personas. Organizo espacios de divulgación y defino Learning Paths para potenciar talento y fomentar la mejora continua."
+        "title": "CULTURA DE MEJORA",
+        "description": "Responsable de formación técnica de +80 personas. Lidero la estrategia de conocimiento: sesiones de divulgación, learning paths, espacios para crecer. El conocimiento se multiplica cuando se comparte."
       }
     }
   },
@@ -7137,7 +7343,7 @@ export default function Home() {
         "company": "BIKO2 / JAKALA",
         "role": "TECH LEAD & MANAGER",
         "project": "Banca Online Laboral Kutxa",
-        "description": "Lidero el equipo frontend (+20 devs) de la banca digital (+1M usuarios), combinando la dirección técnica y la gestión de personas con una visión estratégica del producto.",
+        "description": "Lidero el equipo frontend (+20 devs) de la banca digital (+1M usuarios). Dirección técnica, gestión de personas, y ojo puesto en el producto.",
         "highlights": {
           "engineering": {
             "title": "Ingeniería & Estrategia de Producto",
@@ -7149,7 +7355,7 @@ export default function Home() {
           },
           "innovation": {
             "title": "Innovación & IA aplicada",
-            "text": "Defino la estrategia de Context Engineering (Rules, Comandos, MCPs). Logro mejoras significativas en velocidad y calidad."
+            "text": "Defino la estrategia de Context Engineering (Rules, Comandos, MCPs). El equipo desarrolla más rápido y con menos errores."
           },
           "management": {
             "title": "Gestión de Personas",
@@ -7162,7 +7368,7 @@ export default function Home() {
         "company": "BIKO2 / JAKALA",
         "role": "SENIOR WEB DEVELOPER",
         "project": "Motor de Reservas Barceló Hotel Group",
-        "description": "Desarrollador core en la construcción del nuevo motor de reservas (alto tráfico), operando bajo metodología Extreme Programming estricta.",
+        "description": "Desarrollador core en la construcción del nuevo motor de reservas (alto tráfico). XP estricto de verdad.",
         "highlights": {
           "architecture": {
             "title": "Arquitectura & Stack Moderno",
@@ -7329,6 +7535,7 @@ export default function Home() {
   },
   "me": {
     "headline": "Código. Equipos. Producto.",
+    "description": "Curioso por naturaleza, pragmático de convicción. Lidero equipos y resuelvo problemas con software.",
     "cta": "CONOCE MI HISTORIA",
     "orConnect": "O escríbeme"
   },
@@ -7377,8 +7584,8 @@ export default function Home() {
       "line2": "WITH",
       "line3": "PURPOSE"
     },
-    "description1": "7+ years building software that matters. Currently, Tech Lead & Engineering Manager of a team of 20+ developers on a critical banking project (+1M users).",
-    "description2": "Combining deep technical expertise -architecture, testing, XP- with strategic product vision. Leading from solution definition to delivery, ensuring every line of code adds real business value.",
+    "description1": "7+ years building software that matters. Started doing a bit of everything and now I lead a team of 20+ developers on a critical digital banking project (+1M users). Tech Lead and Engineering Manager.",
+    "description2": "Architecture, testing, XP. I love the technical side. But what really matters to me is that what we build actually serves a purpose. From definition to delivery.",
     "stats": {
       "techLead": "TECH LEAD",
       "engineers": "+20 ENGINEERS",
@@ -7390,17 +7597,17 @@ export default function Home() {
   },
   "expertise": {
     "title": {
-      "line1": "MY",
-      "line2": "EXPERTISE"
+      "line1": "HOW I",
+      "line2": "WORK"
     },
     "items": {
       "product": {
-        "title": "PRODUCT VISION",
-        "description": "Product mindset applied to development. Collaborating to define solutions that maximize user value. From problem to delivery."
+        "title": "PRODUCT FIRST",
+        "description": "I don't write code for the sake of it. I work with business and design to understand the real problem before touching a line. From problem to delivery, with the user in mind."
       },
       "architecture": {
-        "title": "TECHNICAL EXCELLENCE",
-        "description": "XP methodologies at scale: TDD, Pair Programming, CI/CD. Hexagonal Architecture, clean code and systems that scale without technical debt."
+        "title": "CODE THAT SCALES",
+        "description": "TDD, Pair Programming, Refactoring, CI/CD. Not as dogma—as tools. Hexagonal Architecture when it makes sense. The goal: code the team can actually maintain down the road."
       },
       "xp": {
         "title": "PRAGMATISM",
@@ -7408,15 +7615,15 @@ export default function Home() {
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
-        "description": "Designing the team's Context Engineering strategy. Standardizing best practices and integrating generative AI into the development cycle, multiplying velocity without losing control or quality."
+        "description": "Designing the team's Context Engineering strategy. Standardizing best practices and integrating generative AI into the development cycle. Faster, without losing control."
       },
       "leadership": {
-        "title": "LEADERSHIP & TEACHING",
-        "description": "Direct manager of 8 engineers: 1-on-1s, career plans and professional growth. Instructor of an XP and Software Engineering course, training developers in agile methodologies and clean code."
+        "title": "TEAMS THAT GROW",
+        "description": "Direct manager of 8 engineers. 1-on-1s, career plans, ongoing feedback. Also an XP course instructor where we teach what matters: clean code, testing, teamwork."
       },
       "culture": {
-        "title": "CULTURAL TRANSFORMATION",
-        "description": "Leading the technical knowledge strategy for +80 people. Organizing knowledge-sharing sessions and defining Learning Paths to empower talent and foster continuous improvement."
+        "title": "CULTURE OF GROWTH",
+        "description": "Responsible for technical training of 80+ people. Leading the knowledge strategy: tech talks, learning paths, spaces to grow. Knowledge multiplies when shared."
       }
     }
   },
@@ -7434,7 +7641,7 @@ export default function Home() {
         "company": "BIKO2 / JAKALA",
         "role": "TECH LEAD & MANAGER",
         "project": "Laboral Kutxa Online Banking",
-        "description": "Currently leading the frontend team (+20 devs) of digital banking (+1M users), combining technical direction and people management with a strategic product vision.",
+        "description": "Leading the frontend team (+20 devs) of digital banking (+1M users). Technical direction, people management, and an eye on the product.",
         "highlights": {
           "engineering": {
             "title": "Engineering & Product Strategy",
@@ -7446,7 +7653,7 @@ export default function Home() {
           },
           "innovation": {
             "title": "Innovation & Applied AI",
-            "text": "Team Context Engineering strategy (Rules, Commands, MCPs for Azure DevOps). Significant improvements in speed and quality."
+            "text": "Defining the Context Engineering strategy (Rules, Commands, MCPs). The team develops faster and with fewer bugs."
           },
           "management": {
             "title": "People Management",
@@ -7459,7 +7666,7 @@ export default function Home() {
         "company": "BIKO2 / JAKALA",
         "role": "SENIOR WEB DEVELOPER",
         "project": "Barceló Hotel Group Booking Engine",
-        "description": "Core developer for the new booking engine (high traffic), operating under strict Extreme Programming methodology.",
+        "description": "Core developer building the new booking engine (high traffic). Strict XP, for real.",
         "highlights": {
           "architecture": {
             "title": "Architecture & Modern Stack",
@@ -7626,6 +7833,7 @@ export default function Home() {
   },
   "me": {
     "headline": "Code. Teams. Product.",
+    "description": "Curious by nature, pragmatic by conviction. I lead teams and solve problems with software.",
     "cta": "DISCOVER MY STORY",
     "orConnect": "Or connect"
   },
