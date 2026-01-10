@@ -2,153 +2,151 @@
 alwaysApply: false
 ---
 
-## ✨ ANIMACIONES Y EFECTOS
+# Filosofía de Diseño
 
-### Principios de Movimiento
+## La Esencia
 
-- **Framer Motion con spring physics:** `stiffness: 150-500`, `damping: 15-28`
-- **Movimientos orgánicos pero precisos:** NUNCA lentos o con delay excesivo
-- **Respuesta inmediata:** Las interacciones del usuario deben ser instantáneas
-- **Performance primero:** Solo animaciones que aporten valor
-
-### Efectos Visuales Permitidos
-
-- `backdrop-blur-sm`: Para capas con profundidad
-- `mix-blend-difference` o `mix-blend-mode`: Para efectos de fusión
-- Gradientes radiales sutiles: `rgba(222, 94, 145, 0.15)`
-- Opacidades entre 0.05 y 0.8 para capas de fondo
-- `text-stroke` para efectos tipográficos
-
-### Estados de Interacción
-
-- **Hover:** Scale (1.02-1.1), opacity, color transitions
-- **Active/Focus:** Feedback visual inmediato
-- **Transitions:** 300ms estándar, spring para movimientos complejos
+Este portfolio existe en la intersección entre **impacto visual** y **profesionalismo técnico**. No es un experimento artístico puro ni una web corporativa genérica. Es la expresión visual de un Tech Lead: preciso, con criterio, pero con personalidad.
 
 ---
 
-## 🎯 FILOSOFÍA UX
+## Principios Fundamentales
 
-### Principio Cardinal: NO INTRUSIVO
+### 1. Angular es Identidad
 
-Los efectos visuales **NUNCA** deben interferir con el contenido o la navegación del usuario.
+Todo es recto, sin border-radius. Los elementos son cuadrados, las líneas son rectas, las esquinas son precisas. Esta decisión no es estética casual: transmite **precisión técnica** y **criterio**. Lo curvo es decorativo; lo angular es intencional.
 
-### Reglas de Experiencia
+Cuando propongas algo nuevo, debe ser angular. El único elemento curvo permitido son círculos decorativos de fondo a muy baja opacidad.
 
-1. **Respuesta inmediata:** Sin delays en interacciones básicas (click, hover, scroll)
-2. **Progressive enhancement:** Efectos avanzados solo en desktop (min-width: 768px)
-3. **Feedback visual claro:** El usuario siempre sabe dónde está y qué puede hacer
-4. **Accesibilidad integrada:** Considerada desde el diseño, no como afterthought
-5. **Performance monitoring:** Usar Vercel Analytics, optimizar Core Web Vitals
+### 2. Densidad Visual Variable
 
-### Cursor Personalizado
+No todas las páginas tienen el mismo nivel de complejidad visual:
 
-- Solo en desktop (`hidden md:block`)
-- Movimiento instantáneo, sin delay
-- Tres capas: punto preciso + círculo principal + halo
-- Estados reactivos: default y hover
-- `cursor: none` en desktop para ocultar cursor nativo
+- **Home**: Máximo impacto. Tipografía gigante, parallax, elementos decorativos. Es el escaparate.
+- **About**: Alta densidad. Partículas, fondos animados, cards con personalidad. Es la demostración.
+- **Blog**: Mínimo ruido. El contenido manda. Es el espacio de lectura.
 
----
+Cuando crees algo nuevo, pregunta: ¿Esto es escaparate, demostración, o espacio funcional?
 
-## 🏆 ESTILO AWWWARDS
+### 3. Decoración con Propósito
 
-### Elementos Característicos
+Los elementos decorativos (líneas diagonales, partículas, círculos de fondo) no son adorno vacío:
 
-- **Tipografía gigante estratégica:** Usar tamaños viewport (vw) para impacto
-- **Grid distorsionado:** Background animado que responde al scroll
-- **Elementos superpuestos:** Con propósito y jerarquía clara
-- **Espaciado generoso:** py-32, gap-8, breathing room
-- **Detalles técnicos visibles:** Coordenadas, números, timestamps con font-mono
+- **Crean profundidad**: Capas a diferentes opacidades (0.01-0.03) dan dimensión
+- **Enmarcan el contenido**: Partículas en laterales guían la mirada al centro
+- **Generan atmósfera**: Sin ser el protagonista, establecen el tono
 
-### Composición
+Si un elemento decorativo no cumple una de estas funciones, sobra.
 
-- **Asimetría intencional:** No centrar todo, crear tensión visual
-- **Profundidad con capas:** Usar z-index, absolute positioning, overlays
-- **Scroll storytelling:** Elementos que aparecen con `whileInView`
-- **Hero impactante:** Primera impresión memorable
-- **Whitespace (o blackspace):** Dejar respirar el contenido
+### 4. El Movimiento Cuenta Historias
 
----
+Las animaciones no son "efectos bonitos". Son **narrativa**:
 
-## ⛔ LO QUE SE DEBE EVITAR
+- La entrada escalonada de letras crea **anticipación**
+- El parallax sutil dice "esto es interactivo, esto está vivo"
+- Los elementos que aparecen con scroll crean **ritmo de lectura**
 
-### Prohibido
+Las animaciones deben tener **intención**. No animar por animar. Cada movimiento debe reforzar la jerarquía o guiar la atención.
 
-- ❌ Delays o lags en interacciones del usuario
-- ❌ Efectos excesivos que distraigan del contenido
-- ❌ Animaciones "cute", infantiles o poco profesionales
-- ❌ Diseños genéricos o predecibles
-- ❌ Elementos decorativos sin propósito
-- ❌ Border-radius (mantener diseño angular)
-- ❌ Gradientes coloridos tipo arcoíris
-- ❌ Carousels automáticos que el usuario no controla
-- ❌ Parallax excesivo que marea
+### 5. El Rosa es Acento, No Tema
 
-### Usar con Precaución
+El color primary (#de5e91) se usa para:
+- Destacar lo importante (CTAs, estados activos)
+- Crear puntos de atención visual (puntos decorativos, bordes)
+- Indicar interactividad
 
-- ⚠️ Animaciones infinitas (solo para elementos no críticos)
-- ⚠️ Mix-blend-mode (puede afectar legibilidad)
-- ⚠️ Efectos 3D (sutiles y con propósito)
-- ⚠️ Scroll-jacking (nunca interferir con scroll nativo)
+Nunca debe dominar. El fondo oscuro (#212121) es el lienzo; el blanco es el contenido; el rosa es el acento que da personalidad.
 
 ---
 
-## 🔧 STACK TÉCNICO
+## Marco de Decisión
 
-### Tecnologías Core
+Cuando propongas algo nuevo, evalúa:
 
-- **Framework:** Next.js 16 (App Router)
-- **Animaciones:** Framer Motion
-- **Estilos:** Tailwind CSS v4
-- **Componentes:** Shadcn/ui + Radix UI
-- **Tipado:** TypeScript estricto
+### ¿Dónde vive esto?
 
-### Convenciones de Código
+| Contexto | Densidad Visual | Decoración | Animaciones |
+|----------|-----------------|------------|-------------|
+| Hero/Landing | Alta | Abundante | Cinematográficas |
+| Sección informativa | Media | Moderada | Sutiles |
+| Lectura/Contenido | Baja | Mínima | Solo transiciones |
+| Interactivo/Modal | Media | Con propósito | Feedback inmediato |
 
-- Componentes funcionales con hooks
-- `"use client"` solo cuando sea necesario
-- Preferir Tailwind classes sobre CSS custom
-- Usar `motion.div` de Framer Motion para animaciones
-- Variables CSS para colores consistentes
+### ¿Qué aporta?
 
----
+Antes de añadir cualquier elemento, debe responder SÍ a al menos una:
+- ¿Refuerza la identidad angular?
+- ¿Crea profundidad o enmarca contenido?
+- ¿Guía la atención del usuario?
+- ¿Cuenta algo sobre la interactividad?
 
-## 📐 CRITERIO DE EVALUACIÓN
+### ¿Cómo escala?
 
-### Cuando se solicite un cambio, preguntar:
-
-1. **¿Esto estaría en un sitio premiado en Awwwards?**
-2. **¿Es intrusivo o distrae del contenido?**
-3. **¿Aporta valor real a la experiencia?**
-4. **¿Es performante en mobile y desktop?**
-5. **¿Mantiene la coherencia visual?**
-
-Si alguna respuesta es negativa, **replantear el enfoque**.
+Todo elemento debe tener versión desktop y mobile pensadas:
+- Desktop: Experiencia completa, cursor personalizado activo, efectos avanzados
+- Mobile: Esencia mantenida, complejidad reducida, performance primero
 
 ---
 
-## 🎨 EJEMPLOS DE REFERENCIA
+## Patrones Recurrentes
 
-Este portfolio se inspira en:
+### Tipografía de Impacto
+Usar tamaños viewport (`text-[Xvw]`) para títulos principales. El outline (`WebkitTextStroke`) crea contraste y sofisticación. Reservar para momentos clave, no para todo.
 
-- Sitios premiados en Awwwards con categorías: Experimental, Developer, Agency
-- Portfolio de design studios de élite
-- Web experimental pero funcional
-- Equilibrio entre arte y usabilidad
+### Elementos Técnicos
+Font-mono para fechas, números, etiquetas. Padding con ceros (`01`, `02`). Esto refuerza la identidad técnica sin ser pretencioso.
 
-**Nivel aspiracional:** Portfolio que un Tech Lead/Engineering Manager mostraría con orgullo a un cliente enterprise o en una conferencia técnica.
+### Bordes Parciales
+Esquinas con `border-t-2 border-l-2` (o variantes) en lugar de borders completos. Sugiere forma sin cerrar, crea tensión visual.
+
+### Gradientes de Desvanecimiento
+Para líneas y elementos que "desaparecen", usar gradientes `from-X to-transparent`. Evita bordes duros donde no se necesitan.
+
+### Scroll Controlado
+En contextos donde las secciones son unidades completas (como Home), el scroll snap es válido. En contenido continuo (como Blog), el scroll es libre.
 
 ---
 
-## 🚀 IMPLEMENTACIÓN
+## Animaciones: Guía de Uso
 
-Siempre que trabajes en este proyecto:
+### Springs, No Durations
 
-1. Lee esta regla antes de proponer cambios
-2. Evalúa si tu propuesta cumple los estándares
-3. Implementa con atención al detalle
-4. Prueba en diferentes dispositivos
-5. Optimiza performance
+Para movimientos interactivos, usar springs:
+```
+stiffness: 150-300 (más alto = más rápido)
+damping: 15-25 (más alto = menos rebote)
+```
 
-**Recuerda:** Cada línea de código debe reflejar el nivel de excelencia técnica y diseño que caracteriza a este portfolio.
+### Entradas Escalonadas
+
+Cuando varios elementos aparecen juntos, escalonar con delays pequeños (0.03-0.05s entre elementos). Crea ritmo, no espera.
+
+### whileInView Siempre con once: true
+
+Las animaciones de entrada solo deben ejecutarse una vez. Repetirlas en cada scroll es distractivo.
+
+### El Hover es Inmediato
+
+Las animaciones de estado (hover, active) deben ser instantáneas. El delay es para entradas, no para feedback.
+
+---
+
+## Lo Que No Hacemos
+
+- **Redondear esquinas**: Es la antítesis de la identidad
+- **Gradientes multicolor**: Un color de acento, no un arcoíris
+- **Animaciones "divertidas"**: El tono es profesional, no juguetón
+- **Decoración genérica**: Si parece stock, no va
+- **Competir con el contenido**: Los efectos apoyan, nunca eclipsan
+
+---
+
+## El Test Final
+
+Antes de proponer cualquier cambio, pregunta:
+
+> "¿Un Tech Lead mostraría esto en una conferencia técnica sintiéndose orgulloso?"
+
+Si la respuesta es no, replantear. Si la respuesta es "depende de la audiencia", probablemente es demasiado conservador. Si la respuesta es "es demasiado", probablemente se pasó de experimental.
+
+El punto dulce está en: **impresiona sin distraer, tiene personalidad sin ser pretencioso, es técnico sin ser frío**.
