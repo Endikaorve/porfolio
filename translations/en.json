@@ -33,12 +33,12 @@
     },
     "items": {
       "product": {
-        "title": "PRODUCT VISION",
-        "description": "Product mindset applied to development. Collaborating to define solutions that maximize user value. From problem to delivery."
+        "title": "PRODUCT FIRST",
+        "description": "I don't write code for the sake of it. I work with business and design to understand the real problem before touching a line. From problem to delivery, with the user in mind."
       },
       "architecture": {
-        "title": "TECHNICAL EXCELLENCE",
-        "description": "XP methodologies at scale: TDD, Pair Programming, CI/CD. Hexagonal Architecture, clean code and systems that scale without technical debt."
+        "title": "CODE THAT SCALES",
+        "description": "TDD, Pair Programming, Refactoring, CI/CD. Not as dogma—as tools. Hexagonal Architecture when it makes sense. The goal: code the team can actually maintain down the road."
       },
       "xp": {
         "title": "PRAGMATISM",
@@ -49,12 +49,12 @@
         "description": "Designing the team's Context Engineering strategy. Standardizing best practices and integrating generative AI into the development cycle. Faster, without losing control."
       },
       "leadership": {
-        "title": "LEADERSHIP & TEACHING",
-        "description": "Direct manager of 8 engineers: 1-on-1s, career plans and professional growth. Instructor of an XP and Software Engineering course, training developers in agile methodologies and clean code."
+        "title": "TEAMS THAT GROW",
+        "description": "Direct manager of 8 engineers. 1-on-1s, career plans, ongoing feedback. Also an XP course instructor where we teach what matters: clean code, testing, teamwork."
       },
       "culture": {
-        "title": "CULTURAL TRANSFORMATION",
-        "description": "Responsible for technical training of +80 people. I organize knowledge-sharing sessions and define Learning Paths. I want the team to learn and grow."
+        "title": "CULTURE OF GROWTH",
+        "description": "Responsible for technical training of 80+ people. I organize sessions, define learning paths. Continuous improvement."
       }
     }
   },
