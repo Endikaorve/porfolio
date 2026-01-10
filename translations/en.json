@@ -16,7 +16,7 @@
       "line3": "PURPOSE"
     },
     "description1": "7+ years building software that matters. Currently, Tech Lead & Engineering Manager of a team of 20+ developers on a critical banking project (+1M users).",
-    "description2": "Combining deep technical expertise -architecture, testing, XP- with strategic product vision. Leading from solution definition to delivery, ensuring every line of code adds real business value.",
+    "description2": "Architecture, testing, XP. I love the technical side. But what really matters to me is that what we build actually serves a purpose. I lead from definition to delivery.",
     "stats": {
       "techLead": "TECH LEAD",
       "engineers": "+20 ENGINEERS",
@@ -46,7 +46,7 @@
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
-        "description": "Designing the team's Context Engineering strategy. Standardizing best practices and integrating generative AI into the development cycle, multiplying velocity without losing control or quality."
+        "description": "Designing the team's Context Engineering strategy. Standardizing best practices and integrating generative AI into the development cycle. Faster, without losing control."
       },
       "leadership": {
         "title": "LEADERSHIP & TEACHING",
@@ -54,7 +54,7 @@
       },
       "culture": {
         "title": "CULTURAL TRANSFORMATION",
-        "description": "Leading the technical knowledge strategy for +80 people. Organizing knowledge-sharing sessions and defining Learning Paths to empower talent and foster continuous improvement."
+        "description": "Responsible for technical training of +80 people. I organize knowledge-sharing sessions and define Learning Paths. I want the team to learn and grow."
       }
     }
   },
@@ -72,7 +72,7 @@
         "company": "BIKO2 / JAKALA",
         "role": "TECH LEAD & MANAGER",
         "project": "Laboral Kutxa Online Banking",
-        "description": "Currently leading the frontend team (+20 devs) of digital banking (+1M users), combining technical direction and people management with a strategic product vision.",
+        "description": "Leading the frontend team (+20 devs) of digital banking (+1M users). Technical direction, people management, and an eye on the product.",
         "highlights": {
           "engineering": {
             "title": "Engineering & Product Strategy",
@@ -84,7 +84,7 @@
           },
           "innovation": {
             "title": "Innovation & Applied AI",
-            "text": "Team Context Engineering strategy (Rules, Commands, MCPs for Azure DevOps). Significant improvements in speed and quality."
+            "text": "Defining the Context Engineering strategy (Rules, Commands, MCPs). The team develops faster and with fewer bugs."
           },
           "management": {
             "title": "People Management",

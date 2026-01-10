@@ -16,7 +16,7 @@
       "line3": "PROPÓSITO"
     },
     "description1": "+7 años desarrollando software que importa. Actualmente, Tech Lead & Engineering Manager de un equipo de +20 desarrolladores en un proyecto bancario crítico (+1M usuarios).",
-    "description2": "Combino expertise técnica profunda -arquitectura, testing, XP- con visión estratégica de producto. Lidero desde la definición de la solución hasta la entrega, asegurando que cada línea de código aporte valor real al negocio.",
+    "description2": "Arquitectura, testing, XP. Lo técnico me apasiona. Pero lo que de verdad me importa es que lo que construimos sirva para algo. Lidero desde la definición hasta la entrega.",
     "stats": {
       "techLead": "TECH LEAD",
       "engineers": "+20 ENGINEERS",
@@ -46,7 +46,7 @@
       },
       "contextEngineering": {
         "title": "CONTEXT ENGINEERING",
-        "description": "Diseño la estrategia de Context Engineering del equipo. Estandarizo buenas prácticas e integro IA generativa en el ciclo de desarrollo, multiplicando velocidad sin perder control ni calidad."
+        "description": "Diseño la estrategia de Context Engineering del equipo. Estandarizo buenas prácticas e integro IA generativa en el ciclo de desarrollo. Más rápido, sin perder el control."
       },
       "leadership": {
         "title": "LIDERAZGO & FORMACIÓN",
@@ -54,7 +54,7 @@
       },
       "culture": {
         "title": "TRANSFORMACIÓN CULTURAL",
-        "description": "Lidero la estrategia de conocimiento técnico para +80 personas. Organizo espacios de divulgación y defino Learning Paths para potenciar talento y fomentar la mejora continua."
+        "description": "Responsable de la formación técnica de +80 personas. Organizo sesiones de divulgación y defino Learning Paths. Quiero que el equipo aprenda y mejore."
       }
     }
   },
@@ -72,7 +72,7 @@
         "company": "BIKO2 / JAKALA",
         "role": "TECH LEAD & MANAGER",
         "project": "Banca Online Laboral Kutxa",
-        "description": "Lidero el equipo frontend (+20 devs) de la banca digital (+1M usuarios), combinando la dirección técnica y la gestión de personas con una visión estratégica del producto.",
+        "description": "Lidero el equipo frontend (+20 devs) de la banca digital (+1M usuarios). Dirección técnica, gestión de personas, y ojo puesto en el producto.",
         "highlights": {
           "engineering": {
             "title": "Ingeniería & Estrategia de Producto",
@@ -84,7 +84,7 @@
           },
           "innovation": {
             "title": "Innovación & IA aplicada",
-            "text": "Defino la estrategia de Context Engineering (Rules, Comandos, MCPs). Logro mejoras significativas en velocidad y calidad."
+            "text": "Defino la estrategia de Context Engineering (Rules, Comandos, MCPs). El equipo desarrolla más rápido y con menos errores."
           },
           "management": {
             "title": "Gestión de Personas",
