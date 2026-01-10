@@ -248,6 +248,21 @@ export function MeSection() {
               {t('me.headline')}
             </motion.h2>
 
+            {/* Descripción - quién soy */}
+            <motion.p
+              className="mt-6 md:mt-8 text-white/60 text-base md:text-lg lg:text-xl min-[2000px]:text-2xl max-w-xl leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: 0.35,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              {t('me.description')}
+            </motion.p>
+
             {/* CTA + Contact Links */}
             <motion.div
               className="mt-12 xl:mt-16 min-[2000px]:mt-20 space-y-8 min-[2000px]:space-y-12"
