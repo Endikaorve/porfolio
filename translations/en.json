@@ -2,6 +2,9 @@
   "nav": {
     "home": "·"
   },
+  "home": {
+    "ariaLabel": "Go to home page"
+  },
   "metadata": {
     "title": "Endika Orube | Tech Lead & Manager · Product Engineer",
     "description": "Endika Orube's portfolio. Tech Lead & Manager in digital banking (+1M users). 7+ years leading teams, architecture, XP and Context Engineering with AI."

@@ -42,6 +42,7 @@ export function Header() {
           <MagneticWrapper strength={0.2}>
             <Link
               href="/"
+              aria-label={t('home.ariaLabel')}
               className={`group relative py-2 transition-colors duration-200 block ${
                 isHomeActive
                   ? 'text-primary'
@@ -120,7 +121,7 @@ export function Header() {
                     className={`relative py-2 font-bold tracking-wider transition-colors duration-200 ${
                       locale === loc
                         ? 'text-primary'
-                        : 'text-white/40 hover:text-white/80'
+                        : 'text-white/60 hover:text-primary'
                     }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
