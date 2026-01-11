@@ -43,9 +43,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const currentUrl = `${siteConfig.url}/${locale}/blog/${slug}`;
   const isSpanish = locale === 'es';
+  const title = `${post.title} | ${siteConfig.author.name}`;
 
   return {
-    title: `${post.title} | ${siteConfig.author.name}`,
+    title,
     description: post.description,
     keywords: post.tags,
     authors: [{ name: siteConfig.author.name }],
@@ -65,7 +66,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: isSpanish ? 'es_ES' : 'en_US',
       alternateLocale: isSpanish ? 'en_US' : 'es_ES',
       url: currentUrl,
-      title: post.title,
+      title,
       description: post.description,
       siteName: `${siteConfig.author.name} Blog`,
       publishedTime: post.date,
@@ -77,7 +78,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: `${siteConfig.url}/og-image.jpg`,
           width: siteConfig.ogImage.width,
           height: siteConfig.ogImage.height,
-          alt: post.title,
+          alt: title,
         },
       ],
     },
@@ -85,7 +86,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // Twitter Cards
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title,
       description: post.description,
       images: [`${siteConfig.url}/og-image.jpg`],
     },
