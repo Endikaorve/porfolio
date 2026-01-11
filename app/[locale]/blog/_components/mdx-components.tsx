@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 import { CodeBlock } from './code-block';
+import { YouTubeEmbed } from './youtube-embed';
 
 export function useMDXComponents(
   components: MDXComponents = {}
@@ -152,6 +153,9 @@ export function useMDXComponents(
     td: ({ children }) => (
       <td className="py-3 px-4 text-white/80">{children}</td>
     ),
+
+    // YouTube embed
+    YouTube: YouTubeEmbed,
 
     ...components,
   };
