@@ -297,9 +297,9 @@ export function MeSection() {
                 </motion.span>
               </Link>
 
-              {/* Links de contacto - etiquetas técnicas */}
+              {/* Links de contacto */}
               <motion.div
-                className="flex items-center gap-3 min-[2000px]:gap-5 justify-center md:justify-start flex-wrap"
+                className="flex items-center gap-2 min-[2000px]:gap-4 justify-center md:justify-start"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -309,38 +309,39 @@ export function MeSection() {
                   {t('me.orConnect')}
                 </span>
                 <span className="w-4 min-[2000px]:w-6 h-px bg-white/20" />
-                <div className="flex items-center gap-3 min-[2000px]:gap-4">
+                <div className="flex items-center gap-2 min-[2000px]:gap-4">
                   {contactLinks.map((link, index) => {
                     const IconComponent = link.icon;
                     return (
-                      <MagneticWrapper key={link.label} strength={0.15}>
-                        <motion.a
-                          href={link.href}
-                          target={link.external ? '_blank' : undefined}
-                          rel={
-                            link.external ? 'noopener noreferrer' : undefined
-                          }
-                          className="group relative flex items-center gap-1.5 min-[2000px]:gap-2 px-3 py-1.5 min-[2000px]:px-4 min-[2000px]:py-2 font-mono text-[10px] min-[2000px]:text-xs tracking-widest text-white/50 hover:text-primary transition-colors duration-200"
-                          initial={{ opacity: 0, y: 10 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            delay: 0.7 + index * 0.1,
-                            duration: 0.3,
-                          }}
-                        >
-                          {/* Borde parcial top-left */}
-                          <span className="absolute top-0 left-0 w-2 h-px bg-white/20 group-hover:bg-primary group-hover:w-full transition-all duration-300" />
-                          <span className="absolute top-0 left-0 w-px h-2 bg-white/20 group-hover:bg-primary group-hover:h-full transition-all duration-300" />
-                          
-                          {/* Borde parcial bottom-right */}
-                          <span className="absolute bottom-0 right-0 w-2 h-px bg-white/20 group-hover:bg-primary group-hover:w-full transition-all duration-300" />
-                          <span className="absolute bottom-0 right-0 w-px h-2 bg-white/20 group-hover:bg-primary group-hover:h-full transition-all duration-300" />
-                          
-                          <IconComponent className="w-3 h-3 min-[2000px]:w-4 min-[2000px]:h-4" />
-                          {link.label}
-                        </motion.a>
-                      </MagneticWrapper>
+                      <div
+                        key={link.label}
+                        className="flex items-center gap-2 min-[2000px]:gap-4"
+                      >
+                        <MagneticWrapper strength={0.15}>
+                          <motion.a
+                            href={link.href}
+                            target={link.external ? '_blank' : undefined}
+                            rel={
+                              link.external ? 'noopener noreferrer' : undefined
+                            }
+                            className="flex items-center gap-1.5 min-[2000px]:gap-2 text-white/40 text-xs min-[2000px]:text-base font-mono tracking-wider hover:text-primary transition-colors duration-200"
+                            whileHover={{ y: -2 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                              delay: 0.7 + index * 0.1,
+                              duration: 0.3,
+                            }}
+                          >
+                            <IconComponent className="w-3.5 h-3.5 min-[2000px]:w-5 min-[2000px]:h-5" />
+                            {link.label}
+                          </motion.a>
+                        </MagneticWrapper>
+                        {index < contactLinks.length - 1 && (
+                          <span className="text-white/20 text-[6px]">●</span>
+                        )}
+                      </div>
                     );
                   })}
                 </div>
