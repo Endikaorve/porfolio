@@ -84,6 +84,7 @@ No quiero que me des la solución final. Quiero que me des opciones y las trabaj
 - Pretencioso
 - "Influencer"
 - Falso-humilde
+- Dramático o vulnerable en exceso
 
 **Frases que suenan a mí:**
 

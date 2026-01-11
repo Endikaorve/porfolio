@@ -21,6 +21,7 @@
 - Vendedor
 - Pretencioso
 - "Influencer"
+- Dramático o cursi (nada de "me pasa algo", "siento que...")
 
 ---
 
@@ -85,6 +86,8 @@
 - Ser honesto sobre motivaciones (incluidas las menos nobles)
 - Admitir limitaciones: _"No voy a prometerte un post cada semana"_
 - Mostrar el proceso, no solo el resultado
+- Reflexión desde la experiencia, no consejos. Contar lo que me pasa a mí, no lo que deberían hacer otros
+- Product-oriented incluso en lo personal: resolver problemas, no "jugar" con la tecnología
 
 **No:**
 
@@ -92,6 +95,7 @@
 - Fingir que todo es fácil
 - Aparentar saber más de lo que sé
 - Ser falso-humilde (_"este humilde servidor..."_)
+- Dar alegatos o consejos generales. Si reflexiono, es desde mi experiencia
 
 ---
 
