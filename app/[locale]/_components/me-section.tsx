@@ -305,10 +305,10 @@ export function MeSection() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.6, duration: 0.4 }}
               >
-                <span className="text-white/30 text-xs min-[2000px]:text-base font-mono tracking-wider">
+                <span className="hidden md:inline text-white/30 text-xs min-[2000px]:text-base font-mono tracking-wider">
                   {t('me.orConnect')}
                 </span>
-                <span className="w-4 min-[2000px]:w-6 h-px bg-white/20" />
+                <span className="hidden md:block w-4 min-[2000px]:w-6 h-px bg-white/20" />
                 <div className="flex items-center gap-2 min-[2000px]:gap-4">
                   {contactLinks.map((link, index) => {
                     const IconComponent = link.icon;
