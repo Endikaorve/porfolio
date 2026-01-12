@@ -41,13 +41,15 @@ I didn't start with that. It emerged from necessity. From the process of iterati
 
 ## Good design is no longer expensive
 
-There's a classic graph about the value of good design. The idea is simple: well-designed systems take longer at first, but from a certain point they outpace poorly designed ones in development speed. It was the go-to argument for defending best practices.
+Martin Fowler has [a classic article](https://martinfowler.com/articles/is-quality-worth-cost.html) about the cost of quality. It includes a graph that sums up the idea: well-designed systems take longer at first, but from a certain point they outpace poorly designed ones in development speed. The lines cross.
 
-<BlogImage src="/blog/dirigir-no-delegar/good-design-graph.jpg" alt="The value of good design graph" caption="Design Stamina Hypothesis — Martin Fowler" />
+<BlogImage src="/blog/dirigir-no-delegar/good-design-graph.png" alt="The value of good design graph" caption="Design Payoff Line — Martin Fowler" />
 
 With AI, that point comes much sooner. Almost from the start.
 
-This website has hexagonal architecture for everything blog-related. Testing. Separation of concerns. Things that used to require discipline and extra time. Now, with good rules and references, it costs the AI the same to do it right as to do it wrong. A predictable system is predictable for everyone: for developers and for the AI.
+This website uses hexagonal architecture for everything blog-related. Testing. Separation of concerns. Things that used to require discipline and extra time. Now, with good rules and references, it costs the AI the same to do it right as to do it wrong.
+
+And not just that. A predictable system is predictable for everyone: for developers and for the AI. In chaotic code, the AI has to guess where everything goes. In a clean architecture, the pattern is so clear that it becomes more precise. Good design is no longer just for humans.
 
 It's no longer a long-term investment. It's the starting point.
 
