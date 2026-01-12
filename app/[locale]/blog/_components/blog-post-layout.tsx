@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import type { BlogPostDetail } from '@/core/blog/domain/blog';
 import { formatBlogPostDate } from '@/core/blog/domain/blog-utils';
 import { useTranslations } from 'next-intl';
+import { AuthorSignature } from './author-signature';
 
 interface BlogPostLayoutProps {
   post: BlogPostDetail;
@@ -85,12 +86,15 @@ export function BlogPostLayout({
 
         {/* Contenido del artículo */}
         <motion.div
-          className="container mx-auto px-4 max-w-3xl pb-24"
+          className="container mx-auto px-4 max-w-3xl pb-16"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           {children}
+
+          {/* Firma del autor */}
+          <AuthorSignature />
         </motion.div>
 
         {/* Footer */}
