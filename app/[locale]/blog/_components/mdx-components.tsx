@@ -1,4 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
+import { BlogImage } from './blog-image';
 import { CodeBlock } from './code-block';
 import { YouTubeEmbed } from './youtube-embed';
 
@@ -156,6 +157,9 @@ export function useMDXComponents(
 
     // YouTube embed
     YouTube: YouTubeEmbed,
+
+    // Blog image
+    BlogImage: BlogImage,
 
     ...components,
   };
