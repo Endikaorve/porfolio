@@ -114,7 +114,15 @@ export function HeroSection() {
     <section
       ref={sectionRef}
       className="relative h-svh flex items-center justify-center overflow-hidden snap-start snap-always"
-      style={{ perspective: '1000px' }}
+      style={
+        {
+          perspective: '1000px',
+          // CSS variables para tamaño responsivo con límite en ultrawide
+          // min(18vw, 45vh) asegura que el texto no desborde verticalmente en pantallas ultrawide
+          '--hero-text-size': 'min(18vw, 45vh)',
+          '--hero-text-size-mobile': '25vw',
+        } as React.CSSProperties
+      }
     >
       {/* Background Elements */}
       {/* Líneas diagonales decorativas */}
@@ -165,7 +173,7 @@ export function HeroSection() {
               aria-hidden="true"
             >
               <motion.span
-                className="block text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter whitespace-nowrap"
+                className="block text-[length:var(--hero-text-size-mobile)] md:text-[length:var(--hero-text-size)] font-black leading-[0.85] tracking-tighter whitespace-nowrap"
                 style={{
                   color: 'transparent',
                   WebkitTextStroke: '2px white',
@@ -180,7 +188,7 @@ export function HeroSection() {
               className="overflow-hidden md:overflow-visible"
               aria-hidden="true"
             >
-              <motion.span className="block text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white whitespace-nowrap">
+              <motion.span className="block text-[length:var(--hero-text-size-mobile)] md:text-[length:var(--hero-text-size)] font-black leading-[0.85] tracking-tighter text-white whitespace-nowrap">
                 <SplitText text="ORUBE" delay={0.35} staggerDelay={0.04} />
                 <motion.span
                   className="inline-block w-[0.12em] h-[0.12em] bg-primary ml-[0.07em]"
@@ -211,10 +219,10 @@ export function HeroSection() {
         <div className="flex items-center gap-[2vw] -translate-x-[1vw]">
           {/* Placeholder del nombre para alineación */}
           <div aria-hidden="true">
-            <div className="text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none whitespace-nowrap">
+            <div className="text-[length:var(--hero-text-size)] font-black leading-[0.85] tracking-tighter opacity-0 select-none whitespace-nowrap">
               ENDIKA
             </div>
-            <div className="text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none whitespace-nowrap">
+            <div className="text-[length:var(--hero-text-size)] font-black leading-[0.85] tracking-tighter opacity-0 select-none whitespace-nowrap">
               ORUBE
               <span className="inline-block w-[0.12em] h-[0.12em] ml-[0.07em]" />
             </div>
@@ -228,7 +236,7 @@ export function HeroSection() {
             <div
               className="rotate-90 origin-center"
               style={{
-                width: 'calc(2 * 18vw * 0.85)',
+                width: 'calc(2 * var(--hero-text-size) * 0.85)',
               }}
             >
               <motion.div
@@ -237,11 +245,14 @@ export function HeroSection() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3, delay: 0.9 }}
               >
-                {/* Línea decorativa que se expande */}
+                {/* Línea decorativa que se expande - proporcional al tamaño del texto */}
                 <motion.div
-                  className="absolute right-[calc(100%+2vw)] top-1/2 h-px bg-primary"
+                  className="absolute top-1/2 h-px bg-primary"
+                  style={{
+                    right: 'calc(100% + var(--hero-text-size) * 0.11)',
+                  }}
                   initial={{ width: 0 }}
-                  animate={{ width: '1.5vw' }}
+                  animate={{ width: 'calc(var(--hero-text-size) * 0.085)' }}
                   transition={{
                     duration: 0.3,
                     ease: [0.16, 1, 0.3, 1],
@@ -249,7 +260,11 @@ export function HeroSection() {
                   }}
                 />
                 <motion.p
-                  className="text-primary text-[1.35vw] font-mono whitespace-nowrap font-bold tracking-wide"
+                  className="text-primary font-mono whitespace-nowrap font-bold tracking-wide"
+                  style={{
+                    // Proporción: 1.35vw / 18vw = 0.075 (7.5% del tamaño del nombre)
+                    fontSize: 'calc(var(--hero-text-size) * 0.075)',
+                  }}
                   initial={{ x: 20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{
@@ -270,10 +285,10 @@ export function HeroSection() {
       <div className="md:hidden relative z-10 w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
         {/* Placeholder para mantener espacio */}
         <div className="relative" aria-hidden="true">
-          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
+          <div className="text-[length:var(--hero-text-size-mobile)] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
             ENDIKA
           </div>
-          <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
+          <div className="text-[length:var(--hero-text-size-mobile)] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
             ORUBE
             <span className="inline-block w-[0.12em] h-[0.12em] ml-[0.07em]" />
           </div>
