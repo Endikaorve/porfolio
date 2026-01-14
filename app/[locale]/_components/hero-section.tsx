@@ -138,7 +138,7 @@ export function HeroSection() {
         transition={{ duration: 1.5, ease: 'easeOut', delay: 0.5 }}
       />
 
-      {/* Capa con el texto principal - con parallax */}
+      {/* Capa con el nombre - con parallax 3D (solo ENDIKA ORUBE) */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
         style={{
@@ -149,44 +149,123 @@ export function HeroSection() {
           transformStyle: 'preserve-3d',
         }}
       >
-        <div className="w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
-          {/* Nombre completo - Un solo h1 para SEO */}
-          <h1 className="sr-only">Endika Orube - Tech Lead & Manager, Product Engineer</h1>
-          
-          {/* ENDIKA - Split text reveal con rotación */}
-          <div className="overflow-hidden" aria-hidden="true">
-            <motion.span
-              className="block text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter whitespace-nowrap"
-              style={{
-                color: 'transparent',
-                WebkitTextStroke: '2px white',
-              }}
+        {/* Mobile: layout original | Desktop: centrado con espacio para subtítulo */}
+        <div className="w-full max-w-7xl px-4 md:w-auto md:max-w-none md:px-0 md:flex md:items-center md:gap-[2vw]">
+          {/* Nombre */}
+          <div>
+            {/* Nombre completo - Un solo h1 para SEO */}
+            <h1 className="sr-only">
+              Endika Orube - Tech Lead & Manager, Product Engineer
+            </h1>
+
+            {/* ENDIKA - Split text reveal con rotación */}
+            <div
+              className="overflow-hidden md:overflow-visible"
+              aria-hidden="true"
             >
-              <SplitText text="ENDIKA" delay={0.2} staggerDelay={0.04} />
-            </motion.span>
+              <motion.span
+                className="block text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter whitespace-nowrap"
+                style={{
+                  color: 'transparent',
+                  WebkitTextStroke: '2px white',
+                }}
+              >
+                <SplitText text="ENDIKA" delay={0.2} staggerDelay={0.04} />
+              </motion.span>
+            </div>
+
+            {/* ORUBE - Split text reveal con rotación */}
+            <div
+              className="overflow-hidden md:overflow-visible"
+              aria-hidden="true"
+            >
+              <motion.span className="block text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white whitespace-nowrap">
+                <SplitText text="ORUBE" delay={0.35} staggerDelay={0.04} />
+                <motion.span
+                  className="inline-block w-[0.12em] h-[0.12em] bg-primary ml-[0.07em]"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{
+                    delay: 0.7,
+                    duration: 0.4,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                />
+              </motion.span>
+            </div>
           </div>
 
-          {/* ORUBE - Split text reveal con rotación */}
-          <div className="overflow-hidden" aria-hidden="true">
-            <motion.span className="block text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white whitespace-nowrap">
-              <SplitText text="ORUBE" delay={0.35} staggerDelay={0.04} />
-              <motion.span
-                className="inline-block w-[0.12em] h-[0.12em] bg-primary ml-[0.07em]"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{
-                  delay: 0.7,
-                  duration: 0.4,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              />
-            </motion.span>
-          </div>
+          {/* Placeholder: ancho visible del subtítulo rotado (≈ altura del texto) */}
+          <div
+            className="hidden md:block"
+            style={{ width: '2vw' }}
+            aria-hidden="true"
+          />
         </div>
       </motion.div>
 
-      {/* Capa estática - elementos de UI (no se mueven con parallax) */}
-      <div className="relative z-10 w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
+      {/* Subtítulo desktop - Capa estática SIN parallax */}
+      <div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
+        <div className="flex items-center gap-[2vw]">
+          {/* Placeholder del nombre para alineación */}
+          <div aria-hidden="true">
+            <div className="text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none whitespace-nowrap">
+              ENDIKA
+            </div>
+            <div className="text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none whitespace-nowrap">
+              ORUBE
+              <span className="inline-block w-[0.12em] h-[0.12em] ml-[0.07em]" />
+            </div>
+          </div>
+
+          {/* Subtítulo desktop - Rotado 90°, altura igual al bloque del nombre */}
+          <div
+            className="flex items-center justify-center"
+            style={{ width: '2vw' }}
+          >
+            <div
+              className="rotate-90 origin-center"
+              style={{
+                width: 'calc(2 * 18vw * 0.85)',
+              }}
+            >
+              <motion.div
+                className="relative h-full flex items-center justify-end"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.9 }}
+              >
+                {/* Línea decorativa que se expande */}
+                <motion.div
+                  className="absolute right-[calc(100%+2vw)] top-1/2 h-px bg-primary"
+                  initial={{ width: 0 }}
+                  animate={{ width: '1.5vw' }}
+                  transition={{
+                    duration: 0.3,
+                    ease: [0.16, 1, 0.3, 1],
+                    delay: 0.85,
+                  }}
+                />
+                <motion.p
+                  className="text-primary text-[1.35vw] font-mono whitespace-nowrap font-bold tracking-wide"
+                  initial={{ x: 20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.16, 1, 0.3, 1],
+                    delay: 0.9,
+                  }}
+                >
+                  {t('hero.role')}
+                </motion.p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Capa estática mobile - elementos de UI (no se mueven con parallax) */}
+      <div className="md:hidden relative z-10 w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
         {/* Placeholder para mantener espacio */}
         <div className="relative" aria-hidden="true">
           <div className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none pointer-events-none whitespace-nowrap">
@@ -198,43 +277,9 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Rol desktop - Línea que se expande + texto reveal */}
-        <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 rotate-90 origin-center">
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.9 }}
-          >
-            {/* Línea decorativa que se expande */}
-            <motion.div
-              className="absolute -left-8 top-1/2 h-px bg-primary"
-              initial={{ width: 0 }}
-              animate={{ width: 24 }}
-              transition={{
-                duration: 0.3,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.85,
-              }}
-            />
-            <motion.p
-              className="text-primary text-xl md:text-2xl font-mono whitespace-nowrap font-bold"
-              initial={{ x: 20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{
-                duration: 0.4,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.9,
-              }}
-            >
-              {t('hero.role')}
-            </motion.p>
-          </motion.div>
-        </div>
-
         {/* Rol mobile - Entrada coordinada con borde animado */}
         <motion.div
-          className="md:hidden mt-24 pl-4 relative"
+          className="mt-24 pl-4 relative"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3, delay: 0.85 }}
