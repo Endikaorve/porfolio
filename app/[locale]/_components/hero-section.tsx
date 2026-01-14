@@ -150,7 +150,8 @@ export function HeroSection() {
         }}
       >
         {/* Mobile: layout original | Desktop: centrado con espacio para subtítulo */}
-        <div className="w-full max-w-7xl px-4 md:w-auto md:max-w-none md:px-0 md:flex md:items-center md:gap-[2vw]">
+        {/* md:-translate-x-[1vw] compensa el espacio tipográfico inherente para centrado visual perfecto */}
+        <div className="w-full max-w-7xl px-4 md:w-auto md:max-w-none md:px-0 md:flex md:items-center md:gap-[2vw] md:-translate-x-[1vw]">
           {/* Nombre */}
           <div>
             {/* Nombre completo - Un solo h1 para SEO */}
@@ -206,7 +207,8 @@ export function HeroSection() {
 
       {/* Subtítulo desktop - Capa estática SIN parallax */}
       <div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
-        <div className="flex items-center gap-[2vw]">
+        {/* -translate-x-[1vw] debe coincidir con la capa parallax para alineación */}
+        <div className="flex items-center gap-[2vw] -translate-x-[1vw]">
           {/* Placeholder del nombre para alineación */}
           <div aria-hidden="true">
             <div className="text-[18vw] font-black leading-[0.85] tracking-tighter opacity-0 select-none whitespace-nowrap">
