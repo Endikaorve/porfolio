@@ -213,7 +213,7 @@ export function MeSection() {
               <div className="relative w-full h-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                 <Image
                   src="/endika.jpg"
-                  alt="Endika Orube"
+                  alt={t('me.imageAlt')}
                   fill
                   className="object-cover"
                   priority

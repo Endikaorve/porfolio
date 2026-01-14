@@ -269,7 +269,8 @@
     "headline": "Code. Teams. Product.",
     "description": "Curious by nature, pragmatic by conviction. I lead teams and solve problems with software.",
     "cta": "DISCOVER MY STORY",
-    "orConnect": "Or connect"
+    "orConnect": "Or connect",
+    "imageAlt": "Endika Orube - Tech Lead & Product Engineer specialized in React, frontend architecture and team leadership"
   },
   "aboutPage": {
     "headerLink": "<EO />",

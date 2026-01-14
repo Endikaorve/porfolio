@@ -269,7 +269,8 @@
     "headline": "Código. Equipos. Producto.",
     "description": "Curioso por naturaleza, pragmático de convicción. Lidero equipos y resuelvo problemas con software.",
     "cta": "CONOCE MI HISTORIA",
-    "orConnect": "O escríbeme"
+    "orConnect": "O escríbeme",
+    "imageAlt": "Endika Orube - Tech Lead & Product Engineer especializado en React, arquitectura frontend y liderazgo de equipos"
   },
   "aboutPage": {
     "headerLink": "<EO />",

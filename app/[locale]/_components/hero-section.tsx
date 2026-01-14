@@ -150,22 +150,25 @@ export function HeroSection() {
         }}
       >
         <div className="w-full max-w-7xl min-[2000px]:max-w-[120rem] px-4">
+          {/* Nombre completo - Un solo h1 para SEO */}
+          <h1 className="sr-only">Endika Orube - Tech Lead & Manager, Product Engineer</h1>
+          
           {/* ENDIKA - Split text reveal con rotación */}
-          <div className="overflow-hidden">
-            <motion.h1
-              className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter whitespace-nowrap"
+          <div className="overflow-hidden" aria-hidden="true">
+            <motion.span
+              className="block text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter whitespace-nowrap"
               style={{
                 color: 'transparent',
                 WebkitTextStroke: '2px white',
               }}
             >
               <SplitText text="ENDIKA" delay={0.2} staggerDelay={0.04} />
-            </motion.h1>
+            </motion.span>
           </div>
 
           {/* ORUBE - Split text reveal con rotación */}
-          <div className="overflow-hidden">
-            <motion.h1 className="text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white whitespace-nowrap">
+          <div className="overflow-hidden" aria-hidden="true">
+            <motion.span className="block text-[25vw] md:text-[18vw] font-black leading-[0.85] tracking-tighter text-white whitespace-nowrap">
               <SplitText text="ORUBE" delay={0.35} staggerDelay={0.04} />
               <motion.span
                 className="inline-block w-[0.12em] h-[0.12em] bg-primary ml-[0.07em]"
@@ -177,7 +180,7 @@ export function HeroSection() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
               />
-            </motion.h1>
+            </motion.span>
           </div>
         </div>
       </motion.div>

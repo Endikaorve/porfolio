@@ -116,9 +116,10 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
-  const articleSchema = {
+  const blogPostSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
+    '@id': `${siteConfig.url}/${locale}/blog/${slug}#article`,
     headline: post.title,
     description: post.description,
     image: `${siteConfig.url}/og-image.jpg`,
@@ -126,11 +127,13 @@ export default async function BlogPostPage({ params }: Props) {
     dateModified: post.modifiedDate || post.date,
     author: {
       '@type': 'Person',
+      '@id': `${siteConfig.url}/#person`,
       name: siteConfig.author.name,
       url: siteConfig.url,
     },
     publisher: {
       '@type': 'Person',
+      '@id': `${siteConfig.url}/#person`,
       name: siteConfig.author.name,
       url: siteConfig.url,
     },
@@ -138,15 +141,21 @@ export default async function BlogPostPage({ params }: Props) {
       '@type': 'WebPage',
       '@id': `${siteConfig.url}/${locale}/blog/${slug}`,
     },
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': `${siteConfig.url}/${locale}/blog`,
+      name: `${siteConfig.author.name} Blog`,
+    },
     keywords: post.tags.join(', '),
     inLanguage: locale === 'es' ? 'es-ES' : 'en-US',
+    wordCount: post.content.split(/\s+/).length,
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
       />
       <BlogPostLayout post={post} locale={locale}>
         <MDXRemote
