@@ -58,7 +58,7 @@ export function ContactSection() {
         transition={{ duration: 1, ease: 'easeOut' }}
       />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 xl:px-8 relative z-10">
         <motion.div
           className="text-center"
           initial={{ opacity: 0 }}
@@ -156,7 +156,7 @@ export function ContactSection() {
 
       {/* Footer minimalista */}
       <div className="absolute bottom-8 left-0 right-0">
-        <div className="container mx-auto px-4 flex justify-between items-center text-white/40 text-sm font-mono">
+        <div className="container mx-auto px-4 xl:px-8 flex justify-between items-center text-white/40 text-sm font-mono">
           <span>{t('contact.copyright')}</span>
           <span>{t('contact.location')}</span>
         </div>

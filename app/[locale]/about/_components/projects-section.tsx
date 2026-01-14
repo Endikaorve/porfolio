@@ -10,7 +10,7 @@ export function ProjectsSection() {
 
   return (
     <section className="relative py-32">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 xl:px-8">
         <motion.h2
           className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black leading-none mb-20"
           initial={{ opacity: 0 }}

@@ -477,7 +477,7 @@ export function ExperienceSection() {
 
   return (
     <section className="relative py-20">
-      <div className="container mx-auto px-4 pb-20">
+      <div className="container mx-auto px-4 xl:px-8 pb-20">
         <motion.h2
           className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[12vw] font-black leading-none"
           initial={{ opacity: 0 }}

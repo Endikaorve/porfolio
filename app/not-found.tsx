@@ -30,7 +30,7 @@ export default function NotFound() {
         <GlobalCursor />
 
         <main className="relative min-h-screen flex items-center justify-center">
-          <div className="container mx-auto px-4 max-w-3xl text-center">
+          <div className="container mx-auto px-4 xl:px-8 max-w-3xl text-center">
             {/* 404 Title */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}

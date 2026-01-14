@@ -12,7 +12,7 @@ export function AboutSection() {
 
   return (
     <section className="relative py-32">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 xl:px-8">
         <div className="grid grid-cols-12 gap-4 md:gap-8 lg:gap-12">
           {/* Foto - Mobile first, luego reposicionada en desktop */}
           <motion.div

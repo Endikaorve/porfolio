@@ -15,7 +15,7 @@ export function BlogListClient({ posts, locale }: BlogListClientProps) {
 
   return (
     <main className="relative min-h-screen">
-      <div className="container mx-auto px-4 max-w-3xl">
+      <div className="container mx-auto px-4 xl:px-8 max-w-3xl">
         {/* Hero minimalista con toque sutil */}
         <motion.section
           className="pt-24 md:pt-32 pb-12 md:pb-16"

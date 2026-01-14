@@ -35,7 +35,7 @@ export function ExpertiseSection() {
 
   return (
     <section className="relative py-32">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 xl:px-8">
         <motion.h2
           className="text-6xl md:text-8xl font-black text-white mb-20 leading-none"
           initial={{ opacity: 0 }}

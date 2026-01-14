@@ -26,7 +26,7 @@ export function BlogPostLayout({
       <div className="relative">
         {/* Header minimalista */}
         <motion.header
-          className="container mx-auto px-4 max-w-3xl pt-24 md:pt-32 pb-8"
+          className="container mx-auto px-4 xl:px-8 max-w-3xl pt-24 md:pt-32 pb-8"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
@@ -42,7 +42,7 @@ export function BlogPostLayout({
 
         {/* Hero del artículo */}
         <motion.div
-          className="container mx-auto px-4 max-w-3xl pb-12"
+          className="container mx-auto px-4 xl:px-8 max-w-3xl pb-12"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -86,7 +86,7 @@ export function BlogPostLayout({
 
         {/* Contenido del artículo */}
         <motion.div
-          className="container mx-auto px-4 max-w-3xl pb-16"
+          className="container mx-auto px-4 xl:px-8 max-w-3xl pb-16"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -99,7 +99,7 @@ export function BlogPostLayout({
 
         {/* Footer */}
         <motion.footer
-          className="container mx-auto px-4 max-w-3xl pb-16"
+          className="container mx-auto px-4 xl:px-8 max-w-3xl pb-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.3 }}

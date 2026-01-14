@@ -47,7 +47,7 @@ export function TechSkillsSection() {
 
         {/* Título fijo arriba - alineado con container */}
         <div className="absolute top-8 md:top-12 left-0 right-0 z-20">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 xl:px-8">
             <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[6vw] font-black leading-none">
               <span className="text-white">{t('tech.title.line1')}</span>
               <br />
